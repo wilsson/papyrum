@@ -1,0 +1,26 @@
+{
+  "name": "@papyrum/ui",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "wilsson <wilsonft83@gmail.com>",
+  "homepage": "https://github.com/wilsson/papyrum#readme",
+  "license": "MIT",
+  "main": "dist/papyrum-ui.js",
+  "directories": {
+    "dist": "dist",
+    "test": "__tests__"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilsson/papyrum.git"
+  },
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/wilsson/papyrum/issues"
+  }
+}
