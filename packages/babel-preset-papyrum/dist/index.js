@@ -4,7 +4,7 @@ var DEFAULT_OPTS = {
     flow: false,
     typescript: false
 };
-exports.preset = function (opts) {
+exports.default = (function (opts) {
     if (opts === void 0) { opts = DEFAULT_OPTS; }
     console.log('preset', opts);
     return {
@@ -16,4 +16,4 @@ exports.preset = function (opts) {
         ].filter(Boolean),
         plugins: []
     };
-};
+});

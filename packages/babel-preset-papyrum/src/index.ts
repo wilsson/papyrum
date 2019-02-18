@@ -8,7 +8,7 @@ const DEFAULT_OPTS: Config = {
     typescript: false
 }
 
-export const preset = (opts: Config = DEFAULT_OPTS) => {
+export default (opts: Config = DEFAULT_OPTS) => {
     console.log('preset', opts);
     return {
         presets: [
