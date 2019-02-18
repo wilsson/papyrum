@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
         "target": "ES5",
+        "jsx": "react",
         "moduleResolution": "node",
         "lib": [
             "dom",

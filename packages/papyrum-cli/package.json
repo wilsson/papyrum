@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2"
   }
 }

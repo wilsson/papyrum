@@ -7,26 +7,28 @@
   "license": "MIT",
   "main": "dist/index.js",
   "directories": {
-    "lib": "lib",
+    "dist": "dist",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wilsson/papyrum.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "tsc": "tsc"
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
+    "@babel/core": "^7.3.3",
     "@babel/preset-env": "7.3.1",
     "@babel/preset-flow": "7.0.0",
     "@babel/preset-react": "7.0.0",
-    "@babel/preset-typescript": "7.3.3"
+    "@babel/preset-typescript": "7.3.3",
+    "@types/node": "^11.9.4"
   }
 }
