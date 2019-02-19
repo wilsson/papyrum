@@ -1,6 +1,9 @@
 {
   "name": "root",
   "private": true,
+  "scripts": {
+    "bs": "lerna bootstrap && lerna run server"
+  },
   "devDependencies": {
     "lerna": "^3.11.1",
     "typescript": "3.3.3"
