@@ -5,7 +5,7 @@
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "license": "MIT",
-  "main": "dist/papyrum-cli.js",
+  "bin": "bin/index.js",
   "directories": {
     "dist": "dist",
     "test": "__tests__"
