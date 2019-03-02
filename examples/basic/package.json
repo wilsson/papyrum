@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@mdx-js/tag": "0.18.0",
     "@papyrum/cli": "0.0.0"
   }
 }

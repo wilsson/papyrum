@@ -6,12 +6,12 @@ console.log('path', pathEntry);
 //process.exit();
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, './index.jsx'),
+    entry: pathEntry,
     output: {
         path: path.resolve(__dirname, "dist"),
     },
     resolve: {
-        extensions: ['.js', '.ts', '.tsx', '.mdx', '.jsx'],
+        modules: [path.resolve(__dirname, 'node_modules')]
     },
     module: {
         rules: [
@@ -28,8 +28,16 @@ module.exports = {
             {
                 test: /.mdx?$/,
                 use: [
-                    require.resolve("babel-loader"),
-                    require.resolve("@mdx-js/loader")
+                    {
+                        loader: require.resolve("babel-loader"),
+                        options: {
+                            presets: [require.resolve("babel-preset-papyrum")]
+                        }
+                    },
+                    {
+                        loader: require.resolve("@mdx-js/loader"),
+                    }
+                   
                 ]
             }
         ]
