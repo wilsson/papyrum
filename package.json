@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "bs": "lerna bootstrap && lerna run server"
+    "bs": "lerna bootstrap && lerna run dev"
   },
   "devDependencies": {
     "lerna": "^3.11.1",
