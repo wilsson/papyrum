@@ -5,7 +5,7 @@
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "license": "MIT",
-  "main": "dist/papyrum-core.js",
+  "main": "dist/index.js",
   "directories": {
     "dist": "dist",
     "test": "__tests__"
@@ -27,17 +27,23 @@
   "dependencies": {
     "@babel/core": "7.3.3",
     "@mdx-js/loader": "0.17.5",
-    "@types/react": "16.8.3",
-    "@types/react-dom": "16.8.2",
-    "@types/webpack-env": "^1.13.7",
+    "@mdx-js/tag": "0.18.0",
     "babel-loader": "8.0.5",
-    "globby": "^9.0.0",
+    "babel-preset-papyrum": "0.0.0",
     "html-webpack-plugin": "3.2.0",
     "react": "16.8.2",
     "react-dom": "16.8.2",
-    "react-router-dom": "^4.3.1",
+    "react-router-dom": "4.3.1",
     "webpack": "4.29.4",
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.1.14"
+  },
+  "devDependencies": {
+    "@types/react": "16.8.3",
+    "@types/react-dom": "16.8.2"
+  },
+  "peerDependencies": {
+    "react": "16.8.2",
+    "react-dom": "16.8.2"
   }
 }

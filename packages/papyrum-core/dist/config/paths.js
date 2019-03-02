@@ -1,0 +1,1 @@
+var realPath = __dirname;

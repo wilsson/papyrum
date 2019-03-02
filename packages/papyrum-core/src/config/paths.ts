@@ -1,0 +1,2 @@
+
+const realPath = __dirname;

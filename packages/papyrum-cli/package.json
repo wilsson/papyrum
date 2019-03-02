@@ -5,7 +5,9 @@
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "license": "MIT",
-  "bin": "bin/index.js",
+  "bin": {
+    "papyrum": "dist/index.js"
+  },
   "directories": {
     "dist": "dist",
     "test": "__tests__"
@@ -24,6 +26,12 @@
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
-    "chalk": "^2.4.2"
+    "@papyrum/core": "0.0.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "yargs": "13.2.1"
+  },
+  "devDependencies": {
+    "@types/yargs": "12.0.9"
   }
 }
