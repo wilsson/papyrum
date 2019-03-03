@@ -1,17 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const WebpackBar = require('webpackbar');
 const pathEntry = path.resolve(process.cwd(), './index.jsx');
-console.log('path', pathEntry);
-//process.exit();
+
 module.exports = {
     mode: 'development',
     entry: pathEntry,
     output: {
         path: path.resolve(__dirname, "dist"),
-    },
-    resolve: {
-        modules: [path.resolve(__dirname, 'node_modules')]
     },
     module: {
         rules: [
@@ -45,6 +41,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'public/index.html')
-        })
+        }),
+        new WebpackBar()
     ]
 }
