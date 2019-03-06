@@ -20,6 +20,7 @@
   },
   "scripts": {
     "tsc": "tsc",
+    "test": "jest",
     "server": "node ./dist/server"
   },
   "bugs": {
@@ -42,7 +43,8 @@
   },
   "devDependencies": {
     "@types/react": "16.8.3",
-    "@types/react-dom": "16.8.2"
+    "@types/react-dom": "16.8.2",
+    "jest": "^24.1.0"
   },
   "peerDependencies": {
     "react": "16.8.2",
