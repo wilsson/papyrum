@@ -1,0 +1,35 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+
+//_IMPORTS_
+
+const paths = [_PATHS_];
+
+const cleanTitle = (title) => title.replace('./', '');
+
+const createPath = (pos) => pos===0 ? '/' : `/${pos}`;
+
+const App = () => (
+    <BrowserRouter>
+            <div className='wrapper'>
+                <ul className='sidebar'>
+                    {paths.map((path, i)=> (
+                        <li key={i}>
+                            <NavLink exact activeStyle={{color:'black'}} to={ createPath(i) }>
+                                {cleanTitle(path)}
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
+                <article className='content'>
+                    _ROUTE_
+                </article>
+        </div>
+    </BrowserRouter>
+);
+
+const node = document.createElement('div');
+document.body.appendChild(node);
+
+ReactDOM.render(<App />, node);

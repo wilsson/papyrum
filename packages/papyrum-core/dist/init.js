@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -37,21 +36,53 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-var yargs = require("yargs");
-var args_1 = require("./args");
-var core_1 = require("@papyrum/core");
-yargs // eslint-disable-line
-    .command('dev', 'Initial cli for dev', args_1.args, function (argv) { return __awaiter(_this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                console.log('argv', argv);
-                return [4 /*yield*/, core_1.InitApplication()];
-            case 1:
-                _a.sent();
-                core_1.Server();
-                return [2 /*return*/];
-        }
-    });
-}); })
-    .argv;
+var fs = require("fs");
+var path = require("path");
+var globby_1 = require("globby");
+exports.Init = function () {
+    var pathCLient = path.resolve(process.cwd(), './.papyrum');
+    return new Promise(function (resolve) { return __awaiter(_this, void 0, void 0, function () {
+        var e_1, createPath, paths, file, fileString, imports, components, pathsArr, e_2;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, fs.mkdirSync(pathCLient)];
+                case 1:
+                    _a.sent();
+                    return [3 /*break*/, 3];
+                case 2:
+                    e_1 = _a.sent();
+                    return [3 /*break*/, 3];
+                case 3:
+                    createPath = function (pos) { return pos === 0 ? '/' : "/" + pos; };
+                    return [4 /*yield*/, globby_1.default(['**/*.mdx', '!node_modules'])];
+                case 4:
+                    paths = _a.sent();
+                    return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, './../src/template/entry.txt'), 'utf8')];
+                case 5:
+                    file = _a.sent();
+                    fileString = file.toString();
+                    imports = paths.map(function (path, k) { return "import A" + k + " from '../" + path + "';"; });
+                    components = paths.map(function (path, k) { return "<Route exact path='" + createPath(k) + "' component={A" + k + "} />"; });
+                    pathsArr = paths.map(function (path) { return "'" + path + "'"; });
+                    fileString = fileString.replace(/\/\/_IMPORTS_/, imports.join('\n'));
+                    fileString = fileString.replace('_PATHS_', pathsArr.join(','));
+                    fileString = fileString.replace('_ROUTE_', components.join('\n'));
+                    _a.label = 6;
+                case 6:
+                    _a.trys.push([6, 8, , 9]);
+                    return [4 /*yield*/, fs.writeFileSync(path.resolve(pathCLient, './entry.jsx'), fileString)];
+                case 7:
+                    _a.sent();
+                    return [3 /*break*/, 9];
+                case 8:
+                    e_2 = _a.sent();
+                    return [3 /*break*/, 9];
+                case 9:
+                    resolve('ok');
+                    return [2 /*return*/];
+            }
+        });
+    }); });
+};

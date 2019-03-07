@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackBar = require('webpackbar');
-const pathEntry = path.resolve(process.cwd(), './index.jsx');
+const pathEntry = path.resolve(process.cwd(), './.papyrum/entry.jsx');
 
 module.exports = {
     mode: 'development',

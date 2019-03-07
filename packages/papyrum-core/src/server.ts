@@ -2,7 +2,7 @@ import * as webpack from 'webpack';
 import * as config from '../webpack.config';
 import * as WebpackDevServer from 'webpack-dev-server';
 
-export const server = () => {
+export const Server = () => {
     const port = 8080;
     const compiler = webpack(config as any);
     const opts = {};

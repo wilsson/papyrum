@@ -2,11 +2,12 @@
 
 import * as yargs from 'yargs';
 import { args } from './args';
-import { server } from '@papyrum/core';
+import { Server, InitApplication } from '@papyrum/core';
 
 yargs // eslint-disable-line
-    .command('dev', 'Initial cli for dev', args, (argv) => {
+    .command('dev', 'Initial cli for dev', args, async (argv) => {
         console.log('argv', argv);
-        server();
+        await InitApplication();
+        Server();
     })
     .argv

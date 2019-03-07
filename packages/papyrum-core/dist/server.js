@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var webpack = require("webpack");
 var config = require("../webpack.config");
 var WebpackDevServer = require("webpack-dev-server");
-exports.server = function () {
+exports.Server = function () {
     var port = 8080;
     var compiler = webpack(config);
     var opts = {};
