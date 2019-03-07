@@ -1,12 +1,6 @@
 'use strict';
 
-const papyrumCore = require('./../dist');
-
-console.log(papyrumCore);
-
-describe('papyrum-core', () => {
-    it('needs tests');
-});
+const { Metadata } = require('./../dist');
 
 describe('Metadata transform to object', () => {
     it('matches key and value', () => {
@@ -16,8 +10,7 @@ describe('Metadata transform to object', () => {
             clave: valor
             ---
         `;
-        expect(papyrumCore.Metadata(mockup))
+        expect(Metadata(mockup))
             .toEqual(expect.arrayContaining(expected));
     });
-
-})
+});

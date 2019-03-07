@@ -3,14 +3,21 @@ interface MetadataModel {
     value?: string;
 };
 
-export const Metadata = (content:string):MetadataModel[]|[] => {
+const removeSpace = (str: string) => str.replace(/\s+/g, '');
+
+export const Metadata = (content: string): MetadataModel[] | [] => {
     const comment = content.match(/---([^-]+)---/);
     const objectResults = [];
-    if(comment) {
-        const items = comment[1].match(/\n/);
-        items.forEach((item)=> {
-            const val = item.split(':');
-            objectResults.push({key: val[0], value: val[1]})
+    if (comment) {
+        const lines = comment[1].split('\n');
+        lines.forEach((line) => {
+            if (/\:/.test(line)) {
+                const val = line.split(':');
+                objectResults.push({
+                    key: removeSpace(val[0]),
+                    value: removeSpace(val[1])
+                });
+            }
         });
     }
     return objectResults;

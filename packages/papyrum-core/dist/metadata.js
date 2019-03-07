@@ -1,14 +1,20 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 ;
+var removeSpace = function (str) { return str.replace(/\s+/g, ''); };
 exports.Metadata = function (content) {
     var comment = content.match(/---([^-]+)---/);
     var objectResults = [];
     if (comment) {
-        var items = comment[1].match(/\n/);
-        items.forEach(function (item) {
-            var val = item.split(':');
-            objectResults.push({ key: val[0], value: val[1] });
+        var lines = comment[1].split('\n');
+        lines.forEach(function (line) {
+            if (/\:/.test(line)) {
+                var val = line.split(':');
+                objectResults.push({
+                    key: removeSpace(val[0]),
+                    value: removeSpace(val[1])
+                });
+            }
         });
     }
     return objectResults;
