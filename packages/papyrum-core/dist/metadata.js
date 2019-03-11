@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 ;
 var removeSpace = function (str) { return str.replace(/\s+/g, ''); };
-exports.Metadata = function (content) {
+exports.metadata = function (content) {
     var comment = content.match(/---([^-]+)---/);
     var objectResults = [];
     if (comment) {

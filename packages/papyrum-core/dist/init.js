@@ -59,6 +59,7 @@ exports.Init = function () {
                     return [4 /*yield*/, globby_1.default(['**/*.mdx', '!node_modules'])];
                 case 4:
                     paths = _a.sent();
+                    console.log('(core) paths>>', paths);
                     return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, './../src/template/entry.txt'), 'utf8')];
                 case 5:
                     file = _a.sent();

@@ -1,3 +1,3 @@
 export { Server } from './server';
-export { Metadata } from './metadata';
+export { metadata } from './metadata';
 export { Init as InitApplication } from './init';

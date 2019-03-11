@@ -5,7 +5,7 @@ interface MetadataModel {
 
 const removeSpace = (str: string) => str.replace(/\s+/g, '');
 
-export const Metadata = (content: string): MetadataModel[] | [] => {
+export const metadata = (content: string): MetadataModel[] | [] => {
     const comment = content.match(/---([^-]+)---/);
     const objectResults = [];
     if (comment) {

@@ -1,16 +1,14 @@
-'use strict';
-
-const { Metadata } = require('./../dist');
+import { metadata } from '../src/metadata';
 
 describe('Metadata transform to object', () => {
     it('matches key and value', () => {
-        const expected = [{key: 'clave', value: 'valor'}];
+        const expected = [{ key: 'name', value: 'Guide' }];
         const mockup = `
             ---
-            clave: valor
+            name: Guide
             ---
         `;
-        expect(Metadata(mockup))
+        expect(metadata(mockup))
             .toEqual(expect.arrayContaining(expected));
     });
 });
