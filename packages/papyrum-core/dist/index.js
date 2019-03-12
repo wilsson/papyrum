@@ -5,4 +5,5 @@ exports.Server = server_1.Server;
 var metadata_1 = require("./metadata");
 exports.metadata = metadata_1.metadata;
 var init_1 = require("./init");
-exports.InitApplication = init_1.Init;
+exports.InitApplication = init_1.init;
+//# sourceMappingURL=index.js.map

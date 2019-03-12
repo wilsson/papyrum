@@ -39,15 +39,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 var path = require("path");
 var globby_1 = require("globby");
-exports.Init = function () {
-    var pathCLient = path.resolve(process.cwd(), './.papyrum');
+exports.init = function () {
+    var pathClient = path.resolve(process.cwd(), './.papyrum');
     return new Promise(function (resolve) { return __awaiter(_this, void 0, void 0, function () {
-        var e_1, createPath, paths, file, fileString, imports, components, pathsArr, e_2;
+        var e_1, createPath, paths, entries, file, fileString, imports, components, pathsArr, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
                     _a.trys.push([0, 2, , 3]);
-                    return [4 /*yield*/, fs.mkdirSync(pathCLient)];
+                    return [4 /*yield*/, fs.mkdirSync(pathClient)];
                 case 1:
                     _a.sent();
                     return [3 /*break*/, 3];
@@ -60,6 +60,14 @@ exports.Init = function () {
                 case 4:
                     paths = _a.sent();
                     console.log('(core) paths>>', paths);
+                    entries = {};
+                    paths.forEach(function (item) {
+                        entries[item] = {
+                            filepath: item
+                        };
+                    });
+                    console.log('(core) entries', entries);
+                    fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries: entries }, null, 4));
                     return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, './../src/template/entry.txt'), 'utf8')];
                 case 5:
                     file = _a.sent();
@@ -73,7 +81,7 @@ exports.Init = function () {
                     _a.label = 6;
                 case 6:
                     _a.trys.push([6, 8, , 9]);
-                    return [4 /*yield*/, fs.writeFileSync(path.resolve(pathCLient, './entry.jsx'), fileString)];
+                    return [4 /*yield*/, fs.writeFileSync(path.resolve(pathClient, './entry.jsx'), fileString)];
                 case 7:
                     _a.sent();
                     return [3 /*break*/, 9];
@@ -87,3 +95,4 @@ exports.Init = function () {
         });
     }); });
 };
+//# sourceMappingURL=init.js.map

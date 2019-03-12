@@ -11,3 +11,4 @@ exports.mdxLoader = {
     test: /.mdx?$/,
     use: ['babel-loader', '@mdx-js/loader']
 };
+//# sourceMappingURL=loaders.js.map

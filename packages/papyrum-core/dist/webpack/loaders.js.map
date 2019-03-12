@@ -1,0 +1,1 @@
+{"version":3,"file":"loaders.js","sourceRoot":"","sources":["../../src/webpack/loaders.ts"],"names":[],"mappings":";;AAAa,QAAA,WAAW,GAAG;IACvB,IAAI,EAAE,aAAa;IACnB,OAAO,EAAE,cAAc;IACvB,GAAG,EAAE;QACD,MAAM,EAAE,cAAc;KACzB;CACJ,CAAA;AAEY,QAAA,SAAS,GAAG;IACrB,IAAI,EAAE,QAAQ;IACd,GAAG,EAAE,CAAC,cAAc,EAAE,gBAAgB,CAAC;CAC1C,CAAA"}

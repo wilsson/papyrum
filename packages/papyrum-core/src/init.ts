@@ -2,18 +2,28 @@ import * as fs from 'fs';
 import * as path from 'path';
 import globby from 'globby';
 
-export const Init = () => {
+export const init = () => {
 
-    const pathCLient = path.resolve(process.cwd(), './.papyrum');
+    const pathClient = path.resolve(process.cwd(), './.papyrum');
 
     return new Promise(async (resolve) => {
         try {
-            await fs.mkdirSync(pathCLient);
+            await fs.mkdirSync(pathClient);
         } catch (e) { }
 
         const createPath = (pos) => pos === 0 ? '/' : `/${pos}`;
         const paths = await globby(['**/*.mdx', '!node_modules']);
         console.log('(core) paths>>', paths);
+
+        const entries = {};
+        paths.forEach((item) => {
+            entries[item] = {
+                filepath: item
+            };
+        });
+        console.log('(core) entries', entries);
+        fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries }, null, 4));
+
         const file = await fs.readFileSync(path.resolve(__dirname, './../src/template/entry.txt'), 'utf8');
         let fileString = file.toString();
         const imports = paths.map((path, k) => `import A${k} from '../${path}';`);
@@ -24,7 +34,7 @@ export const Init = () => {
         fileString = fileString.replace('_ROUTE_', components.join('\n'));
         try {
             await fs.writeFileSync(
-                path.resolve(pathCLient, './entry.jsx'),
+                path.resolve(pathClient, './entry.jsx'),
                 fileString
             );
         } catch (e) { }

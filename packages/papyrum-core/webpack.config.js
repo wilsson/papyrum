@@ -9,6 +9,10 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
     },
+    resolve: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']
+    },
+    devtool: 'source-map',
     module: {
         rules: [
             {
@@ -33,7 +37,6 @@ module.exports = {
                     {
                         loader: require.resolve("@mdx-js/loader"),
                     }
-                   
                 ]
             }
         ]

@@ -19,3 +19,4 @@ exports.metadata = function (content) {
     }
     return objectResults;
 };
+//# sourceMappingURL=metadata.js.map
