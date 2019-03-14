@@ -15,6 +15,7 @@ export const init = () => {
         const paths = await globby(['**/*.mdx', '!node_modules']);
         console.log('(core) paths>>', paths);
 
+        // create db.json for entries
         const entries = {};
         paths.forEach((item) => {
             entries[item] = {
@@ -24,7 +25,8 @@ export const init = () => {
         console.log('(core) entries', entries);
         fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries }, null, 4));
 
-        const file = await fs.readFileSync(path.resolve(__dirname, './../src/template/entry.txt'), 'utf8');
+        // create root, imports and route for entries
+        const file = await fs.readFileSync(path.resolve(__dirname, './../src/template/root.txt'), 'utf8');
         let fileString = file.toString();
         const imports = paths.map((path, k) => `import A${k} from '../${path}';`);
         const components = paths.map((path, k) => `<Route exact path='${createPath(k)}' component={A${k}} />`);
@@ -34,7 +36,7 @@ export const init = () => {
         fileString = fileString.replace('_ROUTE_', components.join('\n'));
         try {
             await fs.writeFileSync(
-                path.resolve(pathClient, './entry.jsx'),
+                path.resolve(pathClient, './root.jsx'),
                 fileString
             );
         } catch (e) { }

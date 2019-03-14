@@ -1,12 +1,32 @@
-export const babelLoader = {
+import * as matter from 'remark-frontmatter';
+
+export const babel = {
     test: /\.(js|jsx)$/,
     exclude: /node_modules/,
     use: {
-        loader: "babel-loader"
+        loader: require.resolve("babel-loader"),
+        options: {
+            presets: [require.resolve("babel-preset-papyrum")]
+        }
     }
-}
+};
 
-export const mdxLoader = {
+export const mdx = {
     test: /.mdx?$/,
-    use: ['babel-loader', '@mdx-js/loader']
-}
+    use: [
+        {
+            loader: require.resolve("babel-loader"),
+            options: {
+                presets: [require.resolve("babel-preset-papyrum")]
+            }
+        },
+        {
+            loader: require.resolve("@mdx-js/loader"),
+            options: {
+                mdPlugins: [matter],
+                type: 'yaml',
+                marker: '-'
+            }
+        }
+    ]
+};

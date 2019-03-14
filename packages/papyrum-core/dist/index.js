@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var server_1 = require("./server");
-exports.Server = server_1.Server;
-var metadata_1 = require("./metadata");
-exports.metadata = metadata_1.metadata;
+var devserver_1 = require("./webpack/devserver");
+exports.server = devserver_1.server;
+var metadata_1 = require("./utils/metadata");
+exports.getMetadata = metadata_1.getMetadata;
 var init_1 = require("./init");
 exports.InitApplication = init_1.init;
 //# sourceMappingURL=index.js.map

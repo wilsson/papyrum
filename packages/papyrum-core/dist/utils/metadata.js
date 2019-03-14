@@ -11,11 +11,13 @@ exports.getMetadata = function (content) {
         for (var i = 0; i < lines.length; i++) {
             if (/\:/.test(lines[i])) {
                 var _a = lines[i].split(':'), key = _a[0], value = _a[1];
-                if (!metadata.includes(key))
+                var newKey = removeSpace(key);
+                var newValue = removeSpace(value);
+                if (!metadata.includes(newKey))
                     continue;
                 objectResults.push({
-                    key: removeSpace(key),
-                    value: removeSpace(value)
+                    key: newKey,
+                    value: newValue
                 });
             }
         }

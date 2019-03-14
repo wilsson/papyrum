@@ -1,8 +1,8 @@
 import * as webpack from 'webpack';
-import * as config from '../webpack.config';
 import * as WebpackDevServer from 'webpack-dev-server';
+import { config } from './config.dev';
 
-export const Server = () => {
+export const server = () => {
     const port = 8080;
     const compiler = webpack(config as any);
     const opts = {

@@ -18,3 +18,4 @@ exports.default = (function (api, opts) {
         plugins: []
     };
 });
+//# sourceMappingURL=index.js.map

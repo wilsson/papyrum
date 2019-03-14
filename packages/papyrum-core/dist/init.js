@@ -68,7 +68,7 @@ exports.init = function () {
                     });
                     console.log('(core) entries', entries);
                     fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries: entries }, null, 4));
-                    return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, './../src/template/entry.txt'), 'utf8')];
+                    return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, './../src/template/root.txt'), 'utf8')];
                 case 5:
                     file = _a.sent();
                     fileString = file.toString();
@@ -81,7 +81,7 @@ exports.init = function () {
                     _a.label = 6;
                 case 6:
                     _a.trys.push([6, 8, , 9]);
-                    return [4 /*yield*/, fs.writeFileSync(path.resolve(pathClient, './entry.jsx'), fileString)];
+                    return [4 /*yield*/, fs.writeFileSync(path.resolve(pathClient, './root.jsx'), fileString)];
                 case 7:
                     _a.sent();
                     return [3 /*break*/, 9];

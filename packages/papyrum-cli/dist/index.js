@@ -49,9 +49,10 @@ yargs // eslint-disable-line
                 return [4 /*yield*/, core_1.InitApplication()];
             case 1:
                 _a.sent();
-                core_1.Server();
+                core_1.server();
                 return [2 /*return*/];
         }
     });
 }); })
     .argv;
+//# sourceMappingURL=index.js.map

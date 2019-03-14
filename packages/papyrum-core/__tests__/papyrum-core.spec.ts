@@ -1,4 +1,4 @@
-import { metadata } from '../src/metadata';
+import { getMetadata } from '../src/utils/metadata';
 
 describe('Metadata transform to object', () => {
     it('matches key and value', () => {
@@ -6,9 +6,10 @@ describe('Metadata transform to object', () => {
         const mockup = `
             ---
             name: Guide
+            other: foo
             ---
         `;
-        expect(metadata(mockup))
+        expect(getMetadata(mockup))
             .toEqual(expect.arrayContaining(expected));
     });
 });
