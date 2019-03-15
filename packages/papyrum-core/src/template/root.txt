@@ -1,29 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, NavLink } from 'react-router-dom';
+import db from 'db';
+console.log('db', db);
 
 //_IMPORTS_
 
-const paths = [_PATHS_];
-
-const cleanTitle = (title) => title.replace('./', '');
-
-const createPath = (pos) => pos===0 ? '/' : `/${pos}`;
+const components = [_COMPONENTS_];
 
 const App = () => (
     <BrowserRouter>
             <div className='wrapper'>
                 <ul className='sidebar'>
-                    {paths.map((path, i)=> (
+                    {Object.keys(db.entries).map((entry, i) => (
                         <li key={i}>
-                            <NavLink exact activeStyle={{color:'black'}} to={ createPath(i) }>
-                                {cleanTitle(path)}
+                            <NavLink exact activeStyle={{color:'black'}} to={db.entries[entry].route }>
+                                {db.entries[entry].name}
                             </NavLink>
                         </li>
                     ))}
                 </ul>
                 <article className='content'>
-                    _ROUTE_
+                    {Object.keys(db.entries).map((entry, i) => (
+                        <Route key={i} exact path='/' path={db.entries[entry].route} component={components[i]} />
+                    ))}
                 </article>
         </div>
     </BrowserRouter>

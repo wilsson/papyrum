@@ -39,10 +39,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 var path = require("path");
 var globby_1 = require("globby");
+var metadata_1 = require("./utils/metadata");
+var slugify_1 = require("@sindresorhus/slugify");
+var humanize_string_1 = require("humanize-string");
 exports.init = function () {
     var pathClient = path.resolve(process.cwd(), './.papyrum');
     return new Promise(function (resolve) { return __awaiter(_this, void 0, void 0, function () {
-        var e_1, createPath, paths, entries, file, fileString, imports, components, pathsArr, e_2;
+        var e_1, createPath, paths, entries, file, fileString, imports, components, e_2;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -62,8 +65,17 @@ exports.init = function () {
                     console.log('(core) paths>>', paths);
                     entries = {};
                     paths.forEach(function (item) {
+                        var file = fs.readFileSync(path.resolve(process.cwd(), "./" + item), 'utf8');
+                        var metadata = metadata_1.getMetadata(file);
+                        var _a = metadata_1.getMetadata(file), name = _a[0], route = _a[1];
+                        console.log('--------');
+                        console.log('name', path.basename(item));
+                        console.log('ext', path.extname(item));
+                        var finalRoute = path.basename(item).replace(path.extname(item), '');
                         entries[item] = {
-                            filepath: item
+                            filepath: item,
+                            name: name ? name.value : humanize_string_1.default(slugify_1.default(finalRoute)),
+                            route: route ? route.value : "/" + slugify_1.default(finalRoute)
                         };
                     });
                     console.log('(core) entries', entries);
@@ -73,11 +85,9 @@ exports.init = function () {
                     file = _a.sent();
                     fileString = file.toString();
                     imports = paths.map(function (path, k) { return "import A" + k + " from '../" + path + "';"; });
-                    components = paths.map(function (path, k) { return "<Route exact path='" + createPath(k) + "' component={A" + k + "} />"; });
-                    pathsArr = paths.map(function (path) { return "'" + path + "'"; });
+                    components = paths.map(function (path, k) { return "A" + k; });
                     fileString = fileString.replace(/\/\/_IMPORTS_/, imports.join('\n'));
-                    fileString = fileString.replace('_PATHS_', pathsArr.join(','));
-                    fileString = fileString.replace('_ROUTE_', components.join('\n'));
+                    fileString = fileString.replace('_COMPONENTS_', components.join(', '));
                     _a.label = 6;
                 case 6:
                     _a.trys.push([6, 8, , 9]);

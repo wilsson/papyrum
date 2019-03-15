@@ -12,7 +12,10 @@ export const config = {
         path: path.resolve(__dirname, "dist"),
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
+        alias: {
+            db: path.resolve(process.cwd(), './.papyrum/db.json')
+        }
     },
     devtool: 'source-map',
     module: {
