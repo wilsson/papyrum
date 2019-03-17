@@ -2,10 +2,10 @@ import { getMetadata } from '../src/utils/metadata';
 
 describe('Metadata transform to object', () => {
     it('matches key and value', () => {
-        const expected = [{ key: 'name', value: 'Guide' }];
+        const expected = [{ key: 'route', value: '/Guide' }];
         const mockup = `
             ---
-            name: Guide
+            route: /Guide
             other: foo
             ---
         `;

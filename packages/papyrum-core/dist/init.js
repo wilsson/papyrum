@@ -39,13 +39,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var fs = require("fs");
 var path = require("path");
 var globby_1 = require("globby");
-var metadata_1 = require("./utils/metadata");
 var slugify_1 = require("@sindresorhus/slugify");
 var humanize_string_1 = require("humanize-string");
+var mdx_1 = require("./utils/mdx");
 exports.init = function () {
     var pathClient = path.resolve(process.cwd(), './.papyrum');
     return new Promise(function (resolve) { return __awaiter(_this, void 0, void 0, function () {
         var e_1, createPath, paths, entries, file, fileString, imports, components, e_2;
+        var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -62,43 +63,66 @@ exports.init = function () {
                     return [4 /*yield*/, globby_1.default(['**/*.mdx', '!node_modules'])];
                 case 4:
                     paths = _a.sent();
-                    console.log('(core) paths>>', paths);
                     entries = {};
-                    paths.forEach(function (item) {
-                        var file = fs.readFileSync(path.resolve(process.cwd(), "./" + item), 'utf8');
-                        var metadata = metadata_1.getMetadata(file);
-                        var _a = metadata_1.getMetadata(file), name = _a[0], route = _a[1];
-                        console.log('--------');
-                        console.log('name', path.basename(item));
-                        console.log('ext', path.extname(item));
-                        var finalRoute = path.basename(item).replace(path.extname(item), '');
-                        entries[item] = {
-                            filepath: item,
-                            name: name ? name.value : humanize_string_1.default(slugify_1.default(finalRoute)),
-                            route: route ? route.value : "/" + slugify_1.default(finalRoute)
-                        };
-                    });
-                    console.log('(core) entries', entries);
+                    return [4 /*yield*/, Promise.all(paths.map(function (item) { return __awaiter(_this, void 0, void 0, function () {
+                            var filePath, ast, metasArray, finalRoute;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        filePath = path.resolve(process.cwd(), "./" + item);
+                                        return [4 /*yield*/, mdx_1.parseMdx(filePath)];
+                                    case 1:
+                                        ast = _a.sent();
+                                        console.log('path', filePath);
+                                        console.log('ast 1');
+                                        metasArray = mdx_1.getMetadata(ast);
+                                        console.log('ast', ast);
+                                        console.log('metasArray>>', metasArray);
+                                        finalRoute = path.basename(item).replace(path.extname(item), '');
+                                        entries[item] = {
+                                            filepath: item
+                                        };
+                                        metasArray && metasArray.forEach(function (_a) {
+                                            var key = _a.key, value = _a.value;
+                                            var _b;
+                                            if (key && value) {
+                                                entries[item] = (_b = {},
+                                                    _b[key] = value,
+                                                    _b);
+                                            }
+                                        });
+                                        entries[item] = {
+                                            name: entries[item].name || humanize_string_1.default(slugify_1.default(finalRoute)),
+                                            route: entries[item].route || "/" + slugify_1.default(finalRoute)
+                                        };
+                                        console.log('entries', entries);
+                                        return [2 /*return*/];
+                                }
+                            });
+                        }); }))];
+                case 5:
+                    _a.sent();
+                    console.log('final entries', entries);
                     fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries: entries }, null, 4));
                     return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, './../src/template/root.txt'), 'utf8')];
-                case 5:
+                case 6:
                     file = _a.sent();
                     fileString = file.toString();
                     imports = paths.map(function (path, k) { return "import A" + k + " from '../" + path + "';"; });
                     components = paths.map(function (path, k) { return "A" + k; });
                     fileString = fileString.replace(/\/\/_IMPORTS_/, imports.join('\n'));
                     fileString = fileString.replace('_COMPONENTS_', components.join(', '));
-                    _a.label = 6;
-                case 6:
-                    _a.trys.push([6, 8, , 9]);
-                    return [4 /*yield*/, fs.writeFileSync(path.resolve(pathClient, './root.jsx'), fileString)];
+                    _a.label = 7;
                 case 7:
-                    _a.sent();
-                    return [3 /*break*/, 9];
+                    _a.trys.push([7, 9, , 10]);
+                    return [4 /*yield*/, fs.writeFileSync(path.resolve(pathClient, './root.jsx'), fileString)];
                 case 8:
-                    e_2 = _a.sent();
-                    return [3 /*break*/, 9];
+                    _a.sent();
+                    return [3 /*break*/, 10];
                 case 9:
+                    e_2 = _a.sent();
+                    return [3 /*break*/, 10];
+                case 10:
                     resolve('ok');
                     return [2 /*return*/];
             }
