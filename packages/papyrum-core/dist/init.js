@@ -45,7 +45,7 @@ var mdx_1 = require("./utils/mdx");
 exports.init = function () {
     var pathClient = path.resolve(process.cwd(), './.papyrum');
     return new Promise(function (resolve) { return __awaiter(_this, void 0, void 0, function () {
-        var e_1, createPath, paths, entries, file, fileString, imports, components, e_2;
+        var e_1, paths, entries, file, fileString, imports, components, e_2;
         var _this = this;
         return __generator(this, function (_a) {
             switch (_a.label) {
@@ -58,9 +58,7 @@ exports.init = function () {
                 case 2:
                     e_1 = _a.sent();
                     return [3 /*break*/, 3];
-                case 3:
-                    createPath = function (pos) { return pos === 0 ? '/' : "/" + pos; };
-                    return [4 /*yield*/, globby_1.default(['**/*.mdx', '!node_modules'])];
+                case 3: return [4 /*yield*/, globby_1.default(['**/*.mdx', '!node_modules'])];
                 case 4:
                     paths = _a.sent();
                     entries = {};
@@ -73,36 +71,26 @@ exports.init = function () {
                                         return [4 /*yield*/, mdx_1.parseMdx(filePath)];
                                     case 1:
                                         ast = _a.sent();
-                                        console.log('path', filePath);
-                                        console.log('ast 1');
                                         metasArray = mdx_1.getMetadata(ast);
-                                        console.log('ast', ast);
-                                        console.log('metasArray>>', metasArray);
                                         finalRoute = path.basename(item).replace(path.extname(item), '');
                                         entries[item] = {
                                             filepath: item
                                         };
                                         metasArray && metasArray.forEach(function (_a) {
                                             var key = _a.key, value = _a.value;
-                                            var _b;
-                                            if (key && value) {
-                                                entries[item] = (_b = {},
-                                                    _b[key] = value,
-                                                    _b);
-                                            }
+                                            if (key && value)
+                                                entries[item][key] = value;
                                         });
                                         entries[item] = {
                                             name: entries[item].name || humanize_string_1.default(slugify_1.default(finalRoute)),
                                             route: entries[item].route || "/" + slugify_1.default(finalRoute)
                                         };
-                                        console.log('entries', entries);
                                         return [2 /*return*/];
                                 }
                             });
                         }); }))];
                 case 5:
                     _a.sent();
-                    console.log('final entries', entries);
                     fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries: entries }, null, 4));
                     return [4 /*yield*/, fs.readFileSync(path.resolve(__dirname, './../src/template/root.txt'), 'utf8')];
                 case 6:

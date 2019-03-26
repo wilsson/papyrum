@@ -44,9 +44,7 @@ yargs // eslint-disable-line
     .command('dev', 'Initial cli for dev', args_1.args, function (argv) { return __awaiter(_this, void 0, void 0, function () {
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0:
-                console.log('argv', argv);
-                return [4 /*yield*/, core_1.InitApplication()];
+            case 0: return [4 /*yield*/, core_1.InitApplication()];
             case 1:
                 _a.sent();
                 core_1.server();

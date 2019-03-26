@@ -6,7 +6,6 @@ import { server, InitApplication } from '@papyrum/core';
 
 yargs // eslint-disable-line
     .command('dev', 'Initial cli for dev', args, async (argv) => {
-        console.log('argv', argv);
         await InitApplication();
         server();
     })

@@ -6,7 +6,8 @@ export const server = () => {
     const port = 8080;
     const compiler = webpack(config as any);
     const opts = {
-        historyApiFallback: true
+        historyApiFallback: true,
+        quiet: true
     };
 
     const server = new WebpackDevServer(compiler, opts);

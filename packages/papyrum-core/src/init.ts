@@ -13,7 +13,6 @@ export const init = () => {
             await fs.mkdirSync(pathClient);
         } catch (e) { }
 
-        const createPath = (pos) => pos === 0 ? '/' : `/${pos}`;
         const paths = await globby(['**/*.mdx', '!node_modules']);
         // create db.json for entries
         const entries = {};
@@ -27,18 +26,14 @@ export const init = () => {
                     filepath: item
                 };
                 metasArray && metasArray.forEach(({ key, value }) => {
-                    if (key && value) {
-                        entries[item] = {
-                            [key]: value
-                        };
-                    }
-                })
+                    if (key && value) entries[item][key] = value;
+                });
                 entries[item] = {
                     name: entries[item].name || humanize(slugify(finalRoute)),
                     route: entries[item].route || `/${slugify(finalRoute)}`
                 };
             })
-        )
+        );
         fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries }, null, 4));
 
         // create root, imports and route for entries

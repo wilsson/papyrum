@@ -6,8 +6,8 @@ var DEFAULT_OPTS = {
 };
 exports.default = (function (api, opts) {
     if (opts === void 0) { opts = DEFAULT_OPTS; }
-    console.log('opts', JSON.stringify(opts));
-    console.log('require("@babel/preset-react")', require("@babel/preset-react"));
+    //console.log('opts', JSON.stringify(opts));
+    //console.log('require("@babel/preset-react")', require("@babel/preset-react"));
     return {
         presets: [
             require("@babel/preset-env").default,

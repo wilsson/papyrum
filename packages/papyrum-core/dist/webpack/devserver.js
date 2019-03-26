@@ -7,7 +7,8 @@ exports.server = function () {
     var port = 8080;
     var compiler = webpack(config_dev_1.config);
     var opts = {
-        historyApiFallback: true
+        historyApiFallback: true,
+        quiet: true
     };
     var server = new WebpackDevServer(compiler, opts);
     server.listen(port, '127.0.0.1', function () {
