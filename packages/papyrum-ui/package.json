@@ -5,7 +5,7 @@
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "license": "MIT",
-  "main": "dist/papyrum-ui.js",
+  "main": "dist/index.js",
   "directories": {
     "dist": "dist",
     "test": "__tests__"
@@ -22,5 +22,8 @@
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
+  },
+  "dependencies": {
+    "styled-components": "4.2.0"
   }
 }

@@ -4,10 +4,10 @@ import globby from 'globby';
 import slugify from '@sindresorhus/slugify';
 import humanize from 'humanize-string';
 import { parseMdx, getMetadata } from './utils/mdx';
+import { template, pathClient } from './config/paths';
+import { tplCompile } from './utils/fs';
+
 export const init = () => {
-
-    const pathClient = path.resolve(process.cwd(), './.papyrum');
-
     return new Promise(async (resolve) => {
         try {
             await fs.mkdirSync(pathClient);
@@ -30,25 +30,19 @@ export const init = () => {
                 });
                 entries[item] = {
                     name: entries[item].name || humanize(slugify(finalRoute)),
-                    route: entries[item].route || `/${slugify(finalRoute)}`
+                    route: entries[item].route || `/${slugify(finalRoute)}`,
+                    nameChunk: `${slugify(finalRoute)}`,
+                    path: item
                 };
             })
         );
         fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries }, null, 4));
+        const file = fs.readFileSync(template('root.txt'), 'utf8');
+        var templateFn = await tplCompile(template('imports.tpl.js'), { minimize: false })
+        const imports = templateFn({ entries: Object.values(entries) });
+        fs.writeFileSync(pathClient + '/imports.js', imports);
+        fs.writeFileSync(path.resolve(pathClient, './root.jsx'), file);
 
-        // create root, imports and route for entries
-        const file = await fs.readFileSync(path.resolve(__dirname, './../src/template/root.txt'), 'utf8');
-        let fileString = file.toString();
-        const imports = paths.map((path, k) => `import A${k} from '../${path}';`);
-        const components = paths.map((path, k) => `A${k}`);
-        fileString = fileString.replace(/\/\/_IMPORTS_/, imports.join('\n'));
-        fileString = fileString.replace('_COMPONENTS_', components.join(', '));
-        try {
-            await fs.writeFileSync(
-                path.resolve(pathClient, './root.jsx'),
-                fileString
-            );
-        } catch (e) { }
         resolve('ok');
     });
 }

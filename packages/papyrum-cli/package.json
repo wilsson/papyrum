@@ -6,8 +6,9 @@
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "license": "MIT",
   "bin": {
-    "papyrum": "dist/index.js"
+    "papyrum": "dist/bin.js"
   },
+  "main": "dist/index.js",
   "directories": {
     "dist": "dist",
     "test": "__tests__"
@@ -26,7 +27,9 @@
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
-    "@papyrum/core": "0.0.0",
+    "@loadable/component": "^5.7.0",
+    "@papyrum/core": "^0.0.0",
+    "@papyrum/ui": "^0.0.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "yargs": "13.2.1"

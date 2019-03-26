@@ -1,2 +1,7 @@
+import * as path from 'path';
 
-const realPath = __dirname;
+const absolute = (from, to) => path.resolve(from, to);
+
+const relativePath = __dirname;
+export const pathClient = absolute(process.cwd(), './.papyrum');
+export const template = tpl => absolute(relativePath, '../../templates/' + tpl);

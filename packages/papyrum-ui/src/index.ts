@@ -1,3 +1,1 @@
-export default () => {
-    console.log('papyrum-ui');
-}
+export { SidebarWrapper, SidebarItem } from './components/Sidebar';
