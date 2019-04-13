@@ -21,7 +21,9 @@
     "url": "git+https://github.com/wilsson/papyrum.git"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "fix": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
@@ -30,8 +32,13 @@
     "@loadable/component": "^5.7.0",
     "@papyrum/core": "^0.0.0",
     "@papyrum/ui": "^0.0.0",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "@types/react": "16.8.13",
+    "@types/react-dom": "16.8.4",
+    "normalized-styled-components": "2.0.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "5.0.0",
+    "styled-components": "^4.2.0",
     "yargs": "13.2.1"
   },
   "devDependencies": {

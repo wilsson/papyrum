@@ -8,41 +8,103 @@ import { template, pathClient } from './config/paths';
 import { tplCompile } from './utils/fs';
 
 export const init = () => {
-    return new Promise(async (resolve) => {
-        try {
-            await fs.mkdirSync(pathClient);
-        } catch (e) { }
+  return new Promise(async resolve => {
+    try {
+      await fs.mkdirSync(pathClient);
+    } catch (e) {}
 
-        const paths = await globby(['**/*.mdx', '!node_modules']);
-        // create db.json for entries
-        const entries = {};
-        await Promise.all(
-            paths.map(async (item) => {
-                const filePath = path.resolve(process.cwd(), `./${item}`);
-                const ast = await parseMdx(filePath);
-                const metasArray = getMetadata(ast);
-                const finalRoute = path.basename(item).replace(path.extname(item), '');
-                entries[item] = {
-                    filepath: item
-                };
-                metasArray && metasArray.forEach(({ key, value }) => {
-                    if (key && value) entries[item][key] = value;
-                });
-                entries[item] = {
-                    name: entries[item].name || humanize(slugify(finalRoute)),
-                    route: entries[item].route || `/${slugify(finalRoute)}`,
-                    nameChunk: `${slugify(finalRoute)}`,
-                    path: item
-                };
-            })
-        );
-        fs.writeFileSync(pathClient + '/db.json', JSON.stringify({ entries }, null, 4));
-        const file = fs.readFileSync(template('root.txt'), 'utf8');
-        var templateFn = await tplCompile(template('imports.tpl.js'), { minimize: false })
-        const imports = templateFn({ entries: Object.values(entries) });
-        fs.writeFileSync(pathClient + '/imports.js', imports);
-        fs.writeFileSync(path.resolve(pathClient, './root.jsx'), file);
-
-        resolve('ok');
+    const paths = await globby(['**/*.mdx', '!node_modules']);
+    console.log('paths', paths);
+    // create db.json for entries
+    let entries = {};
+    await Promise.all(
+      paths.map(async item => {
+        const filePath = path.resolve(process.cwd(), `./${item}`);
+        const ast = await parseMdx(filePath);
+        const metasArray = getMetadata(ast);
+        console.log('metasArray>', metasArray);
+        console.log('========');
+        const finalRoute = path.basename(item).replace(path.extname(item), '');
+        entries[item] = {
+          filepath: item
+        };
+        metasArray &&
+          metasArray.forEach(({ key, value }) => {
+            if (key && value) entries[item][key] = value;
+          });
+        entries[item] = {
+          ...entries[item],
+          name: entries[item].name || humanize(slugify(finalRoute)),
+          route: entries[item].route || `/${slugify(finalRoute)}`,
+          nameChunk: `${slugify(finalRoute)}`,
+          path: item
+        };
+      })
+    );
+    //
+    fs.writeFileSync(
+      pathClient + '/db.json',
+      JSON.stringify(
+        {
+          entries
+        },
+        null,
+        4
+      )
+    );
+    // create imports
+    const file = fs.readFileSync(template('root.txt'), 'utf8');
+    var templateFn = await tplCompile(template('imports.tpl.js'), {
+      minimize: false
     });
-}
+    const imports = templateFn({
+      entries: Object.values(entries)
+    });
+    fs.writeFileSync(pathClient + '/imports.js', imports);
+    fs.writeFileSync(path.resolve(pathClient, './root.jsx'), file);
+    // create db
+    let menus = [];
+    const db = Object.values(entries)
+      .filter((entry: any) => entry.menu)
+      .map((entry: any) => entry.menu);
+    //console.log('db', [...(new Set(db) as any)]);
+
+    let sentries = {};
+    Object.keys(entries).forEach(entry => {
+      console.log('entries[entry]', entries[entry]);
+      if (entries[entry].menu) {
+        if (sentries[entries[entry].menu]) {
+          sentries[entries[entry].menu].children = [
+            ...sentries[entries[entry].menu].children,
+            entries[entry]
+          ];
+        } else {
+          sentries[entries[entry].menu] = {
+            name: entries[entry].menu,
+            children: [entries[entry]]
+          };
+        }
+
+        console.log('si');
+      } else {
+        sentries[entry] = {
+          ...entries[entry]
+        };
+        console.log('no');
+      }
+    });
+    fs.writeFileSync(
+      pathClient + '/db.json',
+      JSON.stringify(
+        {
+          plain: entries,
+          entries: sentries
+        },
+        null,
+        4
+      )
+    );
+    //console.log('sentries', sentries);
+    resolve('ok');
+  });
+};

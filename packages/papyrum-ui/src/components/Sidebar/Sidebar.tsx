@@ -1,11 +1,13 @@
 import * as React from 'react';
-const { useState } = React;
+import { Search } from '../Search';
+import { Menu } from '../Menu';
 
-export const Sidebar = () => {
-    const [ active, setActive ] = useState(null);
-    return(
-        <div>
-            side
-        </div>
-    )
-};
+import { SidebarWrapper, Logo } from './styled';
+
+export const Sidebar = ({ entries }) => (
+  <SidebarWrapper>
+    <Logo src="http://placehold.it/200x80&text=LOGO" alt="" />
+    <Search />
+    <Menu entries={entries} />
+  </SidebarWrapper>
+);

@@ -18,7 +18,9 @@
     "url": "git+https://github.com/wilsson/papyrum.git"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "fix": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
@@ -29,8 +31,7 @@
     "@babel/preset-env": "7.3.1",
     "@babel/preset-flow": "7.0.0",
     "@babel/preset-react": "7.0.0",
-    "@babel/preset-typescript": "7.3.3",
-    "jest": "^24.4.0"
+    "@babel/preset-typescript": "7.3.3"
   },
   "devDependencies": {
     "@types/node": "^11.9.4"

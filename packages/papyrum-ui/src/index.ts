@@ -1,1 +1,1 @@
-export { SidebarWrapper, SidebarItem } from './components/Sidebar';
+export { Sidebar } from './components/Sidebar';

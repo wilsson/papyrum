@@ -18,12 +18,21 @@
     "url": "git+https://github.com/wilsson/papyrum.git"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w",
+    "fix": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
+    "@types/react": "16.8.13",
+    "@types/react-dom": "16.8.4",
+    "normalized-styled-components": "2.0.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-feather": "1.1.6",
+    "react-router-dom": "5.0.0",
     "styled-components": "4.2.0"
   }
 }

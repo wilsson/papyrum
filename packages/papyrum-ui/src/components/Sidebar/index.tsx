@@ -1,1 +1,1 @@
-export { SidebarWrapper, SidebarItem } from './styled';
+export { Sidebar } from './Sidebar';
