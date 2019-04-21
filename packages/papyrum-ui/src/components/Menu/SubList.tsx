@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Bookmark, ChevronUp } from 'react-feather';
+import { Bookmark, ChevronDown } from 'react-feather';
 import {
-  SubListStyled,
+  MenuWrapper,
   SubListItemStyled,
   ListItem,
   HeaderList
@@ -10,10 +10,14 @@ import { NavLink } from 'react-router-dom';
 
 const { useState } = React;
 
-export const SubList = ({ name, entries, activeParent, onChange }) => {
+export const SubList = ({ isOpen, name, entries, activeParent, onChange }) => {
   const { pathname } = location;
-  const [active, setActive] = useState(pathname);
-  const [open, setOpen] = useState(true);
+  const validOpenWithUrl = entries.filter(child => child.route === pathname);
+  const [ active, setActive ] = useState(pathname);
+  console.log('!!validOpen.length', !!validOpenWithUrl.length);
+  console.log('isOpen', isOpen);
+  console.log('---');
+  const [ open, setOpen ] = useState(!!validOpenWithUrl.length || isOpen);
   const handleToggleMenu = e => {
     e.preventDefault();
     setOpen(!open);
@@ -26,11 +30,11 @@ export const SubList = ({ name, entries, activeParent, onChange }) => {
             <Bookmark />
             {name}
           </div>
-          <ChevronUp />
+          <ChevronDown />
         </HeaderList>
       </ListItem>
       {open && (
-        <SubListStyled>
+        <MenuWrapper>
           {entries.map((children, i) => {
             const { name, route } = children;
             const parent = active === activeParent || !activeParent;
@@ -51,7 +55,7 @@ export const SubList = ({ name, entries, activeParent, onChange }) => {
               </React.Fragment>
             );
           })}
-        </SubListStyled>
+        </MenuWrapper>
       )}
     </>
   );

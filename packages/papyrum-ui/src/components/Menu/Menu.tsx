@@ -3,23 +3,25 @@ import { NavLink } from 'react-router-dom';
 import { Bookmark } from 'react-feather';
 import { SubList } from './SubList';
 
-import { List, ListItem } from './styled';
+import { MenuWrapper, ListItem } from './styled';
 
 const { useState } = React;
 
-interface Entry {
+export interface Entry {
   name: string;
   route: string;
   children?: any[];
+  open?: boolean;
 }
 
-const withChildren = ({ name, setActive, active, children }) => (
+const withChildren = ({ open, name, setActive, active, children }) => (
   <SubList
     activeParent={active}
     onChange={() => {
       setActive(false);
     }}
     name={name}
+    isOpen={open}
     entries={children}
   />
 );
@@ -36,10 +38,11 @@ const withoutChildren = ({ name, setActive, isActive, route }) => (
 export const Menu = ({ entries }) => {
   const { pathname } = location;
   const [active, setActive] = useState(pathname);
+  console.log('active', active);
   return (
-    <List>
+    <MenuWrapper>
       {Object.values(entries).map((entry: Entry, i) => {
-        const { name, children, route } = entry;
+        const { name, children, route, open } = entry;
         const isActive = active === route || false;
         const params = {
           name,
@@ -48,11 +51,11 @@ export const Menu = ({ entries }) => {
         return (
           <React.Fragment key={i}>
             {children
-              ? withChildren({ ...params, active, children })
+              ? withChildren({ ...params, active, children, open })
               : withoutChildren({ ...params, isActive, route })}
           </React.Fragment>
         );
       })}
-    </List>
+    </MenuWrapper>
   );
 };

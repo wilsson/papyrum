@@ -8,7 +8,7 @@ export const SidebarWrapper = styled.div`
   position: fixed;
 `;
 
-export const List = styled.ul`
+export const MenuWrapper = styled.ul`
   margin: 0;
   padding: 0;
 `;
@@ -18,6 +18,9 @@ export const ListItem = styled.li`
   list-style: none;
   font-weight: 700;
   padding-left: 18px;
+  &:hover {
+    background-color: ${(props) => !props.active && '#E8E8E8'};
+  }
   ${props =>
     props.active &&
     `
@@ -29,8 +32,8 @@ export const ListItem = styled.li`
     color: #5b5b5b;
     display: block;
     ${props =>
-      props.active &&
-      `
+    props.active &&
+    `
             color: white;
         `}
     display: flex;
@@ -39,18 +42,13 @@ export const ListItem = styled.li`
   svg {
     color: #00a8ff;
     ${props =>
-      props.active &&
-      `
+    props.active &&
+    `
             color: white;
         `}
     width: 20px;
     margin-right: 10px;
   }
-`;
-
-export const SubListStyled = styled.ul`
-  margin: 0;
-  padding: 0;
 `;
 
 export const SubListItemStyled = styled.li`
@@ -59,6 +57,9 @@ export const SubListItemStyled = styled.li`
   list-style: none;
   padding-left: 48px;
   line-height: 32px;
+  &:hover {
+    background-color: ${(props) => !props.active && '#E8E8E8'};
+  }
   ${props =>
     props.active &&
     `
@@ -69,8 +70,8 @@ export const SubListItemStyled = styled.li`
     color: #5b5b5b;
     display: block;
     ${props =>
-      props.active &&
-      `
+    props.active &&
+    `
             color: white;
         `}
   }
