@@ -23,7 +23,12 @@ export const config = {
   },
   devtool: 'source-map',
   module: {
-    rules: [loaders.babel, loaders.mdx]
+    rules: [
+      loaders.babel,
+      loaders.mdx,
+      loaders.css,
+      loaders.file
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({

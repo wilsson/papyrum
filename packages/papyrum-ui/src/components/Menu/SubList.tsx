@@ -14,9 +14,6 @@ export const SubList = ({ isOpen, name, entries, activeParent, onChange }) => {
   const { pathname } = location;
   const validOpenWithUrl = entries.filter(child => child.route === pathname);
   const [ active, setActive ] = useState(pathname);
-  console.log('!!validOpen.length', !!validOpenWithUrl.length);
-  console.log('isOpen', isOpen);
-  console.log('---');
   const [ open, setOpen ] = useState(!!validOpenWithUrl.length || isOpen);
   const handleToggleMenu = e => {
     e.preventDefault();

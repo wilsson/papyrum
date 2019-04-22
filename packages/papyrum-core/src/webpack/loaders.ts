@@ -1,4 +1,5 @@
 import * as matter from 'remark-frontmatter';
+import { rehype } from '../utils/rehype';
 
 export const babel = {
   test: /\.(js|jsx)$/,
@@ -23,10 +24,26 @@ export const mdx = {
     {
       loader: require.resolve('@mdx-js/loader'),
       options: {
-        mdPlugins: [matter],
-        type: 'yaml',
-        marker: '-'
+        mdPlugins: [[matter, { type: 'yaml', marker: '-' }]],
+        hastPlugins: [[rehype]],
       }
     }
   ]
 };
+
+export const file = {
+  test: /\.(jpe?g|png|svg|woff2|woff|ttf)$/,
+  use: [
+    {
+      loader: require.resolve('file-loader')
+    }
+  ]
+};
+
+export const css = {
+  test: /\.css$/,
+  use: [
+    require.resolve('style-loader'),
+    require.resolve('css-loader')
+  ]
+}

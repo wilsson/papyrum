@@ -9,7 +9,7 @@ const removeSpaces = (str: string) => str.replace(/\s+/g, '');
 
 export const parseMdx = (file: string) => {
   const raw = vfile.readSync(file, 'utf-8');
-  const parser = unified()
+  const parser = (unified as any)()
     .use(remark)
     .use(matter, {
       type: 'yaml',
@@ -24,9 +24,7 @@ export const getMetadata = ast => {
     return find(ast, 'value')
       .value.split('\n')
       .map(head => {
-        console.log('head', head);
         const [key, value] = head.split(':').map(item => removeSpaces(item));
-        console.log('-----');
         return {
           key,
           value

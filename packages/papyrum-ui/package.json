@@ -20,7 +20,8 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
-    "fix": "prettier --write \"src/**/*.{ts,tsx}\""
+    "fix": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "assets": "cpx ./src/assets/**/*.{jpg,jpeg,png,svg,eot,otf,ttf,woff,woff2} ./dist/assets"
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
@@ -28,11 +29,20 @@
   "dependencies": {
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
+    "codemirror": "5.46.0",
+    "copy-text-to-clipboard": "2.1.0",
     "normalized-styled-components": "2.0.0",
+    "prism-react-renderer": "0.1.6",
     "react": "16.8.6",
+    "react-codemirror2": "5.1.0",
     "react-dom": "16.8.6",
     "react-feather": "1.1.6",
+    "react-live": "2.0.1",
+    "react-perfect-scrollbar": "1.5.0",
     "react-router-dom": "5.0.0",
     "styled-components": "4.2.0"
+  },
+  "devDependencies": {
+    "cpx": "1.5.0"
   }
 }

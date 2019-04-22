@@ -44,7 +44,6 @@ const useMenu = ({ query, entries }) => {
 export const Sidebar = ({ entries }) => {
   const [ query, setQuery ] = useState('');
   const menu = useMenu({ query, entries });
-  console.log('menu', menu);
   return(
     <SidebarWrapper>
       <Logo src="http://placehold.it/200x80&text=LOGO" alt="" />

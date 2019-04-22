@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const font = `
-  font-family: 'Roboto', sans-serif;
+const font = css`
+  /* font-family: 'Roboto', sans-serif; */
   color: #5B5B5B;
   font-weight: 700;
   margin: 0;

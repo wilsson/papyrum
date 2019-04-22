@@ -11,10 +11,9 @@ export const init = () => {
   return new Promise(async resolve => {
     try {
       await fs.mkdirSync(pathClient);
-    } catch (e) {}
+    } catch (e) { }
 
     const paths = await globby(['**/*.mdx', '!node_modules']);
-    console.log('paths', paths);
     // create db.json for entries
     let entries = {};
     await Promise.all(
@@ -22,8 +21,6 @@ export const init = () => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
         const ast = await parseMdx(filePath);
         const metasArray = getMetadata(ast);
-        console.log('metasArray>', metasArray);
-        console.log('========');
         const finalRoute = path.basename(item).replace(path.extname(item), '');
         entries[item] = {
           filepath: item
@@ -41,7 +38,6 @@ export const init = () => {
         };
       })
     );
-    //
     fs.writeFileSync(
       pathClient + '/db.json',
       JSON.stringify(
@@ -63,15 +59,8 @@ export const init = () => {
     fs.writeFileSync(pathClient + '/imports.js', imports);
     fs.writeFileSync(path.resolve(pathClient, './root.jsx'), file);
     // create db
-    let menus = [];
-    const db = Object.values(entries)
-      .filter((entry: any) => entry.menu)
-      .map((entry: any) => entry.menu);
-    //console.log('db', [...(new Set(db) as any)]);
-
     let sentries = {};
     Object.keys(entries).forEach(entry => {
-      console.log('entries[entry]', entries[entry]);
       if (entries[entry].menu) {
         if (sentries[entries[entry].menu]) {
           sentries[entries[entry].menu].children = [
@@ -84,13 +73,10 @@ export const init = () => {
             children: [entries[entry]]
           };
         }
-
-        console.log('si');
       } else {
         sentries[entry] = {
           ...entries[entry]
         };
-        console.log('no');
       }
     });
     fs.writeFileSync(
@@ -104,7 +90,6 @@ export const init = () => {
         4
       )
     );
-    //console.log('sentries', sentries);
     resolve('ok');
   });
 };

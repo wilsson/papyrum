@@ -7,12 +7,14 @@ const { Suspense } = React;
 import styled ,{ createGlobalStyle } from 'styled-components';
 import { Wrapper } from './styled';
 
-import { H1, H2, H3, H4, H5, H6, P } from '@papyrum/ui';
+import { H1, H2, H3, H4, H5, H6, P, Code, Editor, fontFace } from '@papyrum/ui';
 
 const GlobalStyle = createGlobalStyle`
     body {
-        margin: 0
+        font-family: 'Nunito Sans', sans-serif;
+        margin: 0;
     }
+    ${fontFace}
 `;
 
 const BoxProvider = styled.div`
@@ -21,6 +23,7 @@ const BoxProvider = styled.div`
 
 const Box = styled.div`
   padding: 60px;
+  width: 1200px;
 `;
 
 const c = {
@@ -31,7 +34,8 @@ const c = {
   h5: H5,
   h6: H6,
   p: P,
-  wrapper: BoxProvider
+  wrapper: BoxProvider,
+  code: Code
 }
 
 export const Root = ({ db, imports }) => {

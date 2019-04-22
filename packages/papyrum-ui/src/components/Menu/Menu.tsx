@@ -38,7 +38,6 @@ const withoutChildren = ({ name, setActive, isActive, route }) => (
 export const Menu = ({ entries }) => {
   const { pathname } = location;
   const [active, setActive] = useState(pathname);
-  console.log('active', active);
   return (
     <MenuWrapper>
       {Object.values(entries).map((entry: Entry, i) => {
