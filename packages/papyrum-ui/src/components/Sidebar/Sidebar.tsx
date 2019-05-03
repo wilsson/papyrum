@@ -1,10 +1,14 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Search } from '../Search';
 import { Menu } from '../Menu';
-import { SidebarWrapper, Logo } from './styled';
+import {
+  Logo,
+  Wrapper,
+  ByWrapper,
+  MenuWrapper
+} from './styled';
 import { Entry } from '../Menu';
-
-const { useState } = React;
 
 const useMenu = ({ query, entries }) => {
   if(query.length >= 3) {
@@ -39,18 +43,39 @@ const useMenu = ({ query, entries }) => {
     return db;
   }
   return entries;
-}
+};
 
-export const Sidebar = ({ entries }) => {
+export const Sidebar = ({ entries, showMenu }) => {
   const [ query, setQuery ] = useState('');
   const menu = useMenu({ query, entries });
+  const [ width, setWidth ] = useState(240);
+  const handleResizable = (e, direction, ref, d) => {
+    setWidth(width + d.width);
+  };
+  const propsResizable = {
+    showMenu: showMenu,
+    minWidth: 240,
+    maxWidth: 1000,
+    enable: {
+      right: true
+    },
+    size: { width: width, height: '100vh' },
+    onResizeStop: handleResizable
+  };
   return(
-    <SidebarWrapper>
-      <Logo src="http://placehold.it/200x80&text=LOGO" alt="" />
-      <Search onChange={(value) => {
-        setQuery(value);
-      }} />
-      <Menu entries={menu} />
-    </SidebarWrapper>
+    <Wrapper {...propsResizable} >
+      <div>
+        <Logo src="http://placehold.it/200x80&text=LOGO" alt="" />
+      </div>
+      <div>
+        <Search onChange={(value) => {
+          setQuery(value);
+        }} />
+      </div>
+      <MenuWrapper>
+        <Menu entries={menu} />
+      </MenuWrapper>
+      <ByWrapper>By Papyrum</ByWrapper>
+    </Wrapper>
   );
-}
+};

@@ -1,23 +1,21 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import copy from 'copy-text-to-clipboard';
-import { Pre } from './styled';
-import { Editor } from '../Editor';
+import {Wrapper } from './styled';
 import { CodeBar } from '../CodeBar';
-
-const { useState } = React;
+import { useState} from 'react';
+import { Highlight } from '../Highlight';
 
 const Box = styled.div`
   padding: 20px;
 `;
 
-export const Code = ({ children, className }) => {
+export const Code = ({ children }) => {
   const [ clip, setClip ] = useState(false);
-  console.log('children', JSON.stringify(children.replace(/\\n$/gm, '')));
   return(
-    <Pre>
+    <Wrapper>
       <Box>
-        <Editor code={children} readonly />
+        <Highlight code={children.trim()} />
       </Box>
       <CodeBar
         clip={clip}
@@ -27,6 +25,6 @@ export const Code = ({ children, className }) => {
           setTimeout(() => setClip(false), 200)
         }}
       />
-    </Pre>
+    </Wrapper>
   )
 };

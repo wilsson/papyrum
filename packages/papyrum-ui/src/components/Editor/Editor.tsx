@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Controlled as CodeMirror } from 'react-codemirror2'
 import * as PerfectScrollbar from 'react-perfect-scrollbar';
 import 'react-perfect-scrollbar/dist/css/styles.css';
-
+import { memo } from 'react';
 import { theme } from './styled';
 
 const CodeMirrorStyled = styled(CodeMirror)`
@@ -42,7 +42,8 @@ const Scrollbar = styled(PerfectScrollbar)`
   }
 `;
 
-export const Editor: React.FC<Props> = ({ code, setCode, readonly }) => {
+export const EditorNo: React.FC<Props> = ({ code, setCode, readonly }) => {
+  console.log('render editor');
   const options = {
     mode: 'jsx',
     lineNumbers: true,
@@ -61,3 +62,8 @@ export const Editor: React.FC<Props> = ({ code, setCode, readonly }) => {
     </Scrollbar>
   )
 }
+
+export const Editor = memo(EditorNo, (prev, next) => {
+  console.log('MEMO', prev, next);
+  return false;
+});

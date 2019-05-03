@@ -8,7 +8,7 @@ import * as loaders from './loaders';
 export const config = {
   mode: 'development',
   entry: {
-    app: pathEntry
+    app: ['webpack-dev-server/client?http://localhost:8080', pathEntry]
   },
   output: {
     path: path.resolve(__dirname, 'dist'),

@@ -5,13 +5,13 @@ import { config } from './config.dev';
 export const server = () => {
   const port = 8080;
   const compiler = webpack(config as any);
-  const opts = {
+  const server = new WebpackDevServer(compiler, {
+    open: true,
+    quiet: true,
     historyApiFallback: true,
-    quiet: true
-  };
+  });
 
-  const server = new WebpackDevServer(compiler, opts);
-  server.listen(port, '127.0.0.1', () => {
+  server.listen(port, '0.0.0.0', () => {
     console.log('Starting server on http://localhost:' + port);
   });
 };

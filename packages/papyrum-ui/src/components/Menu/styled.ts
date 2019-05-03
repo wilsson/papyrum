@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const SidebarWrapper = styled.div`
   font-family: 'Nunito Sans', sans-serif;
@@ -21,31 +21,25 @@ export const ListItem = styled.li`
   &:hover {
     background-color: ${(props) => !props.active && '#E8E8E8'};
   }
-  ${props =>
-    props.active &&
-    `
-        background-color: #00A8FF
-    `}
+  ${props => props.active && css`
+    background-color: #00A8FF;
+  `}
   line-height: 32px;
   a {
     text-decoration: none;
     color: #5b5b5b;
     display: block;
-    ${props =>
-    props.active &&
-    `
-            color: white;
-        `}
+    ${props => props.active && css`
+      color: white;
+    `}
     display: flex;
     align-items: center;
   }
   svg {
     color: #00a8ff;
-    ${props =>
-    props.active &&
-    `
-            color: white;
-        `}
+    ${props => props.active && css`
+      color: white;
+    `}
     width: 20px;
     margin-right: 10px;
   }
@@ -60,20 +54,16 @@ export const SubListItemStyled = styled.li`
   &:hover {
     background-color: ${(props) => !props.active && '#E8E8E8'};
   }
-  ${props =>
-    props.active &&
-    `
-        background-color: #00A8FF
+  ${props => props.active && css`
+      background-color: #00A8FF; 
     `}
   a {
     text-decoration: none;
     color: #5b5b5b;
     display: block;
-    ${props =>
-    props.active &&
-    `
-            color: white;
-        `}
+    ${props => props.active && css`
+      color: white;
+    `}
   }
 `;
 

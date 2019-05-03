@@ -1,0 +1,1 @@
+export { Highlight, getHighlight } from './Highlight';

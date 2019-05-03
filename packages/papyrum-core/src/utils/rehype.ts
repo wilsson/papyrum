@@ -19,6 +19,24 @@ const traverseScope = (node) => {
   return scopes;
 };
 
+const traverseProps = (code) => {
+  const scopes = [];
+  const ast: any = parser.parse(code.value, { plugins: ['jsx'] })
+  traverse(ast, {
+    enter(path: any) {
+      if (path.isJSXOpeningElement() && path.node.name.name === 'Playground') {
+        if (!!path.node.attributes.length) {
+          const props = path.node.attributes.map(node => {
+            return { name: node.name.name, value: node.value.value };
+          })
+          scopes.push(props);
+        }
+      }
+    }
+  });
+  return scopes;
+};
+
 const traverseTags = (code: string, validation: Function, predicate: Function) => {
   const ast: any = parser.parse(code, { plugins: ['jsx'] })
   let value = '';
@@ -67,26 +85,42 @@ const getScopes = (nodes) => {
     .join(',');
 };
 
+const getProps = (nodes) => {
+  return nodes
+    .filter(node => is('jsx', node))
+    .map(traverseProps);
+};
+
+//const getNodes = (nodes, scope, props) => {
 const getNodes = (nodes, scope) => {
   return nodes
     .filter(node => is('jsx', node))
-    .map(async node => {
+    .map(async (node, key) => {
       const name = getComponentName(node.value);
       if (name === 'Playground') {
+        //const p = props[key];
+        //console.log('props', p[0]);
+        //const propsString = p[0] || '';
+        //const p1 = !!propsString && propsString.map(node => `${node.name}="${node.value}"`).join(' ')
+        //console.log('scope', p1);
         const tagOpen = new RegExp(`^\\<${name}`);
         const componentString = nodeToString(node);
         const componentForCode = getInnerComponentWithString(componentString);
         const code = cleanSpaces(componentForCode);
         node.value = node.value.replace(
           tagOpen,
+          //`<${name} code={'${code}'} scope={{${scope}}} ${p1}`
           `<${name} code={'${code}'} scope={{${scope}}}`
         );
+        //console.log('-----')
       }
     });
 };
 
 export const rehype = (opts) => (tree, file) => {
   const scope = getScopes(tree.children);
+  //const props = getProps(tree.children);
+  //const nodes = getNodes(tree.children, scope, props);
   const nodes = getNodes(tree.children, scope);
   return Promise.all(nodes).then(() => tree);
 };
