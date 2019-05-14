@@ -9,6 +9,12 @@ export const server = () => {
     open: true,
     quiet: true,
     historyApiFallback: true,
+    before(): void {
+      console.log('before');
+    },
+    after(): void {
+      console.log('after');
+    }
   });
 
   server.listen(port, '0.0.0.0', () => {
