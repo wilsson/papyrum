@@ -25,9 +25,15 @@ export const Button = ({
 
 class Message {}
 
+Button.defaultProps = {
+  appearance: 'primary'
+};
+
 Button.propTypes = {
+  appearance: p.oneOf(['primary', 'secondary', 'stroke', 'flat']).isRequired,
   optionalArray: p.array,
-  optionalBool: p.bool,
+  /** description of optionalBool */
+  optionalBool: p.bool.isRequired,
   optionalFunc: p.func,
   optionalNumber: p.number,
   optionalObject: p.object,

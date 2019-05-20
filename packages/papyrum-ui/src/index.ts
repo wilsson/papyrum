@@ -9,6 +9,7 @@ export { Tab } from './components/Tab';
 export { ToolBar } from './components/ToolBar';
 export { DevelopmentZone } from './components/DevelopmentZone';
 export { Props } from './components/Props';
+export { Palette } from './components/Palette';
 export const components = {
   H1,
   H2,
