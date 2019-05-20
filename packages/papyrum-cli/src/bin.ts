@@ -7,7 +7,7 @@ import * as  chokidar from 'chokidar';
 yargs // eslint-disable-line
   .command('dev', 'Initial cli for dev', args, async argv => {
     await InitApplication();
-    const watch = chokidar.watch('**/*.mdx', {
+    const watch = chokidar.watch(['**/*.mdx', '**/*.{js,jsx,mjs}'], {
       ignored: 'node_modules'
     });
     watch.on('change', async (path) => {

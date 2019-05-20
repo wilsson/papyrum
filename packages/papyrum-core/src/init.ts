@@ -6,6 +6,7 @@ import humanize from 'humanize-string';
 import { parseMdx, getMetadata } from './utils/mdx';
 import { template, pathClient } from './config/paths';
 import { tplCompile } from './utils/fs';
+import * as docgen from 'react-docgen';
 
 export const init = () => {
   return new Promise(async resolve => {
@@ -14,8 +15,22 @@ export const init = () => {
     } catch (e) { }
 
     const paths = await globby(['**/*.mdx', '!node_modules']);
+    const pathsComponent = await globby(['**/*.{js,jsx,mjs}']);
+    console.log('pathsComponent', pathsComponent);
     // create db.json for entries
     let entries = {};
+    let props = {};
+    pathsComponent.forEach(pathcomponent => {
+      const filePath = path.resolve(process.cwd(), `./${pathcomponent}`);
+      console.log('filePath', filePath);
+      try {
+        const propsComponent = docgen.parse(fs.readFileSync(filePath));
+        console.log('propsComponent', propsComponent);
+        props[pathcomponent] = {
+          ...propsComponent
+        };
+      } catch(e) {}
+    });
     await Promise.all(
       paths.map(async item => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
@@ -45,7 +60,7 @@ export const init = () => {
           entries
         },
         null,
-        4
+        2
       )
     );
     // create imports
@@ -84,10 +99,11 @@ export const init = () => {
       JSON.stringify(
         {
           plain: entries,
-          entries: sentries
+          entries: sentries,
+          props
         },
         null,
-        4
+        2
       )
     );
     resolve('ok');

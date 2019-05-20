@@ -8,7 +8,7 @@ export { fontFace } from './utils/fonts';
 export { Tab } from './components/Tab';
 export { ToolBar } from './components/ToolBar';
 export { DevelopmentZone } from './components/DevelopmentZone';
-
+export { Props } from './components/Props';
 export const components = {
   H1,
   H2,

@@ -5,7 +5,7 @@ import { MDXProvider } from '@mdx-js/tag';
 import { getAsyncComponents } from './AsyncComponent';
 import styled, { css, createGlobalStyle } from 'styled-components';
 import { Wrapper } from './styled';
-//import { context } from '../hooks/useDevelopment';
+import { contextDB } from '../contexts/db';
 
 import { useState, memo, Suspense } from 'react';
 import {
@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const BoxProvider = styled.div`
-  height: 100vh;
+  /* height: 100vh; */
   padding: 60px;
   width: 960px;
   margin: 0 auto;
@@ -135,53 +135,15 @@ const ContentProvider = ({
 export const Root = ({ db, imports }) => {
   const componentsAsync = getAsyncComponents(imports);
   const [ showMenu, setShowMenu ] = useState(false);
-  //const [ cases, setCases ] = useState({});
-  //const [ tab, setTab ] = useState('docs');
-  //const [ useCase, setUseCase ] = useState(0);
-  console.log('render root');
-  /*
-  if(!cases[location.pathname]) {
-    setCases({
-      ...cases,
-      [location.pathname]: []
-    });
-  }
-  const handle = (code: string, scope: any, name: string) => {
-    setCases({
-      ...cases,
-      [location.pathname]: [ ...cases[location.pathname], { code, scope, name }]
-    });
-  };
-  const setCodeForZoneDevelopment = () => {
-    if(!cases[location.pathname]) {
-      setCases({
-        ...cases,
-        [location.pathname]: []
-      });
-    }
-  };
-  */
+
   return (
-    <>
+    <contextDB.Provider value={db}>
       <GlobalStyle />
       <BrowserRouter>
         <Wrapper>
           <Shadow showMenu={showMenu} onClick={() => setShowMenu(!showMenu) }/>
-          {/*<context.Provider value={{ handle, cases, setCodeForZoneDevelopment }}>*/}
           <Sidebar entries={db.entries} showMenu={showMenu} />
-          {/*</context.Provider>*/}
           <ContentWrapper showMenu={showMenu}>
-            {/*{(cases[location.pathname] && !!cases[location.pathname].length) && (
-              <Tab 
-                handleShowMenu={() => setShowMenu(!showMenu) }
-                handleChangeTab={(tab: string) => {
-                  setTab(tab);
-                }}
-                tab={tab}
-                useCases={cases[location.pathname]}
-                setUseCase={setUseCase}
-              />
-            )} */}
             <ProviderWrapper>
               <MDXProvider components={c}>
                 <Suspense fallback={<Loader>Loading...</Loader>}>
@@ -218,6 +180,6 @@ export const Root = ({ db, imports }) => {
           </ContentWrapper>
         </Wrapper>
       </BrowserRouter>
-    </>
+      </contextDB.Provider>
   );
 };

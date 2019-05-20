@@ -16,6 +16,9 @@ export default (api: any, opts: Config = DEFAULT_OPTS) => {
       opts.typescript && [require('@babel/preset-typescript').default],
       require('@babel/preset-react').default
     ].filter(Boolean),
-    plugins: [require('@babel/plugin-syntax-dynamic-import').default]
+    plugins: [
+      require.resolve('babel-plugin-export-metadata'),
+      require('@babel/plugin-syntax-dynamic-import').default
+    ]
   };
 };
