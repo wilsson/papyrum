@@ -26,7 +26,8 @@ export const Button = ({
 class Message {}
 
 Button.defaultProps = {
-  appearance: 'primary'
+  appearance: 'primary',
+  requiredAny: 'wilson'
 };
 
 Button.propTypes = {
@@ -65,5 +66,6 @@ Button.propTypes = {
     name: p.string,
   }).isRequired,
   requiredFunc: p.func.isRequired,
+  /** campo requerido */
   requiredAny: p.any.isRequired,
 };

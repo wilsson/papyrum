@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
   }
   font-size: 14px;
   font-family: fira_codelight;
+  font-family: "Operator Mono";
 `;
 
 export const Header = styled.div`

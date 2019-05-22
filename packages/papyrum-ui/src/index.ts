@@ -10,6 +10,7 @@ export { ToolBar } from './components/ToolBar';
 export { DevelopmentZone } from './components/DevelopmentZone';
 export { Props } from './components/Props';
 export { Palette } from './components/Palette';
+export { FontSize } from './components/Font';
 export const components = {
   H1,
   H2,

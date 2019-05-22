@@ -16,7 +16,7 @@ export const SearchWrapper = styled.div`
   border-bottom: 1px solid #dbdbdb;
   padding-left: 16px;
   svg {
-    width: 20px;
+    width: 15px;
     margin-right: 10px;
   }
   margin-bottom: 40px;

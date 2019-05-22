@@ -9,15 +9,20 @@ import { Button } from './Button';
 # Button
 
 ```jsx
-import { Button } from '@pagoefectivokit';
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import markdownNotes from './readme.md';
 
-const App = () => {
-  return(
-    <>
-      <Button>my Button</Button>
-    </>
+storiesOf('Addons|Notes', module)
+  .add(
+    'addon notes rendering imported markdown',
+    () => (
+      <BaseButton label="Button with notes - check the notes panel for details" />
+    ),
+    {
+      notes: markdownNotes,
+    }
   )
-}
 ```
 
 ### Example

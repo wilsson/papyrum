@@ -14,7 +14,7 @@ export const MenuWrapper = styled.ul`
 `;
 
 export const ListItem = styled.li`
-  font-size: 18px;
+  font-size: 16px;
   list-style: none;
   font-weight: 700;
   padding-left: 18px;
@@ -40,7 +40,8 @@ export const ListItem = styled.li`
     ${props => props.active && css`
       color: white;
     `}
-    width: 20px;
+    /* width: 20px; */
+    width: 15px;
     margin-right: 10px;
   }
 `;

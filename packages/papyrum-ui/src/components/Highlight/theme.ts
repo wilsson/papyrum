@@ -25,13 +25,13 @@ export const theme = {
     {
       types: ["tag", "operator", "number"],
       style: {
-        color: "#e09142"
+        color: "#333333"
       }
     },
     {
       types: ["property", "function"],
       style: {
-        color: "#9a86fd"
+        color: "#333333"
       }
     },
     {
@@ -43,7 +43,7 @@ export const theme = {
     {
       types: ["attr-name"],
       style: {
-        color: "#0047ff"
+        color: "#333333"
       }
     },
     {
@@ -52,7 +52,7 @@ export const theme = {
         //"string",
         "entity",
         "url",
-        "attr-value",
+        //"attr-value",
         "keyword",
         "control",
         "directive",
@@ -64,15 +64,16 @@ export const theme = {
         "variable"
       ],
       style: {
-        color: "#0047FF"
+        color: "#0000FF"
       }
     },
     {
       types: [
-        "string"
+        "string",
+        "attr-value"
       ],
       style: {
-        color: "#ED6262"
+        color: "#A31515"
       }
     },
     {

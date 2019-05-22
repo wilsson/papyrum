@@ -7,7 +7,7 @@ import { useState} from 'react';
 import { Highlight } from '../Highlight';
 
 const Box = styled.div`
-  padding: 20px;
+  padding: 15px;
 `;
 
 export const Code = ({ children }) => {

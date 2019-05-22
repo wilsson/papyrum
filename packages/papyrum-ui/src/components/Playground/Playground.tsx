@@ -9,7 +9,7 @@ import { getHighlight } from '../Highlight';
 import Editor from 'react-simple-code-editor';
 
 const Box = styled.div`
-  padding: 20px;
+  padding: 15px;
 `;
 
 const BoxEditor = styled(Box)`

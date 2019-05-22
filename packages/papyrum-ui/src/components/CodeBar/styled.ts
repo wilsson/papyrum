@@ -5,9 +5,11 @@ export const ToolBarWrapper = styled.div`
   justify-content: flex-end;
   align-items: center;
   border-top: 1px solid #DFDFDF;
-  height: 36px;
+  /* height: 36px; */
+  height: 28px;
   svg {
-    width: 20px;
+    /* width: 20px; */
+    width: 15px;
     color: #A4A4A4;
   }
 `;

@@ -15,7 +15,7 @@ export const Highlight = ({ code }) => {
         return(
           <pre
             className="className"
-            style={{fontFamily: 'fira_codelight', fontSize: 14, lineHeight: '18px', margin: 0}}
+            style={{fontFamily: 'Operator Mono', fontSize: 13, lineHeight: '18px', margin: 0}}
           >
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
