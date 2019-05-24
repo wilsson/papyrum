@@ -2,12 +2,12 @@ import * as matter from 'remark-frontmatter';
 import { rehype } from '../utils/rehype';
 
 export const babel = {
-  test: /\.(js|jsx)$/,
+  test: /\.(js|jsx|ts|tsx)$/,
   exclude: /node_modules/,
   use: {
     loader: require.resolve('babel-loader'),
     options: {
-      presets: [require.resolve('babel-preset-papyrum')]
+      presets: [[require.resolve('babel-preset-papyrum'), { typescript: true }]]
     }
   }
 };
@@ -18,7 +18,7 @@ export const mdx = {
     {
       loader: require.resolve('babel-loader'),
       options: {
-        presets: [require.resolve('babel-preset-papyrum')]
+        presets: [[require.resolve('babel-preset-papyrum'), { typescript: true }]]
       }
     },
     {

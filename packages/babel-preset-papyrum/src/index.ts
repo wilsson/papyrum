@@ -9,6 +9,12 @@ const DEFAULT_OPTS: Config = {
 };
 
 export default (api: any, opts: Config = DEFAULT_OPTS) => {
+  console.log('BABEL opts', [
+    require('@babel/preset-env').default,
+    opts.flow && [require('@babel/preset-flow').default],
+    opts.typescript && [require('@babel/preset-typescript').default],
+    require('@babel/preset-react').default
+  ].filter(Boolean));
   return {
     presets: [
       require('@babel/preset-env').default,

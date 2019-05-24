@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "papyrum dev"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",

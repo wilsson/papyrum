@@ -14,8 +14,8 @@ export const init = () => {
       await fs.mkdirSync(pathClient);
     } catch (e) { }
 
-    const paths = await globby(['**/*.mdx', '!node_modules']);
-    const pathsComponent = await globby(['**/*.{js,jsx,mjs}']);
+    const paths = await globby(['**/*.mdx', '!node_modules', '!dist']);
+    const pathsComponent = await globby(['**/*.{js,jsx,mjs,tsx}', '!dist']);
     console.log('pathsComponent', pathsComponent);
     // create db.json for entries
     let entries = {};
@@ -29,7 +29,7 @@ export const init = () => {
         props[pathcomponent] = {
           ...propsComponent
         };
-      } catch(e) {}
+      } catch (e) { }
     });
     await Promise.all(
       paths.map(async item => {

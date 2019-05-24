@@ -1,4 +1,4 @@
-import { FontSize } from '@papyrum/ui';
+import { FontSize, Playground } from '@papyrum/ui';
 
 # Fonts
 
@@ -18,3 +18,24 @@ import { FontSize } from '@papyrum/ui';
   fontFamily="Nunito Sans"
   fonts={['34px', '24px', '14px']}
 />
+
+```jsx
+import { FontSize } from '@papyrum/ui';
+
+<FontSize
+  fonts={[
+    {
+      size: '24px'
+    },
+    {
+      text: 'Esxample',
+      size: '14px'
+    }
+  ]}
+/>
+
+<FontSize
+  fontFamily="Nunito Sans"
+  fonts={['34px', '24px', '14px']}
+/>
+```

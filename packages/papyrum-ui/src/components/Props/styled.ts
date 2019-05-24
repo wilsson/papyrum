@@ -6,6 +6,7 @@ export const Prop = styled.div`
 `;
 
 export const Wrapper = styled.div`
+    margin: 20px 0;
   border: 1px solid #DFDFDF;
   background-color: #FCFCFC;
   border-radius: 2px;

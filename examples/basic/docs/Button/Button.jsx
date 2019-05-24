@@ -50,6 +50,10 @@ Button.propTypes = {
     p.instanceOf(Message)
   ]),
   optionalArrayOf: p.arrayOf(p.number),
+  optionalArrayOf2: p.arrayOf(p.shape({
+    size: p.string,
+    text: p.string
+  })),
   optionalObjectOf: p.objectOf(p.number),
   optionalObjectWithShape: p.shape({
     color: p.string.isRequired,

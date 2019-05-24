@@ -21,7 +21,8 @@
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
     "fix": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "assets": "cpx ./src/assets/**/*.{jpg,jpeg,png,svg,eot,otf,ttf,woff,woff2} ./dist/assets"
+    "assets": "cpx ./src/assets/**/*.{jpg,jpeg,png,svg,eot,otf,ttf,woff,woff2} ./dist/assets",
+    "dev": "papyrum dev"
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"

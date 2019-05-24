@@ -1,6 +1,7 @@
 import * as React from 'react';
 import HighlightImported, { defaultProps, Prism } from "prism-react-renderer";
 import { theme } from './theme';
+import { Pre } from './styled';
 
 export const Highlight = ({ code }) => {
   return (
@@ -13,10 +14,7 @@ export const Highlight = ({ code }) => {
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return(
-          <pre
-            className="className"
-            style={{fontFamily: 'Operator Mono', fontSize: 13, lineHeight: '18px', margin: 0}}
-          >
+          <Pre>
             {tokens.map((line, i) => (
               <div {...getLineProps({ line, key: i })}>
                 {line.map((token, key) => {
@@ -26,7 +24,7 @@ export const Highlight = ({ code }) => {
                 })}
               </div>
             ))}
-          </pre>
+          </Pre>
         )
       }}
     </HighlightImported>

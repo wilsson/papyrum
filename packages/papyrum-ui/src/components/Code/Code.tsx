@@ -1,22 +1,44 @@
 import * as React from 'react'
 import styled from 'styled-components';
 import copy from 'copy-text-to-clipboard';
-import {Wrapper } from './styled';
+import {
+  Wrapper,
+  BashWrapper,
+  CodeWrapper
+} from './styled';
+
 import { CodeBar } from '../CodeBar';
 import { useState} from 'react';
 import { Highlight } from '../Highlight';
+import { Terminal } from 'react-feather';
 
-const Box = styled.div`
-  padding: 15px;
-`;
-
-export const Code = ({ children }) => {
+export const Code = ({ children, ...nextProps }) => {
+  console.log('_children', nextProps);
   const [ clip, setClip ] = useState(false);
+  if(nextProps.className === 'language-bash') {
+    return(
+      <Wrapper>
+        <BashWrapper>
+          <Terminal size={15}/>
+          <Highlight code={children.trim()} />
+        </BashWrapper>
+        <CodeBar
+        clip={clip}
+        handleClipboard={() => {
+          copy(children);
+          setClip(true);
+          setTimeout(() => setClip(false), 200)
+        }}
+      />
+      </Wrapper>
+    )
+  }
+
   return(
     <Wrapper>
-      <Box>
+      <CodeWrapper>
         <Highlight code={children.trim()} />
-      </Box>
+      </CodeWrapper>
       <CodeBar
         clip={clip}
         handleClipboard={() => {

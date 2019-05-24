@@ -61,10 +61,22 @@ const Union = ({ value }) => (
   <UnionWrapper>
     <LabelType>One Of</LabelType> {'<'}
     {value.map((value) => (
+      <>
         <LabelUnion>
-          {wordUpperCase(value.name)}
-          {value.value && (<> class {value.value} {'{}'}</>)}
+          {value.name !== 'shape' && wordUpperCase(value.name)}
+
+          {/* {value.value && (<> class {value.value} {'{}'}</>)} */}
         </LabelUnion>
+        <div style={{ marginLeft: '25px'}}>
+        {value.name === 'shape' && (
+          <div style={{ marginTop: '10px' }}>
+          <LabelType>Custom</LabelType>{'{'}
+            <Shape type={value} />
+          {'}'}
+          </div>
+        )}
+        </div>
+      </>
       )
     )} 
     {'>'}
@@ -74,8 +86,14 @@ const Union = ({ value }) => (
 export const Props = ({ of: component }) => {
   const db: any = useContext(contextDB);
   const pathname = component.__filemeta.filename;
+  console.log('db.props', pathname);
   const { props } = db.props[pathname];
+  console.log('props >>>>>>', props);
+  if(!props) {
+    return null;
+  }
   const propsName = Object.keys(props);
+
   return(
     <Wrapper>
       {propsName.map((name) => {
@@ -100,7 +118,27 @@ export const Props = ({ of: component }) => {
             </Header>
             {type.name === 'enum' && <Enum value={type.value} />}
             {type.name === 'union' && <Union value={type.value} />}
-            {type.name === 'arrayOf' && <LabelUnion>{'Array<'}{wordUpperCase(type.value.name)}{'>'}</LabelUnion>}
+            {type.name === 'arrayOf' && (
+              <>
+                {type.value.name === 'shape' && (
+                  <>
+                    <LabelUnion>
+                      {'Array<{'}
+                    </LabelUnion>
+                    <Shape type={type.value} />
+                    <LabelUnion>
+                      {'}>'}
+                    </LabelUnion>
+                  </>
+                )}
+                {type.value.name !== 'shape' && (
+                  <LabelUnion>
+                    {'Array<'}{wordUpperCase(type.value.name)}
+                    {'>'}
+                  </LabelUnion>
+                )}
+              </>
+            )}
             {type.name === 'objectOf' && <LabelUnion>{'Object<key['}{wordUpperCase(type.value.name)}{']>'}</LabelUnion>}
             {type.name === 'shape' && (
               <div style={{ marginTop: '10px' }}>
@@ -113,6 +151,9 @@ export const Props = ({ of: component }) => {
           </Prop>
         )
       })}
+      {/* <pre>
+      {JSON.stringify(props, null, 2)}
+      </pre> */}
     </Wrapper>
   )
 }

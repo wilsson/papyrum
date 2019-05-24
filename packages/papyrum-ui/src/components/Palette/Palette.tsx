@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as p from 'prop-types';
 
 import {
   Wrapper,
@@ -19,3 +20,10 @@ export const Palette = ({ colors }) => (
     ))}
   </Wrapper>
 );
+
+Palette.propTypes = {
+  colors: p.arrayOf(p.shape({
+    color: p.string,
+    name: p.string
+  })).isRequired
+}

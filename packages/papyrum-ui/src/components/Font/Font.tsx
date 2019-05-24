@@ -1,4 +1,6 @@
 import * as React from 'react';
+import * as p from 'prop-types';
+
 import { 
   FontSizeWrapper,
   FontSizeRow,
@@ -12,24 +14,6 @@ import { 
   Square,
   TextWrapper
 } from './styled';
-
-export const FontWeight = ({ fonts }) => {
-  return(
-    <FontWeightWrapper>
-      {fonts.map((font) => {
-        return(
-          <WrapperSquare>
-            <Square>Aa</Square>
-            <TextWrapper>
-              <div>{font.name}</div>
-              <div>{font.weight}</div>
-            </TextWrapper>
-          </WrapperSquare>
-        )
-      })}
-    </FontWeightWrapper>
-  )
-};
 
 export const FontSize = ({ fonts, fontFamily }) => (
   <FontSizeWrapper font={fontFamily}>
@@ -52,3 +36,15 @@ export const FontSize = ({ fonts, fontFamily }) => (
     )}
   </FontSizeWrapper>
 );
+class M {}
+FontSize.propTypes = {
+  fontFamily: p.string,
+  fonts: p.oneOfType([
+    p.string,
+    p.instanceOf(M),
+    p.shape({
+      text: p.string,
+      size: p.string
+    })
+  ])
+}

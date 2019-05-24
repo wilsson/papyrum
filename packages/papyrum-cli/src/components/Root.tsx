@@ -78,7 +78,9 @@ const c = {
   p: components.P,
   pre: props => <div {...props} />,
   wrapper: BoxProvider,
-  code: components.Code
+  code: components.Code,
+  ul: components.Ul,
+  ol: components.Ol
 };
 
 const ProviderMdx = ({

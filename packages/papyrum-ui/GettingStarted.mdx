@@ -1,3 +1,6 @@
+---
+route: /
+---
 
 <div style={{ textAlign: 'center'}}>
 <svg width="266" height="299" viewBox="0 0 266 299" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,61 +20,35 @@
 
 Papyrum is tool for documentation and building of your design system
 
-```bash
-npm i @papyrum -D
-npm i @papyrum/tool
-```
-
-or
-
-```bash
-yarn add @papyrum -D
-yarn add @papyrum/tool
-```
-
 ### Features
 
 - Zero config
 - MDX Based
 - Typescript Support
 
-```jsx
-import { Playground } from '@papyrum/utils';
-import { Button } from './Button';
 
-<Playground>
-  <Button>my Button<Button>
-</Playground>
+#### Zero config
+
+Install papyrum
+
+```bash
+npm i @papyrum/cli -D
+npm i @papyrum/ui
 ```
 
-```jsx
-import { Fonts } from '@papyrum/utils';
+Your `package.json`
 
-<FontSize
-  fontFamily="Nunito Sans"
-  fonts={['34px', '24px', '14px']}
-/>
-```
-
-```jsx
-import { Palette } from '@papyrum/ui'
-
-<Palette colors={[
-  {
-    color: '#4C82EA',
-    name: 'blue'
-  },
-  {
-    color: 'rgba(204,205,100,0.7)',
-    name: 'yellow'
-  },
-  {
-    color: '#68B46B',
-    name: 'green'
-  },
-  {
-    color: '#4C82EA',
-    name: 'blue'
+```json
+{
+  "scripts": {
+    "dev": "papyrum dev"
   }
-]} />
+}
+
+```
+
+finnally
+
+```bash
+npm run dev
 ```
