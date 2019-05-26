@@ -6,7 +6,7 @@ export const Prop = styled.div`
 `;
 
 export const Wrapper = styled.div`
-    margin: 20px 0;
+  margin: 10px 0 20px;
   border: 1px solid #DFDFDF;
   background-color: #FCFCFC;
   border-radius: 2px;
@@ -14,8 +14,7 @@ export const Wrapper = styled.div`
     border-bottom: none;
   }
   font-size: 14px;
-  font-family: fira_codelight;
-  font-family: "Operator Mono";
+  font-family: "Fira Code";
 `;
 
 export const Header = styled.div`

@@ -17,6 +17,7 @@ export interface Entry {
 }
 
 const withChildren = ({ open, name, setActive, active, children }) => {
+  console.log('active withChildren');
   //const { setCodeForZoneDevelopment } = useContext(context);
   //setCodeForZoneDevelopment();
   return (
@@ -33,6 +34,7 @@ const withChildren = ({ open, name, setActive, active, children }) => {
 };
 
 const withoutChildren = ({ name, setActive, isActive, route }) => {
+  console.log('active withoutChildren');
   //const {setCodeForZoneDevelopment } = useContext(context);
   //setCodeForZoneDevelopment();
   return (

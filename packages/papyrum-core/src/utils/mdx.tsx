@@ -4,7 +4,7 @@ import * as remark from 'remark-parse';
 import * as matter from 'remark-frontmatter';
 import * as find from 'unist-util-find';
 
-const metas = ['route', 'name', 'menu'];
+const metas = ['route', 'name', 'menu', 'status'];
 const removeSpaces = (str: string) => str.replace(/\s+/g, '');
 
 export const parseMdx = (file: string) => {

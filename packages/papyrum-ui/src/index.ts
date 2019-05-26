@@ -2,6 +2,12 @@ import { H1, H2, H3, H4, H5, H6 } from './components/H';
 import { P } from './components/P';
 import { Ul, Ol } from './components/Ul';
 import { Code } from './components/Code';
+import { A } from './components/A';
+import { Blockquote } from './components/Blockquote';
+import { Table, TableRow, TableTd, TableTh } from './components/Table';
+import { InlineCode } from './components/InlineCode';
+import { Components } from './components/Components';
+
 export { Sidebar, Shadow } from './components/Sidebar';
 export { Playground } from './components/Playground';
 export { fontFace } from './utils/fonts';
@@ -13,6 +19,13 @@ export { Palette } from './components/Palette';
 export { FontSize } from './components/Font';
 export { Components } from './components/Components';
 export const components = {
+  InlineCode,
+  Table,
+  TableRow,
+  TableTd,
+  TableTh,
+  Blockquote,
+  A,
   H1,
   H2,
   H3,

@@ -9,20 +9,16 @@ import { 
   LabelFont,
   LabelFontWrapper,
   Box,
-  FontWeightWrapper,
-  WrapperSquare,
-  Square,
-  TextWrapper
 } from './styled';
 
 export const FontSize = ({ fonts, fontFamily }) => (
   <FontSizeWrapper font={fontFamily}>
     <Box>
-    {fonts.map((font) => {
+    {fonts.map((font, key) => {
       let { size, text } = font;
       size = size ? size : font;
       return(
-        <FontSizeRow>
+        <FontSizeRow key={key}>
           <FontSizeLabelSize>{size}</FontSizeLabelSize>
           <FontSizeLabelText size={size}>{text || 'The quick brown fox jumps over the lazy dog.'}</FontSizeLabelText>
         </FontSizeRow>
@@ -36,15 +32,16 @@ export const FontSize = ({ fonts, fontFamily }) => (
     )}
   </FontSizeWrapper>
 );
-class M {}
+
 FontSize.propTypes = {
   fontFamily: p.string,
-  fonts: p.oneOfType([
-    p.string,
-    p.instanceOf(M),
-    p.shape({
-      text: p.string,
-      size: p.string
-    })
-  ])
-}
+  fonts: p.arrayOf(
+    p.oneOfType([
+      p.string,
+      p.shape({
+        text: p.string,
+        size: p.string
+      })
+    ])
+  )
+};

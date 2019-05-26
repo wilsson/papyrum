@@ -1,1 +1,1 @@
-export { FontSize, FontWeight } from './Font';
+export { FontSize } from './Font';

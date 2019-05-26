@@ -30,7 +30,7 @@
   },
   "dependencies": {
     "@loadable/component": "^5.7.0",
-    "@papyrum/core": "^0.0.0",
+    "@papyrum/core": "0.0.0",
     "@papyrum/ui": "^0.0.0",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",

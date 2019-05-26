@@ -16,17 +16,17 @@ export const init = () => {
 
     const paths = await globby(['**/*.mdx', '!node_modules', '!dist']);
     const pathsComponent = await globby(['**/*.{js,jsx,mjs,tsx}', '!dist']);
-    console.log('pathsComponent', pathsComponent);
+    //console.log('pathsComponent', pathsComponent);
     // create db.json for entries
     let entries = {};
     let props = {};
     pathsComponent.forEach(pathcomponent => {
       const filePath = path.resolve(process.cwd(), `./${pathcomponent}`);
-      console.log('filePath', filePath);
+      //console.log('filePath', filePath);
       try {
         const propsComponent = docgen.parse(fs.readFileSync(filePath));
-        console.log('propsComponent', propsComponent);
-        props[pathcomponent] = {
+        //console.log('propsComponent', propsComponent);
+        props[path.normalize(pathcomponent)] = {
           ...propsComponent
         };
       } catch (e) { }
@@ -36,6 +36,8 @@ export const init = () => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
         const ast = await parseMdx(filePath);
         const metasArray = getMetadata(ast);
+        console.log('metasArray', metasArray);
+        console.log('--')
         const finalRoute = path.basename(item).replace(path.extname(item), '');
         entries[item] = {
           filepath: item
@@ -49,7 +51,7 @@ export const init = () => {
           name: entries[item].name || humanize(slugify(finalRoute)),
           route: entries[item].route || `/${slugify(finalRoute)}`,
           nameChunk: `${slugify(finalRoute)}`,
-          path: item
+          path: item,
         };
       })
     );

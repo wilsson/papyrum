@@ -13,8 +13,9 @@ export const FontSizeWrapper = styled.div`
     font-family: ${props.font};
   `}
   border: 1px solid #DFDFDF;
-  margin: 20px 0;
+  margin: 0 0 20px;
   border-radius: 2px;
+  background-color: #FAFAFA;
 `;
 
 export const LabelFont = styled.div`

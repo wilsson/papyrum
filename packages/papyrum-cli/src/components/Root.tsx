@@ -80,7 +80,14 @@ const c = {
   wrapper: BoxProvider,
   code: components.Code,
   ul: components.Ul,
-  ol: components.Ol
+  ol: components.Ol,
+  a: components.A,
+  blockquote: components.Blockquote,
+  table: components.Table,
+  tr: components.TableRow,
+  td: components.TableTd,
+  th: components.TableTh,
+  inlineCode: components.InlineCode
 };
 
 const ProviderMdx = ({
@@ -135,6 +142,7 @@ const ContentProvider = ({
 };
 
 export const Root = ({ db, imports }) => {
+  console.log('render root');
   const componentsAsync = getAsyncComponents(imports);
   const [ showMenu, setShowMenu ] = useState(false);
 

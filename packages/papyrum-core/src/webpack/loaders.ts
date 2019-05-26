@@ -1,5 +1,6 @@
 import * as matter from 'remark-frontmatter';
 import { rehype } from '../utils/rehype';
+import * as emoji from 'remark-emoji';
 
 export const babel = {
   test: /\.(js|jsx|ts|tsx)$/,
@@ -24,7 +25,7 @@ export const mdx = {
     {
       loader: require.resolve('@mdx-js/loader'),
       options: {
-        mdPlugins: [[matter, { type: 'yaml', marker: '-' }]],
+        mdPlugins: [[matter, { type: 'yaml', marker: '-' }], [emoji]],
         hastPlugins: [[rehype]],
       }
     }

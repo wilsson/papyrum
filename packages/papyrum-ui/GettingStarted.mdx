@@ -1,6 +1,7 @@
 ---
 route: /
 ---
+import { Components } from '@papyrum/ui'
 
 <div style={{ textAlign: 'center'}}>
 <svg width="266" height="299" viewBox="0 0 266 299" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,39 +17,61 @@ route: /
 </svg>
 </div>
 
-# Getting Started
 
-Papyrum is tool for documentation and building of your design system
+<Components />
 
-### Features
+# Heading 
+## Heading
+### Heading
+#### Heading
+##### Heading
+###### Heading
 
-- Zero config
-- MDX Based
-- Typescript Support
+text
 
+***thematicBreak***
 
-#### Zero config
+> Blockquote
+    > Blockquote
 
-Install papyrum
+- Item 1
+- Item 1
+- Item 1
 
-```bash
-npm i @papyrum/cli -D
-npm i @papyrum/ui
+1. Item 1
+2. Item 1
+3. Item 1
+
+- [x] @mentions, #refs, [links](), **formatting**, and <del>tags</del> supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item
+
+```jsx
+import { Props } from '@papyrum/ui-docs';
+
+export const Button = () => (
+  <button>my</button>
+);
 ```
 
-Your `package.json`
+_emphasis_
 
-```json
-{
-  "scripts": {
-    "dev": "papyrum dev"
-  }
-}
+**strong**
 
-```
+~~strikethrough~~
 
-finnally
+text `code` text
 
-```bash
-npm run dev
-```
+[MDX](https://mdxjs.com)
+
+![alt](https://mdx-logo.now.sh)
+
+Components | status
+--- | ---
+[Button](https://mdxjs.com) | Development
+[Field](https://mdxjs.com) | ready
+[Select](https://mdxjs.com) | Development
+[Calendar](https://mdxjs.com) | Development
+[Pagination](https://mdxjs.com) | Development
+[Card](https://mdxjs.com) | Development

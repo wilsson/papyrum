@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useContext } from 'react';
 import { contextDB } from '@papyrum/cli';
+import * as p from 'prop-types';
+
 import {
   Wrapper,
   LabelName,
@@ -11,7 +13,6 @@ import {
   LabelRequired,
   Header,
   LabelNameWrapper,
-  LabelTypeWrapper,
   LabelRequiredOrDefaultWrapper,
   LabelEnum,
   UnionWrapper,
@@ -52,7 +53,7 @@ const Shape = ({ type }) => {
 const Enum = ({ value }) => (
   <UnionWrapper>
     <LabelType>One Of</LabelType> {'<'} 
-      {value.map((value) => (<LabelEnum>{value.value}</LabelEnum>))} 
+      {value.map((value, key) => (<LabelEnum key={key}>{value.value}</LabelEnum>))} 
     {'>'}
   </UnionWrapper>
 );
@@ -60,8 +61,8 @@ const Enum = ({ value }) => (
 const Union = ({ value }) => (
   <UnionWrapper>
     <LabelType>One Of</LabelType> {'<'}
-    {value.map((value) => (
-      <>
+    {value.map((value, key) => (
+      <React.Fragment key={key}>
         <LabelUnion>
           {value.name !== 'shape' && wordUpperCase(value.name)}
 
@@ -76,7 +77,7 @@ const Union = ({ value }) => (
           </div>
         )}
         </div>
-      </>
+      </React.Fragment>
       )
     )} 
     {'>'}
@@ -96,7 +97,7 @@ export const Props = ({ of: component }) => {
 
   return(
     <Wrapper>
-      {propsName.map((name) => {
+      {propsName.map((name, key) => {
         const {
           type,
           required,
@@ -104,7 +105,7 @@ export const Props = ({ of: component }) => {
           description
         } = props[name];
         return(
-          <Prop>
+          <Prop key={key}>
             <Header>
               <LabelNameWrapper>
                 <LabelName>{name}</LabelName>
@@ -156,4 +157,8 @@ export const Props = ({ of: component }) => {
       </pre> */}
     </Wrapper>
   )
+}
+
+Props.propTypes = {
+  of: p.func
 }

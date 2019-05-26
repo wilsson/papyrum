@@ -1,0 +1,1 @@
+export { Table, TableRow, TableTd, TableTh } from './styled';

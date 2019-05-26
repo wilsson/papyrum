@@ -63,7 +63,16 @@ export const Sidebar = ({ entries, showMenu }) => {
     onResizeStop: handleResizable
   };
   return(
-    <Wrapper {...propsResizable} >
+    <Wrapper 
+      showMenu={showMenu}
+      minWidth={240}
+      maxWidth={1000}
+      enable={{
+        right: true
+      }}
+      size= {{ width: width, height: '100vh' }}
+      onResizeStop={handleResizable}
+    >
       <div>
         <Logo src="http://placehold.it/200x80&text=LOGO" alt="" />
       </div>
