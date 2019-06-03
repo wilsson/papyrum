@@ -10,8 +10,8 @@ import {
 
 export const Palette = ({ colors }) => (
   <Wrapper>
-    {colors.map(color => (
-      <ColorWrapper>
+    {colors.map((color, key) => (
+      <ColorWrapper key={key}>
         <Label>{color.name}</Label>
         <Color color={color.color}>
           {color.color}

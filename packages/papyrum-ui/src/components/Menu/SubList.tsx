@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import { Bookmark, ChevronDown } from 'react-feather';
 import {
   MenuWrapper,
@@ -8,13 +9,20 @@ import {
 } from './styled';
 import { NavLink } from 'react-router-dom';
 
-const { useState } = React;
-
-export const SubList = ({ isOpen, name, entries, activeParent, onChange }) => {
+export const SubList = ({
+  name,
+  children,
+  activeParent,
+  onChange,
+  isOpen,
+  routeActive,
+  foo
+}) => {
   const { pathname } = location;
-  const validOpenWithUrl = entries.filter(child => child.route === pathname);
+  const validOpenWithUrl = children.filter(child => child.route === pathname);
   const [ active, setActive ] = useState(pathname);
   const [ open, setOpen ] = useState(!!validOpenWithUrl.length || isOpen);
+  console.log('entry SubList', routeActive, open);
   const handleToggleMenu = e => {
     e.preventDefault();
     setOpen(!open);
@@ -30,14 +38,19 @@ export const SubList = ({ isOpen, name, entries, activeParent, onChange }) => {
           <ChevronDown />
         </HeaderList>
       </ListItem>
-      {open && (
+      {(!!routeActive  || open) && (
         <MenuWrapper>
-          {entries.map((children, i) => {
-            const { name, route } = children;
+          {children.map((child, key) => {
+            const { name, route } = child;
             const parent = active === activeParent || !activeParent;
-            const isActive = (active === route && parent) || false;
+            let isActive = (active === route && parent) || false;
+            console.log('entry child', routeActive);
+            isActive = routeActive === route || isActive;
+            if(routeActive) {
+              foo();
+            }
             return (
-              <React.Fragment key={i}>
+              <React.Fragment key={key}>
                 <SubListItemStyled
                   onClick={() => {
                     setActive(route);

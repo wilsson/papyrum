@@ -85,7 +85,7 @@ const Union = ({ value }) => (
 );
 
 export const Props = ({ of: component }) => {
-  const db: any = useContext(contextDB);
+  const { db } = useContext(contextDB);
   const pathname = component.__filemeta.filename;
   console.log('db.props', pathname);
   const { props } = db.props[pathname];

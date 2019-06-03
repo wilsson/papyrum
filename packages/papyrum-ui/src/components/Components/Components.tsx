@@ -15,7 +15,7 @@ import {
 } from './styled';
 
 export const Components = () => {
-  const db: any = useContext(contextDB);
+  const { db, handleActive } = useContext(contextDB);
   return(
     <Table style={{ width: '100%' }}>
       <thead>
@@ -34,7 +34,9 @@ export const Components = () => {
           .map((component: any, key) => (
             <TableRow key={key}>
               <Name>
-                <NavLink exact to={component.route}>
+                <NavLink exact to={component.route} onClick={() => {
+                  handleActive(component.route);
+                }}>
                   {component.name}
                 </NavLink>
               </Name>
