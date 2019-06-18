@@ -9,16 +9,23 @@ export const Wrapper = styled.div`
 
 export const ColorWrapper = styled.div`
   margin-right: 20px;
-  margin-top: 10px;
+  margin-bottom: 6px;
 `;
 
 export const Label = styled.span`
   font-weight: 700;
   font-size: 14px;
+  display: block;
+`;
+
+export const LabelColor = styled.span`
+  font-weight: 400;
+  font-size: 14px;
+  display: block;
 `;
 
 export const Color = styled.div`
-  width: 160px;
+  width: 150px;
   height: 120px;
   ${(props) => props.color && css`
     background-color: ${props.color};

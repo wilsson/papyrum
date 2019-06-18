@@ -5,17 +5,17 @@ import {
   Wrapper,
   Color,
   ColorWrapper,
-  Label
+  Label,
+  LabelColor
 } from './styled';
 
 export const Palette = ({ colors }) => (
   <Wrapper>
     {colors.map((color, key) => (
       <ColorWrapper key={key}>
+        <Color color={color.color} />
         <Label>{color.name}</Label>
-        <Color color={color.color}>
-          {color.color}
-        </Color>
+        <LabelColor>{color.color}</LabelColor>
       </ColorWrapper>
     ))}
   </Wrapper>
