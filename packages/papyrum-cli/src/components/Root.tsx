@@ -66,19 +66,19 @@ export const Root = ({ db, imports }) => {
           <ContentWrapper showMenu={showMenu}>
             <ProviderWrapper>
               <MDXProvider components={providerComponents}>
-                <Switch>
                 <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
-                  {Object.keys(db.plain).map((entry, i) => (
-                    <Route
-                      key={i}
-                      exact
-                      path={db.plain[entry].route}
-                      component={componentsAsync[i]}
-                    />
-                  ))}
-                  <Route component={NoMatch} />
+                  <Switch>
+                    {Object.keys(db.plain).map((entry, i) => (
+                      <Route
+                        key={i}
+                        exact
+                        path={db.plain[entry].route}
+                        component={componentsAsync[i]}
+                      />
+                    ))}
+                    <Route component={NoMatch} />
+                  </Switch>
                 </Suspense>
-                </Switch>
               </MDXProvider>
             </ProviderWrapper>
           </ContentWrapper>
