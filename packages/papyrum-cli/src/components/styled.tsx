@@ -47,7 +47,7 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Loader = styled.div`
+export const CenterWrapper = styled.div`
   box-sizing: border-box;
   height: 100vh;
   width: 100%;

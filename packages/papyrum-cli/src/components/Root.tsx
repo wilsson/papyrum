@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState, Suspense } from 'react';
 import { Sidebar } from '@papyrum/ui';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/tag';
 import { getAsyncComponents } from './AsyncComponent';
 import { Wrapper } from './styled';
@@ -12,7 +12,7 @@ import {
   BoxProvider,
   ProviderWrapper,
   ContentWrapper,
-  Loader
+  CenterWrapper
 } from './styled';
 
 import {
@@ -42,21 +42,22 @@ const providerComponents = {
   inlineCode: components.InlineCode
 };
 
+const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
+
 export const Root = ({ db, imports }) => {
   console.log('render root');
+  const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
   const [ showMenu, setShowMenu ] = useState(false);
-  const [ routeActive, setRouteActive ] = useState('');
+  const [ routeActive, setRouteActive ] = useState(pathname);
   return (
-    <contextDB.Provider value={{
-      db: db,
-      handleActive: (route) => {
-        console.log('active route ', route);
-        setRouteActive(route);
-      },
-      routeActive
-    }}
-      >
+    <contextDB.Provider
+      value={{
+        db: db,
+        setRouteActive,
+        routeActive
+      }}
+    >
       <GlobalStyle />
       <BrowserRouter>
         <Wrapper>
@@ -65,7 +66,8 @@ export const Root = ({ db, imports }) => {
           <ContentWrapper showMenu={showMenu}>
             <ProviderWrapper>
               <MDXProvider components={providerComponents}>
-                <Suspense fallback={<Loader>Loading...</Loader>}>
+                <Switch>
+                <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
                   {Object.keys(db.plain).map((entry, i) => (
                     <Route
                       key={i}
@@ -74,7 +76,9 @@ export const Root = ({ db, imports }) => {
                       component={componentsAsync[i]}
                     />
                   ))}
+                  <Route component={NoMatch} />
                 </Suspense>
+                </Switch>
               </MDXProvider>
             </ProviderWrapper>
           </ContentWrapper>

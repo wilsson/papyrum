@@ -6,15 +6,19 @@ import {
   TableTd,
 } from '../Table';
 
-export const Status = styled(TableTd)`
+export const Status = styled.div`
+  width: max-content;
+  color: white;
+  padding: 2px 12px;
+  border-radius: 13px;
   ${props => props.status === 'ready' && css`
-    color: #588642;
+    background-color: #5cbb3c;
   `}
   ${props => props.status === 'development' && css`
-    color: #44778C;
+    background-color: #5f64e4;
   `}
   ${props => props.status === 'deprecated' && css`
-    color: #8F3A3A;
+    background-color: #e45f5f ;
   `}
 `;
 

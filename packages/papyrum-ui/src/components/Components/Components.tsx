@@ -6,43 +6,45 @@ import { NavLink } from 'react-router-dom';
 import {
   Table, 
   TableRow,
-  TableTh
+  TableTh,
+  TableTd
 } from '../Table';
 
 import {
   Status,
-  Name
+  Name,
 } from './styled';
 
 export const Components = () => {
-  const { db, handleActive } = useContext(contextDB);
+  const { db, setRouteActive } = useContext(contextDB);
   return(
     <Table style={{ width: '100%' }}>
       <thead>
         <TableRow>
-          <TableTh>
-            Components
-          </TableTh>
-          <TableTh>
-            Status
-          </TableTh>
+          <TableTh>Components</TableTh>
+          <TableTh>Status</TableTh>
         </TableRow>
       </thead>
       <tbody>
         {Object.values(db.plain)
           .filter((component: any) => !!component.status)
-          .map((component: any, key) => (
-            <TableRow key={key}>
-              <Name>
-                <NavLink exact to={component.route} onClick={() => {
-                  handleActive(component.route);
-                }}>
-                  {component.name}
-                </NavLink>
-              </Name>
-              <Status status={component.status}>{component.status}</Status>
-            </TableRow>
-          ))
+          .map((component: any, key) => {
+            const { name, route, status} = component;
+            return(
+              <TableRow key={key}>
+                <Name>
+                  <NavLink exact to={route} onClick={() => {
+                    setRouteActive(route);
+                  }}>
+                    {name}
+                  </NavLink>
+                </Name>
+                <TableTd>
+                  <Status status={status}>{status}</Status>
+                </TableTd>
+              </TableRow>
+            )
+          })
         }
       </tbody>
     </Table>
