@@ -6,6 +6,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "scripts": {
+    "dev": "papyrum dev"
+  },
   "dependencies": {
     "@papyrum/cli": "^0.0.0",
     "jest": "^24.4.0",

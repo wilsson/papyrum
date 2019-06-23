@@ -1,2 +1,3 @@
 export { server } from './webpack/devserver';
-export { init as InitApplication } from './init';
+export { build } from './webpack/build';
+export { init } from './init';

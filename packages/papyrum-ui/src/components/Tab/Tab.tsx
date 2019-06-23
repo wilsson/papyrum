@@ -30,7 +30,6 @@ export const TabNoMemo = ({
   useCases,
   setUseCase
 }) => {
-  console.log('renderTab');
   const [ open, setOpen ] = useState(false);
   return(
     <>

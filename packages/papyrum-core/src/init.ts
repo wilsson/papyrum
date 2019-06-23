@@ -8,21 +8,30 @@ import { template, pathClient } from './config/paths';
 import { tplCompile } from './utils/fs';
 import * as docgen from 'react-docgen';
 
-export const init = () => {
+export const init = (argv: any) => {
   return new Promise(async resolve => {
     try {
       await fs.mkdirSync(pathClient);
     } catch (e) { }
 
-    const paths = await globby(['**/*.mdx', '!node_modules', '!dist']);
-    const pathsComponent = await globby(['**/*.{js,jsx,mjs,tsx}', '!dist']);
-    //console.log('pathsComponent', pathsComponent);
+    const pattern = argv.typescript ? '**/*.{ts,tsx}' : '**/*.{js,jsx}';
+    const paths = await globby([
+      '**/*.mdx',
+      '!node_modules',
+      '!dist'
+    ]);
+    const ignore = argv.ignore.map(ignore => `!${ignore}`);
+    const pathsComponent = await globby([
+      pattern,
+      '!node_modules',
+      '!dist',
+      ...ignore
+    ]);
     // create db.json for entries
     let entries = {};
     let props = {};
     pathsComponent.forEach(pathcomponent => {
       const filePath = path.resolve(process.cwd(), `./${pathcomponent}`);
-      //console.log('filePath', filePath);
       try {
         const propsComponent = docgen.parse(fs.readFileSync(filePath));
         //console.log('propsComponent', propsComponent);
@@ -36,8 +45,8 @@ export const init = () => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
         const ast = await parseMdx(filePath);
         const metasArray = getMetadata(ast);
-        console.log('metasArray', metasArray);
-        console.log('--')
+        //console.log('metasArray', metasArray);
+        //console.log('--')
         const finalRoute = path.basename(item).replace(path.extname(item), '');
         entries[item] = {
           filepath: item
@@ -55,16 +64,7 @@ export const init = () => {
         };
       })
     );
-    fs.writeFileSync(
-      pathClient + '/db.json',
-      JSON.stringify(
-        {
-          entries
-        },
-        null,
-        2
-      )
-    );
+
     // create imports
     const file = fs.readFileSync(template('root.txt'), 'utf8');
     var templateFn = await tplCompile(template('imports.tpl.js'), {
@@ -100,6 +100,7 @@ export const init = () => {
       pathClient + '/db.json',
       JSON.stringify(
         {
+          title: argv.title,
           plain: entries,
           entries: sentries,
           props

@@ -22,7 +22,8 @@
     "tsc:watch": "tsc -w",
     "fix": "prettier --write \"src/**/*.{ts,tsx}\"",
     "assets": "cpx \"./src/assets/**/*.{jpg,jpeg,png,svg,eot,otf,ttf,woff,woff2}\" ./dist/assets",
-    "dev": "papyrum dev"
+    "dev": "papyrum dev -p 4000 -t Papyrum -i docs --ts",
+    "build": "papyrum build --ts -d ./docs"
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"

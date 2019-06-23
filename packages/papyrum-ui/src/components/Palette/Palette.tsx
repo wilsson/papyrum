@@ -26,4 +26,4 @@ Palette.propTypes = {
     color: p.string,
     name: p.string
   })).isRequired
-}
+};

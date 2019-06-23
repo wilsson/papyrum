@@ -31,7 +31,6 @@ const Bash = ({
 );
 
 export const Code = ({ children, ...nextProps }) => {
-  console.log('_children', nextProps);
   const [ clip, setClip ] = useState(false);
   const handleClipboard = () => {
     copy(children);

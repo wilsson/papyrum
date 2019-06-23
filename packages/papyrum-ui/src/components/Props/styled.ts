@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Prop = styled.div`
   border-bottom: 1px solid #DFDFDF;
@@ -36,6 +36,15 @@ const Label = styled.div`
   box-sizing: border-box;
   display: inline-block;
   word-break: break-all;
+  ${props => props.blue && css`
+    background-color: #DEEBFF;
+    color: #0747A6;
+    margin-right: 15px;
+  `}
+  ${props => props.gray && css`
+    background-color: #EDEDED;
+    color: #5E6C84;
+  `}
 `;
 
 export const LabelName = styled(Label)`
@@ -47,6 +56,7 @@ export const LabelName = styled(Label)`
 export const LabelTypeWrapper = styled.div`
   flex-basis: 60%;
 `;
+
 export const LabelType = styled(Label)`
   background-color: #EDEDED;
   color: #5E6C84;
@@ -78,22 +88,16 @@ const LabelShape = styled(Label)`
 
 const LabelShapeWrapper = styled(Label)``;
 
+export const Text = styled.div`
+  color: #7E7E7E;
+`;
+
 export const LabelRequiredOrDefaultWrapper = styled.div`
   flex-basis: 30%;
   text-align: right;
 `;
 
-export const LabelDefault = styled.div`
-  color: #7E7E7E;
-`;
-
-export const LabelRequired = styled.div`
-  color: #7E7E7E;
-  font-weight: 700;
-`;
-
-export const Description = styled.div`
-  color: #5B5B5B;
+export const Description = styled(Text)`
   margin-top: 20px;
 `;
 

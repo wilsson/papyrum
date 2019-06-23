@@ -15,7 +15,7 @@ export const CodeWrapper = styled.div`
 export const BashWrapper = styled.div`
   padding: 15px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   svg {
     width: 15px;
     color: #A4A4A4;

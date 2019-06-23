@@ -45,7 +45,6 @@ const providerComponents = {
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
 export const Root = ({ db, imports }) => {
-  console.log('render root');
   const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
   const [ showMenu, setShowMenu ] = useState(false);

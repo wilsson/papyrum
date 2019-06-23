@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import db from '~db';
+import db from './db.json';
 import { Root } from '@papyrum/cli'
 import { imports } from './imports';
+
 const node = document.createElement('div');
 document.body.appendChild(node);
 

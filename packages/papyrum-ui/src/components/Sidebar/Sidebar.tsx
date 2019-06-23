@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Search } from '../Search';
 import { Menu } from '../Menu';
+import { contextDB } from '@papyrum/cli';
+
 import {
   Logo,
   Wrapper,
@@ -11,7 +13,18 @@ import {
 
 import { useMenu } from './useMenu';
 
+import styled from 'styled-components';
+
+const Title = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+  padding: 20px;
+  overflow-wrap: break-word;
+  color: #5B5B5B;
+`;
+
 export const Sidebar = ({ entries, showMenu }) => {
+  const { db } = useContext(contextDB);
   const [ query, setQuery ] = useState('');
   const menu = useMenu({ query, entries });
   const [ width, setWidth ] = useState(240);
@@ -40,7 +53,7 @@ export const Sidebar = ({ entries, showMenu }) => {
       onResizeStop={handleResizable}
     >
       <div>
-        <Logo src="http://placehold.it/200x80&text=LOGO" alt="" />
+        <Title>{db.title}</Title>
       </div>
       <div>
         <Search onChange={(value) => {

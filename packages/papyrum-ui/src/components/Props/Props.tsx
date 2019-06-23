@@ -9,15 +9,15 @@ import {
   LabelType,
   Prop,
   Description,
-  LabelDefault,
-  LabelRequired,
   Header,
   LabelNameWrapper,
   LabelRequiredOrDefaultWrapper,
   LabelEnum,
   UnionWrapper,
-  LabelUnion
+  LabelUnion,
+  Text
 } from './styled';
+
 
 
 const wordUpperCase = (word: string) => word[0].toUpperCase() + word.slice(1);
@@ -84,17 +84,29 @@ const Union = ({ value }) => (
   </UnionWrapper>
 );
 
+const myProps = {
+  array: 'array',
+  bool: 'boolean',
+  func: 'function',
+  number: 'number',
+  object: 'object',
+  string: 'string',
+  symbol: 'symbol',
+  node: 'node',
+  element: 'element',
+  instanceOf: 'instanceOf',
+  union: 'union',
+  enum: 'enum',
+  arrayOf: 'arrayOf',
+  objectOf: 'objectOf',
+  shape: 'custom'
+};
+
 export const Props = ({ of: component }) => {
   const { db } = useContext(contextDB);
   const pathname = component.__filemeta.filename;
-  console.log('db.props', pathname);
   const { props } = db.props[pathname];
-  console.log('props >>>>>>', props);
-  if(!props) {
-    return null;
-  }
   const propsName = Object.keys(props);
-
   return(
     <Wrapper>
       {propsName.map((name, key) => {
@@ -109,55 +121,20 @@ export const Props = ({ of: component }) => {
             <Header>
               <LabelNameWrapper>
                 <LabelName>{name}</LabelName>
-                {type.name !== 'shape' && <LabelType>{wordUpperCase(type.name)}</LabelType>}
-                {type.name === 'instanceOf' && <LabelType>class {type.value} {'{}'}</LabelType>}
+                <LabelType>{wordUpperCase(myProps[type.name])}</LabelType>
               </LabelNameWrapper>
               <LabelRequiredOrDefaultWrapper>
-                {required && <LabelRequired>required</LabelRequired>}
-                {defaultValue && <LabelDefault>= {defaultValue.value}</LabelDefault>}
+                {required && <Text>required</Text>}
+                {defaultValue && <Text> = {defaultValue.value}</Text>}
               </LabelRequiredOrDefaultWrapper>
             </Header>
-            {type.name === 'enum' && <Enum value={type.value} />}
-            {type.name === 'union' && <Union value={type.value} />}
-            {type.name === 'arrayOf' && (
-              <>
-                {type.value.name === 'shape' && (
-                  <>
-                    <LabelUnion>
-                      {'Array<{'}
-                    </LabelUnion>
-                    <Shape type={type.value} />
-                    <LabelUnion>
-                      {'}>'}
-                    </LabelUnion>
-                  </>
-                )}
-                {type.value.name !== 'shape' && (
-                  <LabelUnion>
-                    {'Array<'}{wordUpperCase(type.value.name)}
-                    {'>'}
-                  </LabelUnion>
-                )}
-              </>
-            )}
-            {type.name === 'objectOf' && <LabelUnion>{'Object<key['}{wordUpperCase(type.value.name)}{']>'}</LabelUnion>}
-            {type.name === 'shape' && (
-              <div style={{ marginTop: '10px' }}>
-              <LabelType>Custom</LabelType>{'{'}
-                <Shape type={type} />
-              {'}'}
-              </div>
-            )}
             {description && <Description>{description}</Description>}
           </Prop>
         )
       })}
-      {/* <pre>
-      {JSON.stringify(props, null, 2)}
-      </pre> */}
     </Wrapper>
   )
-}
+};
 
 Props.propTypes = {
   of: p.func
