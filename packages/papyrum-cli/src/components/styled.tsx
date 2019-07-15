@@ -1,4 +1,5 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
+import { Menu as MenuIcon, GitHub as GitHubIcon } from 'react-feather';
 
 import {
   fontFace,
@@ -57,5 +58,47 @@ export const CenterWrapper = styled.div`
   font-size: 18px;
   @media (max-width: 1200px) {
     width: 100vw;
+  }
+`;
+
+export const Menu = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 10px 10px 0 10px;
+  @media (max-width: 1200px) {
+    justify-content: space-between;
+  }
+`;
+
+export const IconStyled = css`
+  color : #5B5B5B;
+  cursor: pointer;
+  transition: all .2s ease;
+  width: 20px;
+  &:hover {
+    color: black;
+  }
+`;
+
+export const GitHubIconStyled = styled(GitHubIcon)`
+  ${IconStyled};
+  width:  30px;
+  height: 30px;
+  @media (max-width: 1200px) {
+    width:  20px;
+    height: 20px;
+  }
+`;
+export const MenuIconStyled = styled(MenuIcon)`
+  ${IconStyled};
+  display: none;
+  @media (max-width: 1200px) {
+    display: block;
   }
 `;

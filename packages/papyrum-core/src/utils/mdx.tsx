@@ -5,7 +5,6 @@ import * as matter from 'remark-frontmatter';
 import * as find from 'unist-util-find';
 
 const metas = ['route', 'name', 'menu', 'status'];
-const removeSpaces = (str: string) => str.replace(/\s+/g, '');
 
 export const parseMdx = (file: string) => {
   const raw = vfile.readSync(file, 'utf-8');
@@ -24,11 +23,8 @@ export const getMetadata = ast => {
     return find(ast, 'value')
       .value.split('\n')
       .map(head => {
-        const [key, value] = head.split(':').map(item => removeSpaces(item));
-        return {
-          key,
-          value
-        };
+        const [ key, value ] = head.split(':').map((item: string) => item.trim());
+        return { key, value };
       })
       .filter(item => metas.includes(item.key));
   }

@@ -112,7 +112,6 @@ const getNodes = (nodes, scope) => {
           //`<${name} code={'${code}'} scope={{${scope}}} ${p1}`
           `<${name} code={'${code}'} scope={{${scope}}}`
         );
-        //console.log('-----')
       }
     });
 };

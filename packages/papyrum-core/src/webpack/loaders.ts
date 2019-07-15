@@ -1,25 +1,8 @@
 import * as matter from 'remark-frontmatter';
 import { rehype } from '../utils/rehype';
 import * as emoji from 'remark-emoji';
-import * as findUp from 'find-up';
-import * as fs from 'fs-extra';
-import * as path from 'path';
 import { merge } from 'lodash/fp'
-
-const loadBabelConfig = () => {
-  const file = findUp.sync([
-    '.babelrc',
-    'babel.json',
-    'babelrc.js',
-    '.babelrc.js',
-    'babelrc.json',
-    'babel.config.js',
-    'babel.config.json'
-  ]);
-  const pathfile = path.resolve(process.cwd(), file);
-  const json = fs.readJsonSync(pathfile, { throws: false }) || {};
-  return json;
-};
+import { loadFileConfig } from '../utils/fs';
 
 const getConfigBabel = argv => {
   const config = {
@@ -35,7 +18,7 @@ const getConfigBabel = argv => {
       require.resolve('@babel/plugin-syntax-dynamic-import')
     ]
   }
-  return merge(config, loadBabelConfig());
+  return merge(config, loadFileConfig('babel'));
 };
 
 export const babel = argv => ({
@@ -83,7 +66,10 @@ export const file = {
   test: /\.(jpe?g|png|svg|woff2|woff|ttf)$/,
   use: [
     {
-      loader: require.resolve('file-loader')
+      loader: require.resolve('file-loader'),
+      options: {
+        outputPath: 'static/assets',
+      }
     }
   ]
 };

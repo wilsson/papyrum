@@ -1,28 +1,52 @@
-## :gem: &nbsp; Features
+<p align="center">
+  <img src="logo.png" />
+</p>
 
-- :zap: **Zero config.**
-- :scroll: **[MDX](https://github.com/mdx-js/mdx) Based.**
-- :office: **Typescript Support.**
+Papyrum is a tool that will help you in the creation of your design system, style guide or in the documentation of your project based on `react`
 
-## Contributions
+### Features
 
-start `lerna bootstrap` and `lerna run dev` for example basic
+- Zero config
+- [MDX based](https://mdxjs.com/), builds documentation with the markdown of the component era.
+- Typescript support
 
-```bash
-npm run bs
-```
-
-execute 
+### Installation
 
 ```bash
-lerna run tsc
+npm i @papyrum/cli @papyrum/ui-docs -D -E
 ```
 
-or
+> You need react y react-dom with 16.8.6 installed.
 
+### Usage
 
-```bash
-lerna run tsc --scope=@papyrum/core
+You `package.json`
+
+```json
+{
+  "name": "my_project",
+  "scripts": {
+    "dev": "papyrum dev",
+    "build": "papyrum build"
+  },
+  "devDependencies": {
+    "papyrum": "latest"
+  }
+}
 ```
 
-For view example basic
+Hello world with papyrum, create one file `.mdx`
+
+```
+---
+name: Hello world
+---
+
+# Hello world
+
+Hello world with mdx
+```
+
+<p align="center">
+  <img src="hello-world.png" />
+</p>

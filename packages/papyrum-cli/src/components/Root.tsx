@@ -12,7 +12,10 @@ import {
   BoxProvider,
   ProviderWrapper,
   ContentWrapper,
-  CenterWrapper
+  CenterWrapper,
+  Menu,
+  MenuIconStyled,
+  GitHubIconStyled
 } from './styled';
 
 import {
@@ -39,7 +42,8 @@ const providerComponents = {
   tr: components.TableRow,
   td: components.TableTd,
   th: components.TableTh,
-  inlineCode: components.InlineCode
+  inlineCode: components.InlineCode,
+  img: components.Img
 };
 
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
@@ -63,6 +67,14 @@ export const Root = ({ db, imports }) => {
           <Shadow showMenu={showMenu} onClick={() => setShowMenu(!showMenu) }/>
           <Sidebar entries={db.entries} showMenu={showMenu} />
           <ContentWrapper showMenu={showMenu}>
+          <Menu>
+            <MenuIconStyled onClick={() => setShowMenu(!showMenu) }/>
+            {db.config.homepage && (
+              <a href={db.config.homepage} target="_blank" >
+                <GitHubIconStyled />
+              </a>
+            )}
+          </Menu>
             <ProviderWrapper>
               <MDXProvider components={providerComponents}>
                 <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>

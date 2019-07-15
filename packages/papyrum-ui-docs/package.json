@@ -1,0 +1,41 @@
+{
+  "name": "@papyrum/ui-docs",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "wilsson <wilsonft83@gmail.com>",
+  "homepage": "https://github.com/wilsson/papyrum#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilsson/papyrum.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "tsc:watch": "tsc -w"
+  },
+  "bugs": {
+    "url": "https://github.com/wilsson/papyrum/issues"
+  },
+  "dependencies": {
+    "@papyrum/cli": "0.0.0",
+    "@papyrum/ui": "0.0.0",
+    "polished": "3.4.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "5.0.0",
+    "react-simple-code-editor": "0.9.11",
+    "styled-components": "4.3.2"
+  },
+  "devDependencies": {
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4"
+  }
+}

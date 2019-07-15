@@ -18,10 +18,9 @@ export const build = argv => {
     }
 
     if(messages.warnings.length) {
-      console.log(messages.errors.join('\n\n'));
-      process.exit();
+      console.log(messages.warnings.join('\n\n'));
     };
-    console.log('Build success');
+    console.log('\nBuild success');
 
     measureFileSizesBeforeBuild(argv.dest).then(previousFileSizes => {
       printFileSizesAfterBuild(stats, previousFileSizes, argv.dest);

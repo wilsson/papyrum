@@ -1,6 +1,7 @@
 {
   "name": "root",
   "private": true,
+  "homepage": "https://github.com/wilsson/papyrum#readme",
   "scripts": {
     "bs": "lerna bootstrap && lerna run dev --stream",
     "dev:tsc": "lerna run --parallel tsc:watch --stream",

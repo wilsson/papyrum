@@ -33,5 +33,10 @@ export const args = (yargs): any => {
     type: 'boolean',
     alias: 'ts',
     default: false
+  });
+
+  yargs.option('homepage', {
+    type: 'string',
+    default: pkg.homepage
   })
 };

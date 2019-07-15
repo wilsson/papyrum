@@ -7,6 +7,7 @@ import { parseMdx, getMetadata } from './utils/mdx';
 import { template, pathClient } from './config/paths';
 import { tplCompile } from './utils/fs';
 import * as docgen from 'react-docgen';
+import { loadFileConfig } from './utils/fs';
 
 export const init = (argv: any) => {
   return new Promise(async resolve => {
@@ -34,7 +35,6 @@ export const init = (argv: any) => {
       const filePath = path.resolve(process.cwd(), `./${pathcomponent}`);
       try {
         const propsComponent = docgen.parse(fs.readFileSync(filePath));
-        //console.log('propsComponent', propsComponent);
         props[path.normalize(pathcomponent)] = {
           ...propsComponent
         };
@@ -45,8 +45,6 @@ export const init = (argv: any) => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
         const ast = await parseMdx(filePath);
         const metasArray = getMetadata(ast);
-        //console.log('metasArray', metasArray);
-        //console.log('--')
         const finalRoute = path.basename(item).replace(path.extname(item), '');
         entries[item] = {
           filepath: item
@@ -64,7 +62,8 @@ export const init = (argv: any) => {
         };
       })
     );
-
+    // loadfile papyrumrc
+    const config = loadFileConfig('papyrum');
     // create imports
     const file = fs.readFileSync(template('root.txt'), 'utf8');
     var templateFn = await tplCompile(template('imports.tpl.js'), {
@@ -100,7 +99,10 @@ export const init = (argv: any) => {
       pathClient + '/db.json',
       JSON.stringify(
         {
-          title: argv.title,
+          config: {
+            ...argv,
+            ...config
+          },
           plain: entries,
           entries: sentries,
           props

@@ -88,18 +88,16 @@ const MenuItem = ({
   )
 };
 
-export const Menu = ({ entries }) => {
+export const Menu = ({ entries }): any => {
   const [ open, setOpen ] = useState(true);
-  const entriesMap = Object.values(entries);
-  const { routeActive, setRouteActive } = useContext(contextDB);
+  const { routeActive, setRouteActive, db } = useContext(contextDB);
   return (
     <MenuWrapper>
-      {entriesMap.map((entry: Entry, key) => {
-        const { children } = entry;
+      {entries.map((entry, key) => {
         const props = { routeActive, setRouteActive, entry };
         return (
           <React.Fragment key={key}>
-            {children
+            {entry.children
               ? <SubMenu { ...props } open={open} setOpen={setOpen} />
               : <MenuItem {...props } />}
           </React.Fragment>
