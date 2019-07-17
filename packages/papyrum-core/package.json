@@ -1,6 +1,6 @@
 {
   "name": "@papyrum/core",
-  "version": "0.0.0",
+  "version": "0.1.3",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -76,5 +76,6 @@
   "devDependencies": {
     "@types/babel__traverse": "7.0.6",
     "@types/globby": "^8.0.0"
-  }
+  },
+  "gitHead": "25a13ebcb21f0b3fae199163e27e7ed857ab4d9d"
 }
