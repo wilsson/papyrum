@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState, useContext } from 'react';
 import { Search } from '../Search';
 import { Menu } from '../Menu';
-import { contextDB } from '@papyrum/cli';
+import { contextDB } from '../Provider';
 
 import {
   Logo,
@@ -25,7 +25,7 @@ const Title = styled.div`
 
 const useOrder = (menu) => {
   const inmenu = { ...menu };
-  const { db } = useContext(contextDB);
+  const { db } = useContext(contextDB as any);
   const menuOrder = [];
   db.config.menu && db.config.menu.map((item) => {
     const name = item.name || item;
@@ -40,7 +40,7 @@ const useOrder = (menu) => {
 };
 
 export const Sidebar = ({ entries, showMenu }) => {
-  const { db } = useContext(contextDB);
+  const { db } = useContext(contextDB as any);
   const [ query, setQuery ] = useState('');
   const menu = useMenu({ query, entries });
   const menuOrder = useOrder(menu);

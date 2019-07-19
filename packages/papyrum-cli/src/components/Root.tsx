@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useState, Suspense } from 'react';
-import { Sidebar } from '@papyrum/ui';
+import { Sidebar, Provider } from '@papyrum/ui';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/tag';
 import { getAsyncComponents } from './AsyncComponent';
 import { Wrapper } from './styled';
-import { contextDB } from '../contexts/db';
 
 import {
   GlobalStyle,
@@ -53,14 +52,13 @@ export const Root = ({ db, imports }) => {
   const componentsAsync = getAsyncComponents(imports);
   const [ showMenu, setShowMenu ] = useState(false);
   const [ routeActive, setRouteActive ] = useState(pathname);
+  const props = {
+    db: db,
+    setRouteActive,
+    routeActive
+  };
   return (
-    <contextDB.Provider
-      value={{
-        db: db,
-        setRouteActive,
-        routeActive
-      }}
-    >
+    <Provider {...props} >
       <GlobalStyle />
       <BrowserRouter>
         <Wrapper>
@@ -95,6 +93,6 @@ export const Root = ({ db, imports }) => {
           </ContentWrapper>
         </Wrapper>
       </BrowserRouter>
-    </contextDB.Provider>
+    </Provider>
   );
 };

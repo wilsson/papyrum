@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Bookmark, ChevronDown } from 'react-feather';
 import { useContext } from 'react';
-import { contextDB } from '@papyrum/cli';
+import { contextDB } from '../Provider';
 
 import {
   MenuWrapper,
@@ -90,7 +90,7 @@ const MenuItem = ({
 
 export const Menu = ({ entries }): any => {
   const [ open, setOpen ] = useState(true);
-  const { routeActive, setRouteActive, db } = useContext(contextDB);
+  const { db, routeActive, setRouteActive } = (useContext as any)(contextDB);
   return (
     <MenuWrapper>
       {entries.map((entry, key) => {

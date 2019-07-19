@@ -8,6 +8,7 @@ import { Table, TableRow, TableTd, TableTh } from './components/Table';
 import { InlineCode } from './components/InlineCode';
 import { Img } from './components/Img';
 
+export { Provider, contextDB } from './components/Provider';
 export { CodeWrapperStyled } from './components/Code';
 export { CodeBar } from './components/CodeBar';
 export { getHighlight } from './components/Highlight';

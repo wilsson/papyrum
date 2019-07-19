@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { contextDB } from '@papyrum/cli';
+import { contextDB } from '@papyrum/ui';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
