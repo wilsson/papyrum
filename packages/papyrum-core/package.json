@@ -47,7 +47,7 @@
     "humanize-string": "2.0.0",
     "js-string-escape": "1.0.1",
     "jsx-ast-utils": "2.1.0",
-    "lodash": "4.17.11",
+    "lodash": "4.17.13",
     "react-dev-utils": "9.0.1",
     "react-docgen": "4.1.1",
     "rehype-slug": "2.0.2",
