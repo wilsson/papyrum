@@ -1,6 +1,6 @@
 {
   "name": "@papyrum/cli",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha.0",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@loadable/component": "^5.7.0",
-    "@papyrum/core": "^0.0.1",
+    "@papyrum/core": "^0.0.2-alpha.0",
     "@papyrum/ui": "^0.0.1",
     "@sindresorhus/slugify": "0.9.1",
     "fs-extra": "8.1.0",
