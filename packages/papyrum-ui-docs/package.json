@@ -1,6 +1,6 @@
 {
   "name": "@papyrum/ui-docs",
-  "version": "0.0.1",
+  "version": "0.0.3-alpha.0",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -18,7 +18,7 @@
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
-    "@papyrum/ui": "^0.0.1",
+    "@papyrum/ui": "^0.0.3-alpha.0",
     "polished": "3.4.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
