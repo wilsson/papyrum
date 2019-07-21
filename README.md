@@ -20,7 +20,7 @@ npm i @papyrum/cli @papyrum/ui-docs -D -E
 
 ### Usage
 
-You `package.json`
+Add the following to your  `package.json`
 
 ```json
 {
@@ -28,9 +28,6 @@ You `package.json`
   "scripts": {
     "dev": "papyrum dev",
     "build": "papyrum build"
-  },
-  "devDependencies": {
-    "papyrum": "latest"
   }
 }
 ```
@@ -45,6 +42,12 @@ name: Hello world
 # Hello world
 
 Hello world with mdx
+```
+
+execute
+
+```bash
+yarn dev
 ```
 
 <p align="center">
