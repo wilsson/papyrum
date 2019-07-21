@@ -1,11 +1,13 @@
 import { getConfig } from './config.build';
+import { init } from '../init';
 import * as webpack from 'webpack';
 import * as formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import * as reporter from 'react-dev-utils/FileSizeReporter';
 
 const { measureFileSizesBeforeBuild, printFileSizesAfterBuild } = reporter;
 
-export const build = argv => {
+export const build = async argv => {
+  await init(argv);
   const config = getConfig(argv);
   const compiler = webpack(config as any);
   compiler.run((err, stats) => {

@@ -20,6 +20,7 @@ export const getConfig = config => ({
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
+    modules: ['node_modules', path.resolve(process.cwd())]
   },
   devtool: 'source-map',
   module: {
