@@ -5,4 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [0.1.18](https://github.com/wilsson/papyrum/compare/v0.1.17...v0.1.18) (2019-07-20)
 
-**Note:** Version bump only for package @papyrum/ui-docs
+**Note:** Version bump only for package @papyrum/ui-core

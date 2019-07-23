@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { contextDB } from '@papyrum/ui';
+import { contextDB } from '../Provider';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import {
   TableRow,
   TableTh,
   TableTd
-} from '@papyrum/ui';
+} from '../Table';
 
 import {
   Status,
@@ -16,7 +16,7 @@ import {
 } from './styled';
 
 export const Components = () => {
-  const { db, setRouteActive } = useContext(contextDB);
+  const { db, setRouteActive } = (useContext as any)(contextDB);
   return(
     <Table style={{ width: '100%' }}>
       <thead>

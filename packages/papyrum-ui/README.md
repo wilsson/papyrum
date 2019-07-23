@@ -1,11 +1,11 @@
-# `papyrum-ui`
+# `papyrum-ui-docs`
 
 > TODO: description
 
 ## Usage
 
 ```
-const papyrumUi = require('papyrum-ui');
+const papyrumUiDocs = require('papyrum-ui-docs');
 
 // TODO: DEMONSTRATE API
 ```

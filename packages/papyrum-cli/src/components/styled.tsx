@@ -3,7 +3,7 @@ import { Menu as MenuIcon, GitHub as GitHubIcon } from 'react-feather';
 
 import {
   fontFace,
-} from '@papyrum/ui';
+} from '@papyrum/ui-core';
 
 export const Wrapper = styled.div`
   display: flex;

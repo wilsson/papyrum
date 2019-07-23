@@ -1,10 +1,10 @@
 
 import styled, { css } from 'styled-components';
-import { styles } from '../A/styled';
+import { AStyled } from '@papyrum/ui-core';
 
 import {
   TableTd,
-} from '../Table';
+} from '@papyrum/ui-core';
 
 export const Status = styled.div`
   width: max-content;
@@ -24,6 +24,6 @@ export const Status = styled.div`
 
 export const Name = styled(TableTd)`
   a {
-    ${styles}
+    ${AStyled}
   }
 `;

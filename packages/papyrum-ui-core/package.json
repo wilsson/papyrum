@@ -1,13 +1,10 @@
 {
-  "name": "@papyrum/cli",
+  "name": "@papyrum/ui-core",
   "version": "0.0.5-alpha.0",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "license": "MIT",
-  "bin": {
-    "papyrum": "dist/bin.js"
-  },
   "main": "dist/index.js",
   "repository": {
     "type": "git",
@@ -16,29 +13,34 @@
   "scripts": {
     "tsc": "tsc",
     "tsc:watch": "tsc -w",
-    "fix": "prettier --write \"src/**/*.{ts,tsx}\""
+    "fix": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "assets": "cpx \"./src/assets/**/*.{jpg,jpeg,png,svg,eot,otf,ttf,woff,woff2}\" ./dist/assets"
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
-    "@loadable/component": "^5.7.0",
-    "@papyrum/core": "^0.0.5-alpha.0",
-    "@papyrum/ui-core": "^0.0.5-alpha.0",
-    "@sindresorhus/slugify": "0.9.1",
-    "fs-extra": "8.1.0",
-    "humanize-string": "2.1.0",
-    "normalized-styled-components": "2.0.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-router-dom": "5.0.0",
-    "styled-components": "4.3.2",
-    "yargs": "13.2.1"
-  },
-  "devDependencies": {
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
-    "@types/yargs": "12.0.9"
+    "codemirror": "5.46.0",
+    "copy-text-to-clipboard": "2.1.0",
+    "normalized-styled-components": "2.0.0",
+    "polished": "3.3.2",
+    "prism-react-renderer": "0.1.6",
+    "prismjs": "^1.16.0",
+    "re-resizable": "4.11.0",
+    "react": "16.8.6",
+    "react-codemirror2": "5.1.0",
+    "react-dom": "16.8.6",
+    "react-feather": "1.1.6",
+    "react-live": "2.0.1",
+    "react-perfect-scrollbar": "1.5.0",
+    "react-router-dom": "5.0.0",
+    "react-simple-code-editor": "^0.9.10",
+    "styled-components": "4.3.2"
+  },
+  "devDependencies": {
+    "cpx": "1.5.0"
   },
   "publishConfig": {
     "access": "public"

@@ -13,7 +13,7 @@ Papyrum is a tool that will help you in the creation of your design system, styl
 ### Installation
 
 ```bash
-npm i @papyrum/cli @papyrum/ui-docs -D -E
+npm i @papyrum/cli @papyrum/ui -D -E
 ```
 
 > You need react y react-dom with 16.8.6 installed.

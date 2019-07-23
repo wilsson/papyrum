@@ -12,35 +12,23 @@
   },
   "scripts": {
     "tsc": "tsc",
-    "tsc:watch": "tsc -w",
-    "fix": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "assets": "cpx \"./src/assets/**/*.{jpg,jpeg,png,svg,eot,otf,ttf,woff,woff2}\" ./dist/assets"
+    "tsc:watch": "tsc -w"
   },
   "bugs": {
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
-    "@types/react": "16.8.13",
-    "@types/react-dom": "16.8.4",
-    "codemirror": "5.46.0",
-    "copy-text-to-clipboard": "2.1.0",
-    "normalized-styled-components": "2.0.0",
-    "polished": "3.3.2",
-    "prism-react-renderer": "0.1.6",
-    "prismjs": "^1.16.0",
-    "re-resizable": "4.11.0",
+    "@papyrum/ui-core": "^0.0.5-alpha.0",
+    "polished": "3.4.1",
     "react": "16.8.6",
-    "react-codemirror2": "5.1.0",
     "react-dom": "16.8.6",
-    "react-feather": "1.1.6",
-    "react-live": "2.0.1",
-    "react-perfect-scrollbar": "1.5.0",
     "react-router-dom": "5.0.0",
-    "react-simple-code-editor": "^0.9.10",
+    "react-simple-code-editor": "0.9.11",
     "styled-components": "4.3.2"
   },
   "devDependencies": {
-    "cpx": "1.5.0"
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.4"
   },
   "publishConfig": {
     "access": "public"

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { LiveProvider, LiveError, LivePreview } from 'react-live';
-import {  CodeWrapperStyled } from '@papyrum/ui';
-import { CodeBar } from '@papyrum/ui';
+import {  CodeWrapperStyled } from '@papyrum/ui-core';
+import { CodeBar } from '@papyrum/ui-core';
 import copy from 'copy-text-to-clipboard';
-import { getHighlight } from '@papyrum/ui';
+import { getHighlight } from '@papyrum/ui-core';
 import Editor from 'react-simple-code-editor';
 
 import { 

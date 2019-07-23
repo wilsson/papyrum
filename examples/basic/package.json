@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@papyrum/cli": "^0.0.5-alpha.0",
-    "@papyrum/ui-docs": "^0.0.5-alpha.0",
+    "@papyrum/ui": "^0.0.5-alpha.0",
     "styled-components": "4.3.2"
   }
 }

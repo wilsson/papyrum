@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState, Suspense } from 'react';
-import { Sidebar, Provider } from '@papyrum/ui';
+import { Sidebar, Provider } from '@papyrum/ui-core';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/tag';
 import { getAsyncComponents } from './AsyncComponent';
@@ -20,7 +20,7 @@ import {
 import {
   components,
   Shadow
-} from '@papyrum/ui';
+} from '@papyrum/ui-core';
 
 const providerComponents = {
   h1: components.H1,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { contextDB } from '@papyrum/ui';
+import { contextDB } from '@papyrum/ui-core';
 import * as p from 'prop-types';
 
 import {
