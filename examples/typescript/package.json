@@ -1,0 +1,16 @@
+{
+  "name": "papyrum-example-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "papyrum dev --ts",
+    "build:tsc": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@papyrum/cli": "0.0.5-alpha.0"
+  }
+}

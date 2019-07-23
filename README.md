@@ -53,3 +53,8 @@ yarn dev
 <p align="center">
   <img src="hello-world.png" />
 </p>
+
+### Examples
+
+- [Basic](https://github.com/wilsson/papyrum/tree/master/examples/basic)
+- [With typescript](https://github.com/wilsson/papyrum/tree/master/examples/typescript)
