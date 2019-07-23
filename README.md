@@ -13,7 +13,7 @@ Papyrum is a tool that will help you in the creation of your design system, styl
 ### Installation
 
 ```bash
-npm i @papyrum/cli @papyrum/ui -D -E
+npm i @papyrum/cli -D -E
 ```
 
 > You need react y react-dom with 16.8.6 installed.
@@ -53,6 +53,29 @@ yarn dev
 <p align="center">
   <img src="hello-world.png" />
 </p>
+
+### Usage papyrum components
+
+install ui package for usage base components
+
+```
+npm i @papyrum/ui -D -E
+```
+
+in your mdx file
+
+```
+import { Props, Playground } from '@papyrum/ui';
+import { Button } from './Button';
+
+# Button
+
+<Playground>
+  <Button>My Button</Button>
+</Playground>
+```
+
+
 
 ### Examples
 
