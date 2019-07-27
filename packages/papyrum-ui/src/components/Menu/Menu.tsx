@@ -19,19 +19,15 @@ export interface Entry {
   open?: boolean;
 }
 
-interface SubMenuProps {
-  entry: any;
-  routeActive: string;
-  setRouteActive: Function;
-  open: boolean;
-  setOpen: Function;
-}
+
+
 const equal = (x, y) => JSON.stringify(x) === JSON.stringify(y);
 
-export const SubMenu: React.FC<SubMenuProps> = ({
+export const SubMenu = ({
   entry,
   routeActive,
   setRouteActive,
+  setShowMenu,
   open,
   setOpen
 }) => {
@@ -57,7 +53,13 @@ export const SubMenu: React.FC<SubMenuProps> = ({
             const active = equal(route, routeActive);
             return (
               <React.Fragment key={key}>
-                <SubListItemStyled onClick={() => setRouteActive(route)} active={active} >
+                <SubListItemStyled 
+                  onClick={() => {
+                    setRouteActive(route)
+                    setShowMenu(false);  
+                  }} 
+                  active={active}
+                >
                   <NavLink exact to={route}>
                     {name}
                   </NavLink>
@@ -74,12 +76,16 @@ export const SubMenu: React.FC<SubMenuProps> = ({
 const MenuItem = ({
   routeActive,
   setRouteActive,
+  setShowMenu,
   entry
 }) => {
   const { route, name } = entry;
   const active = equal(route, routeActive);
   return (
-    <ListItem active={active} onClick={() => setRouteActive(route)}>
+    <ListItem active={active} onClick={() => {
+      setRouteActive(route);
+      setShowMenu(false);
+    }}>
       <NavLink exact to={route}>
         <Bookmark />
         {name}
@@ -90,11 +96,11 @@ const MenuItem = ({
 
 export const Menu = ({ entries }): any => {
   const [ open, setOpen ] = useState(true);
-  const { db, routeActive, setRouteActive } = (useContext as any)(contextDB);
+  const { routeActive, setRouteActive, setShowMenu } = (useContext as any)(contextDB);
   return (
     <MenuWrapper>
-      {entries.map((entry, key) => {
-        const props = { routeActive, setRouteActive, entry };
+      {entries.map((entry: Entry, key) => {
+        const props = { routeActive, setRouteActive, entry, setShowMenu };
         return (
           <React.Fragment key={key}>
             {entry.children

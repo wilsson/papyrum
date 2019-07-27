@@ -55,7 +55,8 @@ export const Root = ({ db, imports }) => {
   const props = {
     db: db,
     setRouteActive,
-    routeActive
+    routeActive,
+    setShowMenu
   };
   return (
     <Provider {...props} >
