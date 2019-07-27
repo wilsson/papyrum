@@ -19,11 +19,7 @@ export const getConfig = config => ({
     publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
-    modules: [
-      'node_modules',
-      path.resolve(__dirname, '../../../../../node_modules')
-    ]
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']
   },
   devtool: 'source-map',
   module: {
