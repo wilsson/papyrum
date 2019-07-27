@@ -16,7 +16,6 @@ export { Sidebar, Shadow } from './components/Sidebar';
 export { fontFace } from './utils/fonts';
 export { Tab } from './components/Tab';
 export { ToolBar } from './components/ToolBar';
-export { DevelopmentZone } from './components/DevelopmentZone';
 export { Components } from './components/Components';
 export { Table, TableRow, TableTd, TableTh } from './components/Table';
 export { AStyled } from './components/A';

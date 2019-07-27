@@ -19,10 +19,10 @@
   },
   "dependencies": {
     "@papyrum/ui": "^0.0.5-alpha.0",
-    "polished": "3.4.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-router-dom": "5.0.0",
+    "react-live": "2.0.1",
     "react-simple-code-editor": "0.9.11",
     "styled-components": "4.3.2"
   },

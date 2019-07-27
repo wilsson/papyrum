@@ -1,9 +1,7 @@
 import styled, { css } from 'styled-components';
-import { invert, grayscale } from 'polished';
 
 export const Wrapper = styled.div`
   display: flex;
-  /* border: 1px solid red; */
   flex-wrap: wrap;
 `;
 
@@ -29,7 +27,6 @@ export const Color = styled.div`
   height: 120px;
   ${(props) => props.color && css`
     background-color: ${props.color};
-    color: ${grayscale(invert(props.color))};
   `}
   border-radius: 4px;
   padding: 10px;
