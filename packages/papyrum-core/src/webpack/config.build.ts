@@ -22,7 +22,7 @@ export const getConfig = config => ({
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
     modules: [
       'node_modules',
-      path.resolve(__dirname, '../../../../node_modules')
+      path.resolve(__dirname, '../../../../../node_modules')
     ]
   },
   devtool: 'source-map',
