@@ -3,9 +3,9 @@
   "private": true,
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "scripts": {
-    "bs": "lerna bootstrap && lerna run dev --stream",
+    "bs": "lerna bootstrap",
     "dev:tsc": "lerna run --parallel tsc:watch --stream",
-    "dev:example": "lerna run dev --stream",
+    "dev:example": "lerna run example --stream",
     "test": "jest",
     "dev": "run-p dev:*",
     "publish": "lerna publish --force-publish"

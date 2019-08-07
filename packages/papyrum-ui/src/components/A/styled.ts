@@ -4,6 +4,7 @@ export const styles = css`
   color: #039BE5;
   text-decoration: none;
   font-weight: 700;
+  font-size: 18px;
   &:hover {
     text-decoration: underline;
   }

@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const font = css`
-  color: #5B5B5B;
-  /*margin: 10px 0 20px;*/
+  color: #000000;
   margin: 40px 0 20px;
   font-family: "Nunito Sans";
   line-height: 100%;

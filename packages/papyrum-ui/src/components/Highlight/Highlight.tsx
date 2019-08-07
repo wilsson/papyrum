@@ -1,7 +1,7 @@
 import * as React from 'react';
 import HighlightImported, { defaultProps, Prism } from "prism-react-renderer";
 import { theme } from './theme';
-import {Wrapper } from './styled';
+import { Wrapper } from './styled';
 
 export const Highlight = ({ code }) => (
   <HighlightImported
