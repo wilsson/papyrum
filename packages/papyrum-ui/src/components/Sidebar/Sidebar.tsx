@@ -3,25 +3,19 @@ import { useState, useContext } from 'react';
 import { Search } from '../Search';
 import { Menu } from '../Menu';
 import { contextDB } from '../Provider';
+import { Sun } from 'react-feather';
+import Resizable  from 're-resizable';
 
 import {
-  Logo,
   Wrapper,
   ByWrapper,
-  MenuWrapper
+  MenuWrapper,
+  Title,
+  ButtonSun,
+  WrapperButtonSun
 } from './styled';
 
 import { useMenu } from './useMenu';
-
-import styled from 'styled-components';
-
-const Title = styled.div`
-  font-size: 24px;
-  font-weight: 700;
-  padding: 20px;
-  overflow-wrap: break-word;
-  color: #5B5B5B;
-`;
 
 const useOrder = (menu) => {
   const inmenu = { ...menu };
@@ -59,28 +53,30 @@ export const Sidebar = ({ entries, showMenu }) => {
     onResizeStop: handleResizable
   };
   return(
-    <Wrapper 
-      showMenu={showMenu}
-      minWidth={240}
-      maxWidth={1000}
-      enable={{
-        right: true
-      }}
-      size= {{ width: width, height: '100vh' }}
-      onResizeStop={handleResizable}
-    >
-      <div>
+    <Wrapper showMenu={showMenu} >
+      <Resizable
+        minWidth={240}
+        maxWidth={1000}
+        enable={{
+          right: true
+        }}
+        size= {{ width: width, height: '100vh' }}
+        onResizeStop={handleResizable}
+      >
+        <WrapperButtonSun>
+          <ButtonSun>
+            <Sun size={15} color="#5B5B5B"/>
+          </ButtonSun>
+        </WrapperButtonSun>
         <Title>{db.config.title}</Title>
-      </div>
-      <div>
         <Search onChange={(value) => {
           setQuery(value);
         }} />
-      </div>
-      <MenuWrapper>
-        <Menu entries={menuOrder} />
-      </MenuWrapper>
-      <ByWrapper>By Papyrum</ByWrapper>
+        <MenuWrapper>
+          <Menu entries={menuOrder} />
+        </MenuWrapper>
+        {/*<ByWrapper>By Papyrum</ByWrapper>*/}
+      </Resizable >
     </Wrapper>
   );
 };

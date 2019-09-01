@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Bookmark, ChevronDown } from 'react-feather';
+import { ChevronDown } from 'react-feather';
 import { useContext } from 'react';
 import { contextDB } from '../Provider';
 
@@ -19,8 +19,6 @@ export interface Entry {
   open?: boolean;
 }
 
-
-
 const equal = (x, y) => JSON.stringify(x) === JSON.stringify(y);
 
 export const SubMenu = ({
@@ -33,17 +31,14 @@ export const SubMenu = ({
 }) => {
   const { children, name } = entry;
   return (
-    <>
+    <React.Fragment>
       <ListItem onClick={(event) => {
         event.preventDefault();
         setOpen(!open)
       }}>
         <HeaderList href="#" open={open}>
-          <div>
-            <Bookmark />
-            {name}
-          </div>
-          <ChevronDown />
+          {name}
+          <ChevronDown size={15} color="#5b5b5b" style={{marginRight: 10}} />
         </HeaderList>
       </ListItem>
       {open && (
@@ -52,24 +47,21 @@ export const SubMenu = ({
             const { name, route } = child;
             const active = equal(route, routeActive);
             return (
-              <React.Fragment key={key}>
-                <SubListItemStyled 
-                  onClick={() => {
-                    setRouteActive(route)
-                    setShowMenu(false);  
-                  }} 
-                  active={active}
-                >
-                  <NavLink exact to={route}>
-                    {name}
-                  </NavLink>
-                </SubListItemStyled>
-              </React.Fragment>
+              <SubListItemStyled
+                key={key}
+                onClick={() => {
+                  setRouteActive(route)
+                  setShowMenu(false);  
+                }} 
+                active={active}
+              >
+                <NavLink exact to={route}>{name}</NavLink>
+              </SubListItemStyled>
             );
           })}
       </MenuWrapper>
       )}
-    </>
+    </React.Fragment>
   )
 };
 
@@ -86,15 +78,12 @@ const MenuItem = ({
       setRouteActive(route);
       setShowMenu(false);
     }}>
-      <NavLink exact to={route}>
-        <Bookmark />
-        {name}
-      </NavLink>
+      <NavLink exact to={route}>{name}</NavLink>
     </ListItem>
   )
 };
 
-export const Menu = ({ entries }): any => {
+export const Menu = ({ entries }) => {
   const [ open, setOpen ] = useState(true);
   const { routeActive, setRouteActive, setShowMenu } = (useContext as any)(contextDB);
   return (

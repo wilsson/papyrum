@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import Resizable  from 're-resizable';
 
-export const Wrapper = styled(Resizable)`
-  background-color: #f4f4f4;
+export const Wrapper = styled.div`
+  background-color: #F9FAFB;
   border-right: 1px solid #DBDBDB;
   display: flex;
   flex-direction: column;
@@ -53,4 +53,31 @@ export const Shadow = styled.div`
     opacity: .3;
     pointer-events: initial;
   `}
+`;
+
+export const Title = styled.div`
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 33px;
+  padding: 0 20px;
+  overflow-wrap: break-word;
+  color: #5B5B5B;
+`;
+
+export const WrapperButtonSun = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  margin-right: 10px;
+`;
+
+export const ButtonSun = styled.div`
+  width: 30px;
+  height: 30px;
+  background-color: #EEEEEE;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 `;
