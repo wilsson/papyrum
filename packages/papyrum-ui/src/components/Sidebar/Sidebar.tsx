@@ -42,16 +42,6 @@ export const Sidebar = ({ entries, showMenu }) => {
   const handleResizable = (e, direction, ref, d) => {
     setWidth(width + d.width);
   };
-  const propsResizable = {
-    showMenu: showMenu,
-    minWidth: 240,
-    maxWidth: 1000,
-    enable: {
-      right: true
-    },
-    size: { width: width, height: '100vh' },
-    onResizeStop: handleResizable
-  };
   return(
     <Wrapper showMenu={showMenu} >
       <Resizable

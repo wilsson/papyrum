@@ -12,7 +12,8 @@ import {
   EditorWrapper
 } from './styled';
 
-export const Playground = ({ code, scope }) => {
+export const Playground = ({ code, scope, ...nextProps }) => {
+  console.log('nextProps', nextProps);
   const [ codex, setCodex ] = useState(code);
   const [ clip, setClip ] = useState(false);
   const [ showCode, setShowCode ] = useState(false);

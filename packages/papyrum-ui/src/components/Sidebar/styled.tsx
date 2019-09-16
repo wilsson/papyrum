@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import Resizable  from 're-resizable';
 
 export const Wrapper = styled.div`
   background-color: #F9FAFB;

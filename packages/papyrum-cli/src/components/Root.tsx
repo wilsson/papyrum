@@ -5,6 +5,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/tag';
 import { getAsyncComponents } from './AsyncComponent';
 import { Wrapper } from './styled';
+import styled from 'styled-components';
+import { Layout, Layers } from 'react-feather';
 
 import {
   GlobalStyle,
@@ -47,6 +49,81 @@ const providerComponents = {
 
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
+const Label = styled.div`
+  line-height: 22px;
+  padding: 0 8px;
+  font-size: 14px;
+  color: #155724;
+  background-color: #D4EDDA;
+  font-weight: 700;
+  border-radius: 10px;
+  margin-right: 15px;
+`;
+
+const TabWrapper = styled.div`
+  height: 40px;
+  background-color: #F9FAFB;
+  border-bottom: 1px solid #DBDBDB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const RigthWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const LeftWrapper = styled.div`
+`;
+
+const TabItem = styled.div`
+  font-size: 16px;
+  font-weight: 700;
+  color: #5B5B5B;
+  padding: 0 15px;
+  cursor: pointer;
+`;
+
+const IconWrapper = styled.div`
+  padding: 0 15px;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  > svg {
+    transition: all ease .2s;
+  }
+  &:hover > svg {
+    stroke: #00A8FF;
+  }
+`;
+
+const Separator = styled.div`
+  width: 1px;
+  height: 15px;
+  border-left: 1px solid #DBDBDB;
+`;
+
+const Tab = () => (
+  <TabWrapper>
+    <RigthWrapper>
+      <TabItem>Docs</TabItem>
+      <TabItem>Development</TabItem>
+      <Separator />
+      <IconWrapper>
+        <Layers size={15} color="#5B5B5B" />
+      </IconWrapper>
+      <Separator />
+      <IconWrapper>
+        <Layout size={15} color="#5B5B5B" />
+      </IconWrapper> 
+    </RigthWrapper>
+    <LeftWrapper>
+      <Label>Ready</Label>
+    </LeftWrapper>
+  </TabWrapper>
+);
+
 export const Root = ({ db, imports }) => {
   const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
@@ -66,14 +143,7 @@ export const Root = ({ db, imports }) => {
           <Shadow showMenu={showMenu} onClick={() => setShowMenu(!showMenu) }/>
           <Sidebar entries={db.entries} showMenu={showMenu} />
           <ContentWrapper showMenu={showMenu}>
-          <Menu>
-            <MenuIconStyled onClick={() => setShowMenu(!showMenu) }/>
-            {db.config.homepage && (
-              <a href={db.config.homepage} target="_blank" >
-                <GitHubIconStyled />
-              </a>
-            )}
-          </Menu>
+            <Tab />
             <ProviderWrapper>
               <MDXProvider components={providerComponents}>
                 <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>

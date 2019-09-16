@@ -34,11 +34,11 @@ export const BoxProvider = styled.div`
 
 export const ProviderWrapper = styled.div`
   overflow-y: auto;
+  height: 100vh;
 `;
 
 export const ContentWrapper = styled.div`
   flex: 1;
-  height: 100vh;
   position: relative;
   transition: transform .3s ease;
   @media (max-width: 1200px) {
@@ -75,6 +75,7 @@ export const Menu = styled.div`
     justify-content: space-between;
   }
 `;
+
 
 export const IconStyled = css`
   color : #5B5B5B;
