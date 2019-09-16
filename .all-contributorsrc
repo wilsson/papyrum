@@ -1,0 +1,27 @@
+{
+  "projectName": "papyrum",
+  "projectOwner": "wilsson",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "CONTRIBUTING.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "wilsson",
+      "name": "Wilson FT",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4754339?v=4",
+      "profile": "https://twitter.com/wilsson83",
+      "contributions": [
+        "code",
+        "doc",
+        "review",
+        "design"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "commitConvention": "none"
+}
