@@ -12,6 +12,7 @@
     "dev:tsc": "lerna run --parallel tsc:watch --stream",
     "dev:assets": "lerna run assets",
     "dev:example": "lerna run example --stream",
+    "dev": "run-p dev:*",
     "publish": "lerna publish --force-publish",
     "contributors:init": "all-contributors init",
     "contributors:add": "all-contributors add",
