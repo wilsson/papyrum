@@ -4,5 +4,6 @@ export default {
     'Colors',
     'Fonts',
     'Components'
-  ]
+  ],
+  template: './index.html'
 };
