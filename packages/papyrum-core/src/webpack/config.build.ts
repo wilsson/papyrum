@@ -3,9 +3,10 @@
 import * as path from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as WebpackBar from 'webpackbar';
-const pathEntry = path.resolve(process.cwd(), './.papyrum/root.jsx');
-
 import * as loaders from './loaders';
+import { setPathHtmlTemplate } from './../utils';
+
+const pathEntry = path.resolve(process.cwd(), './.papyrum/root.jsx');
 
 export const getConfig = config => ({
   mode: 'production',
@@ -32,7 +33,7 @@ export const getConfig = config => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../../public/index.html')
+      template: setPathHtmlTemplate(config)
     }),
     new WebpackBar({
       name: 'Papyrum',
