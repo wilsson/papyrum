@@ -12,9 +12,8 @@ import {
   EditorWrapper
 } from './styled';
 
-export const Playground = ({ code, scope, ...nextProps }) => {
-  console.log('nextProps', nextProps);
-  const [ codex, setCodex ] = useState(code);
+export const Playground = ({ code: initialCode, scope}) => {
+  const [ code, setCode ] = useState(initialCode);
   const [ clip, setClip ] = useState(false);
   const [ showCode, setShowCode ] = useState(false);
   const handleClipboard = () => {
@@ -23,8 +22,8 @@ export const Playground = ({ code, scope, ...nextProps }) => {
     setTimeout(() => setClip(false), 200);
   };
   const propsEditor = {
-    value: codex,
-    onValueChange: code => setCodex(code),
+    value: code,
+    onValueChange: code => setCode(code),
     highlight: getHighlight,
     style: {
       fontFamily: 'Fira Code',
@@ -34,7 +33,7 @@ export const Playground = ({ code, scope, ...nextProps }) => {
   };
   return(
     <CodeWrapperStyled>
-      <LiveProvider code={codex} scope={scope}>
+      <LiveProvider code={code} scope={scope}>
         <WrapperLivePreview>
           <LivePreview />
           <LiveError />
