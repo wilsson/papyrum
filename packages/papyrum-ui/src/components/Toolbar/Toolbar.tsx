@@ -2,12 +2,11 @@ import * as React from 'react';
 import { useState, useContext } from 'react';
 import { Layers } from 'react-feather';
 import { Dropdown } from '../Dropdown';
-
+import { contextDB, Context } from '../Provider/context';
 import {
   Label,
   TabWrapper,
   RightWrapper,
-  LeftWrapper,
   TabItem,
   IconWrapper,
   Separator
@@ -20,12 +19,18 @@ interface Props {
   activePanel: string;
 }
 
+const getStatus = (entries, routeActive: string): string => {
+  const [ document ] = entries.filter(({ route }) => route === routeActive);
+  return document.status;
+}
 export const Toolbar: React.FC<Props> = ({
   listStates,
   setStateSelected,
   setActivePanel,
   activePanel
 }) => {
+  const { routeActive, db } = useContext<Context>(contextDB);
+  const status = getStatus(Object.values(db.plain), routeActive)
   const [ show, setShow ] = useState(false);
   return(
     <TabWrapper>
@@ -54,9 +59,9 @@ export const Toolbar: React.FC<Props> = ({
           </>
         )}
       </RightWrapper>
-      <LeftWrapper>
-        <Label>Ready</Label>
-      </LeftWrapper>
+      <div>
+        <Label status={status}>{status}</Label>
+      </div>
     </TabWrapper>
   )
 };

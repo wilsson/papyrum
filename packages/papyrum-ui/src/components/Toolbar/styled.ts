@@ -1,15 +1,36 @@
 import styled, { css } from 'styled-components';
 
+interface Props {
+  status: string;
+}
+
+enum status {
+  DEPRECATED = 'deprecated',
+  READY = 'ready',
+  DEVELOPMENT = 'development',
+}
 
 export const Label = styled.div`
   line-height: 22px;
   padding: 0 8px;
   font-size: 14px;
-  color: #155724;
-  background-color: #D4EDDA;
+  color: #383d41;
+  background-color: #E2E3E5;
   font-weight: 700;
   border-radius: 10px;
   margin-right: 15px;
+  ${(props: Props) => props.status === status.DEVELOPMENT && css`
+    color: #004085;
+    background-color: #CCE5FF;
+  `}
+  ${(props: Props) => props.status === status.READY && css`
+    color: #155724;
+    background-color: #D4EDDA;
+  `}
+  ${(props: Props) => props.status === status.DEPRECATED && css`
+    color: #721C24;
+    background-color: #F8D7DA;
+  `}
 `;
 
 export const TabWrapper = styled.div`
@@ -24,9 +45,6 @@ export const TabWrapper = styled.div`
 export const RightWrapper = styled.div`
   display: flex;
   align-items: center;
-`;
-
-export const LeftWrapper = styled.div`
 `;
 
 export const TabItem = styled.div`
