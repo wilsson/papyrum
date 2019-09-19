@@ -8,17 +8,17 @@ import { Table, TableRow, TableTd, TableTh } from './components/Table';
 import { InlineCode } from './components/InlineCode';
 import { Img } from './components/Img';
 
+export { DevZone } from './components/DevZone';
 export { Provider, contextDB } from './components/Provider';
 export { CodeWrapperStyled } from './components/Code';
 export { CodeBar } from './components/CodeBar';
 export { getHighlight } from './components/Highlight';
 export { Sidebar, Shadow } from './components/Sidebar';
 export { fontFace } from './utils/fonts';
-export { Tab } from './components/Tab';
-export { ToolBar } from './components/ToolBar';
-export { Components } from './components/Components';
+export { Toolbar } from './components/Toolbar';
 export { Table, TableRow, TableTd, TableTh } from './components/Table';
 export { AStyled } from './components/A';
+export { Dropdown } from './components/Dropdown';
 
 export const components = {
   Img,

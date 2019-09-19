@@ -27,7 +27,9 @@ export const SubMenu = ({
   setRouteActive,
   setShowMenu,
   open,
-  setOpen
+  setOpen,
+  setActivePanel,
+  setStateSelected
 }) => {
   const { children, name } = entry;
   return (
@@ -50,8 +52,10 @@ export const SubMenu = ({
               <SubListItemStyled
                 key={key}
                 onClick={() => {
-                  setRouteActive(route)
-                  setShowMenu(false);  
+                  setRouteActive(route);
+                  setShowMenu(false); 
+                  setActivePanel('docs'); 
+                  setStateSelected('');
                 }} 
                 active={active}
               >
@@ -69,7 +73,9 @@ const MenuItem = ({
   routeActive,
   setRouteActive,
   setShowMenu,
-  entry
+  entry,
+  setActivePanel,
+  setStateSelected
 }) => {
   const { route, name } = entry;
   const active = equal(route, routeActive);
@@ -77,6 +83,8 @@ const MenuItem = ({
     <ListItem active={active} onClick={() => {
       setRouteActive(route);
       setShowMenu(false);
+      setActivePanel('docs');
+      setStateSelected('');
     }}>
       <NavLink exact to={route}>{name}</NavLink>
     </ListItem>
@@ -85,11 +93,11 @@ const MenuItem = ({
 
 export const Menu = ({ entries }) => {
   const [ open, setOpen ] = useState(true);
-  const { routeActive, setRouteActive, setShowMenu } = (useContext as any)(contextDB);
+  const { routeActive, setRouteActive, setShowMenu, setActivePanel, setStateSelected } = (useContext as any)(contextDB);
   return (
     <MenuWrapper>
       {entries.map((entry: Entry, key) => {
-        const props = { routeActive, setRouteActive, entry, setShowMenu };
+        const props = { routeActive, setRouteActive, entry, setShowMenu, setActivePanel, setStateSelected };
         return (
           <React.Fragment key={key}>
             {entry.children

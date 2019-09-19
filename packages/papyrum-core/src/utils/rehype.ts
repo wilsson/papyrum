@@ -2,7 +2,6 @@ import * as is from 'unist-util-is';
 import * as parser from '@babel/parser';
 import traverse from '@babel/traverse';
 import * as nodeToString from 'hast-util-to-string';
-import * as prettier from 'prettier'
 
 // @ts-ignore
 import * as strip from 'strip-indent';
@@ -92,25 +91,21 @@ const getProps = (nodes) => {
 };
 
 const getNodes = (nodes, scope, props) => {
-//const getNodes = (nodes, scope) => {
   return nodes
     .filter(node => is('jsx', node))
     .map(async (node, key) => {
       const name = getComponentName(node.value);
       if (name === 'Playground') {
-        const p = props[key];
-        console.log('props', p[0]);
-        const propsString = p[0] || '';
-        const p1 = !!propsString && propsString.map(node => `${node.name}="${node.value}"`).join(' ')
-        console.log('scope', p1);
+        const nodeProps = props[key];
+        const propsString = nodeProps[0] || '';
+        const propsInline = !!propsString && propsString.map(node => `${node.name}="${node.value}"`).join(' ')
         const tagOpen = new RegExp(`^\\<${name}`);
         const componentString = nodeToString(node);
         const componentForCode = getInnerComponentWithString(componentString);
         const code = cleanSpaces(componentForCode);
         node.value = node.value.replace(
           tagOpen,
-          `<${name} code={'${code}'} scope={{${scope}}} ${p1}`
-          //`<${name} code={'${code}'} scope={{${scope}}}`
+          `<${name} code={'${code}'} scope={{${scope}}} ${propsInline}`
         );
       }
     });
@@ -120,6 +115,5 @@ export const rehype = (opts) => (tree, file) => {
   const scope = getScopes(tree.children);
   const props = getProps(tree.children);
   const nodes = getNodes(tree.children, scope, props);
-  //const nodes = getNodes(tree.children, scope);
   return Promise.all(nodes).then(() => tree);
 };
