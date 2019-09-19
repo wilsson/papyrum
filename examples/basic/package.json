@@ -8,7 +8,7 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "example": "papyrum dev",
+    "example": "papyrum dev -p 4000",
     "build": "papyrum build"
   },
   "dependencies": {
