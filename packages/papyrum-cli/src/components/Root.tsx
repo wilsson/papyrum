@@ -1,6 +1,14 @@
 import * as React from 'react';
 import { useState, Suspense } from 'react';
-import { Sidebar, Provider, Toolbar, DevZone, components, Shadow } from '@papyrum/ui';
+import {
+  Sidebar,
+  Provider,
+  stateForComponentState,
+  Toolbar,
+  DevZone,
+  components,
+  Shadow
+} from '@papyrum/ui';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/tag';
 import { getAsyncComponents } from './AsyncComponent';
@@ -38,14 +46,6 @@ const providerComponents = {
 };
 
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
-
-interface stateForComponentState {
-  [pathname: string]: [{
-    name: string;
-    code: string;
-    scope: Object;
-  }]
-}
 
 const getMetadata = (stateForComponent: stateForComponentState, stateSelected: string) => {
   const { pathname } = location;

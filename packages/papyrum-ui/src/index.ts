@@ -9,7 +9,7 @@ import { InlineCode } from './components/InlineCode';
 import { Img } from './components/Img';
 
 export { DevZone } from './components/DevZone';
-export { Provider, contextDB } from './components/Provider';
+export { Provider, contextDB, stateForComponentState, DB, Context } from './components/Provider';
 export { CodeWrapperStyled } from './components/Code';
 export { CodeBar } from './components/CodeBar';
 export { getHighlight } from './components/Highlight';

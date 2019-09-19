@@ -1,2 +1,2 @@
 export { Provider } from './Provider';
-export { contextDB } from './context';
+export { contextDB, stateForComponentState, DB, Context } from './context';
