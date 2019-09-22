@@ -65,7 +65,8 @@ export const init = (argv: any) => {
     // loadfile papyrumrc
     const config = loadFileConfig('papyrum');
     // create imports
-    const file = fs.readFileSync(template('root.txt'), 'utf8');
+    const appFile = fs.readFileSync(template('app.txt'), 'utf8');
+    const rootFile = fs.readFileSync(template('root.txt'), 'utf8');
     var templateFn = await tplCompile(template('imports.tpl.js'), {
       minimize: false
     });
@@ -73,7 +74,8 @@ export const init = (argv: any) => {
       entries: Object.values(entries)
     });
     fs.writeFileSync(pathClient + '/imports.js', imports);
-    fs.writeFileSync(path.resolve(pathClient, './root.jsx'), file);
+    fs.writeFileSync(path.resolve(pathClient, './root.js'), rootFile);
+    fs.writeFileSync(path.resolve(pathClient, './App.js'), appFile);
     // create db
     let sentries = {};
     Object.keys(entries).forEach(entry => {

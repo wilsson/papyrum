@@ -9,7 +9,8 @@ export const server = argv => {
   const server = new WebpackDevServer(compiler, {
     open: true,
     quiet: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true
   });
 
   server.listen(port, '0.0.0.0', () => {

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useState, Suspense } from 'react';
+import { hot } from 'react-hot-loader';
+
 import {
   Sidebar,
   Provider,
@@ -7,7 +9,8 @@ import {
   Toolbar,
   DevZone,
   components,
-  Shadow
+  Shadow,
+  Addons
 } from '@papyrum/ui';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/tag';
@@ -87,9 +90,8 @@ export const Root = ({ db, imports }) => {
               setActivePanel={setActivePanel}
               activePanel={activePanel}
             />
-
-            {activePanel === 'docs' && (
               <ProviderWrapper>
+             {activePanel === 'docs' && (
                 <MDXProvider components={providerComponents}>
                   <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
                     <Switch>
@@ -105,21 +107,24 @@ export const Root = ({ db, imports }) => {
                     </Switch>
                   </Suspense>
                 </MDXProvider>
+            )}
+              {activePanel === 'development' && (
+                <div style={{ padding: 15 }}>
+                  {stateForComponent[pathname] && (
+                    <DevZone
+                      code={getMetadata(stateForComponent, stateSelected).code}
+                      scope={getMetadata(stateForComponent, stateSelected).scope}
+                    />
+                  )}
+                </div>
+              )}
               </ProviderWrapper>
-            )}
-            {activePanel === 'development' && (
-              <div style={{ padding: 15 }}>
-                {stateForComponent[pathname] && (
-                  <DevZone
-                    code={getMetadata(stateForComponent, stateSelected).code}
-                    scope={getMetadata(stateForComponent, stateSelected).scope}
-                  />
-                )}
-              </div>
-            )}
+            {activePanel === 'development' && <Addons />}
           </ContentWrapper>
         </Wrapper>
       </BrowserRouter>
     </Provider>
   );
 };
+
+export default hot(module)(Root);
