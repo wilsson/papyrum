@@ -30,7 +30,7 @@ export const BoxProvider = styled.div`
 
 export const ProviderWrapper = styled.div`
   overflow-y: auto;
-  height: 100vh;
+  flex: 1%;
 `;
 
 export const ContentWrapper = styled.div`
@@ -42,6 +42,8 @@ export const ContentWrapper = styled.div`
   }
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
 `;
 
 export const CenterWrapper = styled.div`

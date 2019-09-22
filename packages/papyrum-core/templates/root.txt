@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import db from './db.json';
-import { Root } from '@papyrum/cli'
-import { imports } from './imports';
+import App from './App';
 
 const node = document.createElement('div');
 document.body.appendChild(node);
 
-ReactDOM.render(<Root db={db} imports={imports} />, node);
+ReactDOM.render(<App />, node);
+
+if(module.hot){
+  module.hot.accept('./App', () => {
+    const NextApp = require('./App').default;
+    ReactDOM.render(<NextApp />, node);
+  })
+}

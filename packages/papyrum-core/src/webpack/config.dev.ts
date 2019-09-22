@@ -3,13 +3,19 @@ import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as WebpackBar from 'webpackbar';
 import * as loaders from './loaders';
 import { setPathHtmlTemplate } from './../utils';
+import * as webpack from 'webpack';
 
 const pathEntry = path.resolve(process.cwd(), './.papyrum/root.jsx');
 
 export const getConfig = config => ({
   mode: 'development',
   entry: {
-    app: [`webpack-dev-server/client?http://localhost:${config.port}`, pathEntry]
+    app: [
+      //`webpack-dev-server/client?http://localhost:${config.port}`, // este era el que usamos
+      require.resolve('webpack-dev-server/client') + '?/',
+      require.resolve('webpack/hot/dev-server'), // este es el de la magia
+      pathEntry
+    ]
   },
   output: {
     path: path.resolve(process.cwd(), `${config.dest}`),
@@ -36,7 +42,8 @@ export const getConfig = config => ({
     new WebpackBar({
       name: 'Papyrum',
       color: '#41b883'
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
     namedModules: true,
