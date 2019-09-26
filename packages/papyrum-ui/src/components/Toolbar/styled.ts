@@ -34,7 +34,8 @@ export const Label = styled.div`
 `;
 
 export const TabWrapper = styled.div`
-  height: 40px;
+  height: 35px;
+  min-height: 35px;
   background-color: #F9FAFB;
   border-bottom: 1px solid #DBDBDB;
   display: flex;

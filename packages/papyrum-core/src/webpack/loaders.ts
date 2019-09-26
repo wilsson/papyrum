@@ -15,8 +15,7 @@ const getConfigBabel = argv => {
     ].filter(Boolean),
     plugins: [
       require.resolve('babel-plugin-export-metadata'),
-      require.resolve('@babel/plugin-syntax-dynamic-import'),
-      require.resolve('react-hot-loader/babel')
+      require.resolve('@babel/plugin-syntax-dynamic-import')
     ]
   }
   return merge(config, loadFileConfig('babel'));

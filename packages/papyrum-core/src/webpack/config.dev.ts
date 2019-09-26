@@ -5,15 +5,14 @@ import * as loaders from './loaders';
 import { setPathHtmlTemplate } from './../utils';
 import * as webpack from 'webpack';
 
-const pathEntry = path.resolve(process.cwd(), './.papyrum/root.jsx');
+const pathEntry = path.resolve(process.cwd(), './.papyrum/root.js');
 
 export const getConfig = config => ({
   mode: 'development',
   entry: {
     app: [
-      //`webpack-dev-server/client?http://localhost:${config.port}`, // este era el que usamos
       require.resolve('webpack-dev-server/client') + '?/',
-      require.resolve('webpack/hot/dev-server'), // este es el de la magia
+      require.resolve('webpack/hot/dev-server'),
       pathEntry
     ]
   },
