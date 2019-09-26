@@ -12,6 +12,7 @@ import {
   Shadow,
   Addons
 } from '@papyrum/ui';
+
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { MDXProvider } from '@mdx-js/tag';
 import { getAsyncComponents } from './AsyncComponent';
@@ -50,13 +51,6 @@ const providerComponents = {
 
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
-const getMetadata = (stateForComponent: stateForComponentState, stateSelected: string) => {
-  const { pathname } = location;
-  const selected = stateSelected || stateForComponent[pathname][0].name;
-  const [ state ] = stateForComponent[pathname].filter(({ name }) => name === selected);
-  return state;
-};
-
 export const Root = ({ db, imports }) => {
   const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
@@ -65,6 +59,19 @@ export const Root = ({ db, imports }) => {
   const [ stateForComponent, setStateForComponent ] = useState<stateForComponentState>({});
   const [ stateSelected , setStateSelected ] = useState('');
   const [ activePanel, setActivePanel ] = useState('docs');
+  const [ code, setCode ] = useState('');
+
+  const getMetadata = (stateForComponent: stateForComponentState, stateSelected: string) => {
+    const { pathname } = location;
+    const selected = stateSelected || stateForComponent[pathname][0].name;
+    const [ state ] = stateForComponent[pathname].filter(({ name }) => name === selected);
+    return state;
+  };
+
+  const handleChangeCode = (selectedUseCase: string) => {
+    const code = getMetadata(stateForComponent, selectedUseCase).code; 
+    setCode(code);
+  };
 
   const props = {
     db: db,
@@ -89,37 +96,49 @@ export const Root = ({ db, imports }) => {
               setStateSelected={setStateSelected}
               setActivePanel={setActivePanel}
               activePanel={activePanel}
+              handleChangeCode={handleChangeCode}
             />
-              <ProviderWrapper>
-             {activePanel === 'docs' && (
-                <MDXProvider components={providerComponents}>
-                  <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
-                    <Switch>
-                      {Object.keys(db.plain).map((entry, i) => (
-                        <Route
-                          key={i}
-                          exact
-                          path={db.plain[entry].route}
-                          component={componentsAsync[i]}
-                        />
-                      ))}
-                      <Route component={NoMatch} />
-                    </Switch>
-                  </Suspense>
-                </MDXProvider>
-            )}
-              {activePanel === 'development' && (
+            <ProviderWrapper>
+              {activePanel === 'docs' && (
+                  <MDXProvider components={providerComponents}>
+                    <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
+                      <Switch>
+                        {Object.keys(db.plain).map((entry, i) => (
+                          <Route
+                            key={i}
+                            exact
+                            path={db.plain[entry].route}
+                            component={componentsAsync[i]}
+                          />
+                        ))}
+                        <Route component={NoMatch} />
+                      </Switch>
+                    </Suspense>
+                  </MDXProvider>
+              )}
+              {(activePanel === 'development' && stateForComponent[pathname]) && (
                 <div style={{ padding: 15 }}>
                   {stateForComponent[pathname] && (
                     <DevZone
-                      code={getMetadata(stateForComponent, stateSelected).code}
+                      code={code || getMetadata(stateForComponent, stateSelected).code}
                       scope={getMetadata(stateForComponent, stateSelected).scope}
                     />
                   )}
                 </div>
               )}
-              </ProviderWrapper>
-            {activePanel === 'development' && <Addons />}
+
+              {(activePanel === 'development' && !stateForComponent[pathname]) && (
+                <div style={{ padding: 15 }}>
+                  To work in this area you need to use the Playground component and give it a name as property.
+                </div>
+              )}
+            </ProviderWrapper>
+            {(activePanel === 'development' && stateForComponent[pathname]) && (
+              <Addons
+                code={code || getMetadata(stateForComponent, stateSelected).code}
+                setCode={setCode}
+              />
+            )}
           </ContentWrapper>
         </Wrapper>
       </BrowserRouter>
