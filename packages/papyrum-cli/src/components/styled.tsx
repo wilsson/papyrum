@@ -36,7 +36,7 @@ export const ProviderWrapper = styled.div`
 export const ContentWrapper = styled.div`
   flex: 1;
   position: relative;
-  transition: transform .3s ease;
+  transition: all .3s ease;
   @media (max-width: 1200px) {
     transform: translateX(-240px);
   }
@@ -44,6 +44,8 @@ export const ContentWrapper = styled.div`
   flex-direction: column;
   height: 100vh;
   justify-content: space-between;
+  background-color: ${props => props.theme.colors.backgroundArea};
+  color: ${props => props.theme.colors.textArea};
 `;
 
 export const CenterWrapper = styled.div`

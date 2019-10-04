@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Input = styled.input`
   border: none;
   line-height: 28px;
-  background-color: #F9FAFB;
+  background-color: transparent;
   outline: none;
   color: #5b5b5b;
   font-size: 14px;
@@ -14,8 +14,9 @@ export const SearchWrapper = styled.div`
   margin-top: 20px;
   display: flex;
   align-items: center;
-  border-top: 1px solid #dbdbdb;
-  border-bottom: 1px solid #dbdbdb;
+  border-top: 1px solid ${props => props.theme.colors.borderMenu};
+  border-bottom: 1px solid ${props => props.theme.colors.borderMenu};
+  transition: all .3s ease;
   padding-left: 24px;
   svg {
     width: 15px;

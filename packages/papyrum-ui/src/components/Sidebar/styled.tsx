@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
-  background-color: #F9FAFB;
-  border-right: 1px solid #DBDBDB;
+  background-color: ${props => props.theme.colors.backgroundMenu};
+  border-right: 1px solid ${props => props.theme.colors.borderMenu};
+  color: ${props => props.theme.colors.textMenu};
   display: flex;
   flex-direction: column;
-  transition: transform .3s ease;
+  transition: all .3s ease;
   z-index: 200;
   @media (max-width: 1200px) {
     transform: translateX(-240px);
@@ -16,7 +17,7 @@ export const Wrapper = styled.div`
 `;
 
 export const ByWrapper = styled.div`
-  border-top: 1px solid #DBDBDB;
+  border-top: 1px solid ${props => props.theme.colors.borderMenu};
   text-align: center;
   font-weight: 700;
   font-size: 14px;
@@ -60,7 +61,6 @@ export const Title = styled.div`
   line-height: 33px;
   padding: 0 20px;
   overflow-wrap: break-word;
-  color: #5B5B5B;
 `;
 
 export const WrapperButtonSun = styled.div`
@@ -73,10 +73,13 @@ export const WrapperButtonSun = styled.div`
 export const ButtonSun = styled.div`
   width: 30px;
   height: 30px;
-  background-color: #EEEEEE;
+  background-color: ${props => props.theme.colors.backgroundButtonTheme};
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  svg{
+    stroke: ${props => props.theme.colors.colorButtonTheme};
+  }
 `;
