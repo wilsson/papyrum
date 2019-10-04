@@ -20,6 +20,7 @@ export { Toolbar } from './components/Toolbar';
 export { Table, TableRow, TableTd, TableTh } from './components/Table';
 export { AStyled } from './components/A';
 export { Dropdown } from './components/Dropdown';
+export { light as lightTheme, dark as darkTheme  } from './themes';
 
 export const components = {
   Img,

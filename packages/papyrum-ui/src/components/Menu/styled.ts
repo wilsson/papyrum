@@ -18,15 +18,15 @@ const Item = styled.li`
   padding-left: 24px;
   line-height: 32px;
   &:hover {
-    background-color: ${(props) => !props.active && '#E8E8E8'};
+    background-color: ${(props) => !props.active && 'rgba(0,0,0,0.1)'};
   }
   ${props => props.active && css`
     background-color: #00A8FF;
   `}
   a {
     text-decoration: none;
-    color: #5b5b5b;
     display: block;
+    color: ${props => props.theme.colors.textMenu};
     ${props => props.active && css`
       color: white;
     `}

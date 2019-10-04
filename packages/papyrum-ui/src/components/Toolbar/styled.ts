@@ -36,8 +36,9 @@ export const Label = styled.div`
 export const TabWrapper = styled.div`
   height: 35px;
   min-height: 35px;
-  background-color: #F9FAFB;
-  border-bottom: 1px solid #DBDBDB;
+  background-color:  ${props => props.theme.colors.backgroundMenu};
+  border-bottom: 1px solid ${props => props.theme.colors.borderMenu};
+  transition: all .3s ease;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -51,7 +52,7 @@ export const RightWrapper = styled.div`
 export const TabItem = styled.div`
   font-size: 16px;
   font-weight: 700;
-  color: #5B5B5B;
+  color: ${props => props.theme.colors.textMenu};
   padding: 0 15px;
   cursor: pointer;
   ${(props) => props.active && css`

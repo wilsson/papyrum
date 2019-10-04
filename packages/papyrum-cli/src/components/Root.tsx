@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useState, Suspense } from 'react';
 import { hot } from 'react-hot-loader';
+import { ThemeProvider } from "styled-components";
 
 import {
   Sidebar,
@@ -10,7 +11,9 @@ import {
   DevZone,
   components,
   Shadow,
-  Addons
+  Addons,
+  lightTheme,
+  darkTheme
 } from '@papyrum/ui';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -54,24 +57,32 @@ const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 export const Root = ({ db, imports }) => {
   const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
-  const [ showMenu, setShowMenu ] = useState(false);
-  const [ routeActive, setRouteActive ] = useState(pathname);
-  const [ stateForComponent, setStateForComponent ] = useState<stateForComponentState>({});
-  const [ stateSelected , setStateSelected ] = useState('');
-  const [ activePanel, setActivePanel ] = useState('docs');
-  const [ code, setCode ] = useState('');
+  const [showMenu, setShowMenu] = useState(false);
+  const [routeActive, setRouteActive] = useState(pathname);
+  const [stateForComponent, setStateForComponent] = useState<stateForComponentState>({});
+  const [stateSelected, setStateSelected] = useState('');
+  const [activePanel, setActivePanel] = useState('docs');
+  const [code, setCode] = useState('');
 
   const getMetadata = (stateForComponent: stateForComponentState, stateSelected: string) => {
     const { pathname } = location;
     const selected = stateSelected || stateForComponent[pathname][0].name;
-    const [ state ] = stateForComponent[pathname].filter(({ name }) => name === selected);
+    const [state] = stateForComponent[pathname].filter(({ name }) => name === selected);
     return state;
   };
 
   const handleChangeCode = (selectedUseCase: string) => {
-    const code = getMetadata(stateForComponent, selectedUseCase).code; 
+    const code = getMetadata(stateForComponent, selectedUseCase).code;
     setCode(code);
   };
+
+  const stored = window.localStorage.getItem("isDark");
+  const [ isDark, setDarkTheme ] = useState(stored === "true");
+
+  const handleToggleTheme = () => {
+    setDarkTheme(!isDark);
+    window.localStorage.setItem('isDark', ''+!isDark);
+  }
 
   const props = {
     db: db,
@@ -83,23 +94,25 @@ export const Root = ({ db, imports }) => {
     setStateForComponent,
     setActivePanel
   };
+
   return (
     <Provider {...props} >
       <GlobalStyle />
       <BrowserRouter>
-        <Wrapper>
-          <Shadow showMenu={showMenu} onClick={() => setShowMenu(!showMenu) }/>
-          <Sidebar entries={db.entries} showMenu={showMenu} />
-          <ContentWrapper showMenu={showMenu}>
-            <Toolbar
-              listStates={stateForComponent[pathname] ? stateForComponent[pathname].map(({ name }) => name) : []}
-              setStateSelected={setStateSelected}
-              setActivePanel={setActivePanel}
-              activePanel={activePanel}
-              handleChangeCode={handleChangeCode}
-            />
-            <ProviderWrapper>
-              {activePanel === 'docs' && (
+        <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+          <Wrapper>
+            <Shadow showMenu={showMenu} onClick={() => setShowMenu(!showMenu)} />
+            <Sidebar entries={db.entries} showMenu={showMenu} isDark={isDark} toggleTheme={handleToggleTheme} />
+            <ContentWrapper showMenu={showMenu}>
+              <Toolbar
+                listStates={stateForComponent[pathname] ? stateForComponent[pathname].map(({ name }) => name) : []}
+                setStateSelected={setStateSelected}
+                setActivePanel={setActivePanel}
+                activePanel={activePanel}
+                handleChangeCode={handleChangeCode}
+              />
+              <ProviderWrapper>
+                {activePanel === 'docs' && (
                   <MDXProvider components={providerComponents}>
                     <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
                       <Switch>
@@ -115,32 +128,33 @@ export const Root = ({ db, imports }) => {
                       </Switch>
                     </Suspense>
                   </MDXProvider>
-              )}
-              {(activePanel === 'development' && stateForComponent[pathname]) && (
-                <div style={{ padding: 15 }}>
-                  {stateForComponent[pathname] && (
-                    <DevZone
-                      code={code || getMetadata(stateForComponent, stateSelected).code}
-                      scope={getMetadata(stateForComponent, stateSelected).scope}
-                    />
-                  )}
-                </div>
-              )}
+                )}
+                {(activePanel === 'development' && stateForComponent[pathname]) && (
+                  <div style={{ padding: 15 }}>
+                    {stateForComponent[pathname] && (
+                      <DevZone
+                        code={code || getMetadata(stateForComponent, stateSelected).code}
+                        scope={getMetadata(stateForComponent, stateSelected).scope}
+                      />
+                    )}
+                  </div>
+                )}
 
-              {(activePanel === 'development' && !stateForComponent[pathname]) && (
-                <div style={{ padding: 15 }}>
-                  To work in this area you need to use the Playground component and give it a name as property.
-                </div>
+                {(activePanel === 'development' && !stateForComponent[pathname]) && (
+                  <div style={{ padding: 15 }}>
+                    To work in this area you need to use the Playground component and give it a name as property.
+                  </div>
+                )}
+              </ProviderWrapper>
+              {(activePanel === 'development' && stateForComponent[pathname]) && (
+                <Addons
+                  code={code || getMetadata(stateForComponent, stateSelected).code}
+                  setCode={setCode}
+                />
               )}
-            </ProviderWrapper>
-            {(activePanel === 'development' && stateForComponent[pathname]) && (
-              <Addons
-                code={code || getMetadata(stateForComponent, stateSelected).code}
-                setCode={setCode}
-              />
-            )}
-          </ContentWrapper>
-        </Wrapper>
+            </ContentWrapper>
+          </Wrapper>
+        </ThemeProvider>
       </BrowserRouter>
     </Provider>
   );
