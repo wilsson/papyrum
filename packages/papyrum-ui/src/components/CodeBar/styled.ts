@@ -4,7 +4,7 @@ export const ToolBarWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  border-top: 1px solid #DFDFDF;
+  border-top: 1px solid ${props => props.theme.colors.borderMenu};
   /* height: 36px; */
   height: 28px;
   svg {

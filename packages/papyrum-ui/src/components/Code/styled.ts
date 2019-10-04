@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  border: 1px solid #DFDFDF;
-  background-color: #FAFAFA;
+  border: 1px solid ${props => props.theme.colors.borderMenu};
+  background-color: ${props => props.theme.colors.backgroundCode};
   border-radius: 2px 2px 0 0;
   margin: 10px 0 20px;
 `;
