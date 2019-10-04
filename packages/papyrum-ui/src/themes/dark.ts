@@ -5,7 +5,9 @@ export default {
         borderMenu: "#434652",
         textArea: "#ECEFF4",
         textMenu: "#CED4DE",
+        textDefault: "#abafc4",
         backgroundButtonTheme: "#333640",
-        colorButtonTheme: "#A4B300"
+        colorButtonTheme: "#A4B300",
+        backgroundCode: "#282832"
     }
 }; 

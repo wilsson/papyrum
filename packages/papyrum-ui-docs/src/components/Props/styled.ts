@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const Prop = styled.div`
-  border-bottom: 1px solid #DFDFDF;
+  border-bottom: 1px solid ${props => props.theme.colors.borderMenu};
   padding: 15px;
 `;
 
 export const Wrapper = styled.div`
   margin: 10px 0 20px;
-  border: 1px solid #DFDFDF;
-  background-color: #FCFCFC;
+  border: 1px solid ${props => props.theme.colors.borderMenu};
+  background-color: ${props => props.theme.colors.backgroundCode};
   border-radius: 2px;
   ${Prop}:last-child {
     border-bottom: none;

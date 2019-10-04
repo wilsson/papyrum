@@ -5,5 +5,5 @@ export const WrapperLivePreview = styled.div`
 `;
 
 export const EditorWrapper = styled(WrapperLivePreview)`
-  border-top: 1px solid #DFDFDF;
+  border-top: 1px solid ${props => props.theme.colors.borderMenu};
 `;

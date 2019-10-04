@@ -13,16 +13,16 @@ export const FontSizeWrapper = styled.div`
   ${(props) => props.font && css`
     font-family: ${props.font};
   `}
-  border: 1px solid #DFDFDF;
+  border: 1px solid ${props => props.theme.colors.borderMenu};
   margin: 0 0 20px;
   border-radius: 2px;
-  background-color: #FAFAFA;
+  background-color: ${props => props.theme.colors.backgroundCode};
 `;
 
 export const LabelFont = styled.div`
   font-family: ${fontFamily};
   height: 24px;
-  border: 1px solid #DFDFDF;
+  border: 1px solid ${props => props.theme.colors.borderMenu};
   font-size: 14px;
   font-weight: bold;
   padding: 10px;
@@ -33,7 +33,6 @@ export const LabelFont = styled.div`
   width: max-content;
   margin-bottom: -1px;
   margin-right: -1px;
-  color: #1E1E1E;
   border-radius: 2px;
 `;
 
