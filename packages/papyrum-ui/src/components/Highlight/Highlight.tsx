@@ -1,17 +1,22 @@
 import * as React from 'react';
 import HighlightImported, { defaultProps, Prism } from "prism-react-renderer";
-import { theme } from './theme';
+import * as lightTheme from "prism-react-renderer/themes/duotoneLight";
+import * as darkTheme from "prism-react-renderer/themes/duotoneDark";
 import { Wrapper } from './styled';
 
-export const Highlight = ({ code }) => (
+interface Props {
+  code: string;
+  isDark?: boolean;
+}
+export const Highlight = ({ code, isDark }:Props) => (
   <HighlightImported
     {...defaultProps}
     Prism={Prism}
     code={code}
     language="jsx"
-    theme={theme as any}
+    theme={isDark ? darkTheme as any : lightTheme as any}
   >
-    {({ className, style, tokens, getLineProps, getTokenProps }) => {
+    {({ tokens, getLineProps, getTokenProps }) => {
       return(
         <Wrapper>
           {tokens.map((line, i) => (
@@ -26,5 +31,3 @@ export const Highlight = ({ code }) => (
     }}
   </HighlightImported>
 );
-
-export const getHighlight = (code: string) => <Highlight code={code}/>

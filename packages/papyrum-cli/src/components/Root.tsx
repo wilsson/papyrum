@@ -148,6 +148,7 @@ const App = ({ db, imports }) => {
               {(activePanel === 'development' && stateForComponent[pathname]) && (
                 <Addons
                   code={code || getMetadata(stateForComponent, stateSelected).code}
+                  isDark={isDark}
                   setCode={setCode}
                 />
               )}

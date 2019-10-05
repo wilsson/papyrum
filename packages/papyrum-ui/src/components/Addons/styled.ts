@@ -8,9 +8,9 @@ export const Wrapper = styled.div`
 export const TabWrapper = styled.div`
   height: 35px;
   min-height: 35px;
-  background-color: #F9FAFB;
-  border-top: 1px solid #DBDBDB;
-  border-bottom: 1px solid #DBDBDB;
+  background-color: ${props => props.theme.colors.backgroundCode};
+  border-top: 1px solid ${props => props.theme.colors.borderMenu};
+  border-bottom: 1px solid ${props => props.theme.colors.borderMenu};
   display: flex;
   align-items: center;
 `;
@@ -18,7 +18,7 @@ export const TabWrapper = styled.div`
 export const TabItem = styled.div`
   font-size: 16px;
   font-weight: 700;
-  color: #5B5B5B;
+  color: ${props => props.theme.colors.textArea};
   padding: 0 15px;
   cursor: pointer;
   ${(props) => props.active && css`

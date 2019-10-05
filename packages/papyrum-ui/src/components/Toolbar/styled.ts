@@ -60,17 +60,24 @@ export const TabItem = styled.div`
   `}
 `;
 
-export const IconWrapper = styled.div`
+export const IconWrapper = styled.button`
   position: relative;
   padding: 0 15px;
   align-items: center;
   display: flex;
+  border: 0;
+  background: transparent;
   cursor: pointer;
+  z-index: 1;
   > svg {
     transition: all ease .2s;
+    stroke: ${props => props.theme.colors.textMenu};
   }
   &:hover > svg {
     stroke: #00A8FF;
+  }
+  div {
+    text-align: left;
   }
 `;
 

@@ -53,7 +53,7 @@ export const Toolbar: React.FC<Props> = ({
         {activePanel === 'development' && (
           <React.Fragment>
             <Separator />
-            <IconWrapper onClick={(e) => setShow(!show)}>
+            <IconWrapper title='States' onClick={(e) => setShow(!show)}>
               <Layers size={15} color="#5B5B5B" />
               {show && (
                 <Dropdown list={listStates} onClick={(state) =>{
