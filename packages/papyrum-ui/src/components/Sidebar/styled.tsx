@@ -63,17 +63,18 @@ export const Title = styled.div`
   overflow-wrap: break-word;
 `;
 
-export const WrapperButtonSun = styled.div`
+export const WrapperButtonSwitch = styled.div`
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;
   margin-right: 10px;
 `;
 
-export const ButtonSun = styled.div`
+export const ButtonSwitchDark = styled.button`
   width: 30px;
   height: 30px;
   background-color: ${props => props.theme.colors.backgroundButtonTheme};
+  border: 0;
   border-radius: 15px;
   display: flex;
   justify-content: center;

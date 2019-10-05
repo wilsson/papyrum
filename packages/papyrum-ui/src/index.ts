@@ -13,7 +13,7 @@ export { DevZone } from './components/DevZone';
 export { Provider, contextDB, stateForComponentState, DB, Context } from './components/Provider';
 export { CodeWrapperStyled } from './components/Code';
 export { CodeBar } from './components/CodeBar';
-export { getHighlight } from './components/Highlight';
+export { Highlight } from './components/Highlight';
 export { Sidebar, Shadow } from './components/Sidebar';
 export { fontFace } from './utils/fonts';
 export { Toolbar } from './components/Toolbar';

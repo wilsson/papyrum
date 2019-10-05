@@ -1,1 +1,1 @@
-export { Highlight, getHighlight } from './Highlight';
+export * from './Highlight';

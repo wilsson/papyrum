@@ -4,7 +4,7 @@ import { LiveProvider, LiveError, LivePreview } from 'react-live';
 import { CodeWrapperStyled, contextDB } from '@papyrum/ui';
 import { CodeBar } from '@papyrum/ui';
 import copy from 'copy-text-to-clipboard';
-import { getHighlight } from '@papyrum/ui';
+import { Highlight } from '@papyrum/ui';
 import Editor from 'react-simple-code-editor';
 import { useContext, useEffect } from 'react';
 
@@ -15,6 +15,7 @@ import {
 
 export const Playground = ({ code: initialCode, scope, name }) => {
   const { pathname } = location;
+  const isDark = window.localStorage.getItem('isDark');
   const [ code, setCode ] = useState(initialCode);
   const [ clip, setClip ] = useState(false);
   const [ showCode, setShowCode ] = useState(false);
@@ -47,13 +48,14 @@ export const Playground = ({ code: initialCode, scope, name }) => {
   const propsEditor = {
     value: code,
     onValueChange: code => setCode(code),
-    highlight: getHighlight,
+    highlight: (code:string) => <Highlight code={code} isDark={isDark}/>,
     style: {
       fontFamily: 'Fira Code',
       fontSize: 14,
       lineHeight: '24px'
     }
   };
+
   return(
     <CodeWrapperStyled>
       <LiveProvider code={code} scope={scope}>

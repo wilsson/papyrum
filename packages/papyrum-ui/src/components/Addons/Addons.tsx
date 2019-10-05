@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react'; 
 import Resizable  from 're-resizable';
 import Editor from 'react-simple-code-editor';
-import { getHighlight } from '@papyrum/ui';
+import { Highlight } from '@papyrum/ui';
 import copy from 'copy-text-to-clipboard';
 
 import {
@@ -15,11 +15,12 @@ import {
 } from './styled';
 
 interface Props {
-  code: string,
+  code: string;
   setCode(code: string): void;
+  isDark: boolean;
 }
 
-export const Addons: React.FC<Props> = ({ code, setCode }) => {
+export const Addons: React.FC<Props> = ({ code, setCode, isDark }) => {
   const [ height, setHeight ] = useState(400);
   const [ clip, setClip ] = useState(false);
   const handleClipboard = () => {
@@ -34,7 +35,7 @@ export const Addons: React.FC<Props> = ({ code, setCode }) => {
   const propsEditor = {
     value: code,
     onValueChange: (changeCode: string) => setCode(changeCode),
-    highlight: getHighlight,
+    highlight: (code:string) => <Highlight code={code} isDark={isDark} />,
     style: {
       fontFamily: 'Fira Code',
       fontSize: 14,
