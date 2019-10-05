@@ -3,7 +3,7 @@
   "private": true,
   "homepage": "https://github.com/wilsson/papyrum#readme",
   "scripts": {
-    "lerna:clean": "lerna clean",
+    "lerna:clean": "lerna clean --yes",
     "lerna:boostrap": "lerna bootstrap",
     "bs": "run-p lerna:*",
     "build:tsc": "lerna run tsc",

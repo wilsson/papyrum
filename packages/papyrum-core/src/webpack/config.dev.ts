@@ -18,8 +18,8 @@ export const getConfig = config => ({
   },
   output: {
     path: path.resolve(process.cwd(), `${config.dest}`),
-    filename: 'static/js/[name].[hash].js',
-    chunkFilename: 'static/js/[name].[hash].js',
+    filename: 'static/js/bundle.js',
+    chunkFilename: 'static/js/[name].chunk.js',
     publicPath: '/'
   },
   resolve: {
@@ -45,15 +45,8 @@ export const getConfig = config => ({
     new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
-    namedModules: true,
     splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
+      chunks: 'all'
     }
   }
 });
