@@ -45,19 +45,13 @@ export const mdx = argv => ({
     {
       loader: require.resolve('@mdx-js/loader'),
       options: {
-        mdPlugins: [
+        remarkPlugins: [
           [
             matter, { type: 'yaml', marker: '-' }
           ],
-          [
-            emoji
-          ]
+          emoji
         ],
-        hastPlugins: [
-          [
-            rehype
-          ]
-        ]
+        rehypePlugins: [rehype]
       }
     }
   ]

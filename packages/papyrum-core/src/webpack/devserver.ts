@@ -7,10 +7,12 @@ export const server = argv => {
   const config = getConfig(argv);
   const compiler = webpack(config);
   const server = new WebpackDevServer(compiler, {
-    open: true,
+    compress: true,
+    clientLogLevel: 'none',
+    hot: true,
     quiet: true,
-    historyApiFallback: true,
-    hot: true
+    overlay: false,
+    historyApiFallback: true
   });
 
   server.listen(port, '0.0.0.0', () => {

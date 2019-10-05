@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, Suspense } from 'react';
+import { useState, Suspense, memo } from 'react';
 import { hot } from 'react-hot-loader';
 import { ThemeProvider } from "styled-components";
 
@@ -17,7 +17,7 @@ import {
 } from '@papyrum/ui';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { MDXProvider } from '@mdx-js/tag';
+import { MDXProvider } from '@mdx-js/react';
 import { getAsyncComponents } from './AsyncComponent';
 
 import {
@@ -54,7 +54,7 @@ const providerComponents = {
 
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
-export const Root = ({ db, imports }) => {
+const App = ({ db, imports }) => {
   const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
   const [showMenu, setShowMenu] = useState(false);
@@ -63,7 +63,6 @@ export const Root = ({ db, imports }) => {
   const [stateSelected, setStateSelected] = useState('');
   const [activePanel, setActivePanel] = useState('docs');
   const [code, setCode] = useState('');
-
   const getMetadata = (stateForComponent: stateForComponentState, stateSelected: string) => {
     const { pathname } = location;
     const selected = stateSelected || stateForComponent[pathname][0].name;
@@ -159,5 +158,12 @@ export const Root = ({ db, imports }) => {
     </Provider>
   );
 };
+
+const callback = (prevProps, nextProps) => JSON.stringify(prevProps) === JSON.stringify(nextProps);
+
+const Root: React.FC<any> = memo(
+  ({ db, imports }) => <App db={db} imports={imports} />,
+  callback
+);
 
 export default hot(module)(Root);

@@ -27,7 +27,7 @@ This command will start the development server with the basic example and watchi
 yarn dev
 ```
 
-Go to `http://localhost:3000/` you will see the [basic example](https://github.com/wilsson/papyrum/tree/master/examples/basic)
+Go to `http://localhost:4000/` you will see the [basic example](https://github.com/wilsson/papyrum/tree/master/examples/basic)
 
 ### Packages
 
