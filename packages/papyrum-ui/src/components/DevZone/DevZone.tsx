@@ -7,6 +7,7 @@ interface Props {
 }
 
 export const DevZone: React.FC<Props> = ({ code, scope }) => {
+  console.log('DevZone code', code);
   return(
     <LiveProvider code={code} scope={scope}>
       <LivePreview />

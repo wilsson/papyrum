@@ -82,7 +82,6 @@ const App = ({ db, imports }) => {
     setDarkTheme(!isDark);
     window.localStorage.setItem('isDark', ''+!isDark);
   }
-
   const props = {
     db: db,
     setRouteActive,
@@ -111,7 +110,7 @@ const App = ({ db, imports }) => {
                 handleChangeCode={handleChangeCode}
               />
               <ProviderWrapper>
-                {activePanel === 'docs' && (
+                <div style={{display: activePanel === 'docs' ? 'block': 'none'}}>
                   <MDXProvider components={providerComponents}>
                     <Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
                       <Switch>
@@ -127,9 +126,11 @@ const App = ({ db, imports }) => {
                       </Switch>
                     </Suspense>
                   </MDXProvider>
-                )}
-                {(activePanel === 'development' && stateForComponent[pathname]) && (
-                  <div style={{ padding: 15 }}>
+                </div>
+           
+
+              
+                  <div style={{ padding: 15, display: activePanel === 'development' ? 'block': 'none' }}>
                     {stateForComponent[pathname] && (
                       <DevZone
                         code={code || getMetadata(stateForComponent, stateSelected).code}
@@ -137,7 +138,7 @@ const App = ({ db, imports }) => {
                       />
                     )}
                   </div>
-                )}
+               
 
                 {(activePanel === 'development' && !stateForComponent[pathname]) && (
                   <div style={{ padding: 15 }}>
@@ -145,6 +146,8 @@ const App = ({ db, imports }) => {
                   </div>
                 )}
               </ProviderWrapper>
+
+
               {(activePanel === 'development' && stateForComponent[pathname]) && (
                 <Addons
                   code={code || getMetadata(stateForComponent, stateSelected).code}
