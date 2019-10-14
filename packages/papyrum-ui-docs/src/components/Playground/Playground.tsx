@@ -21,7 +21,17 @@ export const Playground = ({ code: initialCode, scope, name }) => {
   const [ showCode, setShowCode ] = useState(false);
   const { stateForComponent, setStateForComponent } = useContext(contextDB);
   useEffect(() => {
-    console.log('stateForComponent[pathname]', stateForComponent[pathname] && stateForComponent[pathname].length);
+    console.log('stateForComponent[pathname]', stateForComponent);
+    /*stateForComponent[pathname] = [];
+    stateForComponent[pathname].push({
+      name,
+      code, 
+      scope
+    });*/
+
+    //setStateForComponent({ ...stateForComponent });
+
+    /*
     if(!stateForComponent[pathname]) {
       stateForComponent[pathname] = [];
       stateForComponent[pathname].push({
@@ -41,7 +51,7 @@ export const Playground = ({ code: initialCode, scope, name }) => {
         });
         setStateForComponent({ ...stateForComponent });
       } else {
-        console.log('stateForComponent[pathname][index].scope', stateForComponent[pathname][index].scope === scope);
+        //console.log('stateForComponent[pathname][index].scope', stateForComponent[pathname][index].scope === scope);
         if(stateForComponent[pathname][index].code !== code) {
           stateForComponent[pathname][index] = {
             name,
@@ -52,40 +62,7 @@ export const Playground = ({ code: initialCode, scope, name }) => {
         }
       }
     }
-    /*
-    console.log('Playground useEffect', stateForComponent);
-    if(!stateForComponent[pathname]) {
-      stateForComponent[pathname] = [];
-      stateForComponent[pathname].push({
-        name: name,
-        code,
-        scope
-      });
-      setStateForComponent({ ...stateForComponent });
-    } else {
-      console.log('else');
-      const foo = stateForComponent[pathname].map(({ name }) => name).filter(nameState => nameState === name);
-      if(foo.length) {
-        const index = stateForComponent[pathname].map(({ name }) => name).indexOf(...foo);
-        stateForComponent[pathname][index] = {
-          name,
-          code,
-          scope
-        }
-        setStateForComponent({ ...stateForComponent });
-        console.log('ya existe', stateForComponent[pathname][index]);
-      } else {
-        !stateForComponent[pathname]
-        .map(({ name }) => name)
-        .includes(name) && stateForComponent[pathname].push({
-          name,
-          code,
-          scope
-        });
-        setStateForComponent({ ...stateForComponent });
-      }
-    }
-    */
+*/
   });
   
   const handleClipboard = () => {

@@ -55,6 +55,7 @@ const providerComponents = {
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
 const App = ({ db, imports }) => {
+  console.log('render App');
   const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
   const [showMenu, setShowMenu] = useState(false);
@@ -163,7 +164,10 @@ const App = ({ db, imports }) => {
   );
 };
 
-const callback = (prevProps, nextProps) => JSON.stringify(prevProps) === JSON.stringify(nextProps);
+const callback = (prevProps, nextProps) => {
+  //console.log('memo>', JSON.stringify(prevProps), '>>>>>>>>>>>>>>>>>>>>>>>>>><', JSON.stringify(nextProps));
+  return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+};
 
 const Root: React.FC<any> = memo(
   ({ db, imports }) => <App db={db} imports={imports} />,

@@ -78,16 +78,20 @@ export const init = (argv: any) => {
     fs.writeFileSync(path.resolve(pathClient, './App.js'), appFile);
     // create db
     let sentries = {};
+
+    /*
     Object.keys(entries).forEach(entry => {
-      if (entries[entry].menu) {
-        if (sentries[entries[entry].menu]) {
-          sentries[entries[entry].menu].children = [
-            ...sentries[entries[entry].menu].children,
+      const { menu } = entries[entry];
+      console.log('entry each', menu);
+      if (menu) {
+        if (sentries[menu]) {
+          sentries[menu].children = [
+            ...sentries[menu].children,
             entries[entry]
           ];
         } else {
-          sentries[entries[entry].menu] = {
-            name: entries[entry].menu,
+          sentries[menu] = {
+            name: menu,
             children: [entries[entry]]
           };
         }
@@ -97,6 +101,48 @@ export const init = (argv: any) => {
         };
       }
     });
+*/
+    for (let i = 0; i < Object.keys(entries).length; i++) {
+      const key = Object.keys(entries)[i];
+      const entry = entries[key];
+      const { menu } = entry;
+      console.log('entry each 2', menu);
+      if(menu) {
+        if (sentries[menu]) {
+          sentries[menu].children = [
+            ...sentries[menu].children,
+            entries[key]
+          ];
+          continue;
+        }
+        sentries[menu] = {
+          name: menu,
+          children: [entries[key]]
+        };
+        continue;
+      }
+      sentries[key] = {
+        ...entries[key]
+      };
+    }
+
+    const compare = (entry, nextEntry) => {
+      if(entry.name < nextEntry.name) {
+        return -1;
+      }
+      if(entry.name > nextEntry.name) {
+        return 1;
+      }
+      return 0;
+    };
+
+    Object.values(sentries).forEach((entry: any) => {
+      if(entry.children && entry.children.length) {
+        var orderChildren = entry.children.sort(compare);
+        entry.children = orderChildren;
+      }
+    });
+
     fs.writeFileSync(
       pathClient + '/db.json',
       JSON.stringify(
