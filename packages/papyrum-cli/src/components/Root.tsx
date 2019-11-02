@@ -55,6 +55,7 @@ const providerComponents = {
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
 const App = ({ db, imports }) => {
+  console.log('render App');
   const { pathname } = location;
   const componentsAsync = getAsyncComponents(imports);
   const [showMenu, setShowMenu] = useState(false);
