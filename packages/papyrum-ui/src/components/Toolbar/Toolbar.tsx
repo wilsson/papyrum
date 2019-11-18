@@ -22,9 +22,10 @@ interface Props {
 }
 
 const getStatus = (entries, routeActive: string): string => {
-  const [ document ] = entries.filter(({ route }) => route === routeActive);
-  return document.status;
+  const [document] = entries.filter(({ route }) => route === routeActive);
+  return document && document.status;
 }
+
 export const Toolbar: React.FC<Props> = ({
   listStates,
   setStateSelected,
@@ -34,12 +35,12 @@ export const Toolbar: React.FC<Props> = ({
 }) => {
   const { routeActive, db } = useContext<Context>(contextDB);
   const status = getStatus(Object.values(db.plain), routeActive)
-  const [ show, setShow ] = useState(false);
-  return(
+  const [show, setShow] = useState(false);
+  return (
     <TabWrapper>
       <RightWrapper>
         <TabItem
-          onClick={() => setActivePanel('docs') }
+          onClick={() => setActivePanel('docs')}
           active={activePanel === 'docs'}
         >
           Docs
@@ -56,10 +57,10 @@ export const Toolbar: React.FC<Props> = ({
             <IconWrapper title='States' onClick={(e) => setShow(!show)}>
               <Layers size={15} color="#5B5B5B" />
               {show && (
-                <Dropdown list={listStates} onClick={(state) =>{
+                <Dropdown list={listStates} onClick={(state) => {
                   setStateSelected(state);
                   handleChangeCode(state);
-                }}/>
+                }} />
               )}
             </IconWrapper>
           </React.Fragment>

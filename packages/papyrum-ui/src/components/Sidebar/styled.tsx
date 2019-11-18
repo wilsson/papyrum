@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.backgroundMenu};
@@ -36,7 +36,7 @@ export const Logo = styled.img`
   margin-bottom: 48px;
 `;
 
-export const Shadow = styled.div`
+export const ShadowWrapper = styled.div`
   cursor: pointer;
   position: absolute;
   top: 0;
