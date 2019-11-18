@@ -5,16 +5,19 @@ import { Menu } from '../Menu';
 import { contextDB } from '../Provider';
 import { Moon, Sun } from 'react-feather';
 import Resizable from 're-resizable';
+import { connect } from 'react-redux';
 
 import {
   Wrapper,
   MenuWrapper,
+  ShadowWrapper,
   Title,
   ButtonSwitchDark,
   WrapperButtonSwitch
 } from './styled';
 
 import { useMenu } from './useMenu';
+import { toggleDarkMode, toggleMenu } from '../../actions/app';
 
 const useOrder = (menu) => {
   const inmenu = { ...menu };
@@ -34,7 +37,7 @@ const useOrder = (menu) => {
   return [...menuOrder, ...Object.values(inmenu)];
 };
 
-export const Sidebar = ({ entries, showMenu, isDark, toggleTheme }) => {
+const Sidebar = ({ entries, showMenu, isDark, toggleTheme, toggleMenu }) => {
   const { db } = useContext(contextDB as any);
   const [query, setQuery] = useState('');
   const menu = useMenu({ query, entries });
@@ -46,28 +49,46 @@ export const Sidebar = ({ entries, showMenu, isDark, toggleTheme }) => {
   };
 
   return (
-    <Wrapper showMenu={showMenu} >
-      <Resizable
-        minWidth={240}
-        maxWidth={1000}
-        enable={{ right: true }}
-        size={{ width: width, height: '100vh' }}
-        onResizeStop={handleResizable}
-      >
-        <WrapperButtonSwitch>
-          <ButtonSwitchDark title='Switch Darkmode' onClick={toggleTheme}>
-            {isDark ? <Sun size={15} /> : <Moon size={15} /> }
-          </ButtonSwitchDark>
-        </WrapperButtonSwitch>
-        <Title>{db.config.title}</Title>
-        <Search onChange={(value) => {
-          setQuery(value);
-        }} />
-        <MenuWrapper>
-          <Menu entries={menuOrder} />
-        </MenuWrapper>
-        {/*<ByWrapper>By Papyrum</ByWrapper>*/}
-      </Resizable >
-    </Wrapper>
+    <React.Fragment>
+      <ShadowWrapper showMenu={showMenu} onClick={toggleMenu} />
+      <Wrapper showMenu={showMenu} >
+        <Resizable
+          minWidth={240}
+          maxWidth={1000}
+          enable={{ right: true }}
+          size={{ width: width, height: '100vh' }}
+          onResizeStop={handleResizable}
+        >
+          <WrapperButtonSwitch>
+            <ButtonSwitchDark title='Switch Darkmode' onClick={toggleTheme}>
+              {isDark ? <Sun size={15} /> : <Moon size={15} />}
+            </ButtonSwitchDark>
+          </WrapperButtonSwitch>
+          <Title>{db.config.title}</Title>
+          <Search onChange={(value) => setQuery(value)} />
+          <MenuWrapper>
+            <Menu entries={menuOrder} />
+          </MenuWrapper>
+          {/*<ByWrapper>By Papyrum</ByWrapper>*/}
+        </Resizable >
+      </Wrapper>
+    </React.Fragment>
   );
 };
+
+const mapStateToProps = (state) => ({
+  isDark: state.app.darkmode
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  toggleTheme: () => {
+    dispatch(toggleDarkMode());
+  },
+  toggleMenu: () => {
+    dispatch(toggleMenu());
+  }
+});
+
+const SidebarHoc = connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+
+export { SidebarHoc as Sidebar };

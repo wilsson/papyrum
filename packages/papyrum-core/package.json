@@ -50,6 +50,7 @@
     "react-dev-utils": "9.1.0",
     "react-docgen": "4.1.1",
     "react-hot-loader": "4.8.6",
+    "redux": "^4.0.4",
     "rehype-slug": "2.0.2",
     "remark-emoji": "^2.0.2",
     "remark-frontmatter": "1.3.1",
