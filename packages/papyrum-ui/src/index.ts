@@ -14,7 +14,7 @@ export { Provider, contextDB, stateForComponentState, DB, Context } from './comp
 export { CodeWrapperStyled } from './components/Code';
 export { CodeBar } from './components/CodeBar';
 export { Highlight } from './components/Highlight';
-export { Sidebar, Shadow } from './components/Sidebar';
+export { Sidebar } from './components/Sidebar';
 export { fontFace } from './utils/fonts';
 export { Toolbar } from './components/Toolbar';
 export { Table, TableRow, TableTd, TableTh } from './components/Table';

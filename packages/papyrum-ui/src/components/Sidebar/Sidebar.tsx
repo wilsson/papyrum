@@ -69,7 +69,6 @@ const Sidebar = ({ entries, showMenu, isDark, toggleTheme, toggleMenu }) => {
           <MenuWrapper>
             <Menu entries={menuOrder} />
           </MenuWrapper>
-          {/*<ByWrapper>By Papyrum</ByWrapper>*/}
         </Resizable >
       </Wrapper>
     </React.Fragment>

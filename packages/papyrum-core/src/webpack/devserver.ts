@@ -10,6 +10,7 @@ export const server = argv => {
     compress: true,
     clientLogLevel: 'none',
     hot: true,
+    hotOnly: true,
     quiet: true,
     overlay: false,
     historyApiFallback: true

@@ -1,9 +1,9 @@
 import * as path from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
-import * as WebpackBar from 'webpackbar';
 import * as loaders from './loaders';
 import { setPathHtmlTemplate } from './../utils';
 import * as webpack from 'webpack';
+import * as WebpackBar from 'webpackbar';
 
 const pathEntry = path.resolve(process.cwd(), './.papyrum/root.js');
 
@@ -11,8 +11,7 @@ export const getConfig = config => ({
   mode: 'development',
   entry: {
     app: [
-      require.resolve('webpack-dev-server/client') + '?/',
-      require.resolve('webpack/hot/dev-server'),
+      require.resolve('react-dev-utils/webpackHotDevClient'),
       pathEntry
     ]
   },

@@ -13,32 +13,12 @@ import {
   EditorWrapper
 } from './styled';
 
-export const Playground = ({ code: initialCode, scope, name }) => {
-  const { pathname } = location;
+export const Playground = ({ code: initialCode, scope }) => {
   const isDark = window.localStorage.getItem('isDark');
   const [ code, setCode ] = useState(initialCode);
   const [ clip, setClip ] = useState(false);
   const [ showCode, setShowCode ] = useState(false);
-  const { stateForComponent, setStateForComponent } = useContext(contextDB);
-  useEffect(() => {
-    if(!stateForComponent[pathname]) {
-      stateForComponent[pathname] = [];
-      stateForComponent[pathname].push({
-        name: name,
-        code,
-        scope
-      });
-      setStateForComponent({ ...stateForComponent });
-    } else {
-      !stateForComponent[pathname]
-        .map(({ name }) => name)
-        .includes(name) && stateForComponent[pathname].push({
-          name: name,
-          code,
-          scope
-        });
-    }
-  });
+
   
   const handleClipboard = () => {
     copy(code);

@@ -62,6 +62,7 @@ const orderChildrenEntries = (entries: any) => {
 };
 
 export const init = (argv: any) => {
+  console.log('init');
   return new Promise(async resolve => {
     try {
       await fs.mkdirSync(pathClient);
@@ -122,8 +123,20 @@ export const init = (argv: any) => {
     var templateFn = await tplCompile(template('imports.tpl.js'), {
       minimize: false
     });
+
+    const compare = (entry, nextEntry) => {
+      if(entry.name < nextEntry.name) {
+        return -1;
+      }
+      if(entry.name > nextEntry.name) {
+        return 1;
+      }
+      return 0;
+    };
+
+    
     const imports = templateFn({
-      planEntries: Object.values(planEntries)
+      planEntries: Object.values(planEntries).sort(compare)
     });
     fs.writeFileSync(pathClient + '/imports.js', imports);
     fs.writeFileSync(path.resolve(pathClient, './root.js'), rootFile);
@@ -131,6 +144,7 @@ export const init = (argv: any) => {
     // create db
     let entries = createEntries(planEntries);
     let entriesOrder = orderChildrenEntries(entries);
+
 
     fs.writeFileSync(
       pathClient + '/db.json',
@@ -140,7 +154,7 @@ export const init = (argv: any) => {
             ...argv,
             ...config
           },
-          plain: planEntries,
+          plain: Object.values(planEntries).sort(compare),
           entries: entriesOrder,
           props
         },

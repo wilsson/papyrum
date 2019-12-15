@@ -2,8 +2,8 @@ import * as React from 'react';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ChevronDown } from 'react-feather';
-import { useContext } from 'react';
-import { contextDB } from '../Provider';
+import { connect } from 'react-redux';
+import { changeRoute } from '../../actions/app';
 
 import {
   MenuWrapper,
@@ -24,12 +24,9 @@ const equal = (x, y) => JSON.stringify(x) === JSON.stringify(y);
 export const SubMenu = ({
   entry,
   routeActive,
-  setRouteActive,
-  setShowMenu,
   open,
   setOpen,
-  setActivePanel,
-  setStateSelected
+  handleChangeRoute
 }) => {
   const { children, name } = entry;
   return (
@@ -52,10 +49,7 @@ export const SubMenu = ({
               <SubListItemStyled
                 key={key}
                 onClick={() => {
-                  setRouteActive(route);
-                  setShowMenu(false); 
-                  setActivePanel('docs'); 
-                  setStateSelected('');
+                  handleChangeRoute(route);
                 }} 
                 active={active}
               >
@@ -71,41 +65,48 @@ export const SubMenu = ({
 
 const MenuItem = ({
   routeActive,
-  setRouteActive,
-  setShowMenu,
   entry,
-  setActivePanel,
-  setStateSelected
+  handleChangeRoute
 }) => {
   const { route, name } = entry;
   const active = equal(route, routeActive);
   return (
     <ListItem active={active} onClick={() => {
-      setRouteActive(route);
-      setShowMenu(false);
-      setActivePanel('docs');
-      setStateSelected('');
+      handleChangeRoute(route);
     }}>
       <NavLink exact to={route}>{name}</NavLink>
     </ListItem>
   )
 };
 
-export const Menu = ({ entries }) => {
+const Menu = ({ entries, handleChangeRoute, routeActive }) => {
   const [ open, setOpen ] = useState(true);
-  const { routeActive, setRouteActive, setShowMenu, setActivePanel, setStateSelected } = (useContext as any)(contextDB);
+  console.log('routeActive', routeActive);
   return (
     <MenuWrapper>
       {entries.map((entry: Entry, key) => {
-        const props = { routeActive, setRouteActive, entry, setShowMenu, setActivePanel, setStateSelected };
+        const props = { routeActive, entry };
         return (
           <React.Fragment key={key}>
             {entry.children
-              ? <SubMenu { ...props } open={open} setOpen={setOpen} />
-              : <MenuItem {...props } />}
+              ? <SubMenu { ...props } open={open} setOpen={setOpen} handleChangeRoute={handleChangeRoute}/>
+              : <MenuItem {...props } handleChangeRoute={handleChangeRoute} />}
           </React.Fragment>
         );
       })}
     </MenuWrapper>
   );
 };
+
+const mapStateToProps = (state) => ({
+  routeActive: state.route
+})
+const mapDispatchToProps = (dispatch) => ({
+  handleChangeRoute: (route: string) => {
+    dispatch(changeRoute(route));
+  }
+});
+
+const MenuHoc = connect(mapStateToProps, mapDispatchToProps)(Menu);
+
+export { MenuHoc as Menu };
