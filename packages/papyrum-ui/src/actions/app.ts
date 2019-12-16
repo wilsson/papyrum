@@ -7,3 +7,8 @@ export const toggleDarkMode = () => ({
 export const toggleMenu = () => ({
   type: actionTypes.SHOW_MENU
 });
+
+export const changeRoute = (route: string) => ({
+  type: actionTypes.CHANGE_ROUTE,
+  payload: route
+})

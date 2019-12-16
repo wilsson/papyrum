@@ -1,5 +1,10 @@
 import * as actionTypes from './../actionTypes';
 
+interface Action {
+  type: string;
+  payload?: any;
+}
+
 interface State {
   darkmode: boolean,
   showMenu: boolean
@@ -12,7 +17,7 @@ const initialState: State = {
   showMenu: false
 };
 
-export default (state: State = initialState, action: { type: string; }): State => {
+export default (state: State = initialState, action: Action): State => {
   switch (action.type) {
     case actionTypes.DARKMODE:
       if (typeof window !== 'undefined') {
@@ -25,4 +30,13 @@ export default (state: State = initialState, action: { type: string; }): State =
     default:
       return state;
   }
-}
+};
+
+export const route = (state: string = location.pathname, action: Action): any => {
+  switch(action.type) {
+    case actionTypes.CHANGE_ROUTE:
+      return action.payload
+    default:
+      return state;
+  }
+};

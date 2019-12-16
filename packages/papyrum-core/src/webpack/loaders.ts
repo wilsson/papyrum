@@ -9,7 +9,6 @@ const getConfigBabel = argv => {
     babelrc: false,
     presets: [
       require.resolve('@babel/preset-env'),
-      argv.flow && [require.resolve('@babel/preset-flow')],
       argv.typescript && [require.resolve('@babel/preset-typescript')],
       require.resolve('@babel/preset-react')
     ].filter(Boolean),
@@ -22,15 +21,20 @@ const getConfigBabel = argv => {
 };
 
 export const babel = argv => ({
-  test: /\.(js|jsx|ts|tsx)$/,
+  test: argv.typescript ? /\.(ts|tsx)$/ : /\.(js|jsx)$/,
   exclude: /node_modules/,
-  use: {
-    loader: require.resolve('babel-loader'),
-    options: {
-      ...getConfigBabel(argv),
-      cacheDirectory: true,
+  use: [
+    {
+      loader: require.resolve('cache-loader'),
+    },
+    {
+      loader: require.resolve('babel-loader'),
+      options: {
+        ...getConfigBabel(argv),
+        cacheDirectory: true,
+      }
     }
-  }
+  ]
 });
 
 export const mdx = argv => ({
