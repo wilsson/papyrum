@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.backgroundMenu};
   border-right: 1px solid ${props => props.theme.colors.borderMenu};
-  color: ${props => props.theme.colors.textMenu};
+  color: ${props => props.theme.colors.text};
   display: flex;
   flex-direction: column;
   transition: all .3s ease;
@@ -28,6 +28,7 @@ export const MenuWrapper = styled.div`
   width: 100%;
   overflow-y: auto;
   flex: 1;
+  margin-top: 30px;
 `;
 
 export const Logo = styled.img`

@@ -52,7 +52,7 @@ export const RightWrapper = styled.div`
 export const TabItem = styled.div`
   font-size: 16px;
   font-weight: 700;
-  color: ${props => props.theme.colors.textMenu};
+  color: ${props => props.theme.colors.text};
   padding: 0 15px;
   cursor: pointer;
   ${(props) => props.active && css`
@@ -71,7 +71,7 @@ export const IconWrapper = styled.button`
   z-index: 1;
   > svg {
     transition: all ease .2s;
-    stroke: ${props => props.theme.colors.textMenu};
+    stroke: ${props => props.theme.colors.text};
   }
   &:hover > svg {
     stroke: #00A8FF;
