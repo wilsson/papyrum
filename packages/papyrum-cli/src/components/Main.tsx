@@ -8,7 +8,8 @@ import {
   Sidebar,
   lightTheme,
   darkTheme,
-  contextDB
+  contextDB,
+  Header
 } from '@papyrum/ui';
 
 import {
@@ -19,7 +20,6 @@ import {
 
 import { getAsyncComponents } from './AsyncComponent';
 
-
 const Main = ({ isDark, showMenu, imports }) => {
   const { db } = (useContext as any)(contextDB);
   const componentsAsync = getAsyncComponents(imports);
@@ -28,12 +28,15 @@ const Main = ({ isDark, showMenu, imports }) => {
     <React.Fragment>
       <GlobalStyle />
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        <Wrapper>
-          <Sidebar entries={db.entries} showMenu={showMenu} />
-          <ContentWrapper showMenu={showMenu}>
-            <Panel componentsAsync={componentsAsync} />
-          </ContentWrapper>
-        </Wrapper>
+        <>
+          <Header />
+          <Wrapper>
+            <Sidebar entries={db.entries} showMenu={showMenu} />
+            <ContentWrapper showMenu={showMenu}>
+              <Panel componentsAsync={componentsAsync} />
+            </ContentWrapper>
+          </Wrapper>
+        </>
       </ThemeProvider>
     </React.Fragment>
   )

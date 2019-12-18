@@ -26,7 +26,7 @@ const Item = styled.li`
   a {
     text-decoration: none;
     display: block;
-    color: ${props => props.theme.colors.textMenu};
+    color: ${props => props.theme.colors.text};
     ${props => props.active && css`
       color: white;
     `}

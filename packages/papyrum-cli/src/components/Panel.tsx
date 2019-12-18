@@ -5,10 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import {
   components,
   Toolbar,
-  stateForComponentState,
-  Addons,
   contextDB,
-  DevZone
 } from '@papyrum/ui';
 
 import {
@@ -44,14 +41,9 @@ const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
 const Panel = ({ componentsAsync, isDark }) => {
   const { db } = (React.useContext as any)(contextDB);
-  const [activePanel, setActivePanel] = React.useState('docs');
 
   return (
     <React.Fragment>
-      <Toolbar
-        setActivePanel={setActivePanel}
-        activePanel={activePanel}
-      />
       <ProviderWrapper>
         <MDXProvider components={providerComponents}>
           <React.Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>

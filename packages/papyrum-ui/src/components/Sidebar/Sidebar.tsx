@@ -59,13 +59,7 @@ const Sidebar = ({ entries, showMenu, isDark, toggleTheme, toggleMenu }) => {
           size={{ width: width, height: '100vh' }}
           onResizeStop={handleResizable}
         >
-          <WrapperButtonSwitch>
-            <ButtonSwitchDark title='Switch Darkmode' onClick={toggleTheme}>
-              {isDark ? <Sun size={15} /> : <Moon size={15} />}
-            </ButtonSwitchDark>
-          </WrapperButtonSwitch>
-          <Title>{db.config.title}</Title>
-          <Search onChange={(value) => setQuery(value)} />
+          {/*<Search onChange={(value) => setQuery(value)} />*/}
           <MenuWrapper>
             <Menu entries={menuOrder} />
           </MenuWrapper>
