@@ -6,13 +6,14 @@ export const Wrapper = styled.div`
 `;
 
 export const ColorWrapper = styled.div`
-  margin-right: 20px;
-  margin-bottom: 6px;
+  margin-right: 30px;
+  margin-bottom: 30px;
 `;
 
 export const Label = styled.span`
+  margin-top: 10px;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 18px;
   display: block;
 `;
 

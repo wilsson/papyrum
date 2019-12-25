@@ -1,23 +1,18 @@
 import * as React from 'react';
 import { useState, useContext } from 'react';
-import { Search } from '../Search';
 import { Menu } from '../Menu';
 import { contextDB } from '../Provider';
-import { Moon, Sun } from 'react-feather';
-import Resizable from 're-resizable';
 import { connect } from 'react-redux';
 
 import {
   Wrapper,
   MenuWrapper,
   ShadowWrapper,
-  Title,
-  ButtonSwitchDark,
-  WrapperButtonSwitch
+  CustomResizable
 } from './styled';
 
 import { useMenu } from './useMenu';
-import { toggleDarkMode, toggleMenu } from '../../actions/app';
+import { toggleMenu } from '../../actions/app';
 
 const useOrder = (menu) => {
   const inmenu = { ...menu };
@@ -37,7 +32,7 @@ const useOrder = (menu) => {
   return [...menuOrder, ...Object.values(inmenu)];
 };
 
-const Sidebar = ({ entries, showMenu, isDark, toggleTheme, toggleMenu }) => {
+const Sidebar = ({ entries, showMenu, toggleMenu }) => {
   const { db } = useContext(contextDB as any);
   const [query, setQuery] = useState('');
   const menu = useMenu({ query, entries });
@@ -52,36 +47,28 @@ const Sidebar = ({ entries, showMenu, isDark, toggleTheme, toggleMenu }) => {
     <React.Fragment>
       <ShadowWrapper showMenu={showMenu} onClick={toggleMenu} />
       <Wrapper showMenu={showMenu} >
-        <Resizable
+        <CustomResizable
           minWidth={240}
           maxWidth={1000}
           enable={{ right: true }}
           size={{ width: width, height: '100vh' }}
           onResizeStop={handleResizable}
         >
-          {/*<Search onChange={(value) => setQuery(value)} />*/}
           <MenuWrapper>
             <Menu entries={menuOrder} />
           </MenuWrapper>
-        </Resizable >
+        </CustomResizable>
       </Wrapper>
     </React.Fragment>
   );
 };
 
-const mapStateToProps = (state) => ({
-  isDark: state.app.darkmode
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  toggleTheme: () => {
-    dispatch(toggleDarkMode());
-  },
   toggleMenu: () => {
     dispatch(toggleMenu());
   }
 });
 
-const SidebarHoc = connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+const SidebarHoc = connect(null, mapDispatchToProps)(Sidebar);
 
 export { SidebarHoc as Sidebar };

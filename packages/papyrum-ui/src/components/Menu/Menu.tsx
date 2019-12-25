@@ -37,7 +37,7 @@ export const SubMenu = ({
       }}>
         <HeaderList href="#" open={open}>
           {name}
-          <ChevronDown size={15} color="#5b5b5b" style={{marginRight: 10}} />
+          <ChevronDown size={15} style={{marginRight: 10}} />
         </HeaderList>
       </ListItem>
       {open && (
@@ -81,7 +81,6 @@ const MenuItem = ({
 
 const Menu = ({ entries, handleChangeRoute, routeActive }) => {
   const [ open, setOpen ] = useState(true);
-  console.log('routeActive', routeActive);
   return (
     <MenuWrapper>
       {entries.map((entry: Entry, key) => {

@@ -68,6 +68,10 @@ Button.propTypes = {
   outline: p.bool,
   disabled: p.bool,
   /** My description for loading prop */
-  loading: p.bool,
+  loading: p.bool.isRequired,
   variant: p.oneOf(['primary', 'danger'])
+};
+
+Button.defaultProps = {
+  outline: false
 };

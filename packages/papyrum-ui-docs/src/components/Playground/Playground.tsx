@@ -1,62 +1,62 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { LiveProvider, LiveError, LivePreview } from 'react-live';
-import { CodeWrapperStyled, contextDB } from '@papyrum/ui';
-import { CodeBar } from '@papyrum/ui';
 import copy from 'copy-text-to-clipboard';
-import { Highlight } from '@papyrum/ui';
 import Editor from 'react-simple-code-editor';
-import { useContext, useEffect } from 'react';
+import dracula from "prism-react-renderer/themes/dracula";
 
-import { 
-  WrapperLivePreview,
-  EditorWrapper
-} from './styled';
+import HighlightImported, { defaultProps } from 'prism-react-renderer';
+import { Copy, styles } from '@papyrum/ui'
+
+import { Wrapper, LivePreviewWrapper, EditorWrapper } from './styled';
 
 export const Playground = ({ code: initialCode, scope }) => {
-  const isDark = window.localStorage.getItem('isDark');
   const [ code, setCode ] = useState(initialCode);
   const [ clip, setClip ] = useState(false);
-  const [ showCode, setShowCode ] = useState(false);
-
   
   const handleClipboard = () => {
     copy(code);
     setClip(true);
-    setTimeout(() => setClip(false), 200);
-  };
-  const propsEditor = {
-    value: code,
-    onValueChange: code => setCode(code),
-    highlight: (code:string) => <Highlight code={code} isDark={isDark}/>,
-    style: {
-      fontFamily: 'Fira Code',
-      fontSize: 14,
-      lineHeight: '24px'
-    }
+    setTimeout(() => setClip(false), 500);
   };
 
+  const highlight = code => (
+    <HighlightImported {...defaultProps} theme={dracula as any} code={code} language="jsx">
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <React.Fragment>
+          {tokens.map((line, i) => (
+            <div {...getLineProps({ line, key: i })}>
+              {line.map((token, key) => (
+                <span {...getTokenProps({ token, key })} />
+              ))}
+            </div>
+          ))}
+        </React.Fragment>
+      )}
+    </HighlightImported>
+  );
+
   return(
-    <CodeWrapperStyled>
-      <LiveProvider code={code} scope={scope}>
-        <WrapperLivePreview>
-          <LivePreview />
-          <LiveError />
-        </WrapperLivePreview>
-        <CodeBar
-          clip={clip}
-          code={true}
-          handleShowCode={() => {
-            setShowCode(!showCode);
-          }}
-          handleClipboard={handleClipboard}
+    <LiveProvider code={code} scope={scope}>
+      <LivePreviewWrapper>
+        <LivePreview />
+        <LiveError />
+      </LivePreviewWrapper>
+
+      <Wrapper>
+        live editor
+      </Wrapper>
+
+      <EditorWrapper>
+        <Copy onClick={handleClipboard}>{clip ? 'Copied' : 'Copy'}</Copy>
+        <Editor
+          value={code}
+          onValueChange={code => setCode(code)}
+          highlight={highlight}
+          padding={20}
+          style={{ ...styles, borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px' }}
         />
-        {showCode && (
-          <EditorWrapper>
-            <Editor {...propsEditor} />
-          </EditorWrapper>
-        )}
-      </LiveProvider>
-    </CodeWrapperStyled>
-  )
+      </EditorWrapper>
+    </LiveProvider>
+  );
 };

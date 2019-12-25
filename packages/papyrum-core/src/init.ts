@@ -62,7 +62,6 @@ const orderChildrenEntries = (entries: any) => {
 };
 
 export const init = (argv: any) => {
-  console.log('init');
   return new Promise(async resolve => {
     try {
       await fs.mkdirSync(pathClient);

@@ -21,13 +21,6 @@ export interface DB {
 
 export interface Context {
   db: DB,
-  setRouteActive(route: string): void;
-  setShowMenu(show: boolean): void;
-  setStateSelected(state: string): void;
-  setStateForComponent(states: stateForComponentState): void;
-  setActivePanel(panel: string): void;
-  routeActive: string;
-  stateForComponent: stateForComponentState,
 }
 
 export const contextDB = React.createContext<Context | any>({});
