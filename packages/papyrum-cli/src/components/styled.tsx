@@ -16,10 +16,10 @@ export const GlobalStyle = createGlobalStyle`
 `;
 
 export const BoxProvider = styled.div`
-  padding: 60px;
   width: 960px;
   margin: 0 auto;
   box-sizing: border-box;
+  padding: 40px;
   @media (max-width: 1200px) {
     width: 100vw;
   }
@@ -28,24 +28,19 @@ export const BoxProvider = styled.div`
   }
 `;
 
-export const ProviderWrapper = styled.div`
-  overflow-y: auto;
-  flex: 1%;
-`;
-
 export const ContentWrapper = styled.div`
-  flex: 1;
   position: relative;
-  transition: all .3s ease;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0%;
+  transition: transform 0.3s ease 0s;
+  height: calc(100vh - 60px);
   @media (max-width: 1200px) {
     transform: translateX(-240px);
   }
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: space-between;
   background-color: ${props => props.theme.colors.backgroundArea};
   color: ${props => props.theme.colors.textArea};
+  transition: all .3s ease;
 `;
 
 export const CenterWrapper = styled.div`

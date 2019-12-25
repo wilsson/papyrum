@@ -9,16 +9,17 @@ import {
 export const Status = styled.div`
   width: max-content;
   color: white;
-  padding: 2px 12px;
-  border-radius: 13px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 14px;
   ${props => props.status === 'ready' && css`
-    background-color: #5cbb3c;
+    background-color: ${props => props.theme.colors.green};
   `}
   ${props => props.status === 'development' && css`
-    background-color: #5f64e4;
+    background-color: ${props => props.theme.colors.skyblue};
   `}
   ${props => props.status === 'deprecated' && css`
-    background-color: #e45f5f ;
+    background-color: ${props => props.theme.colors.orange};
   `}
 `;
 

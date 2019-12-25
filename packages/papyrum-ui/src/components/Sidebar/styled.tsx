@@ -1,13 +1,20 @@
 import styled, { css } from 'styled-components';
+import Resizable from 're-resizable';
+
+export const CustomResizable = styled(Resizable)`
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 60px) !important;
+`;
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.backgroundMenu};
-  border-right: 1px solid ${props => props.theme.colors.borderMenu};
+  background-color: ${props => props.theme.colors.grayLight};
+  border-right: 1px solid ${props => props.theme.colors.gray};
   color: ${props => props.theme.colors.text};
   display: flex;
   flex-direction: column;
-  transition: all .3s ease;
   z-index: 200;
+  transition: all .3s ease;
   @media (max-width: 1200px) {
     transform: translateX(-240px);
     ${(props) => props.showMenu && css`
@@ -16,25 +23,11 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const ByWrapper = styled.div`
-  border-top: 1px solid ${props => props.theme.colors.borderMenu};
-  text-align: center;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 30px;
-`;
-
 export const MenuWrapper = styled.div`
   width: 100%;
   overflow-y: auto;
   flex: 1;
   margin-top: 30px;
-`;
-
-export const Logo = styled.img`
-  margin-top: 40px;
-  padding-left: 18px;
-  margin-bottom: 48px;
 `;
 
 export const ShadowWrapper = styled.div`
@@ -54,34 +47,4 @@ export const ShadowWrapper = styled.div`
     opacity: .3;
     pointer-events: initial;
   `}
-`;
-
-export const Title = styled.div`
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 33px;
-  padding: 0 20px;
-  overflow-wrap: break-word;
-`;
-
-export const WrapperButtonSwitch = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
-  margin-right: 10px;
-`;
-
-export const ButtonSwitchDark = styled.button`
-  width: 30px;
-  height: 30px;
-  background-color: ${props => props.theme.colors.backgroundButtonTheme};
-  border: 0;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  svg{
-    stroke: ${props => props.theme.colors.colorButtonTheme};
-  }
 `;

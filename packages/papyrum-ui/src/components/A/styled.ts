@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const styles = css`
-  color: #039BE5;
+  color: ${props => props.theme.colors.skyblue};
   text-decoration: none;
   font-weight: 700;
   font-size: 18px;

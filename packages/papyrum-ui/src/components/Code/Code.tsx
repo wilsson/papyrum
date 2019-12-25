@@ -1,55 +1,58 @@
 import * as React from 'react'
-import copy from 'copy-text-to-clipboard';
-import {
-  Wrapper,
-  BashWrapper,
-  CodeWrapper
-} from './styled';
-
-import { CodeBar } from '../CodeBar';
-import { useState} from 'react';
 import { Highlight } from '../Highlight';
-import { Terminal } from 'react-feather';
+import { HintWrapper, HintHeader } from './styled';
+import { Info as InfoIcon, AlertCircle, CheckCircle } from 'react-feather';
+import { P } from '../P';
 
-const Bash = ({
-  clip,
-  onClipboard, 
-  children
-}) => (
-  <Wrapper>
-    <BashWrapper>
-      <Terminal size={15}/>
-      <Highlight code={children.trim()} />
-    </BashWrapper>
-    <CodeBar
-      clip={clip}
-      handleClipboard={() => {
-        onClipboard();
-      }}
-    />
-  </Wrapper>
-);
+const Tip = ({ name, children }) => {
+  return(
+    <HintWrapper type="tip">
+      <HintHeader>
+        <InfoIcon color="#01A5FE" />{name}
+      </HintHeader>
+      <P>{children}</P>
+    </HintWrapper>
+  )
+};
+
+const Info = ({ name, children }) => {
+  return(
+    <HintWrapper type="info">
+      <HintHeader>
+        <CheckCircle color="#26CB7C" />{name}
+      </HintHeader>
+      <P>{children}</P>
+    </HintWrapper>
+  )
+};
+
+const Warning = ({ name, children }) => {
+  return(
+    <HintWrapper type="warning">
+      <HintHeader>
+        <AlertCircle color="#F77D05" />{name}
+      </HintHeader>
+      <P>{children}</P>
+    </HintWrapper>
+  );
+};
+
 
 export const Code = ({ children, ...nextProps }) => {
-  const [ clip, setClip ] = useState(false);
-  const handleClipboard = () => {
-    copy(children);
-    setClip(true);
-    setTimeout(() => setClip(false), 200);
-  };
-  if(nextProps.className === 'language-bash') {
-    return <Bash clip={clip} onClipboard={handleClipboard} children={children}/>
+  const { className, metastring } = nextProps;
+  const type = className ? className.split('-')[1] : false;
+
+  if(type === 'tip') {
+    return <Tip name={metastring} children={children} />
   }
 
-  return(
-    <Wrapper>
-      <CodeWrapper>
-        <Highlight code={children.trim()} />
-      </CodeWrapper>
-      <CodeBar
-        clip={clip}
-        handleClipboard={handleClipboard}
-      />
-    </Wrapper>
-  )
+  if(type === 'info') {
+    return <Info name={metastring} children={children} />
+  }
+
+  if(type === 'warning') {
+    return <Warning name={metastring} children={children} />
+  }
+
+  return <Highlight code={children.trim()} />
 };

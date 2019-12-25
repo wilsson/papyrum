@@ -28,7 +28,7 @@ const Main = ({ isDark, showMenu, imports }) => {
     <React.Fragment>
       <GlobalStyle />
       <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-        <>
+        <React.Fragment>
           <Header />
           <Wrapper>
             <Sidebar entries={db.entries} showMenu={showMenu} />
@@ -36,7 +36,7 @@ const Main = ({ isDark, showMenu, imports }) => {
               <Panel componentsAsync={componentsAsync} />
             </ContentWrapper>
           </Wrapper>
-        </>
+        </React.Fragment>
       </ThemeProvider>
     </React.Fragment>
   )

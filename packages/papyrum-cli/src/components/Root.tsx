@@ -7,8 +7,6 @@ import { Provider, store } from '@papyrum/ui';
 import { Main } from './Main';
 
 const Root = ({ db, imports }) => {
-  console.log('render App');
-
   return (
     <Provider db={db}>
       <ProviderRedux store={store}>

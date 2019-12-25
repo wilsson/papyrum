@@ -1,24 +1,34 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Wrapper = styled.div`
-  border: 1px solid ${props => props.theme.colors.borderMenu};
-  background-color: ${props => props.theme.colors.backgroundCode};
-  border-radius: 2px 2px 0 0;
-  margin: 10px 0 20px;
+export const HintWrapper = styled.div`
+  color: ${props => props.theme.colors.drakLight};
+  background-color: ${props => props.theme.colors.grayLight};
+  border-radius: 3px;
+  padding: 25px 28px;
+  margin: 40px 0;
+  ${props => props.type === 'info' && css`
+    border-left: 8px solid ${props => props.theme.colors.green};
+  `}
+
+  ${props => props.type === 'tip' && css`
+    border-left: 8px solid ${props => props.theme.colors.skyblue};
+  `}
+
+  ${props => props.type === 'warning' && css`
+    border-left: 8px solid ${props => props.theme.colors.orange};
+  `}
+
+  p {
+    margin-left: 44px;
+  }
 `;
 
-export const CodeWrapper = styled.div`
-  padding: 15px;
-  display: flex;
-`;
-
-export const BashWrapper = styled.div`
-  padding: 15px;
+export const HintHeader = styled.div`
+  font-size: 20px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   svg {
-    width: 15px;
-    color: #A4A4A4;
-    margin-right: 10px;
+    margin-right: 20px;
   }
 `;

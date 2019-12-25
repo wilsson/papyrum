@@ -1,15 +1,15 @@
 import styled, { css } from 'styled-components';
 
 export const Prop = styled.div`
-  border-bottom: 1px solid ${props => props.theme.colors.borderMenu};
+  border-bottom: 1px solid ${props => props.theme.colors.gray};
   padding: 15px;
 `;
 
 export const Wrapper = styled.div`
   margin: 10px 0 20px;
-  border: 1px solid ${props => props.theme.colors.borderMenu};
-  background-color: ${props => props.theme.colors.backgroundCode};
-  border-radius: 2px;
+  border: 1px solid ${props => props.theme.colors.gray};
+  background-color: ${props => props.theme.colors.grayLight};
+  border-radius: 5px;
   ${Prop}:last-child {
     border-bottom: none;
   }
@@ -32,7 +32,6 @@ export const LabelNameWrapper = styled.div`
 const Label = styled.div`
   border-radius: 2px;
   line-height: 22px;
-  padding: 0 5px;
   box-sizing: border-box;
   display: inline-block;
   word-break: break-all;
@@ -48,8 +47,7 @@ const Label = styled.div`
 `;
 
 export const LabelName = styled(Label)`
-  background-color: #DEEBFF;
-  color: #0747A6;
+  color: ${props => props.theme.colors.skyblue};;
   margin-right: 15px;
 `;
 
@@ -58,8 +56,7 @@ export const LabelTypeWrapper = styled.div`
 `;
 
 export const LabelType = styled(Label)`
-  background-color: #EDEDED;
-  color: #5E6C84;
+  color: ${props => props.theme.colors.darkGray};
 `;
 
 export const LabelEnum = styled(Label)`
@@ -86,10 +83,8 @@ const LabelShape = styled(Label)`
   }
 `;
 
-const LabelShapeWrapper = styled(Label)``;
-
 export const Text = styled.div`
-  color: #7E7E7E;
+  color: ${props => props.theme.colors.darkGray};
 `;
 
 export const LabelRequiredOrDefaultWrapper = styled.div`

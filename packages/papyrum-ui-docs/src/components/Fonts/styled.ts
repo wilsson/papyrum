@@ -9,20 +9,20 @@ export const Box = styled.div`
 `;
 
 export const FontSizeWrapper = styled.div`
-  font-family: ${fontFamily};
+  font-family: 'Nunito Sans';
   ${(props) => props.font && css`
     font-family: ${props.font};
   `}
-  border: 1px solid ${props => props.theme.colors.borderMenu};
+  border: 1px solid ${props => props.theme.colors.gray};
   margin: 0 0 20px;
   border-radius: 2px;
-  background-color: ${props => props.theme.colors.backgroundCode};
+  background-color: ${props => props.theme.colors.grayLight};
 `;
 
 export const LabelFont = styled.div`
   font-family: ${fontFamily};
   height: 24px;
-  border: 1px solid ${props => props.theme.colors.borderMenu};
+  border: 1px solid ${props => props.theme.colors.gray};
   font-size: 14px;
   font-weight: bold;
   padding: 10px;

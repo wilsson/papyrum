@@ -1,11 +1,21 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.pre`
-  margin: 0px;
-  overflow: auto;
-  font-family: "Fira Code";
-  font-size: 14px;
-  line-height: 24px;
-  margin: 0;
-  padding: 0;
+export const Copy = styled.span`
+  color: #CCD5DE;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: 100;
+  opacity: 0;
+  transition: all .2s ease;
+`;
+
+export const Wrapper = styled.div`
+  margin-top: 20px;
+  position: relative;
+  &:hover > ${Copy} {
+    opacity: 1;
+  }
 `;

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Blockquote = styled.div`
-  border-left: 4px solid #d0d0d0;
-  padding-left: 10px;
+  border-left: 5px solid ${props => props.theme.colors.gray};
+  padding-left: 20px;
   box-sizing: border-box;
-  background: #fbfbfb;
+  background: ${props => props.theme.colors.grayLight};
   p {
     padding: 10px 0;
   }

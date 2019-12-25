@@ -7,20 +7,17 @@ import { Blockquote } from './components/Blockquote';
 import { Table, TableRow, TableTd, TableTh } from './components/Table';
 import { InlineCode } from './components/InlineCode';
 import { Img } from './components/Img';
+import { Hr } from './components/Hr';
 
 export { Header } from './components/Header'; 
 export { Addons } from './components/Addons';
-export { DevZone } from './components/DevZone';
-export { Provider, contextDB, stateForComponentState, DB, Context } from './components/Provider';
-export { CodeWrapperStyled } from './components/Code';
-export { CodeBar } from './components/CodeBar';
-export { Highlight } from './components/Highlight';
+export { Provider, contextDB, DB, Context } from './components/Provider';
+export {  } from './components/Code';
+export { Highlight, styles, Copy, Wrapper as CodeWrapper } from './components/Highlight';
 export { Sidebar } from './components/Sidebar';
 export { fontFace } from './utils/fonts';
-export { Toolbar } from './components/Toolbar';
 export { Table, TableRow, TableTd, TableTh } from './components/Table';
 export { AStyled } from './components/A';
-export { Dropdown } from './components/Dropdown';
 export { light as lightTheme, dark as darkTheme  } from './themes';
 export { store } from './store';
 
@@ -42,5 +39,6 @@ export const components = {
   P,
   Code,
   Ul,
-  Ol
+  Ol,
+  Hr
 };

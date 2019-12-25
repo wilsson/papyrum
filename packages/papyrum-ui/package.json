@@ -22,7 +22,7 @@
   "dependencies": {
     "copy-text-to-clipboard": "2.1.0",
     "normalized-styled-components": "2.0.0",
-    "prism-react-renderer": "0.1.6",
+    "prism-react-renderer": "1.0.2",
     "re-resizable": "4.11.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",

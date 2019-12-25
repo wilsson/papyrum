@@ -1,19 +1,23 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { Wrapper} from './styled';
+import { Wrapper, WrapperTitle } from './styled';
 import Switch from "react-switch"
 import { connect } from 'react-redux';
 import { contextDB } from '../Provider';
-import { toggleDarkMode } from '../../actions/app';
+import { toggleDarkMode, toggleMenu } from '../../actions/app';
+import { Menu } from 'react-feather';
 
 import * as sunIcon from "../../assets/svg/sun-icon.svg"
 import * as moonIcon from "../../assets/svg/moon-icon.svg"
 
-const Header = ({ isDark, toggleTheme }) => {
+const Header = ({ isDark, toggleTheme, toggleMenu }) => {
   const { db } = useContext(contextDB as any);
   return(
     <Wrapper>
-      {db.config.title}
+      <WrapperTitle>
+        <Menu size="20" onClick={toggleMenu} />
+        {db.config.title}
+      </WrapperTitle>
       <Switch
         offColor={"#5C6975"}
         onColor={"#5C6975"}
@@ -37,6 +41,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   toggleTheme: () => {
     dispatch(toggleDarkMode());
+  },
+  toggleMenu: () => {
+    dispatch(toggleMenu());
   }
 });
 

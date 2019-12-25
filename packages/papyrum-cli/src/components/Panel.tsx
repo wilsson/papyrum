@@ -4,14 +4,12 @@ import { MDXProvider } from '@mdx-js/react';
 import { Route, Switch } from 'react-router-dom';
 import {
   components,
-  Toolbar,
   contextDB,
 } from '@papyrum/ui';
 
 import {
   CenterWrapper,
   BoxProvider,
-  ProviderWrapper
 } from './styled';
 
 const providerComponents = {
@@ -21,6 +19,7 @@ const providerComponents = {
   h4: components.H4,
   h5: components.H5,
   h6: components.H6,
+  hr: components.Hr,
   p: components.P,
   pre: props => <div {...props} />,
   wrapper: BoxProvider,
@@ -43,26 +42,24 @@ const Panel = ({ componentsAsync, isDark }) => {
   const { db } = (React.useContext as any)(contextDB);
 
   return (
-    <React.Fragment>
-      <ProviderWrapper>
-        <MDXProvider components={providerComponents}>
-          <React.Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
-            <Switch>
-              {Object.keys(db.plain).map((entry, i) => (
-                  <Route
-                    key={i}
-                    exact
-                    path={db.plain[entry].route}
-                    component={componentsAsync[i]}
-                  />
-                )
-              )}
-              <Route component={NoMatch} />
-            </Switch>
-          </React.Suspense>
-        </MDXProvider>
-      </ProviderWrapper>
-    </React.Fragment>
+    <div style={{overflowY: 'auto'}}>
+      <MDXProvider components={providerComponents}>
+        <React.Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
+          <Switch>
+            {Object.keys(db.plain).map((entry, i) => (
+                <Route
+                  key={i}
+                  exact
+                  path={db.plain[entry].route}
+                  component={componentsAsync[i]}
+                />
+              )
+            )}
+            <Route component={NoMatch} />
+          </Switch>
+        </React.Suspense>
+      </MDXProvider>
+    </div>
   )
 };
 
