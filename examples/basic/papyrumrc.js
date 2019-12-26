@@ -5,5 +5,5 @@ export default {
     'Fonts',
     'Components'
   ],
-  template: './index.html'
+  template: './static/index.html'
 };

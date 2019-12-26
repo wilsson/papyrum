@@ -33,7 +33,12 @@ export const getConfig = config => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: setPathHtmlTemplate(config)
+      template: setPathHtmlTemplate(config),
+      title: config.title,
+      meta: {
+        viewport: 'width=device-width, initial-scale=1',
+        charset: 'UTF-8'
+      }
     }),
     new WebpackBar({
       name: 'Papyrum',
