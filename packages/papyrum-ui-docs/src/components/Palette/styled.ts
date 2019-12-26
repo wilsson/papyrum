@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin: 0 0 40px;
 `;
 
 export const ColorWrapper = styled.div`
@@ -15,12 +16,14 @@ export const Label = styled.span`
   font-weight: 700;
   font-size: 18px;
   display: block;
+  color: ${props => props.theme.colors.darkGray};
 `;
 
 export const LabelColor = styled.span`
   font-weight: 400;
   font-size: 14px;
   display: block;
+  color: ${props => props.theme.colors.darkGray};
 `;
 
 export const Color = styled.div`

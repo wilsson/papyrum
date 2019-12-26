@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.grayLight};
   border-bottom: 1px solid ${props => props.theme.colors.gray};
   color: ${props => props.theme.colors.darkGray};
-  font-size: 24px;
+  font-size: 20px;
   height: 60px;
   display: flex;
   align-items: center;
@@ -27,4 +27,12 @@ export const WrapperTitle = styled.div`
       display: block;
     }
   }
+`;
+
+export const LogoWrapper = styled.div`
+  width: 32px;
+  position: relative;
+  height: 32px;
+  margin-right: 10px;
+  text-align: center;
 `;

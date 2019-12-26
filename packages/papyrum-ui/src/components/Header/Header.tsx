@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { Wrapper, WrapperTitle } from './styled';
+import { Wrapper, WrapperTitle, LogoWrapper } from './styled';
 import Switch from "react-switch"
 import { connect } from 'react-redux';
 import { contextDB } from '../Provider';
@@ -11,12 +11,17 @@ import * as sunIcon from "../../assets/svg/sun-icon.svg"
 import * as moonIcon from "../../assets/svg/moon-icon.svg"
 
 const Header = ({ isDark, toggleTheme, toggleMenu }) => {
-  const { db } = useContext(contextDB as any);
+  const { db: { config } } = useContext(contextDB as any);
   return(
     <Wrapper>
       <WrapperTitle>
         <Menu size="20" onClick={toggleMenu} />
-        {db.config.title}
+        {config.logo && (
+          <LogoWrapper>
+            <img src={config.logo} style={{ height: '100%', maxWidth: '100%' }} />
+          </LogoWrapper>
+        )}
+        {config.title}
       </WrapperTitle>
       <Switch
         offColor={"#5C6975"}
