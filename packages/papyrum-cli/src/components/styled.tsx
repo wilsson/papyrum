@@ -7,6 +7,8 @@ export const Wrapper = styled.div`
 `;
 
 export const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,900&display=swap');
+
   body {
     font-family: 'Nunito Sans', sans-serif;
     margin: 0;

@@ -22,4 +22,5 @@ export const EditorWrapper = styled.div`
   &:hover > ${Copy} {
     opacity: 1;
   }
+  margin-bottom: 20px;
 `;

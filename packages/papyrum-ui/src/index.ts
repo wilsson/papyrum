@@ -10,7 +10,6 @@ import { Img } from './components/Img';
 import { Hr } from './components/Hr';
 
 export { Header } from './components/Header'; 
-export { Addons } from './components/Addons';
 export { Provider, contextDB, DB, Context } from './components/Provider';
 export {  } from './components/Code';
 export { Highlight, styles, Copy, Wrapper as CodeWrapper } from './components/Highlight';

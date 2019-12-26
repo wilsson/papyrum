@@ -13,7 +13,7 @@ export const Copy = styled.span`
 `;
 
 export const Wrapper = styled.div`
-  margin-top: 20px;
+  margin: 0 0 40px;
   position: relative;
   &:hover > ${Copy} {
     opacity: 1;

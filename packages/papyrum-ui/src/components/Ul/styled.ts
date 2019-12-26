@@ -1,11 +1,20 @@
 import styled, { css } from 'styled-components';
 
 const styles = css`
-  margin: 10px 0 20px;
+  margin: 0 0 40px;
   padding-left: 16px;
-  font-family: "Nunito Sans";
+  font-family: "Nunito Sans", sans-serif;
   font-size: 18px;
   color: ${props => props.theme.colors.darkGray};
+  li {
+    line-height: 30px;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  p {
+    margin: 0;
+  }
 `;
 
 export const Ul = styled.ul`${styles}`;

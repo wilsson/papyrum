@@ -6,7 +6,7 @@ export const Prop = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  margin: 10px 0 20px;
+  margin: 0 0 40px;
   border: 1px solid ${props => props.theme.colors.gray};
   background-color: ${props => props.theme.colors.grayLight};
   border-radius: 5px;
