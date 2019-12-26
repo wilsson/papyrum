@@ -69,5 +69,5 @@ Button.propTypes = {
   disabled: p.bool,
   /** My description for loading prop */
   loading: p.bool,
-  variant: p.oneOf(['primary', 'danger'])
+  variant: p.oneOf(['primary', 'danger']),
 };

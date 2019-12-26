@@ -6,6 +6,7 @@ export const MenuWrapper = styled.ul`
 `;
 
 const Item = styled.li`
+  cursor: pointer;
   list-style: none;
   padding-left: 24px;
   line-height: 32px;
@@ -37,6 +38,9 @@ export const ListItem = styled(Item)`
 export const SubListItemStyled = styled(Item)`
   font-size: 14px;
   font-weight: 400;
+  a {
+    padding-left: 24px;
+  }
 `;
 
 export const HeaderList = styled.a`
