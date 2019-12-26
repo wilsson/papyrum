@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 
 const font = css`
-  margin: 40px 0 40px;
-  font-family: "Nunito Sans";
-  color: ${props => props.theme.colors.textDefault};
+  margin: 40px 0;
+  font-family: "Nunito Sans", sans-serif;
+  color: ${props => props.theme.colors.darkGray};
 `;
 
 export const H1 = styled.h1`

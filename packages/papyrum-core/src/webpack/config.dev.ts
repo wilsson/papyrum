@@ -8,7 +8,6 @@ import * as WebpackBar from 'webpackbar';
 const pathEntry = path.resolve(process.cwd(), './.papyrum/root.js');
 
 export const getConfig = config => {
-  console.log('config', config);
   return {
     mode: 'development',
     entry: {

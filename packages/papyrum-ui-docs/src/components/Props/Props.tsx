@@ -34,7 +34,6 @@ export const Props = ({ of: component }) => {
           defaultValue,
           description
         } = props[name];
-        console.log('props[name]', props[name]);
         return(
           <Prop key={key}>
             <Header>

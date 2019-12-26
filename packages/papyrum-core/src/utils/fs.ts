@@ -4,25 +4,18 @@ import * as path from 'path';
 import { compile } from 'art-template';
 import * as findUp from 'find-up';
 
-export const tplCompile = (filepath, opts = {}) => {
+export const tplCompile = (filepath: string, opts = {}) => {
   const file = fs.readFileSync(filepath, 'utf8');
   return compile(file, opts);
 };
 
-export const loadFileConfig = (config: string) => {
+export const loadFileConfig = (nameConfig: string) => {
   require('@babel/register')({
     cache: false,
     presets: [['@babel/preset-env', { modules: 'commonjs' }]],
-  })
-  const file = findUp.sync([
-    `.${config}rc`,
-    `${config}.json`,
-    `${config}rc.js`,
-    `.${config}rc.js`,
-    `${config}rc.json`,
-    `${config}.config.js`,
-    `${config}.config.json`
-  ]);
+  });
+
+  const file = findUp.sync(`${nameConfig}.config.js`);
   delete require.cache[file];
   if(file) {
     try {
@@ -35,7 +28,7 @@ export const loadFileConfig = (config: string) => {
         return json;
       }
     } catch (e) {
-      console.log(`Error loading the configuration file ${config}`);
+      console.log(`Error loading the configuration file ${nameConfig}`);
     }
   }
   return {};

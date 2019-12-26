@@ -23,6 +23,7 @@ export const args = (yargs): any => {
     alias: 'i',
     default: []
   })
+
   yargs.option('title', {
     type: 'string',
     alias: 't',
@@ -38,5 +39,10 @@ export const args = (yargs): any => {
   yargs.option('homepage', {
     type: 'string',
     default: pkg.homepage
-  })
+  });
+
+  yargs.option('static', {
+    type: String,
+    default: 'static'
+  });
 };

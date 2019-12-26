@@ -1,1 +1,0 @@
-export { Addons } from './Addons';

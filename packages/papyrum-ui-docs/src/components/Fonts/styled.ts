@@ -14,7 +14,7 @@ export const FontSizeWrapper = styled.div`
     font-family: ${props.font};
   `}
   border: 1px solid ${props => props.theme.colors.gray};
-  margin: 0 0 20px;
+  margin: 0 0 40px;
   border-radius: 2px;
   background-color: ${props => props.theme.colors.grayLight};
 `;
