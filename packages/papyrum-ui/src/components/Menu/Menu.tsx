@@ -24,10 +24,9 @@ const equal = (x, y) => JSON.stringify(x) === JSON.stringify(y);
 export const SubMenu = ({
   entry,
   routeActive,
-  open,
-  setOpen,
   handleChangeRoute
 }) => {
+  const [ open, setOpen ] = useState(true);
   const { children, name } = entry;
   return (
     <React.Fragment>
@@ -80,16 +79,16 @@ const MenuItem = ({
 };
 
 const Menu = ({ entries, handleChangeRoute, routeActive }) => {
-  const [ open, setOpen ] = useState(true);
+
   return (
     <MenuWrapper>
       {entries.map((entry: Entry, key) => {
-        const props = { routeActive, entry };
+        const props = { routeActive, entry, handleChangeRoute };
         return (
           <React.Fragment key={key}>
             {entry.children
-              ? <SubMenu { ...props } open={open} setOpen={setOpen} handleChangeRoute={handleChangeRoute}/>
-              : <MenuItem {...props } handleChangeRoute={handleChangeRoute} />}
+              ? <SubMenu {...props } />
+              : <MenuItem {...props } />}
           </React.Fragment>
         );
       })}
