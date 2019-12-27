@@ -4,16 +4,18 @@ import { LiveProvider, LiveError, LivePreview } from 'react-live';
 import copy from 'copy-text-to-clipboard';
 import Editor from 'react-simple-code-editor';
 import dracula from "prism-react-renderer/themes/dracula";
-
 import HighlightImported, { defaultProps } from 'prism-react-renderer';
 import { Copy, styles } from '@papyrum/ui'
-
 import { Wrapper, LivePreviewWrapper, EditorWrapper } from './styled';
+import { useContext } from 'react';
+import { contextDB } from '@papyrum/ui';
+
 
 export const Playground = ({ code: initialCode, scope }) => {
   const [ code, setCode ] = useState(initialCode);
   const [ clip, setClip ] = useState(false);
-  
+  const { db: { config } } = useContext(contextDB as any);
+  const stylesPlain = (config.prism && config.prism.theme.plain) || dracula.plain;
   const handleClipboard = () => {
     copy(code);
     setClip(true);
@@ -21,7 +23,12 @@ export const Playground = ({ code: initialCode, scope }) => {
   };
 
   const highlight = code => (
-    <HighlightImported {...defaultProps} theme={dracula as any} code={code} language="jsx">
+    <HighlightImported
+      {...defaultProps}
+      theme={(config.prism && config.prism.theme) || dracula as any}
+      code={code}
+      language="jsx"
+    >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <React.Fragment>
           {tokens.map((line, i) => (
@@ -48,13 +55,13 @@ export const Playground = ({ code: initialCode, scope }) => {
       </Wrapper>
 
       <EditorWrapper>
-        <Copy onClick={handleClipboard}>{clip ? 'Copied' : 'Copy'}</Copy>
+        <Copy onClick={handleClipboard} color={stylesPlain.backgroundColor}>{clip ? 'Copied' : 'Copy'}</Copy>
         <Editor
           value={code}
           onValueChange={code => setCode(code)}
           highlight={highlight}
           padding={20}
-          style={{ ...styles, borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px' }}
+          style={{ ...styles, ...stylesPlain, borderBottomLeftRadius: '5px', borderBottomRightRadius: '5px' }}
         />
       </EditorWrapper>
     </LiveProvider>
