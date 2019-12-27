@@ -6,7 +6,7 @@ import * as WebpackBar from 'webpackbar';
 import * as loaders from './loaders';
 import { setPathHtmlTemplate } from './../utils';
 
-const pathEntry = path.resolve(process.cwd(), './.papyrum/root.jsx');
+const pathEntry = path.resolve(process.cwd(), './.papyrum/root.js');
 
 export const getConfig = config => ({
   mode: 'production',

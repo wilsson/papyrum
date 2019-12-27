@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Table = styled.table`
   border-collapse: collapse; 
   font-size: 18px;
-  margin: 20px 0 40px;
+  margin: 20px 0 16px;
+  color: ${props => props.theme.colors.darkGray};
 `;
 
 export const TableRow = styled.tr`

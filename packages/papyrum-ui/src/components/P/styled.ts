@@ -5,5 +5,5 @@ export const P = styled.p`
   line-height: 30px;
   font-family: "Nunito Sans", sans-serif;
   color: ${props => props.theme.colors.darkGray};
-  margin:  0 0 10px;
+  margin: 0 0 24px;
 `;

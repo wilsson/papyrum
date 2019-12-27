@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const styles = css`
-  margin: 0 0 40px;
+  margin: 0 0 16px;
   padding-left: 16px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 18px;
