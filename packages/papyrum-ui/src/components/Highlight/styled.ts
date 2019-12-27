@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { invert, grayscale } from 'polished'
 
 export const Copy = styled.span`
-  color: #CCD5DE;
+  color: ${props => grayscale(invert(props.color))}
   position: absolute;
   right: 15px;
   top: 15px;
