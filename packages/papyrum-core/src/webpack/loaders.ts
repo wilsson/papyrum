@@ -21,7 +21,7 @@ const getConfigBabel = argv => {
 };
 
 export const babel = argv => ({
-  test: argv.typescript ? /\.(ts|tsx)$/ : /\.(js|jsx)$/,
+  test: /\.(ts|tsx|js|jsx)$/,
   exclude: /node_modules/,
   use: [
     {
