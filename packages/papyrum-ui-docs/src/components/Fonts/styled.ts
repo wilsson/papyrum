@@ -14,7 +14,7 @@ export const FontSizeWrapper = styled.div`
     font-family: ${props.font};
   `}
   border: 1px solid ${props => props.theme.colors.gray};
-  margin: 0 0 40px;
+  margin: 0 0 24px;
   border-radius: 2px;
   background-color: ${props => props.theme.colors.grayLight};
 `;
@@ -34,6 +34,7 @@ export const LabelFont = styled.div`
   margin-bottom: -1px;
   margin-right: -1px;
   border-radius: 2px;
+  color: ${props => props.theme.colors.darkGray};
 `;
 
 export const LabelFontWrapper = styled.div`
@@ -51,12 +52,14 @@ export const FontSizeRow = styled.div`
 `;
 
 export const FontSizeLabelSize = styled.p`
+  color: ${props => props.theme.colors.darkGray};
   font-size: 16px;
   margin: 0;
   margin-right: 20px;
 `;
 
 export const FontSizeLabelText = styled.p`
+  color: ${props => props.theme.colors.darkGray};
   margin: 0;
   ${(props) => props.size && css`
     font-size: ${props.size};

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { contextDB } from '@papyrum/ui';
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { changeRoute } from '@papyrum/ui';
 
 import {
   Table, 
@@ -15,8 +17,8 @@ import {
   Name,
 } from './styled';
 
-export const Components = () => {
-  const { db, setRouteActive } = useContext(contextDB);
+const Components = ({ handleChangeRoute }) => {
+  const { db } = useContext(contextDB);
   return(
     <Table style={{ width: '100%' }}>
       <thead>
@@ -34,7 +36,7 @@ export const Components = () => {
               <TableRow key={key}>
                 <Name>
                   <NavLink exact to={route} onClick={() => {
-                    setRouteActive(route);
+                    handleChangeRoute(route);
                   }}>
                     {name}
                   </NavLink>
@@ -50,3 +52,13 @@ export const Components = () => {
     </Table>
   )
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  handleChangeRoute: (route) => {
+    dispatch(changeRoute(route));
+  }
+});
+
+const ComponentsHoc = connect(null, mapDispatchToProps)(Components);
+
+export { ComponentsHoc as Components };

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { invert, grayscale } from 'polished'
 
 export const Copy = styled.span`
-  color: ${props => grayscale(invert(props.color))}
+  color: ${props => grayscale(invert(props.color))};
   position: absolute;
   right: 15px;
   top: 15px;
@@ -14,7 +14,7 @@ export const Copy = styled.span`
 `;
 
 export const Wrapper = styled.div`
-  margin: 0 0 40px;
+  margin: 0 0 24px;
   position: relative;
   &:hover > ${Copy} {
     opacity: 1;
