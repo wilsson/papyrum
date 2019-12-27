@@ -4,6 +4,10 @@
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
+  "keywords": [
+    "documentation",
+    "react"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "repository": {

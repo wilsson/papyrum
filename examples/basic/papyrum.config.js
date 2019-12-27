@@ -1,4 +1,5 @@
 export default {
+  title: 'Papyrum',
   menu: [
     'Introduction',
     'Colors',

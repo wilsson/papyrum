@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "papyrum dev --title \"Hello World\"",
+    "dev": "papyrum dev --title \"Papyrum\"",
     "build": "papyrum build"
   },
   "keywords": [],
