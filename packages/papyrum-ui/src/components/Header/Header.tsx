@@ -6,9 +6,11 @@ import { connect } from 'react-redux';
 import { contextDB } from '../Provider';
 import { toggleDarkMode, toggleMenu } from '../../actions/app';
 import { Menu } from 'react-feather';
+import { useBaseUrl } from '../../utils';
 
 import * as sunIcon from "../../assets/svg/sun-icon.svg"
 import * as moonIcon from "../../assets/svg/moon-icon.svg"
+
 
 const Header = ({ isDark, toggleTheme, toggleMenu }) => {
   const { db: { config } } = useContext(contextDB as any);
@@ -18,7 +20,7 @@ const Header = ({ isDark, toggleTheme, toggleMenu }) => {
         <Menu size="20" onClick={toggleMenu} />
         {config.logo && (
           <LogoWrapper>
-            <img src={config.logo} style={{ height: '100%', maxWidth: '100%' }} />
+            <img src={useBaseUrl(config.logo)} style={{ height: '100%', maxWidth: '100%' }} />
           </LogoWrapper>
         )}
         {config.title}

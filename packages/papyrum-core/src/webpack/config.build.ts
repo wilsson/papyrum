@@ -3,10 +3,13 @@
 import * as path from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as WebpackBar from 'webpackbar';
+import * as CopyPlugin from 'copy-webpack-plugin';
 import * as loaders from './loaders';
 import { setPathHtmlTemplate } from './../utils';
 
 const pathEntry = path.resolve(process.cwd(), './.papyrum/root.js');
+
+console.log('ENTRY A COPIAR>>>', path.resolve(process.cwd(), 'static'));
 
 export const getConfig = config => ({
   mode: 'production',
@@ -43,7 +46,10 @@ export const getConfig = config => ({
     new WebpackBar({
       name: 'Papyrum',
       color: '#41b883'
-    })
+    }),
+    new CopyPlugin([
+      { from: path.resolve(process.cwd(), 'static'), to: 'static/assets', ignore: ['index.html'] },
+    ])
   ],
   optimization: {
     minimize: true,

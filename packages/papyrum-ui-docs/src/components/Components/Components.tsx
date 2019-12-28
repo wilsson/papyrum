@@ -36,6 +36,7 @@ const Components = ({ handleChangeRoute }) => {
               <TableRow key={key}>
                 <Name>
                   <NavLink exact to={route} onClick={() => {
+                    console.log('click', handleChangeRoute);
                     handleChangeRoute(route);
                   }}>
                     {name}
