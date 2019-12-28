@@ -4,6 +4,7 @@ import * as yargs from 'yargs';
 import { args } from './args';
 import * as commands from './commands';
 import { loadFileConfig } from '@papyrum/core';
+
 const config = loadFileConfig('papyrum');
 
 yargs // eslint-disable-line
@@ -12,7 +13,6 @@ yargs // eslint-disable-line
     await commands.dev(cf);
   })
   .command('build', 'Build static site', args, async argv => {
-    const config = loadFileConfig('papyrum');
     const cf = { ...argv, ...config };
     await commands.build(cf);
   })

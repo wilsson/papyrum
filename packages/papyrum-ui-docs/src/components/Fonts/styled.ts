@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
-let fontFamily = '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";'
-fontFamily = 'Nunito Sans';
+let fontFamily = 'Nunito Sans';
 
 export const Box = styled.div`
   padding: 15px;
