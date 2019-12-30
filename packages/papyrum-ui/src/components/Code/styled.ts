@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const HintWrapper = styled.div`
-  color: ${props => props.theme.colors.drakLight};
+  color: ${props => props.theme.colors.darkLight};
   background-color: ${props => props.theme.colors.grayLight};
   border-radius: 3px;
   padding: 25px 28px;

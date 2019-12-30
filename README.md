@@ -2,6 +2,18 @@
   <img src="https://user-images.githubusercontent.com/4754339/71502967-1a73bf80-2841-11ea-9add-13cd5bd905dd.png" />
 </p>
 
+<p align="center">
+  <a href="https://www.npmjs.com/package/docz" target="_blank">
+    <img src="https://badgen.net/npm/v/@papyrum/cli" alt="">
+  </a>
+  <a href="https://www.npmjs.com/package/docz" target="_blank">
+    <img src="https://badgen.net/npm/dt/@papyrum/cli" alt="">
+  </a>
+  <a href="LICENSE.md" target="_blank">
+    <img src="https://badgen.net/npm/license/@papyrum/cli" alt="">
+  </a>
+</p>
+
 Papyrum is a tool that will help you in the creation of your design system, style guide or in the documentation of your project based on `react`
 
 ### Features

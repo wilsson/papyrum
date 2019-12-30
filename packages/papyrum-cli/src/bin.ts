@@ -16,4 +16,7 @@ yargs // eslint-disable-line
     const cf = { ...argv, ...config };
     await commands.build(cf);
   })
+  .command('new', 'Create base project', {}, argv => {
+    console.log('Command new =>', argv);
+  })
   .argv;
