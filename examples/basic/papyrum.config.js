@@ -7,5 +7,5 @@ export default {
     'Components'
   ],
   template: './static/index.html',
-  logo: 'logo.png'
+  logo: 'logo.svg'
 };
