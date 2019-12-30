@@ -6,3 +6,4 @@ docs
 .papyrum
 dist
 yarn-error.log
+.DS_Store

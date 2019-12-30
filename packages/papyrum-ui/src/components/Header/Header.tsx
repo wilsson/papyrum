@@ -11,7 +11,6 @@ import { useBaseUrl } from '../../utils';
 import * as sunIcon from "../../assets/svg/sun-icon.svg"
 import * as moonIcon from "../../assets/svg/moon-icon.svg"
 
-
 const Header = ({ isDark, toggleTheme, toggleMenu }) => {
   const { db: { config } } = useContext(contextDB as any);
   return(
