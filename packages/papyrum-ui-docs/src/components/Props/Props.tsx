@@ -25,6 +25,11 @@ export const Props = ({ of: component }) => {
   const pathname = component.__filemeta.filename;
   const { props } = db.props[pathname];
   const propsName = props && Object.keys(props);
+
+  if(!propsName) {
+    return null;
+  }
+
   return(
     <Wrapper>
       {propsName && propsName.map((name, key) => {

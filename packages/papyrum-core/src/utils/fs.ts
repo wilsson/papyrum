@@ -28,7 +28,7 @@ export const loadFileConfig = (nameConfig: string) => {
         return json;
       }
     } catch (e) {
-      console.log(`Error loading the configuration file ${nameConfig}`);
+      console.log(`Error loading the configuration file ${nameConfig} >>`, e);
     }
   }
   return {};

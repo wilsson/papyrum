@@ -17,6 +17,6 @@ yargs // eslint-disable-line
     await commands.build(cf);
   })
   .command('new', 'Create base project', {}, argv => {
-    console.log('Command new =>', argv);
+    commands.newProject(argv._);
   })
   .argv;

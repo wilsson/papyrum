@@ -1,12 +1,9 @@
 export default {
-  title: 'Papyrum',
+  typescript: true,
   logo: 'img/logo.svg',
   favicon: 'img/favicon.ico',
   menu: [
     'Introduction',
-    'Colors',
-    'Fonts',
     'Components'
-  ],
-  template: './static/index.html',
+  ]
 };

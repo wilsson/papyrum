@@ -62,7 +62,7 @@ export const mdx = argv => ({
 });
 
 export const file = {
-  test: /\.(jpe?g|png|svg|woff2|woff|ttf)$/,
+  test: /\.(jpe?g|png|svg|woff2|woff|ttf|ico)$/,
   use: [
     {
       loader: require.resolve('file-loader'),
