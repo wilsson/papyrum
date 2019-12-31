@@ -1,8 +1,8 @@
 import * as React from 'react';
-import p from 'prop-types';
+import * as p from 'prop-types';
 
 interface Props {
-  variants: any;
+  primary: any;
 }
 
 export const Button: React.FC<Props> = ({ children }) => {

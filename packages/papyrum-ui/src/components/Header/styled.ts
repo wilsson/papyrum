@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { AStyled } from '../A';
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.grayLight};
@@ -14,7 +16,17 @@ export const Wrapper = styled.div`
   transition: all .3s ease;
 `;
 
-export const WrapperTitle = styled.div`
+
+
+export const WrapperTitle = styled(Link)`
+  text-decoration: none;
+  color: ${props => props.theme.colors.darkGray};
+ 
+  width: auto;
+  height: 32px;
+  position: relative;
+
+  cursor: pointer;
   display: flex;
   align-items: center;
   svg {
@@ -30,9 +42,13 @@ export const WrapperTitle = styled.div`
 `;
 
 export const LogoWrapper = styled.div`
-  width: 32px;
   position: relative;
-  height: 32px;
+  height: 100%;
+  width: auto;
   margin-right: 10px;
   text-align: center;
+  img {
+    height: 100%;
+    width: auto;
+  }
 `;

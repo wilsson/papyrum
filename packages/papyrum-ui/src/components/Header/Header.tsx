@@ -4,22 +4,22 @@ import { Wrapper, WrapperTitle, LogoWrapper } from './styled';
 import Switch from "react-switch"
 import { connect } from 'react-redux';
 import { contextDB } from '../Provider';
-import { toggleDarkMode, toggleMenu } from '../../actions/app';
+import { toggleDarkMode, toggleMenu, changeRoute } from '../../actions/app';
 import { Menu } from 'react-feather';
 import { useBaseUrl } from '../../utils';
 
 import * as sunIcon from "../../assets/svg/sun-icon.svg"
 import * as moonIcon from "../../assets/svg/moon-icon.svg"
 
-const Header = ({ isDark, toggleTheme, toggleMenu }) => {
+const Header = ({ isDark, toggleTheme, toggleMenu, handleChangeRoute }) => {
   const { db: { config } } = useContext(contextDB as any);
   return(
     <Wrapper>
-      <WrapperTitle>
+      <WrapperTitle to="/" onClick={() => handleChangeRoute('/') }>
         <Menu size="20" onClick={toggleMenu} />
         {config.logo && (
           <LogoWrapper>
-            <img src={useBaseUrl(config.logo)} style={{ height: '100%', maxWidth: '100%' }} />
+            <img src={useBaseUrl(config.logo)} />
           </LogoWrapper>
         )}
         {config.title}
@@ -50,6 +50,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   toggleMenu: () => {
     dispatch(toggleMenu());
+  },
+  handleChangeRoute: (route: string) => {
+    dispatch(changeRoute(route));
   }
 });
 

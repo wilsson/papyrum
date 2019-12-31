@@ -60,7 +60,7 @@ const ButtonStyled = styled.button`
   `}
 `;
 
-export const Button = ({ children, outline, variant }) => (
+const Button = ({ children, outline, variant }) => (
   <ButtonStyled variant={variant} outline={outline}>{children}</ButtonStyled>
 );
 
@@ -71,3 +71,5 @@ Button.propTypes = {
   loading: p.bool,
   variant: p.oneOf(['primary', 'danger']),
 };
+
+export default Button;

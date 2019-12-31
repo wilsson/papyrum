@@ -11,8 +11,6 @@ interface Props {
   code: string;
 }
 
-
-
 export const styles = {
   boxSizing: 'border-box',
   fontFamily: 'Fira Code',

@@ -2,7 +2,6 @@ node_modules
 package-lock.json
 yarn.lock
 lerna-debug.log
-docs
 .papyrum
 dist
 yarn-error.log
