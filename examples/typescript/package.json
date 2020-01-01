@@ -1,6 +1,6 @@
 {
   "name": "papyrum-example-typescript",
-  "version": "1.4.0-alpha.0",
+  "version": "1.5.0-alpha.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@papyrum/cli": "^1.4.0-alpha.0",
-    "@papyrum/ui-docs": "^1.4.0-alpha.0"
+    "@papyrum/cli": "^1.5.0-alpha.0",
+    "@papyrum/ui-docs": "^1.5.0-alpha.0"
   }
 }

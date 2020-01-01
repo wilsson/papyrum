@@ -3,13 +3,13 @@
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/docz" target="_blank">
+  <a href="https://www.npmjs.com/package/@papyrum/cli" target="_blank">
     <img src="https://badgen.net/npm/v/@papyrum/cli" alt="">
   </a>
-  <a href="https://www.npmjs.com/package/docz" target="_blank">
+  <a href="https://www.npmjs.com/package/@papyrum/cli" target="_blank">
     <img src="https://badgen.net/npm/dt/@papyrum/cli" alt="">
   </a>
-  <a href="LICENSE.md" target="_blank">
+  <a href="LICENSE" target="_blank">
     <img src="https://badgen.net/npm/license/@papyrum/cli" alt="">
   </a>
 </p>
