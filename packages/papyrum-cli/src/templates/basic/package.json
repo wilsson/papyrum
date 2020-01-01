@@ -9,8 +9,8 @@
     "styled-components": "4.3.2"
   },
   "devDependencies": {
-    "@papyrum/cli": "^1.4.0-alpha.0",
-    "@papyrum/ui-docs": "^1.4.0-alpha.0",
+    "@papyrum/cli": "^1.5.0-alpha.0",
+    "@papyrum/ui-docs": "^1.5.0-alpha.0",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
     "typescript": "3.3.3"
