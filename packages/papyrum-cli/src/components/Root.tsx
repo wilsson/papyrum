@@ -6,9 +6,9 @@ import { Provider, store } from '@papyrum/ui';
 import { Helmet} from "react-helmet";
 import { Main } from './Main';
 
-const Root = ({ db, imports }) => {
+const Root = ({ db, imports, components }) => {
   return (
-    <Provider db={db}>
+    <Provider db={{...db, components}}>
       <Helmet>
         <link rel="shortcut icon" href={db.config.favicon} />
       </Helmet>

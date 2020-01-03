@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
 import { MDXProvider } from '@mdx-js/react';
 import { Route, Switch } from 'react-router-dom';
+import { Components, Playground, Fonts, Palette, Props, Link } from '@papyrum/ui-docs';
+
 import {
   components,
   contextDB,
@@ -12,7 +13,16 @@ import {
   BoxProvider,
 } from './styled';
 
-const providerComponents = {
+const shortcuts = {
+  Components,
+  Playground,
+  Fonts,
+  Palette,
+  Props,
+  Link
+};
+
+let providerComponents = {
   h1: components.H1,
   h2: components.H2,
   h3: components.H3,
@@ -38,12 +48,28 @@ const providerComponents = {
 
 const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
 
-const Panel = ({ componentsAsync, isDark }) => {
+const Panel = ({ componentsAsync }) => {
   const { db } = (React.useContext as any)(contextDB);
+
+  let map = {
+    ...providerComponents
+  };
+
+  if(!db.config.disableShortcuts) {
+    map = {
+      ...map,
+      ...shortcuts
+    };
+  }
+
+  map = {
+    ...map,
+    ...db.components
+  };
 
   return (
     <div style={{overflowY: 'auto'}}>
-      <MDXProvider components={providerComponents}>
+      <MDXProvider components={map}>
         <React.Suspense fallback={<CenterWrapper>Loading...</CenterWrapper>}>
           <Switch>
             {Object.keys(db.plain).map((entry, i) => (
@@ -63,10 +89,4 @@ const Panel = ({ componentsAsync, isDark }) => {
   )
 };
 
-const mapStateToProps = (state) => ({
-  isDark: state.app.darkmode
-});
-
-const PanelHoc = connect(mapStateToProps)(Panel);
-
-export { PanelHoc as Panel };
+export { Panel };

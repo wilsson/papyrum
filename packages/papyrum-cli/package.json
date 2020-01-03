@@ -30,6 +30,7 @@
     "@mdx-js/react": "1.5.0",
     "@papyrum/core": "^1.5.0-alpha.0",
     "@papyrum/ui": "^1.5.0-alpha.0",
+    "@papyrum/ui-docs": "^1.5.0-alpha.0",
     "@sindresorhus/slugify": "0.9.1",
     "cpx": "1.5.0",
     "fs-extra": "8.1.0",

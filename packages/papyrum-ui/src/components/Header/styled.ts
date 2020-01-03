@@ -16,16 +16,12 @@ export const Wrapper = styled.div`
   transition: all .3s ease;
 `;
 
-
-
 export const WrapperTitle = styled(Link)`
   text-decoration: none;
   color: ${props => props.theme.colors.darkGray};
- 
   width: auto;
   height: 32px;
   position: relative;
-
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -50,5 +46,14 @@ export const LogoWrapper = styled.div`
   img {
     height: 100%;
     width: auto;
+  }
+`;
+
+export const HomePageLink = styled.a`
+  margin-right: 10px;
+  text-decoration: none;
+  color: ${props => props.theme.colors.darkGray};
+  &:hover {
+    color: ${props => props.theme.colors.skyblue}
   }
 `;

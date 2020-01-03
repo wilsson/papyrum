@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { Wrapper, WrapperTitle, LogoWrapper } from './styled';
+import { Wrapper, WrapperTitle, LogoWrapper, HomePageLink } from './styled';
 import Switch from "react-switch"
 import { connect } from 'react-redux';
 import { contextDB } from '../Provider';
@@ -24,18 +24,21 @@ const Header = ({ isDark, toggleTheme, toggleMenu, handleChangeRoute }) => {
         )}
         {config.title}
       </WrapperTitle>
-      <Switch
-        offColor={"#5C6975"}
-        onColor={"#5C6975"}
-        height={24}
-        width={50}
-        onChange={() => {
-          toggleTheme();
-        }}
-        checkedIcon={<img style={{ width: 26 }} src={moonIcon} alt="moon icon" />}
-        uncheckedIcon={<img style={{ width: 26 }} src={sunIcon} alt="sun icon" />}
-        checked={isDark}
-      />
+     <div style={{display: 'flex', alignItems: 'center'}}>
+        <HomePageLink href={config.homepage} target="__blank">GitHub</HomePageLink>
+        <Switch
+          offColor={"#5C6975"}
+          onColor={"#5C6975"}
+          height={24}
+          width={50}
+          onChange={() => {
+            toggleTheme();
+          }}
+          checkedIcon={<img style={{ width: 26 }} src={moonIcon} alt="moon icon" />}
+          uncheckedIcon={<img style={{ width: 26 }} src={sunIcon} alt="sun icon" />}
+          checked={isDark}
+        />
+     </div>
     </Wrapper>
   )
 };

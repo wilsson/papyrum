@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 const styles = css`
   margin: 0 0 16px;
-  padding-left: 16px;
+  padding-left: 24px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 18px;
   color: ${props => props.theme.colors.darkGray};
