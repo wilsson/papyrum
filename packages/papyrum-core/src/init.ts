@@ -133,13 +133,19 @@ export const init = (argv: any) => {
       return 0;
     };
 
-    
     const imports = templateFn({
       planEntries: Object.values(planEntries).sort(compare)
     });
     fs.writeFileSync(pathClient + '/imports.js', imports);
-    fs.writeFileSync(path.resolve(pathClient, './root.js'), rootFile);
-    fs.writeFileSync(path.resolve(pathClient, './App.js'), appFile);
+    
+    if(!fs.existsSync(path.resolve(pathClient, './root.js'))) {
+      fs.writeFileSync(path.resolve(pathClient, './root.js'), rootFile);
+    }
+
+    if(!fs.existsSync(path.resolve(pathClient, './App.js'))) {
+      fs.writeFileSync(path.resolve(pathClient, './App.js'), appFile);
+    }
+
     // create db
     let entries = createEntries(planEntries);
     let entriesOrder = orderChildrenEntries(entries);

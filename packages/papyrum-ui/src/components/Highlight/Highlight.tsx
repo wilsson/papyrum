@@ -40,7 +40,7 @@ export const Highlight: React.FC<Props> = ({ code }) => {
         return(
           <Wrapper>
             <Copy onClick={handleClipboard} color={stylesPlain.backgroundColor}>{clip ? 'Copied' : 'Copy'}</Copy>
-            <pre className={className} style={{ ...styles as any, ...stylesPlain as any, padding: '20px', borderRadius: '5px', }}>
+            <pre className={className} style={{ ...styles as any, ...stylesPlain as any, padding: '20px', borderRadius: '5px', overflow: 'auto' }}>
               {tokens.map((line, i) => (
                 <div {...getLineProps({ line, key: i })}>
                   {line.map((token, key) => (

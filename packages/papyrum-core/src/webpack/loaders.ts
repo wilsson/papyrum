@@ -1,5 +1,7 @@
 import * as matter from 'remark-frontmatter';
 import { rehype } from '../utils/rehype';
+import * as slug from 'remark-slug';
+import * as toc from 'remark-toc';
 import * as emoji from 'remark-emoji';
 import { merge } from 'lodash/fp'
 import { loadFileConfig } from '../utils/fs';
@@ -53,7 +55,9 @@ export const mdx = argv => ({
           [
             matter, { type: 'yaml', marker: '-' }
           ],
-          emoji
+          emoji,
+          slug,
+          toc
         ],
         rehypePlugins: [rehype]
       }
