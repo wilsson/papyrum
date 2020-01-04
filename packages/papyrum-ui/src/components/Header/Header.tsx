@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { Wrapper, WrapperTitle, LogoWrapper, HomePageLink } from './styled';
+import { Wrapper, WrapperTitle, LogoWrapper, HomePageLink, HamburgerIcon } from './styled';
 import Switch from "react-switch"
 import { connect } from 'react-redux';
 import { contextDB } from '../Provider';
 import { toggleDarkMode, toggleMenu, changeRoute } from '../../actions/app';
-import { Menu } from 'react-feather';
 import { useBaseUrl } from '../../utils';
 
 import * as sunIcon from "../../assets/svg/sun-icon.svg"
@@ -15,16 +14,18 @@ const Header = ({ isDark, toggleTheme, toggleMenu, handleChangeRoute }) => {
   const { db: { config } } = useContext(contextDB as any);
   return(
     <Wrapper>
-      <WrapperTitle to="/" onClick={() => handleChangeRoute('/') }>
-        <Menu size="20" onClick={toggleMenu} />
-        {config.logo && (
-          <LogoWrapper>
-            <img src={useBaseUrl(config.logo)} />
-          </LogoWrapper>
-        )}
-        {config.title}
-      </WrapperTitle>
-     <div style={{display: 'flex', alignItems: 'center'}}>
+      <div style={{display: 'flex', alignItems: 'center'}}>
+        <HamburgerIcon size="20" onClick={toggleMenu} tabIndex="0" />
+        <WrapperTitle to="/" onClick={() => handleChangeRoute('/') }>
+          {config.logo && (
+            <LogoWrapper>
+              <img src={useBaseUrl(config.logo)} />
+            </LogoWrapper>
+          )}
+          {config.title}
+        </WrapperTitle>
+      </div>
+      <div style={{display: 'flex', alignItems: 'center'}}>
         <HomePageLink href={config.homepage} target="__blank">GitHub</HomePageLink>
         <Switch
           offColor={"#5C6975"}

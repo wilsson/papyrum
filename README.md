@@ -16,7 +16,7 @@
 
 Papyrum is a tool that will help you in the creation of your design system, style guide or in the documentation of your project based on `react`
 
-### Features
+## Features
 
 - Zero config
 - [MDX based](https://mdxjs.com/), builds documentation with the markdown of the component era.
@@ -27,29 +27,79 @@ Papyrum is a tool that will help you in the creation of your design system, styl
   <img src="https://user-images.githubusercontent.com/4754339/71502918-d5e82400-2840-11ea-9165-3643711ca8d2.png" />
 </p>
 
-### Installation
+## Start a new project
+
+Papyrum brings with it a command that will help you build your project based on templates.
 
 ```bash
+npx @papyrum/cli new [name] [template]
+```
+
+For example:
+
+```bash
+npx @papyrum/cli new my-website basic
+
+```
+
+| Template | Description |
+| ------------- | ------------- |
+| `basic` | Basic template |
+| `typescript` | Basic template with typescript |
+
+### Project structure
+
+```
+my-website
+├── docs
+│   ├── Introduction.mdx
+│   └── Button.mdx
+├── src
+│   └── components
+├── static
+│   └── img
+│       ├── favicon.ico
+│       └── logo.svg
+├── package.json
+├── .editorconfig
+├── papyrum.config.js
+└── yarn.lock
+```
+
+### Structure summary
+
+- `docs` : Folder where our `.mdx` documentation files are hosted.
+- `src` : Ffolder where the components to be built are stored, in the case of building a component library.
+- `static` : Default place where static files will be served.
+- `papyrum.config.js` : Papyrum settings.
+
+Now execute this command to be able to raise a development server that will listen to your changes as you develop.
+
+```
+yarn dev
+```
+
+or
+
+```
+npm run dev
+```
+
+## Add Papyrum to an existing project
+
+You just need to install the command line tool:
+
+```
 yarn add @papyrum/cli
 ```
 
-> You need react y react-dom with 16.8.6 installed.
+or
 
-### Usage
-
-Add the following to your  `package.json`
-
-```json
-{
-  "name": "my_project",
-  "scripts": {
-    "dev": "papyrum dev",
-    "build": "papyrum build"
-  }
-}
+```
+npm install @papyrum/cli
 ```
 
-Hello world with papyrum, create one file `.mdx`
+Then create an `.mdx` file:
 
 ```
 ---
@@ -63,17 +113,21 @@ ___
 Hello world with mdx
 ```
 
-execute
+Finally run:
 
-```bash
+```
 yarn dev
 ```
 
-<p align="center">
-  <img src="https://user-images.githubusercontent.com/4754339/71502938-f2845c00-2840-11ea-9dec-1d9ea8b37778.png" />
-</p>
+or
 
-### Examples
+```
+npm run dev
+```
+
+## Examples
 
 - [Basic](https://github.com/wilsson/papyrum/tree/master/examples/basic)
 - [With typescript](https://github.com/wilsson/papyrum/tree/master/examples/typescript)
+
+If you have any suggestion of a feature or feedback please do not hesitate to create a [issue](https://github.com/wilsson/papyrum/issues).
