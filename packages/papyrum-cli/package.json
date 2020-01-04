@@ -1,6 +1,6 @@
 {
   "name": "@papyrum/cli",
-  "version": "1.5.0-alpha.0",
+  "version": "1.6.0-alpha.0",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -28,9 +28,9 @@
   },
   "dependencies": {
     "@mdx-js/react": "1.5.0",
-    "@papyrum/core": "^1.5.0-alpha.0",
-    "@papyrum/ui": "^1.5.0-alpha.0",
-    "@papyrum/ui-docs": "^1.5.0-alpha.0",
+    "@papyrum/core": "^1.6.0-alpha.0",
+    "@papyrum/ui": "^1.6.0-alpha.0",
+    "@papyrum/ui-docs": "^1.6.0-alpha.0",
     "@sindresorhus/slugify": "0.9.1",
     "cpx": "1.5.0",
     "fs-extra": "8.1.0",
