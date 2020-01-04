@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { ChevronDown } from 'react-feather';
 import { connect } from 'react-redux';
 import { changeRoute } from '../../actions/app';
+import { toggleMenu } from '../../actions/app';
 
 import {
   MenuWrapper,
@@ -24,7 +25,8 @@ const equal = (x, y) => JSON.stringify(x) === JSON.stringify(y);
 export const SubMenu = ({
   entry,
   routeActive,
-  handleChangeRoute
+  handleChangeRoute,
+  toggleMenu
 }) => {
   const [ open, setOpen ] = useState(true);
   const { children, name } = entry;
@@ -49,6 +51,7 @@ export const SubMenu = ({
                 key={key}
                 onClick={() => {
                   handleChangeRoute(route);
+                  toggleMenu();
                 }} 
                 active={active}
               >
@@ -65,25 +68,26 @@ export const SubMenu = ({
 const MenuItem = ({
   routeActive,
   entry,
-  handleChangeRoute
+  handleChangeRoute,
+  toggleMenu
 }) => {
   const { route, name } = entry;
   const active = equal(route, routeActive);
   return (
     <ListItem active={active} onClick={() => {
       handleChangeRoute(route);
+      toggleMenu();
     }}>
       <NavLink exact to={route}>{name}</NavLink>
     </ListItem>
   )
 };
 
-const Menu = ({ entries, handleChangeRoute, routeActive }) => {
-
+const Menu = ({ entries, handleChangeRoute, routeActive, toggleMenu }) => {
   return (
     <MenuWrapper>
       {entries.map((entry: Entry, key) => {
-        const props = { routeActive, entry, handleChangeRoute };
+        const props = { routeActive, entry, handleChangeRoute, toggleMenu };
         return (
           <React.Fragment key={key}>
             {entry.children
@@ -98,10 +102,14 @@ const Menu = ({ entries, handleChangeRoute, routeActive }) => {
 
 const mapStateToProps = (state) => ({
   routeActive: state.route
-})
+});
+
 const mapDispatchToProps = (dispatch) => ({
   handleChangeRoute: (route: string) => {
     dispatch(changeRoute(route));
+  },
+  toggleMenu: () => {
+    dispatch(toggleMenu());
   }
 });
 

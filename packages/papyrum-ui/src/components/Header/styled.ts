@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { AStyled } from '../A';
+import { Menu } from 'react-feather';
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.colors.grayLight};
@@ -25,15 +26,14 @@ export const WrapperTitle = styled(Link)`
   cursor: pointer;
   display: flex;
   align-items: center;
-  svg {
-    cursor: pointer;
-    margin-right: 10px;
-    display: none;
-  }
+`;
+
+export const HamburgerIcon = styled(Menu)`
+  cursor: pointer;
+  margin-right: 10px;
+  display: none;
   @media (max-width: 1200px) {
-    svg {
-      display: block;
-    }
+    display: block;
   }
 `;
 
