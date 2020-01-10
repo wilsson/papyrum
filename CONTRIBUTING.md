@@ -71,6 +71,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://twitter.com/wilsson83"><img src="https://avatars3.githubusercontent.com/u/4754339?v=4" width="100px;" alt="Wilson FT"/><br /><sub><b>Wilson FT</b></sub></a><br /><a href="https://github.com/wilsson/papyrum/commits?author=wilsson" title="Code">💻</a> <a href="https://github.com/wilsson/papyrum/commits?author=wilsson" title="Documentation">📖</a> <a href="#review-wilsson" title="Reviewed Pull Requests">👀</a> <a href="#design-wilsson" title="Design">🎨</a></td>
+    <td align="center"><a href="http://twitter.com/juanpablocs21"><img src="https://avatars0.githubusercontent.com/u/9310466?v=4" width="100px;" alt="Juan pablo"/><br /><sub><b>Juan pablo</b></sub></a><br /><a href="https://github.com/wilsson/papyrum/commits?author=juanpablocs" title="Code">💻</a> <a href="#review-juanpablocs" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
