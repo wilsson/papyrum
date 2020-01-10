@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import HighlightImported, { defaultProps } from 'prism-react-renderer';
+import HighlightImported, { Language, defaultProps } from 'prism-react-renderer';
 import dracula from 'prism-react-renderer/themes/dracula';
 import { Wrapper, Copy } from './styled';
 import copy from 'copy-text-to-clipboard';
@@ -9,6 +9,7 @@ import { contextDB } from '../Provider';
 
 interface Props {
   code: string;
+  language: Language;
 }
 
 export const styles = {
@@ -18,7 +19,7 @@ export const styles = {
   fontSize: '14px',
 };
 
-export const Highlight: React.FC<Props> = ({ code }) => {
+export const Highlight: React.FC<Props> = ({ code, language }) => {
   const [ clip, setClip ] = useState(false);
   const { db: { config } } = useContext(contextDB as any);
   const stylesPlain = (config.prism && config.prism.theme.plain) || dracula.plain;
@@ -33,7 +34,7 @@ export const Highlight: React.FC<Props> = ({ code }) => {
     <HighlightImported
       {...defaultProps}
       code={code}
-      language="jsx"
+      language={language}
       theme={(config.prism && config.prism.theme) || dracula as any}
     >
       {({ tokens, getLineProps, getTokenProps, style, className }) => {
