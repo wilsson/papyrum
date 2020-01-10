@@ -26,7 +26,7 @@ const Header = ({ isDark, toggleTheme, toggleMenu, handleChangeRoute }) => {
         </WrapperTitle>
       </div>
       <div style={{display: 'flex', alignItems: 'center'}}>
-        <HomePageLink href={config.homepage} target="__blank">GitHub</HomePageLink>
+        {config.homepage && <HomePageLink href={config.homepage} target="__blank">GitHub</HomePageLink>}
         <Switch
           offColor={"#5C6975"}
           onColor={"#5C6975"}
@@ -39,7 +39,7 @@ const Header = ({ isDark, toggleTheme, toggleMenu, handleChangeRoute }) => {
           uncheckedIcon={<img style={{ width: 26 }} src={sunIcon} alt="sun icon" />}
           checked={isDark}
         />
-     </div>
+      </div>
     </Wrapper>
   )
 };
