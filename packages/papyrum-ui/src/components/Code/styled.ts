@@ -21,6 +21,9 @@ export const HintWrapper = styled.div`
   p {
     margin-left: 44px;
   }
+  p:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const HintHeader = styled.div`
