@@ -14,7 +14,7 @@
   </a>
 </p>
 
-Papyrum is a tool that will help you in the creation of your design system, style guide or in the documentation of your project based on `react`
+Papyrum is a tool that will help you document your design system or library of components based on [React](https://reactjs.org/).
 
 ## Features
 
