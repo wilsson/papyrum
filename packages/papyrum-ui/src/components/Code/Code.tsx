@@ -54,5 +54,5 @@ export const Code = ({ children, ...nextProps }) => {
     return <Warning name={metastring} children={children} />
   }
 
-  return <Highlight code={children.trim()} />
+  return <Highlight code={children.trim()} language={type} />
 };
