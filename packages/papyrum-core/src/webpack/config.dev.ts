@@ -17,7 +17,7 @@ export const getConfig = config => {
       ]
     },
     output: {
-      path: path.resolve(process.cwd(), `${config.dest}`),
+      path: path.resolve(process.cwd(), `${config.dist}`),
       filename: 'static/js/bundle.js',
       chunkFilename: 'static/js/[name].chunk.js',
       publicPath: '/'

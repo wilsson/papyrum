@@ -1,5 +1,4 @@
 // webpack.config - build
-
 import * as path from 'path';
 import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 import * as WebpackBar from 'webpackbar';
@@ -16,7 +15,7 @@ export const getConfig = config => {
       app: pathEntry
     },
     output: {
-      path: path.resolve(process.cwd(), `./${config.dest}`),
+      path: path.resolve(process.cwd(), `./${config.dist}`),
       filename: 'static/js/[name].[hash].js',
       chunkFilename: 'static/js/[name].[hash].js',
       publicPath: '/'

@@ -3,6 +3,7 @@ import * as fsExtra from 'fs-extra';
 import * as path from 'path';
 import { compile } from 'art-template';
 import * as findUp from 'find-up';
+import { PATH_DIST } from './../config/paths';
 
 export const tplCompile = (filepath: string, opts = {}) => {
   const file = fs.readFileSync(filepath, 'utf8');
@@ -23,10 +24,11 @@ export const loadFileConfig = (nameConfig: string) => {
       if (isJS) {
         const required = require(file);
         return required.default || required;
-      } else {
-        const json = fsExtra.readJsonSync(file, { throws: false }) || {};
-        return json;
       }
+      const json = fsExtra.readJsonSync(file, { throws: false }) || {};
+      json.dist = json.dist || PATH_DIST;
+      return json;
+      
     } catch (e) {
       console.log(`Error loading the configuration file ${nameConfig} >>`, e);
     }

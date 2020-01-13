@@ -24,8 +24,8 @@ export const build = async argv => {
     };
     console.log('\nBuild success');
 
-    measureFileSizesBeforeBuild(argv.dest).then(previousFileSizes => {
-      printFileSizesAfterBuild(stats, previousFileSizes, argv.dest);
+    measureFileSizesBeforeBuild(argv.dist).then(previousFileSizes => {
+      printFileSizesAfterBuild(stats, previousFileSizes, argv.dist);
     });
   })
 };

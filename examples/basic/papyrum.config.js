@@ -9,5 +9,6 @@ export default {
     'Components'
   ],
   template: './static/index.html',
-  disableShortcuts: false
+  disableShortcuts: false,
+  dist: './build'
 };

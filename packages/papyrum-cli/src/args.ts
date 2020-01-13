@@ -1,9 +1,11 @@
 import * as fs from 'fs-extra';
 import * as path from 'path';
+import { loadFileConfig } from '@papyrum/core';
 import slugify from '@sindresorhus/slugify';
 import humanize from 'humanize-string';
 
 const pkg = fs.readJsonSync(path.resolve(process.cwd(), './package.json'), { throws: false });
+const config = loadFileConfig('papyrum');
 
 export const args = (yargs): any => {
   yargs.option('port', {
@@ -12,10 +14,10 @@ export const args = (yargs): any => {
     default: 3000
   });
 
-  yargs.option('dest', {
+  yargs.option('dist', {
     type: 'string',
     alias: 'd',
-    default: './.papyrum/dist'
+    default: config.dist
   });
 
   yargs.option('ignore', {
