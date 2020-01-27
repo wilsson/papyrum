@@ -1,30 +1,37 @@
 // webpack.config - ssr
 import * as path from 'path';
-import nodeExternals from 'webpack-node-externals';
+import * as nodeExternals from 'webpack-node-externals';
 import * as loaders from './loaders';
+import * as StaticSiteGeneratorPlugin from '@endiliey/static-site-generator-webpack-plugin';
 
 const pathEntry = path.resolve(process.cwd(), './.papyrum/root.js');
 
+const pathSrr = path.resolve(process.cwd(), './.papyrum/otro.js');
+
+console.log('entry ssr', pathSrr);
 export const getConfig = config => {
   return {
-    mode: 'production',
+    //mode: 'production',
     target: 'node',
-    entry: '',
+    entry: {
+      main: path.resolve(__dirname, '../client/server.js')
+    },
     output: {
       path: path.resolve(process.cwd(), `./${config.dist}`),
       filename: 'static/js/[name].[hash].js',
       chunkFilename: 'static/js/[name].[hash].js',
-      publicPath: '/'
+      publicPath: '/',
+      libraryTarget: 'commonjs2',
+      globalObject: 'this'
     },
-    externals: [
-      nodeExternals({
-          // we still want imported css from external files to be bundled otherwise 3rd party packages
-          // which require us to include their own css would not work properly
-          whitelist: /\.css$/,
-      }),
-  ],
+
+    externals: nodeExternals(),
+    
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
+      alias: {
+        app: pathSrr,
+      }
     },
     devtool: 'source-map',
     module: {
@@ -34,6 +41,20 @@ export const getConfig = config => {
         loaders.css,
         loaders.file
       ]
-    }
+    },
+    plugins: [
+      new StaticSiteGeneratorPlugin({
+        entry: 'main',
+        locals: {
+          name: 'wilson',
+          path: '/my-path'
+        },
+        paths: [
+          '/',
+          '/hello/',
+        ],
+      }),
+      
+    ],
   }
 };

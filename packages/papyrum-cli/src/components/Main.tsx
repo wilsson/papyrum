@@ -40,7 +40,7 @@ const Main = ({ isDark, showMenu, imports }) => {
       </ThemeProvider>
     </React.Fragment>
   )
-}
+};
 
 const mapStateToProps = (state) => ({
   isDark: state.app.darkmode,

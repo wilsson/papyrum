@@ -32,6 +32,7 @@
     "@babel/preset-typescript": "7.3.3",
     "@babel/register": "7.4.4",
     "@babel/traverse": "7.4.3",
+    "@endiliey/static-site-generator-webpack-plugin": "4.0.0",
     "@mdx-js/loader": "1.5.0",
     "@mdx-js/react": "1.5.0",
     "@sindresorhus/slugify": "0.9.0",
@@ -52,9 +53,12 @@
     "js-string-escape": "1.0.1",
     "jsx-ast-utils": "2.1.0",
     "lodash": "4.17.13",
+    "react": "16.8.6",
     "react-dev-utils": "9.1.0",
     "react-docgen": "4.1.1",
+    "react-dom": "16.8.6",
     "react-hot-loader": "4.8.6",
+    "react-router-dom": "5.0.0",
     "redux": "^4.0.4",
     "rehype-slug": "2.0.2",
     "remark-emoji": "^2.0.2",
@@ -71,6 +75,7 @@
     "webpack": "4.38.0",
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.2.1",
+    "webpack-node-externals": "1.7.2",
     "webpackbar": "4.0.0"
   },
   "devDependencies": {

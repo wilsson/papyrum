@@ -1,4 +1,4 @@
-import { getConfig } from './config.build';
+import { getConfig } from './config.ssr';
 import { init } from '../init';
 import * as webpack from 'webpack';
 import * as formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
