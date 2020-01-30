@@ -37,7 +37,7 @@ export const getConfig = config => {
       new HtmlWebpackPlugin({
         template: setPathHtmlTemplate(config),
         title: config.title,
-        favicon: path.resolve(process.cwd(), config.static, config.favicon),
+        favicon: config.favicon && path.resolve(process.cwd(), config.static, config.favicon),
         meta: {
           viewport: 'width=device-width, initial-scale=1',
           charset: 'UTF-8'
