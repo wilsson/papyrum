@@ -1,5 +1,6 @@
 export default {
   colors: {
+    backgroundHeader: '#FFFFFF',
     backgroundArea: '#FFF',
     grayLight: '#F5F7F9',
     gray: '#E6ECF1',

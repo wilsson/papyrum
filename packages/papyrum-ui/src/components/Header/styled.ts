@@ -4,7 +4,7 @@ import { AStyled } from '../A';
 import { Menu } from 'react-feather';
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.grayLight};
+  background-color: ${props => props.theme.colors.backgroundHeader};
   border-bottom: 1px solid ${props => props.theme.colors.gray};
   color: ${props => props.theme.colors.darkGray};
   font-size: 20px;

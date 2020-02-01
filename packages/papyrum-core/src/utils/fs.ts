@@ -9,6 +9,10 @@ export const tplCompile = (filepath: string, opts = {}) => {
   return compile(file, opts);
 };
 
+const configDefault = {
+  shorcodes: true
+};
+
 export const loadFileConfig = (nameConfig: string) => {
   require('@babel/register')({
     cache: false,
@@ -22,7 +26,11 @@ export const loadFileConfig = (nameConfig: string) => {
       const isJS = path.extname(file) === '.js';
       if (isJS) {
         const required = require(file);
-        return required.default || required;
+        const config = required.default || required;
+        return {
+          ...configDefault,
+          ...config
+        };
       } else {
         const json = fsExtra.readJsonSync(file, { throws: false }) || {};
         return json;

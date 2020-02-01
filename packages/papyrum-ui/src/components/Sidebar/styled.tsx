@@ -8,7 +8,7 @@ export const CustomResizable = styled(Resizable)`
 `;
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.grayLight};
+  background-color: ${props => props.theme.colors.backgroundHeader};
   border-right: 1px solid ${props => props.theme.colors.gray};
   color: ${props => props.theme.colors.text};
   display: flex;
