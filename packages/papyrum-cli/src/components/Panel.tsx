@@ -13,7 +13,7 @@ import {
   BoxProvider,
 } from './styled';
 
-const shortcuts = {
+const shorcodes = {
   Components,
   Playground,
   Fonts,
@@ -55,10 +55,10 @@ const Panel = ({ componentsAsync }) => {
     ...providerComponents
   };
 
-  if(!db.config.disableShortcuts) {
+  if(db.config.shorcodes) {
     map = {
       ...map,
-      ...shortcuts
+      ...shorcodes
     };
   }
 
