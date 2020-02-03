@@ -16,14 +16,14 @@ const Item = styled.li`
     background-color: ${(props) => !props.active && 'rgba(0,0,0,0.1)'};
   }
   ${props => props.active && css`
-    background-color: ${props => props.theme.colors.skyblue};
+    background-color: ${props => props.theme.primary};
   `}
   a {
     text-decoration: none;
     display: block;
-    color: ${props => props.theme.colors.darkGray};
+    color: ${props => props.theme.sidebar.color};
     ${props => props.active && css`
-      color:  white;
+      color:  ${props.theme.sidebar.activeItem};
     `}
   }
 `;
@@ -48,7 +48,7 @@ export const SubListItemStyled = styled(Item)`
 export const HeaderList = styled.a`
   justify-content: space-between;
   svg {
-    color: ${props => props.theme.colors.darkGray};
+    color: ${props => props.theme.sidebar.color};
     ${props => props.open && 'transform: rotate(180deg);'}
     transition: all .3s ease;
   }

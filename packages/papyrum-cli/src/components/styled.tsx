@@ -40,8 +40,7 @@ export const ContentWrapper = styled.div`
   @media (max-width: 1200px) {
     transform: translateX(-240px);
   }
-  background-color: ${props => props.theme.colors.backgroundArea};
-  color: ${props => props.theme.colors.textArea};
+  background-color: ${props => props.theme.content.background};
   transition: all .3s ease;
 `;
 
