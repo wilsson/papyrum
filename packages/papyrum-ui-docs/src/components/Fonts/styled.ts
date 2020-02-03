@@ -12,16 +12,16 @@ export const FontSizeWrapper = styled.div`
   ${(props) => props.font && css`
     font-family: ${props.font};
   `}
-  border: 1px solid ${props => props.theme.colors.gray};
+  border: 1px solid ${props => props.theme.inner.gray};
   margin: 0 0 24px;
   border-radius: 2px;
-  background-color: ${props => props.theme.colors.grayLight};
+  background-color: ${props => props.theme.inner.grayLight};
 `;
 
 export const LabelFont = styled.div`
   font-family: ${fontFamily};
   height: 24px;
-  border: 1px solid ${props => props.theme.colors.gray};
+  border: 1px solid ${props => props.theme.inner.gray};
   font-size: 14px;
   font-weight: bold;
   padding: 10px;
@@ -33,7 +33,7 @@ export const LabelFont = styled.div`
   margin-bottom: -1px;
   margin-right: -1px;
   border-radius: 2px;
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
 `;
 
 export const LabelFontWrapper = styled.div`
@@ -51,14 +51,14 @@ export const FontSizeRow = styled.div`
 `;
 
 export const FontSizeLabelSize = styled.p`
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
   font-size: 16px;
   margin: 0;
   margin-right: 20px;
 `;
 
 export const FontSizeLabelText = styled.p`
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
   margin: 0;
   ${(props) => props.size && css`
     font-size: ${props.size};

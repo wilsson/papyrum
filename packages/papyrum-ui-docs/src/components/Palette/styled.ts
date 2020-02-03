@@ -16,14 +16,14 @@ export const Label = styled.span`
   font-weight: 700;
   font-size: 18px;
   display: block;
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
 `;
 
 export const LabelColor = styled.span`
   font-weight: 400;
   font-size: 14px;
   display: block;
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
 `;
 
 export const Color = styled.div`

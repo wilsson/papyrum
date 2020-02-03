@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { ThemeProvider } from "styled-components";
 import { connect } from 'react-redux';
 import { Panel } from './Panel';
+import * as deepmerge from 'deepmerge';
 
 import {
   Sidebar,
@@ -22,6 +23,19 @@ import { getAsyncComponents } from './AsyncComponent';
 
 const Main = ({ isDark, showMenu, imports }) => {
   const { db } = (useContext as any)(contextDB);
+  const { colors } = db.config;
+  if (colors) {
+    if (colors.dark || colors.light) {
+      darkTheme = {
+        ...deepmerge(darkTheme, colors.dark),
+        inner: darkTheme.inner
+      };
+      lightTheme = {
+        ...deepmerge(lightTheme, colors.light),
+        inner: lightTheme.inner
+      };
+    }
+  }
   const componentsAsync = getAsyncComponents(imports);
 
   return (

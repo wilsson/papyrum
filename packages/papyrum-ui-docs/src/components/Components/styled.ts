@@ -13,13 +13,13 @@ export const Status = styled.div`
   border-radius: 10px;
   font-size: 14px;
   ${props => props.status === 'ready' && css`
-    background-color: ${props => props.theme.colors.green};
+    background-color: ${props => props.theme.inner.green};
   `}
   ${props => props.status === 'development' && css`
-    background-color: ${props => props.theme.colors.skyblue};
+    background-color: ${props => props.theme.inner.skyblue};
   `}
   ${props => props.status === 'deprecated' && css`
-    background-color: ${props => props.theme.colors.orange};
+    background-color: ${props => props.theme.inner.orange};
   `}
 `;
 

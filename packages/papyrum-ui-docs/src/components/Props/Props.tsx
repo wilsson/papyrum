@@ -44,10 +44,9 @@ export const Props = ({ of: component }) => {
             <Header>
               <LabelNameWrapper>
                 <LabelName>{name}</LabelName>
-                <LabelType>
-                  {type.name !== 'enum' && wordUpperCase(type.name)}
-                  {type.name === 'enum' && type.value.map((type, i) => type.value.replace(/\'/g, '')).join('|')}
-                </LabelType>
+                {type.name !== 'enum' && <LabelType>{wordUpperCase(type.name)}</LabelType>}
+                {type.name === 'enum' && type.value.map((type, i) => <LabelType key={i}type="enum">{type.value.replace(/\'/g, '')}</LabelType>)}
+ 
               </LabelNameWrapper>
               <LabelRequiredOrDefaultWrapper>
                 {required && <Text>required</Text>}

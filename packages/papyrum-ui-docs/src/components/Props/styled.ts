@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const Prop = styled.div`
-  border-bottom: 1px solid ${props => props.theme.colors.gray};
+  border-bottom: 1px solid ${props => props.theme.inner.gray};
   padding: 15px;
 `;
 
 export const Wrapper = styled.div`
   margin: 20px 0 40px;
-  border: 1px solid ${props => props.theme.colors.gray};
-  background-color: ${props => props.theme.colors.grayLight};
+  border: 1px solid ${props => props.theme.inner.gray};
+  background-color: ${props => props.theme.inner.grayLight};
   border-radius: 5px;
   ${Prop}:last-child {
     border-bottom: none;
@@ -47,7 +47,8 @@ const Label = styled.div`
 `;
 
 export const LabelName = styled(Label)`
-  color: ${props => props.theme.colors.skyblue};;
+  font-weight: 700;
+  color: ${props => props.theme.content.color};
   margin-right: 15px;
 `;
 
@@ -56,7 +57,13 @@ export const LabelTypeWrapper = styled.div`
 `;
 
 export const LabelType = styled(Label)`
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
+  background-color: ${props => props.theme.inner.gray};
+  padding: 0 5px;
+  border-radius: 4px;
+  ${props => props.type === 'enum' && css`
+    margin-right: 10px;
+  `}
 `;
 
 export const LabelEnum = styled(Label)`
@@ -84,7 +91,7 @@ const LabelShape = styled(Label)`
 `;
 
 export const Text = styled.div`
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
 `;
 
 export const LabelRequiredOrDefaultWrapper = styled.div`

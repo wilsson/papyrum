@@ -67,7 +67,7 @@ const Button = ({ children, outline, variant }) => (
 Button.propTypes = {
   outline: p.bool,
   disabled: p.bool,
-  /** My description for loading prop */
+  /** My description for prop */
   loading: p.bool,
   variant: p.oneOf(['primary', 'danger']),
 };
