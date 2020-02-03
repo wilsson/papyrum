@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { AStyled } from '../A';
 import { Menu } from 'react-feather';
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.backgroundHeader};
-  border-bottom: 1px solid ${props => props.theme.colors.gray};
-  color: ${props => props.theme.colors.darkGray};
+  background-color: ${props => props.theme.header.background};
+  border-bottom: 1px solid ${props => props.theme.inner.gray};
   font-size: 20px;
   height: 60px;
   display: flex;
@@ -19,7 +17,7 @@ export const Wrapper = styled.div`
 
 export const WrapperTitle = styled(Link)`
   text-decoration: none;
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.header.color};
   width: auto;
   height: 32px;
   position: relative;
@@ -52,8 +50,8 @@ export const LogoWrapper = styled.div`
 export const HomePageLink = styled.a`
   margin-right: 10px;
   text-decoration: none;
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.header.color};
   &:hover {
-    color: ${props => props.theme.colors.skyblue}
+    color: ${props => props.theme.primary}
   }
 `;

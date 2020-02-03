@@ -1,21 +1,21 @@
 import styled, { css } from 'styled-components';
 
 export const HintWrapper = styled.div`
-  color: ${props => props.theme.colors.darkGray};
-  background-color: ${props => props.theme.colors.grayLight};
+  color: ${props => props.theme.content.color};
+  background-color: ${props => props.theme.inner.grayLight};
   border-radius: 3px;
   padding: 25px 28px;
   margin: 40px 0;
   ${props => props.type === 'info' && css`
-    border-left: 8px solid ${props => props.theme.colors.green};
+    border-left: 8px solid ${props => props.theme.inner.green};
   `}
 
   ${props => props.type === 'tip' && css`
-    border-left: 8px solid ${props => props.theme.colors.skyblue};
+    border-left: 8px solid ${props => props.theme.inner.skyblue};
   `}
 
   ${props => props.type === 'warning' && css`
-    border-left: 8px solid ${props => props.theme.colors.orange};
+    border-left: 8px solid ${props => props.theme.inner.orange};
   `}
 
   p {

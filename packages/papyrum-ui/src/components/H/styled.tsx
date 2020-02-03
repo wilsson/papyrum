@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled, { css } from 'styled-components';
 
 const Hash = styled.a`
-  color: ${props => props.theme.colors.skyblue};
+  color: ${props => props.theme.primary};
   text-decoration: none;
   position: absolute;
   left: -22px;
@@ -13,7 +13,7 @@ const Hash = styled.a`
 const styles = css`
   position: relative;
   font-family: "Nunito Sans", sans-serif;
-  color: ${props => props.theme.colors.darkGray};
+  color: ${props => props.theme.content.color};
   font-weight: 700;
   &:hover > ${Hash} {
     display: block;

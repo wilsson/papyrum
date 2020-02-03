@@ -8,9 +8,8 @@ export const CustomResizable = styled(Resizable)`
 `;
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.colors.backgroundHeader};
-  border-right: 1px solid ${props => props.theme.colors.gray};
-  color: ${props => props.theme.colors.text};
+  background-color: ${props => props.theme.sidebar.background};
+  border-right: 1px solid ${props => props.theme.inner.gray};
   display: flex;
   flex-direction: column;
   z-index: 200;
