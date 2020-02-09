@@ -54,33 +54,47 @@ export const HeaderList = styled.a`
   }
 `;
 
-export const HeadingWrapper = styled.ul`
-  list-style: none;
+export const HeadingWrapper = styled.div`
   padding-left: 59px;
   ${props => props.type === 'sub' && css`
     padding-left: 69px;
   ` }
 `;
 
-export const ItemHeading = styled.a`
-    text-decoration: none;
-    color: ${props => props.theme.sidebar.color};
-    font-size: 14px;
-    position: relative;
-    height: 20px;
-    display: block;
-    width: 100%;
-    ${props => props.active && css`
-      &:before {
-        content: '';
-        position: absolute;
-        width: 2px;
-        border-radius: 1px;
-        height: 20px;
-        left: -2px;
-        top: 0px;
-        background-color: ${props => props.theme.primary};
-      }
-    `}
-    padding-left: 10px;
+export const ItemHeading = styled.li`
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  &:first-child {
+    margin-top: 0;
+  }
+`;
+
+export const ItemHeadingTarget = styled.a`
+  text-decoration: none;
+  color: ${props => props.theme.sidebar.color};
+  font-size: 14px;
+  position: relative;
+  display: block;
+  margin-top: 8px;
+  &:first-child {
+    margin-top: 10px;
+  }
+  /*
+  height: 20px;
+  width: 100%;
+  */
+  ${props => props.active && css`
+    &:before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      border-radius: 1px;
+      height: 20px;
+      left: -2px;
+      top: 0px;
+      background-color: ${props => props.theme.primary};
+    }
+  `}
+  padding-left: 10px;
 `;

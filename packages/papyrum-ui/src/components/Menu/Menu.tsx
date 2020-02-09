@@ -11,7 +11,8 @@ import {
   ListItem,
   HeaderList,
   HeadingWrapper,
-  ItemHeading
+  ItemHeading,
+  ItemHeadingTarget
 } from './styled';
 
 export interface Entry {
@@ -41,8 +42,7 @@ const Heading: React.FC<HeadingProps> = ({
   return(
   <HeadingWrapper type={type}>
     {heading.filter(({ depth }) => depth === 2).map((node, key) => (
-      <li key={key} style={{ height: '30px', display: 'flex', alignItems: 'center'}}>
-        <ItemHeading
+        <ItemHeadingTarget key={key}
           active={routeHeadingActive.replace('#', '') === node.slug}
           href={`#${node.slug}`}
           onClick={() => {
@@ -51,8 +51,7 @@ const Heading: React.FC<HeadingProps> = ({
           }}
         >
           {node.value}
-        </ItemHeading>
-      </li>
+        </ItemHeadingTarget>
     ))}
     </HeadingWrapper>
   );

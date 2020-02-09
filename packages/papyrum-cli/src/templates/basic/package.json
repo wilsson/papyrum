@@ -9,6 +9,6 @@
     "styled-components": "4.3.2"
   },
   "devDependencies": {
-    "@papyrum/cli": "1.8.0-alpha.0"
+    "@papyrum/cli": "1.9.0-alpha.0"
   }
 }
