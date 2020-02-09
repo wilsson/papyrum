@@ -10,37 +10,22 @@ import * as docgen from 'react-docgen';
 import { loadFileConfig } from './utils/fs';
 import  * as visit from 'unist-util-visit'
 
-export interface Heading {
-  depth: number
-  slug: string
-  value: string
-}
+const extractHeadingFromtAst = (ast) => {
+  const results = [];
 
-function extractAst<T>(
-  callback: (node: any) => T,
-  type: string
-): (ast: any) => T[] {
-  return ast => {
-    const results: T[] = []
-    visit(ast, type, (node: any) => {
-      results.push(callback(node))
-    });
-    return results
-  }
-}
+  visit(ast, 'heading', (node: any) => {
+    results.push(node);
+  });
 
-
-export const headingsFromAst = extractAst<any>(
-  (node: any) => {
+  return results.map((node) => {
     const [ children ] = node.children;
     return {
       value: children.value,
       slug: node.data.id,
       depth: node.depth
     }
-  },
-  'heading'
-);
+  });
+};
 
 const createEntries = (entries: any) => {
   const sentries = {};
@@ -129,7 +114,7 @@ export const init = (argv: any) => {
       paths.map(async item => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
         const ast = await parseMdx(filePath);
-        const heading = headingsFromAst(ast);
+        const heading = extractHeadingFromtAst(ast);
 
         const metasArray = getMetadata(ast);
         const finalRoute = path.basename(item).replace(path.extname(item), '');
