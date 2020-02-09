@@ -24,7 +24,7 @@ Papyrum is a tool that will help you document your design system or library of c
 - Syntax highlighting with [Prism React Renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/4754339/73624201-dc22aa80-460d-11ea-8c25-fcda084f5bdf.png" />
+  <img src="https://user-images.githubusercontent.com/4754339/74110459-d3c0f700-4b5a-11ea-8ba9-acfe754b2e61.png" />
 </p>
 
 ## Start a new project

@@ -66,9 +66,10 @@ export const ItemHeading = styled.a`
     text-decoration: none;
     color: ${props => props.theme.sidebar.color};
     font-size: 14px;
-    box-sizing: border-box;
-    line-height: 30px;
     position: relative;
+    height: 20px;
+    display: block;
+    width: 100%;
     ${props => props.active && css`
       &:before {
         content: '';

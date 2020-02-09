@@ -47,7 +47,7 @@ const Main = ({ isDark, showMenu, imports }) => {
         <React.Fragment>
           <Header />
           <Wrapper>
-            <Sidebar entries={db.entries} showMenu={showMenu} />
+            <Sidebar showMenu={showMenu} />
             <ContentWrapper showMenu={showMenu}>
               <Panel componentsAsync={componentsAsync} />
             </ContentWrapper>

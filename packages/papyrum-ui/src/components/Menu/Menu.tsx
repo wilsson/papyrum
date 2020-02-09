@@ -28,22 +28,27 @@ interface HeadingProps {
   heading: any[];
   routeHeadingActive: string;
   handlehandleChangeRouteHeading: Function;
+  toggleMenu: Function;
 }
 
 const Heading: React.FC<HeadingProps> = ({
   type,
   heading,
   routeHeadingActive,
-  handlehandleChangeRouteHeading
+  handlehandleChangeRouteHeading,
+  toggleMenu
 }) => {
   return(
   <HeadingWrapper type={type}>
     {heading.filter(({ depth }) => depth === 2).map((node, key) => (
-      <li key={key}>
-        <ItemHeading 
+      <li key={key} style={{ height: '30px', display: 'flex', alignItems: 'center'}}>
+        <ItemHeading
           active={routeHeadingActive.replace('#', '') === node.slug}
           href={`#${node.slug}`}
-          onClick={() => handlehandleChangeRouteHeading(node.slug)}
+          onClick={() => {
+            handlehandleChangeRouteHeading(node.slug);
+            window.innerWidth <= 1200 && toggleMenu();
+          }}
         >
           {node.value}
         </ItemHeading>
@@ -93,15 +98,15 @@ export const SubMenu = ({
                   <NavLink exact to={route}>{name}</NavLink>
             
                 </SubListItemStyled>
-                  {active && (
-                    <Heading
-                      type={"sub"}
-                      handlehandleChangeRouteHeading={handlehandleChangeRouteHeading}
-                      heading={heading}
-                      routeHeadingActive={routeHeadingActive}
-                    />
-                  )}
-               
+                {active && (
+                  <Heading
+                    toggleMenu={toggleMenu}
+                    type={"sub"}
+                    handlehandleChangeRouteHeading={handlehandleChangeRouteHeading}
+                    heading={heading}
+                    routeHeadingActive={routeHeadingActive}
+                  />
+                )}
               </React.Fragment>
             );
           })}
@@ -131,6 +136,7 @@ const MenuItem = ({
       </ListItem>
       {active && (
         <Heading
+          toggleMenu={toggleMenu}
           routeHeadingActive={routeHeadingActive}
           handlehandleChangeRouteHeading={handlehandleChangeRouteHeading}
           heading={heading}

@@ -13,9 +13,9 @@ import {
 
 import { toggleMenu } from '../../actions/app';
 
-const useOrder = (menu) => {
-  const inmenu = { ...menu };
+const useOrder = () => {
   const { db } = useContext(contextDB as any);
+  const inmenu = { ...db.entries };
   const { menu } = db.config;
   const menuOrder = [];
 
@@ -32,10 +32,8 @@ const useOrder = (menu) => {
   return [...menuOrder, ...Object.values(inmenu)];
 };
 
-const Sidebar = ({ entries, showMenu, toggleMenu }) => {
-  const { db } = useContext(contextDB as any);
-  const [query, setQuery] = useState('');
-  const menuOrder = useOrder(entries);
+const Sidebar = ({showMenu, toggleMenu }) => {
+  const menuOrder = useOrder();
   const [width, setWidth] = useState(240);
 
   const handleResizable = (e, direction, ref, d) => {
