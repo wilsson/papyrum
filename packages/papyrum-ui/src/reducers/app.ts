@@ -35,7 +35,16 @@ export default (state: State = initialState, action: Action): State => {
 export const route = (state: string = location.pathname, action: Action): any => {
   switch(action.type) {
     case actionTypes.CHANGE_ROUTE:
-      return action.payload
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+export const routeHeading = (state: string = location.hash, action: Action): any => {
+  switch(action.type) {
+    case actionTypes.CHANGE_ROUTE_HEADING:
+      return action.payload;
     default:
       return state;
   }

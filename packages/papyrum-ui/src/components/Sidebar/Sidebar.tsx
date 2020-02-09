@@ -11,15 +11,15 @@ import {
   CustomResizable
 } from './styled';
 
-import { useMenu } from './useMenu';
 import { toggleMenu } from '../../actions/app';
 
 const useOrder = (menu) => {
   const inmenu = { ...menu };
   const { db } = useContext(contextDB as any);
+  const { menu } = db.config;
   const menuOrder = [];
 
-  db.config.menu && db.config.menu.map((item) => {
+  menu && menu.map((item) => {
     const name = item.name || item;
     Object.keys(inmenu).map((key: any) => {
       if (inmenu[key].name === name) {
@@ -35,8 +35,7 @@ const useOrder = (menu) => {
 const Sidebar = ({ entries, showMenu, toggleMenu }) => {
   const { db } = useContext(contextDB as any);
   const [query, setQuery] = useState('');
-  const menu = useMenu({ query, entries });
-  const menuOrder = useOrder(menu);
+  const menuOrder = useOrder(entries);
   const [width, setWidth] = useState(240);
 
   const handleResizable = (e, direction, ref, d) => {

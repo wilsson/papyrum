@@ -1,9 +1,10 @@
 import { createStore, combineReducers, compose } from 'redux';
-import app, { route } from './reducers/app';
+import app, { route, routeHeading } from './reducers/app';
 
 const reducer = combineReducers({
   app,
-  route
+  route,
+  routeHeading
 });
 
 const composeEnhancers =
