@@ -53,3 +53,33 @@ export const HeaderList = styled.a`
     transition: all .3s ease;
   }
 `;
+
+export const HeadingWrapper = styled.ul`
+  list-style: none;
+  padding-left: 59px;
+  ${props => props.type === 'sub' && css`
+    padding-left: 69px;
+  ` }
+`;
+
+export const ItemHeading = styled.a`
+    text-decoration: none;
+    color: ${props => props.theme.sidebar.color};
+    font-size: 14px;
+    box-sizing: border-box;
+    line-height: 30px;
+    position: relative;
+    ${props => props.active && css`
+      &:before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        border-radius: 1px;
+        height: 20px;
+        left: -2px;
+        top: 0px;
+        background-color: ${props => props.theme.primary};
+      }
+    `}
+    padding-left: 10px;
+`;

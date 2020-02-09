@@ -8,6 +8,39 @@ import { template, pathClient } from './config/paths';
 import { tplCompile } from './utils/fs';
 import * as docgen from 'react-docgen';
 import { loadFileConfig } from './utils/fs';
+import  * as visit from 'unist-util-visit'
+
+export interface Heading {
+  depth: number
+  slug: string
+  value: string
+}
+
+function extractAst<T>(
+  callback: (node: any) => T,
+  type: string
+): (ast: any) => T[] {
+  return ast => {
+    const results: T[] = []
+    visit(ast, type, (node: any) => {
+      results.push(callback(node))
+    });
+    return results
+  }
+}
+
+
+export const headingsFromAst = extractAst<any>(
+  (node: any) => {
+    const [ children ] = node.children;
+    return {
+      value: children.value,
+      slug: node.data.id,
+      depth: node.depth
+    }
+  },
+  'heading'
+);
 
 const createEntries = (entries: any) => {
   const sentries = {};
@@ -96,6 +129,8 @@ export const init = (argv: any) => {
       paths.map(async item => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
         const ast = await parseMdx(filePath);
+        const heading = headingsFromAst(ast);
+
         const metasArray = getMetadata(ast);
         const finalRoute = path.basename(item).replace(path.extname(item), '');
         planEntries[item] = {
@@ -106,6 +141,7 @@ export const init = (argv: any) => {
             if (key && value) planEntries[item][key] = value;
           });
         planEntries[item] = {
+          heading,
           ...planEntries[item],
           name: planEntries[item].name || humanize(slugify(finalRoute)),
           route: planEntries[item].route || `/${slugify(finalRoute)}`,

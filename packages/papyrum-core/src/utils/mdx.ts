@@ -3,6 +3,7 @@ import * as unified from 'unified';
 import * as remark from 'remark-parse';
 import * as matter from 'remark-frontmatter';
 import * as find from 'unist-util-find';
+import * as slug from 'remark-slug';
 
 const metas = ['route', 'name', 'menu', 'status'];
 
@@ -13,7 +14,8 @@ export const parseMdx = (file: string) => {
     .use(matter, {
       type: 'yaml',
       marker: '-'
-    });
+    })
+    .use(slug)
   return parser.run(parser.parse(raw));
 };
 

@@ -24,15 +24,17 @@ import { getAsyncComponents } from './AsyncComponent';
 const Main = ({ isDark, showMenu, imports }) => {
   const { db } = (useContext as any)(contextDB);
   const { colors } = db.config;
+  let dark = darkTheme;
+  let light = lightTheme;
   if (colors) {
     if (colors.dark || colors.light) {
-      darkTheme = {
-        ...deepmerge(darkTheme, colors.dark),
-        inner: darkTheme.inner
+      dark = {
+        ...deepmerge(dark, colors.dark || {}),
+        inner: dark.inner
       };
-      lightTheme = {
-        ...deepmerge(lightTheme, colors.light),
-        inner: lightTheme.inner
+      light = {
+        ...deepmerge(light, colors.light || {}),
+        inner: light.inner
       };
     }
   }
@@ -41,7 +43,7 @@ const Main = ({ isDark, showMenu, imports }) => {
   return (
     <React.Fragment>
       <GlobalStyle />
-      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <ThemeProvider theme={isDark ? dark : light}>
         <React.Fragment>
           <Header />
           <Wrapper>
