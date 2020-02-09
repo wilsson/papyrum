@@ -1,6 +1,6 @@
 {
   "name": "@papyrum/ui-docs",
-  "version": "1.7.0-alpha.0",
+  "version": "1.8.0-alpha.0",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -22,7 +22,7 @@
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
-    "@papyrum/ui": "^1.7.0-alpha.0",
+    "@papyrum/ui": "^1.8.0-alpha.0",
     "copy-text-to-clipboard": "2.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
