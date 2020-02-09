@@ -12,7 +12,6 @@ import {
   HeaderList,
   HeadingWrapper,
   ItemHeading,
-  ItemHeadingTarget
 } from './styled';
 
 export interface Entry {
@@ -28,7 +27,7 @@ interface HeadingProps {
   type?: string;
   heading: any[];
   routeHeadingActive: string;
-  handlehandleChangeRouteHeading: Function;
+  handleChangeRouteHeading: Function;
   toggleMenu: Function;
 }
 
@@ -36,22 +35,22 @@ const Heading: React.FC<HeadingProps> = ({
   type,
   heading,
   routeHeadingActive,
-  handlehandleChangeRouteHeading,
+  handleChangeRouteHeading,
   toggleMenu
 }) => {
   return(
   <HeadingWrapper type={type}>
     {heading.filter(({ depth }) => depth === 2).map((node, key) => (
-        <ItemHeadingTarget key={key}
+        <ItemHeading key={key}
           active={routeHeadingActive.replace('#', '') === node.slug}
           href={`#${node.slug}`}
           onClick={() => {
-            handlehandleChangeRouteHeading(node.slug);
+            handleChangeRouteHeading(node.slug);
             window.innerWidth <= 1200 && toggleMenu();
           }}
         >
           {node.value}
-        </ItemHeadingTarget>
+        </ItemHeading>
     ))}
     </HeadingWrapper>
   );
@@ -62,7 +61,7 @@ export const SubMenu = ({
   routeActive,
   routeHeadingActive,
   handleChangeRoute,
-  handlehandleChangeRouteHeading,
+  handleChangeRouteHeading,
   toggleMenu
 }) => {
 
@@ -101,7 +100,7 @@ export const SubMenu = ({
                   <Heading
                     toggleMenu={toggleMenu}
                     type={"sub"}
-                    handlehandleChangeRouteHeading={handlehandleChangeRouteHeading}
+                    handleChangeRouteHeading={handleChangeRouteHeading}
                     heading={heading}
                     routeHeadingActive={routeHeadingActive}
                   />
@@ -121,7 +120,7 @@ const MenuItem = ({
   handleChangeRoute,
   toggleMenu,
   routeHeadingActive,
-  handlehandleChangeRouteHeading,
+  handleChangeRouteHeading,
 }) => {
   const { route, name, heading } = entry;
   const active = equal(route, routeActive);
@@ -137,7 +136,7 @@ const MenuItem = ({
         <Heading
           toggleMenu={toggleMenu}
           routeHeadingActive={routeHeadingActive}
-          handlehandleChangeRouteHeading={handlehandleChangeRouteHeading}
+          handleChangeRouteHeading={handleChangeRouteHeading}
           heading={heading}
         />
       )}
@@ -151,7 +150,7 @@ const Menu = ({
   routeActive,
   toggleMenu,
   routeHeadingActive,
-  handlehandleChangeRouteHeading
+  handleChangeRouteHeading
 }) => {
   return (
     <MenuWrapper>
@@ -160,7 +159,7 @@ const Menu = ({
           routeActive,
           routeHeadingActive,
           entry,
-          handlehandleChangeRouteHeading,
+          handleChangeRouteHeading,
           handleChangeRoute,
           toggleMenu,
         };
@@ -186,7 +185,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeRoute(route));
     dispatch(changeRouteHeading(''));
   },
-  handlehandleChangeRouteHeading: (route: string) => {
+  handleChangeRouteHeading: (route: string) => {
     dispatch(changeRouteHeading(route));
   },
   toggleMenu: () => {

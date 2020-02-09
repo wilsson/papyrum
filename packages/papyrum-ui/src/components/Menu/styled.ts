@@ -59,18 +59,10 @@ export const HeadingWrapper = styled.div`
   ${props => props.type === 'sub' && css`
     padding-left: 69px;
   ` }
+  margin: 10px 0;
 `;
 
-export const ItemHeading = styled.li`
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-  &:first-child {
-    margin-top: 0;
-  }
-`;
-
-export const ItemHeadingTarget = styled.a`
+export const ItemHeading = styled.a`
   text-decoration: none;
   color: ${props => props.theme.sidebar.color};
   font-size: 14px;
@@ -78,12 +70,9 @@ export const ItemHeadingTarget = styled.a`
   display: block;
   margin-top: 8px;
   &:first-child {
-    margin-top: 10px;
+    margin-top: 0;
   }
-  /*
-  height: 20px;
-  width: 100%;
-  */
+
   ${props => props.active && css`
     &:before {
       content: '';
