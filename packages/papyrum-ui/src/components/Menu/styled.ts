@@ -55,9 +55,9 @@ export const HeaderList = styled.a`
 `;
 
 export const HeadingWrapper = styled.div`
-  padding-left: 59px;
+  padding-left: 41px;
   ${props => props.type === 'sub' && css`
-    padding-left: 69px;
+    padding-left: 61px;
   ` }
   margin: 10px 0;
 `;

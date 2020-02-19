@@ -14,7 +14,7 @@
   </a>
 </p>
 
-Papyrum is a tool that will help you document your design system or library of components based on [React](https://reactjs.org/).
+[Papyrum](https://papyrum.site/) is a tool that will help you document your design system or library of components based on [React](https://reactjs.org/).
 
 ## Features
 
@@ -24,7 +24,7 @@ Papyrum is a tool that will help you document your design system or library of c
 - Syntax highlighting with [Prism React Renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/4754339/71502918-d5e82400-2840-11ea-9165-3643711ca8d2.png" />
+  <img src="https://user-images.githubusercontent.com/4754339/74110459-d3c0f700-4b5a-11ea-8ba9-acfe754b2e61.png" />
 </p>
 
 ## Start a new project

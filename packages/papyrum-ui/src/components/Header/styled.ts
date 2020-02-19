@@ -27,6 +27,7 @@ export const WrapperTitle = styled(Link)`
 `;
 
 export const HamburgerIcon = styled(Menu)`
+  color: ${props => props.theme.content.color};
   cursor: pointer;
   margin-right: 10px;
   display: none;

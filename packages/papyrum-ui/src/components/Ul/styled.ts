@@ -5,6 +5,7 @@ const styles = css`
   padding-left: 24px;
   font-family: "Nunito Sans", sans-serif;
   font-size: 18px;
+  color: ${props => props.theme.content.color};
   li {
     line-height: 30px;
   }
