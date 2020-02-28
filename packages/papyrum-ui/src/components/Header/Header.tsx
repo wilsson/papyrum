@@ -37,7 +37,7 @@ const Header = ({ isDark, toggleTheme, toggleMenu, handleChangeRoute }) => {
           }}
           checkedIcon={<img style={{ width: 26 }} src={moonIcon} alt="moon icon" />}
           uncheckedIcon={<img style={{ width: 26 }} src={sunIcon} alt="sun icon" />}
-          checked={isDark}
+          checked={isDark ? isDark : false}
         />
       </div>
     </Wrapper>

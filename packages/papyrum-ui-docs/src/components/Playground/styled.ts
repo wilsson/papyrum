@@ -24,3 +24,27 @@ export const EditorWrapper = styled.div`
   }
   margin-bottom: 24px;
 `;
+
+export const FullPreviewWrapper = styled.div`
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const FullPreviewCloseWrapper = styled.div`
+  position: absolute;
+  top: 4%;
+  right: 4%;
+  width: 30px;
+  height: 30px;
+  background: #ccc;
+  border-radius: 100%;
+  cursor: pointer;
+`;

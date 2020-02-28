@@ -9,11 +9,13 @@ import { Copy, styles } from '@papyrum/ui'
 import { Wrapper, LivePreviewWrapper, EditorWrapper } from './styled';
 import { useContext } from 'react';
 import { contextDB } from '@papyrum/ui';
+import { FullPreview } from './FullPreview';
 
 
 export const Playground = ({ code: initialCode, scope }) => {
   const [ code, setCode ] = useState(initialCode);
   const [ clip, setClip ] = useState(false);
+  const [isShowFullPreview, setIsShowFullPreview] = React.useState(false);
   const { db: { config } } = useContext(contextDB as any);
   const stylesPlain = (config.prism && config.prism.theme.plain) || dracula.plain;
   const handleClipboard = () => {
@@ -45,13 +47,21 @@ export const Playground = ({ code: initialCode, scope }) => {
 
   return(
     <LiveProvider code={code} scope={scope}>
+      
+      {isShowFullPreview && (
+        <FullPreview onClose={()=>setIsShowFullPreview(!isShowFullPreview)}>
+          <LivePreview />
+          <LiveError />
+        </FullPreview>
+      )}
+
       <LivePreviewWrapper>
         <LivePreview />
         <LiveError />
       </LivePreviewWrapper>
 
       <Wrapper>
-        live editor
+        live editor <button onClick={()=>setIsShowFullPreview(!isShowFullPreview)}>preview</button>
       </Wrapper>
 
       <EditorWrapper>
