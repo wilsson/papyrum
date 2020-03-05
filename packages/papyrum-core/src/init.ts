@@ -9,6 +9,7 @@ import { tplCompile } from './utils/fs';
 import * as docgen from 'react-docgen';
 import { loadFileConfig } from './utils/fs';
 import  * as visit from 'unist-util-visit'
+import { stringArr } from './utils';
 
 const extractHeadingFromtAst = (ast) => {
   const results = [];
@@ -86,18 +87,16 @@ export const init = (argv: any) => {
     } catch (e) { }
 
     const pattern = argv.typescript ? '**/*.{ts,tsx}' : '**/*.{js,jsx}';
-    const paths = await globby([
-      '**/*.mdx',
-      '!node_modules',
-      '!dist'
-    ]);
-    const ignore = argv.ignore.map(ignore => `!${ignore}`);
-    const pathsComponent = await globby([
+    const ignore = stringArr(argv.ignore).map(ignore => `!${ignore}`);
+    const files = await globby([
       pattern,
+      '**/*.{md,mdx}',
       '!node_modules',
       '!dist',
       ...ignore
     ]);
+    const pathsMdx = files.filter(file => /\.mdx?$/.test(file));
+    const pathsComponent = files.filter(file => /(tsx?|jsx?)$/.test(file));
     // create db.json for entries
     let planEntries = {};
     let props = {};
@@ -111,7 +110,7 @@ export const init = (argv: any) => {
       } catch (e) { }
     });
     await Promise.all(
-      paths.map(async item => {
+      pathsMdx.map(async item => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
         const ast = await parseMdx(filePath);
         const heading = extractHeadingFromtAst(ast);
