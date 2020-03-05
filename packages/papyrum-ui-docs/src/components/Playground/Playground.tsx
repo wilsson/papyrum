@@ -10,7 +10,6 @@ import { Wrapper, LivePreviewWrapper, EditorWrapper } from './styled';
 import { useContext } from 'react';
 import { contextDB } from '@papyrum/ui';
 
-
 export const Playground = ({ code: initialCode, scope }) => {
   const [ code, setCode ] = useState(initialCode);
   const [ clip, setClip ] = useState(false);
