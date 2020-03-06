@@ -8,7 +8,7 @@ import { template, pathClient } from './config/paths';
 import { tplCompile } from './utils/fs';
 import * as docgen from 'react-docgen';
 import { loadFileConfig } from './utils/fs';
-import  * as visit from 'unist-util-visit'
+import * as visit from 'unist-util-visit'
 import { stringArr } from './utils';
 
 const extractHeadingFromtAst = (ast) => {
@@ -19,7 +19,7 @@ const extractHeadingFromtAst = (ast) => {
   });
 
   return results.map((node) => {
-    const [ children ] = node.children;
+    const [children] = node.children;
     return {
       value: children.value,
       slug: node.data.id,
@@ -36,7 +36,7 @@ const createEntries = (entries: any) => {
     const entry = entries[key];
     const { menu } = entry;
 
-    if(menu && sentries[menu]) {
+    if (menu && sentries[menu]) {
       sentries[menu].children = [
         ...sentries[menu].children,
         entries[key]
@@ -44,7 +44,7 @@ const createEntries = (entries: any) => {
       continue;
     }
 
-    if(menu && !sentries[menu]) {
+    if (menu && !sentries[menu]) {
       sentries[menu] = {
         name: menu,
         children: [entries[key]]
@@ -62,17 +62,17 @@ const createEntries = (entries: any) => {
 const orderChildrenEntries = (entries: any) => {
   const newEntries = { ...entries };
   const compare = (entry, nextEntry) => {
-    if(entry.name < nextEntry.name) {
+    if (entry.name < nextEntry.name) {
       return -1;
     }
-    if(entry.name > nextEntry.name) {
+    if (entry.name > nextEntry.name) {
       return 1;
     }
     return 0;
   };
 
   Object.values(newEntries).forEach((entry: any) => {
-    if(entry.children && entry.children.length) {
+    if (entry.children && entry.children.length) {
       let orderChildren = entry.children.sort(compare);
       entry.children = orderChildren;
     }
@@ -144,10 +144,10 @@ export const init = (argv: any) => {
     });
 
     const compare = (entry, nextEntry) => {
-      if(entry.name < nextEntry.name) {
+      if (entry.name < nextEntry.name) {
         return -1;
       }
-      if(entry.name > nextEntry.name) {
+      if (entry.name > nextEntry.name) {
         return 1;
       }
       return 0;
@@ -157,12 +157,12 @@ export const init = (argv: any) => {
       planEntries: Object.values(planEntries).sort(compare)
     });
     fs.writeFileSync(pathClient + '/imports.js', imports);
-    
-    if(!fs.existsSync(path.resolve(pathClient, './root.js'))) {
+
+    if (!fs.existsSync(path.resolve(pathClient, './root.js'))) {
       fs.writeFileSync(path.resolve(pathClient, './root.js'), rootFile);
     }
 
-    if(!fs.existsSync(path.resolve(pathClient, './App.js'))) {
+    if (!fs.existsSync(path.resolve(pathClient, './App.js'))) {
       fs.writeFileSync(path.resolve(pathClient, './App.js'), appFile);
     }
 

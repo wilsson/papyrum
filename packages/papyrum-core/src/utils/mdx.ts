@@ -20,12 +20,18 @@ export const parseMdx = (file: string) => {
 };
 
 export const getMetadata = ast => {
-  const { type, value } = find(ast, 'value');
+  let type;
+  let value;
+  try {
+    const values = find(ast, 'value');
+    type = values.type;
+    value = values.value;
+  } catch (e) { }
   if (type === 'yaml') {
     return find(ast, 'value')
       .value.split('\n')
       .map(head => {
-        const [ key, value ] = head.split(':').map((item: string) => item.trim());
+        const [key, value] = head.split(':').map((item: string) => item.trim());
         return { key, value };
       })
       .filter(item => metas.includes(item.key));
