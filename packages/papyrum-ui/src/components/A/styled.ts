@@ -4,7 +4,7 @@ export const styles = css`
   color: ${props => props.theme.inner.skyblue};
   text-decoration: none;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 16px;
   &:hover {
     text-decoration: underline;
   }

@@ -38,7 +38,7 @@ let providerComponents = {
   ol: components.Ol,
   a: components.A,
   blockquote: components.Blockquote,
-  table: components.Table,
+  table: props => <div style={{overflow: 'auto'}}><components.Table {...props} /></div>,
   tr: components.TableRow,
   td: components.TableTd,
   th: components.TableTh,

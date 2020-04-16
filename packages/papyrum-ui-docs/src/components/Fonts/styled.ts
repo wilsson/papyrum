@@ -1,14 +1,11 @@
 import styled, { css } from 'styled-components';
 
-let fontFamily = 'Nunito Sans';
-
 export const Box = styled.div`
   padding: 15px;
   box-sizing: border-box;
 `;
 
 export const FontSizeWrapper = styled.div`
-  font-family: 'Nunito Sans';
   ${(props) => props.font && css`
     font-family: ${props.font};
   `}
@@ -19,7 +16,6 @@ export const FontSizeWrapper = styled.div`
 `;
 
 export const LabelFont = styled.div`
-  font-family: ${fontFamily};
   height: 24px;
   border: 1px solid ${props => props.theme.inner.gray};
   font-size: 14px;

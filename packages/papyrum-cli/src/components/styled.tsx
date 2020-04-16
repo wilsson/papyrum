@@ -1,5 +1,4 @@
-import styled, { css, createGlobalStyle } from 'styled-components';
-import { fontFace, } from '@papyrum/ui';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,14 +6,11 @@ export const Wrapper = styled.div`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,700,900&display=swap');
-
   body {
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0;
     overflow: hidden;
   }
-  ${fontFace}
 `;
 
 export const BoxProvider = styled.div`

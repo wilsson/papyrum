@@ -12,7 +12,6 @@ const Hash = styled.a`
 
 const styles = css`
   position: relative;
-  font-family: "Nunito Sans", sans-serif;
   color: ${props => props.theme.content.color};
   font-weight: 700;
   &:hover > ${Hash} {

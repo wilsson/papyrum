@@ -59,18 +59,52 @@ const createEntries = (entries: any) => {
   return sentries;
 };
 
+const getPaths = async (type: string, ignore: string) => {
+  const pattern = type ? '**/*.{ts,tsx}' : '**/*.{js,jsx}';
+  const ignoreGlob = stringArr(ignore).map(ignore => `!${ignore}`);
+
+  const files = await globby([
+    pattern,
+    '**/*.{md,mdx}',
+    '!node_modules',
+    '!dist',
+    ...ignoreGlob
+  ]);
+  const pathsMdx = files.filter(file => /\.mdx?$/.test(file));
+  const pathsDocgen = files.filter(file => /(tsx?|jsx?)$/.test(file));
+
+  return {
+    pathsMdx,
+    pathsDocgen
+  }
+}
+
+const getPropsForComponents = (pathsDocgen: string[]) => {
+  let props = {};
+  pathsDocgen.forEach(pathcomponent => {
+    const filePath = path.resolve(process.cwd(), `./${pathcomponent}`);
+    try {
+      const propsComponent = docgen.parse(fs.readFileSync(filePath));
+      props[path.normalize(pathcomponent)] = {
+        ...propsComponent
+      };
+    } catch (e) { }
+  });
+  return props;
+}
+
+const compare = (word, nextWord) => {
+  if (word.name < nextWord.name) {
+    return -1;
+  }
+  if (word.name > nextWord.name) {
+    return 1;
+  }
+  return 0;
+};
+
 const orderChildrenEntries = (entries: any) => {
   const newEntries = { ...entries };
-  const compare = (entry, nextEntry) => {
-    if (entry.name < nextEntry.name) {
-      return -1;
-    }
-    if (entry.name > nextEntry.name) {
-      return 1;
-    }
-    return 0;
-  };
-
   Object.values(newEntries).forEach((entry: any) => {
     if (entry.children && entry.children.length) {
       let orderChildren = entry.children.sort(compare);
@@ -86,29 +120,11 @@ export const init = (argv: any) => {
       await fs.mkdirSync(pathClient);
     } catch (e) { }
 
-    const pattern = argv.typescript ? '**/*.{ts,tsx}' : '**/*.{js,jsx}';
-    const ignore = stringArr(argv.ignore).map(ignore => `!${ignore}`);
-    const files = await globby([
-      pattern,
-      '**/*.{md,mdx}',
-      '!node_modules',
-      '!dist',
-      ...ignore
-    ]);
-    const pathsMdx = files.filter(file => /\.mdx?$/.test(file));
-    const pathsComponent = files.filter(file => /(tsx?|jsx?)$/.test(file));
-    // create db.json for entries
+    const { pathsMdx, pathsDocgen } = await getPaths(argv.typescript, argv.ignore);
+    const props = getPropsForComponents(pathsDocgen);
+
     let planEntries = {};
-    let props = {};
-    pathsComponent.forEach(pathcomponent => {
-      const filePath = path.resolve(process.cwd(), `./${pathcomponent}`);
-      try {
-        const propsComponent = docgen.parse(fs.readFileSync(filePath));
-        props[path.normalize(pathcomponent)] = {
-          ...propsComponent
-        };
-      } catch (e) { }
-    });
+
     await Promise.all(
       pathsMdx.map(async item => {
         const filePath = path.resolve(process.cwd(), `./${item}`);
@@ -142,16 +158,6 @@ export const init = (argv: any) => {
     var templateFn = await tplCompile(template('imports.tpl.js'), {
       minimize: false
     });
-
-    const compare = (entry, nextEntry) => {
-      if (entry.name < nextEntry.name) {
-        return -1;
-      }
-      if (entry.name > nextEntry.name) {
-        return 1;
-      }
-      return 0;
-    };
 
     const imports = templateFn({
       planEntries: Object.values(planEntries).sort(compare)
@@ -190,3 +196,4 @@ export const init = (argv: any) => {
     resolve('ok');
   });
 };
+

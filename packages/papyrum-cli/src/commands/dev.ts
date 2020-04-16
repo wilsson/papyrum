@@ -7,7 +7,9 @@ export const dev = async (argv) => {
   const watch = chokidar.watch(['**/*.{md,mdx}', '**/*.{ts,tsx,js,jsx,}'], {
     ignored: 'node_modules'
   });
+
   watch.on('change', async (path) => {
-    await init(argv);
+    console.log('path', path);
+    init(argv);
   });
 };
