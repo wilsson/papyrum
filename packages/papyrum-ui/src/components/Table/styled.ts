@@ -1,26 +1,25 @@
 import styled from 'styled-components';
 
 export const Table = styled.table`
+  width: 100%;
   border-collapse: collapse; 
-  font-size: 18px;
+  font-size: 16px;
   margin: 20px 0 16px;
   color: ${props => props.theme.content.color};
 `;
 
 export const TableRow = styled.tr`
   box-sizing: border-box;
+  border-bottom: 1px solid ${props => props.theme.inner.gray};
 `;
 
 export const TableTd = styled.td`
-  border: 1px solid ${props => props.theme.inner.gray};
-  height: 60px;
-  padding: 0 20px;
+  padding: 12px;
 `;
 
 export const TableTh = styled.th`
+  text-align:left;
+  padding: 12px;
   color: ${props => props.theme.inner.darkGray};
-  background-color: ${props => props.theme.inner.grayLight};
-  border: 1px solid ${props => props.theme.inner.gray};
-  height: 50px;
   font-weight: 700;
 `;

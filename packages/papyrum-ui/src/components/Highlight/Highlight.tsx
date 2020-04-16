@@ -14,7 +14,7 @@ interface Props {
 
 export const styles = {
   boxSizing: 'border-box',
-  fontFamily: 'Fira Code',
+  fontFamily: 'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   lineHeight: '24px',
   fontSize: '14px',
 };

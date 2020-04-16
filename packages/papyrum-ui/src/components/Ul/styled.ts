@@ -2,9 +2,8 @@ import styled, { css } from 'styled-components';
 
 const styles = css`
   margin: 0 0 16px;
-  padding-left: 24px;
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 18px;
+  padding-left: 35px;
+  font-size: 16px;
   color: ${props => props.theme.content.color};
   li {
     line-height: 30px;
