@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useContext } from 'react';
-import { contextDB } from '@papyrum/ui';
+import { contextDB, Table, TableRow, TableTd, TableTh, InlineCode } from '@papyrum/ui';
 import * as p from 'prop-types';
 
 import {
@@ -31,33 +31,43 @@ export const Props = ({ of: component }) => {
   }
 
   return(
-    <Wrapper>
-      {propsName && propsName.map((name, key) => {
-        const {
-          type,
-          required,
-          defaultValue,
-          description
-        } = props[name];
-        return(
-          <Prop key={key}>
-            <Header>
-              <LabelNameWrapper>
-                <LabelName>{name}</LabelName>
-                {type.name !== 'enum' && <LabelType>{wordUpperCase(type.name)}</LabelType>}
-                {type.name === 'enum' && type.value.map((type, i) => <LabelType key={i}type="enum">{type.value.replace(/\'/g, '')}</LabelType>)}
- 
-              </LabelNameWrapper>
-              <LabelRequiredOrDefaultWrapper>
-                {required && <Text>required</Text>}
-                {defaultValue && <Text> = {defaultValue.value}</Text>}
-              </LabelRequiredOrDefaultWrapper>
-            </Header>
-            {description && <Description>{description}</Description>}
-          </Prop>
-        )
-      })}
-    </Wrapper>
+    <div style={{overflow: 'auto'}}>
+      <Table>
+        <thead>
+          <TableRow>
+            <TableTh>Name</TableTh>
+            <TableTh>Type</TableTh>
+            <TableTh>Description</TableTh>
+            <TableTh>Default</TableTh>
+          </TableRow>
+        </thead>
+        <tbody>
+          {propsName.map((name) => {
+            const {
+              type,
+              required,
+              defaultValue,
+              description
+            } = props[name];
+
+            return(
+              <TableRow>
+                <TableTd>
+                  <InlineCode>
+                    {name}
+                    {required && <span style={{ color: 'red' }}>*</span>}
+                  </InlineCode>
+                </TableTd>
+                {type.name !== 'enum' && <TableTd><InlineCode>{wordUpperCase(type.name)}</InlineCode></TableTd>}
+                {type.name === 'enum' && <TableTd> <InlineCode>{type.value.map((type, i) => type.value.replace(/\'/g, '')).join('|')}</InlineCode></TableTd>}
+                <TableTd>{description ? description : '-'}</TableTd>
+                <TableTd>{defaultValue ? defaultValue.value : '-'}</TableTd>
+              </TableRow>
+            )
+          })}
+        </tbody>
+      </Table>
+    </div>
   )
 };
 

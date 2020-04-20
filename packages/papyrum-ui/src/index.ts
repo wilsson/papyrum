@@ -17,6 +17,7 @@ export { Table, TableRow, TableTd, TableTh } from './components/Table';
 export { AStyled } from './components/A';
 export { light as lightTheme, dark as darkTheme  } from './themes';
 export { store } from './store';
+export { InlineCode } from './components/InlineCode';
 
 export { toggleDarkMode, toggleMenu, changeRoute  } from './actions';
 
