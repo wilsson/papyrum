@@ -65,11 +65,15 @@ const Button = ({ children, outline, variant }) => (
 );
 
 Button.propTypes = {
-  outline: p.bool,
+  outline: p.bool.isRequired,
   disabled: p.bool,
   /** My description for prop */
   loading: p.bool,
   variant: p.oneOf(['primary', 'danger']),
 };
+
+Button.defaultProps = {
+  disabled: true
+}
 
 export default Button;
