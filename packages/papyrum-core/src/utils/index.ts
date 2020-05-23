@@ -16,8 +16,6 @@ export const setPathHtmlTemplate = ({ template }: { template: string }) => {
 };
 
 export const stringArr = (value: string | string[]): string[] => {
-  if (Array.isArray(value)) {
-    return value;
-  }
+  if (Array.isArray(value)) return value;
   return typeof value === 'string' ? [value] : [];
 }

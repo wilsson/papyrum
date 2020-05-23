@@ -1,4 +1,4 @@
-const BASE_URL = process.env.NODE_ENV === 'production' ? '/static/assets/' : '';
+const BASE_URL = process.env.NODE_ENV === 'production' ? '/static/assets/' : '/';
 
 export const useBaseUrl = (url: string): string => {
   const externalUrl = /^(https?:\/\/)/.test(url);

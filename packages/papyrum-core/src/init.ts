@@ -94,12 +94,10 @@ const getPropsForComponents = (pathsDocgen: string[]) => {
 }
 
 const compare = (word, nextWord) => {
-  if (word.name < nextWord.name) {
-    return -1;
-  }
-  if (word.name > nextWord.name) {
-    return 1;
-  }
+  const { nameWorld } = word;
+  const { nextWordName } = nextWord;
+  if (nameWorld < nextWordName) return -1;
+  if (nameWorld > nextWordName) return 1;
   return 0;
 };
 

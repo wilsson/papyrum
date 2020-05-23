@@ -21,23 +21,21 @@ export const loadFileConfig = (nameConfig: string) => {
 
   const file = findUp.sync(`${nameConfig}.config.js`);
   delete require.cache[file];
-  if(file) {
-    try {
-      const isJS = path.extname(file) === '.js';
-      if (isJS) {
-        const required = require(file);
-        const config = required.default || required;
-        return {
-          ...configDefault,
-          ...config
-        };
-      } else {
-        const json = fsExtra.readJsonSync(file, { throws: false }) || {};
-        return json;
-      }
-    } catch (e) {
-      console.log(`Error loading the configuration file ${nameConfig} >>`, e);
-    }
+  if(!file) return {};
+  try {
+    const isJS = path.extname(file) === '.js';
+    if (isJS) {
+      const required = require(file);
+      const config = required.default || required;
+      return {
+        ...configDefault,
+        ...config
+      };
+    } 
+    const json = fsExtra.readJsonSync(file, { throws: false }) || {};
+    return json;
+    
+  } catch (e) {
+    console.log(`Error loading the configuration file ${nameConfig} >>`, e);
   }
-  return {};
 };
