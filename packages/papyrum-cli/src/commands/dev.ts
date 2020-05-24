@@ -9,7 +9,6 @@ export const dev = async (argv) => {
   });
 
   watch.on('change', async (path) => {
-    console.log('path', path);
     init(argv);
   });
 };

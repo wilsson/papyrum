@@ -3,6 +3,7 @@ import p from 'prop-types';
 import styled, { css } from 'styled-components';
 
 const ButtonStyled = styled.button`
+  font-family: "Fira";
   margin: 0 5px;
   box-sizing: border-box;
   background-color: #3c3c3c;

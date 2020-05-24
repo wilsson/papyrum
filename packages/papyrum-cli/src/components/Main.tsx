@@ -21,7 +21,7 @@ import {
 
 import { getAsyncComponents } from './AsyncComponent';
 
-const Main = ({ isDark, showMenu, imports }) => {
+const Main = ({ isDark, showMenu, imports, fonts }) => {
   const { db } = (useContext as any)(contextDB);
   const { colors } = db.config;
   let dark = darkTheme;
@@ -39,10 +39,9 @@ const Main = ({ isDark, showMenu, imports }) => {
     }
   }
   const componentsAsync = getAsyncComponents(imports);
-
   return (
     <React.Fragment>
-      <GlobalStyle />
+      <GlobalStyle fonts={fonts} />
       <ThemeProvider theme={isDark ? dark : light}>
         <React.Fragment>
           <Header />

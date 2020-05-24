@@ -14,7 +14,7 @@ const Root = ({ db, imports, components }) => {
       </Helmet>
       <ProviderRedux store={store}>
         <BrowserRouter>
-          <Main imports={imports} />
+          <Main imports={imports} fonts={db.config.fonts}/>
         </BrowserRouter>
       </ProviderRedux>
     </Provider>

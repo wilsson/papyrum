@@ -1,16 +1,33 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 export const Wrapper = styled.div`
   display: flex;
   overflow: hidden;
 `;
 
+const createFontFace = ({ name, path }) => {
+  if(!/.woff2?$/.test(path)) {
+    console.warn('Only the following extensions are allowed: .woff or .woff2');
+  }
+  const [ format ] = path.match(/woff2?$/);
+  return css`
+    @font-face {
+      font-family: ${name};
+      src: url(${path}) format("${format}");
+      font-weight: normal;
+      font-style: normal;
+    }
+  `;
+}
+
 export const GlobalStyle = createGlobalStyle`
+  
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     margin: 0;
     overflow: hidden;
   }
+  ${props => props.fonts && props.fonts.map((font) => createFontFace(font))}
 `;
 
 export const BoxProvider = styled.div`
