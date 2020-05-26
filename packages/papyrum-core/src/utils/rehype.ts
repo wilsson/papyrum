@@ -2,7 +2,7 @@ import * as is from 'unist-util-is';
 import * as parser from '@babel/parser';
 import traverse from '@babel/traverse';
 import * as nodeToString from 'hast-util-to-string';
-
+import * as prettier from 'prettier'
 // @ts-ignore
 import * as strip from 'strip-indent';
 import * as escapeJS from 'js-string-escape';
@@ -73,8 +73,14 @@ const getNodes = (nodes, scope) => {
       const name = getComponentName(node.value);
       if (name === 'Playground') {
         const tagOpen = new RegExp(`^\\<${name}`);
-        const componentString = nodeToString(node);
-        const componentForCode = getInnerComponentWithString(componentString);
+        const componentString = await prettier.format(nodeToString(node), {
+          parser: 'babel',
+          semi: false,
+          singleQuote: true,
+          trailingComma: 'all',
+        });
+        const removeQuote = componentString.slice(1, Infinity);
+        const componentForCode = getInnerComponentWithString(removeQuote);
         const code = cleanSpaces(componentForCode);
         node.value = node.value.replace(
           tagOpen,

@@ -61,8 +61,10 @@ const ButtonStyled = styled.button`
   `}
 `;
 
-const Button = ({ children, outline, variant }) => (
-  <ButtonStyled variant={variant} outline={outline}>{children}</ButtonStyled>
+const Button = ({ children, outline, variant, loading }) => (
+  <ButtonStyled variant={variant} outline={outline}>
+    {loading ? 'loading...' : children}
+  </ButtonStyled>
 );
 
 Button.propTypes = {

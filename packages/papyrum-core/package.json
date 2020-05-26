@@ -52,6 +52,7 @@
     "js-string-escape": "1.0.1",
     "jsx-ast-utils": "2.1.0",
     "lodash": "4.17.13",
+    "prettier": "2.0.5",
     "react-dev-utils": "9.1.0",
     "react-docgen": "4.1.1",
     "react-hot-loader": "4.8.6",

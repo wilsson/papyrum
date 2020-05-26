@@ -9,7 +9,7 @@
     "styled-components": "4.3.2"
   },
   "devDependencies": {
-    "@papyrum/cli": "^1.0.0",
+    "@papyrum/cli": "latest",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
     "typescript": "3.3.3"
