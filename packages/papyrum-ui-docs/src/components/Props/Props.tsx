@@ -42,7 +42,7 @@ export const Props = ({ of: component }) => {
           </TableRow>
         </thead>
         <tbody>
-          {propsName.map((name) => {
+          {propsName.map((name, key) => {
             const {
               type,
               required,
@@ -51,7 +51,7 @@ export const Props = ({ of: component }) => {
             } = props[name];
 
             return(
-              <TableRow>
+              <TableRow key={key}>
                 <TableTd>
                   <InlineCode>
                     {name}

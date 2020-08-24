@@ -24,7 +24,7 @@
 - Syntax highlighting with [Prism React Renderer](https://github.com/FormidableLabs/prism-react-renderer).
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/4754339/74110459-d3c0f700-4b5a-11ea-8ba9-acfe754b2e61.png" />
+  <img src="https://user-images.githubusercontent.com/4754339/91013125-d80ba980-e5ac-11ea-805d-0361ece616cd.png" />
 </p>
 
 ## Start a new project
