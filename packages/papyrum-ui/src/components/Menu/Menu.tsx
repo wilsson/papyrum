@@ -86,7 +86,6 @@ export const SubMenu = ({
             return (
               <React.Fragment key={key}>
                 <SubListItemStyled
-                  key={key}
                   onClick={() => {
                     handleChangeRoute(route);
                     window.innerWidth <= 1200 && toggleMenu();
@@ -96,7 +95,7 @@ export const SubMenu = ({
                   <NavLink exact to={route}>{name}</NavLink>
             
                 </SubListItemStyled>
-                {active && (
+                {(active && heading.length > 1) && (
                   <Heading
                     toggleMenu={toggleMenu}
                     type={"sub"}
@@ -132,7 +131,7 @@ const MenuItem = ({
       }}>
         <NavLink exact to={route}>{name}</NavLink>
       </ListItem>
-      {active && (
+      {(active && heading.length > 1) && (
         <Heading
           toggleMenu={toggleMenu}
           routeHeadingActive={routeHeadingActive}
