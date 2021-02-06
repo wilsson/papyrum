@@ -16,6 +16,9 @@ export const getConfig = config => {
         pathEntry
       ]
     },
+    alias: {
+      react: path.resolve(process.cwd(), './node_modules')
+    },
     output: {
       path: path.resolve(process.cwd(), `${config.dest}`),
       filename: 'static/js/bundle.js',
