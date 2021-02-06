@@ -1,6 +1,6 @@
 {
   "name": "papyrum-hello-world",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@papyrum/cli": "^1.0.4"
+    "@papyrum/cli": "^1.0.5"
   }
 }
