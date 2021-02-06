@@ -16,9 +16,6 @@ export const getConfig = config => {
         pathEntry
       ]
     },
-    alias: {
-      react: path.resolve(process.cwd(), './node_modules')
-    },
     output: {
       path: path.resolve(process.cwd(), `${config.dest}`),
       filename: 'static/js/bundle.js',
@@ -26,7 +23,10 @@ export const getConfig = config => {
       publicPath: '/'
     },
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx']
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
+      alias: {
+        react: path.resolve(process.cwd(), './node_modules/react')
+      },
     },
     devtool: 'source-map',
     module: {
