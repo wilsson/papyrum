@@ -24,9 +24,6 @@ export const getConfig = config => {
     },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.mdx'],
-      alias: {
-        react: path.resolve(process.cwd(), './node_modules/react')
-      },
     },
     devtool: 'source-map',
     module: {

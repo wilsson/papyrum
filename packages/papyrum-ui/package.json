@@ -28,8 +28,6 @@
     "polished": "3.4.2",
     "prism-react-renderer": "1.0.2",
     "re-resizable": "4.11.0",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
     "react-feather": "1.1.6",
     "react-live": "2.0.1",
     "react-redux": "7.1.3",
@@ -39,11 +37,17 @@
     "styled-components": "4.3.2"
   },
   "devDependencies": {
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
     "cpx": "1.5.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8.6",
+    "react-dom": ">= 16.8.6"
   }
 }
