@@ -15,9 +15,6 @@ export const getConfig = config => {
     entry: {
       app: pathEntry
     },
-    alias: {
-      react: path.resolve(process.cwd(), './node_modules')
-    },
     output: {
       path: path.resolve(process.cwd(), `./${config.dest}`),
       filename: 'static/js/[name].[hash].js',
