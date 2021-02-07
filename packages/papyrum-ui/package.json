@@ -1,6 +1,6 @@
 {
   "name": "@papyrum/ui",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -37,11 +37,11 @@
     "styled-components": "4.3.2"
   },
   "devDependencies": {
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
     "@types/react": "16.8.13",
     "@types/react-dom": "16.8.4",
-    "cpx": "1.5.0"
+    "cpx": "1.5.0",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   },
   "publishConfig": {
     "access": "public"

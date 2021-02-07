@@ -1,6 +1,6 @@
 {
   "name": "@papyrum/ui-docs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "> TODO: description",
   "author": "wilsson <wilsonft83@gmail.com>",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -22,7 +22,7 @@
     "url": "https://github.com/wilsson/papyrum/issues"
   },
   "dependencies": {
-    "@papyrum/ui": "^1.0.5",
+    "@papyrum/ui": "^1.0.6",
     "copy-text-to-clipboard": "2.1.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
@@ -33,10 +33,10 @@
     "styled-components": "4.3.2"
   },
   "devDependencies": {
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
     "@types/react": "16.8.23",
-    "@types/react-dom": "16.8.4"
+    "@types/react-dom": "16.8.4",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   },
   "publishConfig": {
     "access": "public"
