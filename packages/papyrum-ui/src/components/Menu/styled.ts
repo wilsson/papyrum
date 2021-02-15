@@ -29,29 +29,44 @@ const Item = styled.li`
 `;
 
 export const ListItem = styled(Item)`
+  /*
   font-size: 16px;
   font-weight: 700;
   a {
     display: flex;
     align-items: center;
   }
+  */
+  color: #212324;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
 `;
 
 export const SubListItemStyled = styled(Item)`
   font-size: 14px;
   font-weight: 400;
+  color: #5C6975;
   a {
-    padding-left: 20px;
+    //padding-left: 20px;
   }
 `;
 
 export const HeaderList = styled.a`
-  justify-content: space-between;
+  /*
+  color: #212324;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+
   svg {
     color: ${props => props.theme.sidebar.color};
     ${props => props.open && 'transform: rotate(180deg);'}
     transition: all .3s ease;
   }
+  justify-content: space-between;
+  */
 `;
 
 export const HeadingWrapper = styled.div`

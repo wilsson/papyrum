@@ -13,7 +13,6 @@ export const changeRoute = (route: string) => ({
   payload: route
 })
 
-
 export const changeRouteHeading = (route: string) => ({
   type: actionTypes.CHANGE_ROUTE_HEADING,
   payload: route

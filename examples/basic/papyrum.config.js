@@ -10,9 +10,8 @@ export default {
     }
   ],
   menu: [
-    'Introduction',
-    'Colors',
-    'Fonts',
+    'Guetting Starter',
+    'Guides',
     'Components'
   ],
   template: './static/index.html'
