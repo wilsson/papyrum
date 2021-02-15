@@ -1,16 +1,17 @@
 export default {
   primary: '#01A5FE',
   header: {
-    background: '#181A1B',
+    background: '#161D2E',
     color: '#CCD5DE',
   },
   sidebar: {
-    background: '#181A1B',
+    background: '#252F3F',
     color: '#CCD5DE',
-    activeItem: '#FFFFFF'
+    activeItem: '#FFFFFF',
+    backgroundActiveItem: '#161D2E'
   },
   content: {
-    background: '#141414',
+    background: '#252F3F',
     color: '#CCD5DE'
   },
   inner: {

@@ -32,7 +32,8 @@ export default (state: State = initialState, action: Action): State => {
   }
 };
 
-export const route = (state: string = location.pathname, action: Action): any => {
+export const route = (state: string = 'chet', action: Action): any => {
+  console.log('route reducer', location.pathname)
   switch(action.type) {
     case actionTypes.CHANGE_ROUTE:
       return action.payload;

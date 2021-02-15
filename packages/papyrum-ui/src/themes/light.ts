@@ -7,7 +7,8 @@ export default {
   sidebar: {
     background: '#FFFFFF',
     color: '#5C6975',
-    activeItem: '#FFFFFF'
+    activeItem: '#FFFFFF',
+    backgroundActiveItem: '#E5E5E5'
   },
   content: {
     background: '#FFFFFF',
