@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const Home = () => (
-  <>
-    Home Page
-  </>
+export default () => (
+  <div>
+    Home Page 1 !!!
+  </div>
 )

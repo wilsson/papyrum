@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { ChevronDown } from 'react-feather';
 import { connect } from 'react-redux';
 import { changeRoute, changeRouteHeading, toggleMenu } from '../../actions/app';
+import styled, { css } from 'styled-components'
 
 import {
   MenuWrapper,
@@ -13,6 +14,7 @@ import {
   HeadingWrapper,
   ItemHeading,
 } from './styled';
+import { border } from 'polished';
 
 export interface Entry {
   name: string;
@@ -21,7 +23,12 @@ export interface Entry {
   open?: boolean;
 }
 
-const equal = (x, y) => JSON.stringify(x) === JSON.stringify(y);
+const equal = (x, y) => {
+  console.log('1>>', x, JSON.stringify(x))
+  console.log('2>>', y, JSON.stringify(y))
+  console.log('3>>', JSON.stringify(x) === JSON.stringify(y))
+  return JSON.stringify(x) === JSON.stringify(y)
+};
 
 interface HeadingProps {
   type?: string;
@@ -75,7 +82,7 @@ export const SubMenu = ({
       }}>
         <HeaderList href="#" open={open}>
           {name}
-          <ChevronDown size={15} style={{marginRight: 10}} />
+          {/*<ChevronDown size={15} style={{marginRight: 10}} />*/}
         </HeaderList>
       </ListItem>
       {open && (
@@ -143,6 +150,63 @@ const MenuItem = ({
   )
 };
 
+const Ul = styled.ul`
+  list-style: none;
+  margin: 0 15px;
+  padding: 0;
+`
+
+const Li = styled.li`
+  a {
+    font-size: 14px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    position: relative;
+    color: ${props => props.theme.sidebar.color};
+    text-decoration: none;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    ${props => props.active && css`
+      background-color: ${props => props.theme.sidebar.backgroundActiveItem};
+    `}
+    &:hover {
+      background-color: ${props => props.theme.sidebar.backgroundActiveItem};
+      cursor: pointer;
+    }
+  }
+  svg {
+    width: 8px;
+    height: 8px;
+    margin-left: 4px;
+    margin-right: 12px;
+    color: ${props => props.theme.sidebar.color};
+    opacity: .8;
+  }
+`;
+
+const HeadingOther  = styled.div`
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-left: 30px;
+  margin-right: 15px;
+  margin-top: 30px;
+  height: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  color: ${props => props.theme.sidebar.color};
+  font-weight: normal;
+  
+  &:first-child {
+    margin-top: 0
+  }
+`;
+
+
 const Menu = ({
   entries,
   handleChangeRoute,
@@ -162,11 +226,35 @@ const Menu = ({
           handleChangeRoute,
           toggleMenu,
         };
+        
         return (
           <React.Fragment key={key}>
-            {entry.children
-              ? <SubMenu {...props } />
-              : <MenuItem {...props } />}
+          <HeadingOther>
+            {entry.name}
+          </HeadingOther>
+          <Ul>
+            {entry.children.map((child, key) => {
+              console.log('child.route', child.route)
+              console.log('routeActive', routeActive)
+              console.log('routeHeadingActive>>>', routeHeadingActive)
+              const active = equal(child.route, routeActive);
+              console.log('active', active)
+              return(
+                <Li key={key} active={active}>
+                  <NavLink
+                    exact
+                    to={child.route}
+                    onClick={() => {
+                      handleChangeRoute(child.route);
+                    }}
+                  >
+                    <svg fill="currentColor" className="css-1z0q2s1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle></svg></svg>
+                    {child.name}
+                  </NavLink>
+                </Li>
+              )
+            })}
+          </Ul>
           </React.Fragment>
         );
       })}
