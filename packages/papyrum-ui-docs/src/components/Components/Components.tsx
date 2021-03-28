@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeRoute } from '@papyrum/ui';
+import styled from 'styled-components'
 
 import {
   Table, 
@@ -17,15 +18,41 @@ import {
   Name,
 } from './styled';
 
+
+const TableWrapper = styled.div`
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid ${props => props.theme.inner.gray};
+  table {
+    margin: 0;
+  }
+`
+
+const Th = styled.th`
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: ${props => props.theme.content.color};
+  text-align: left;
+  padding: 0 12px;
+`
+
+const Tr = styled.tr`
+  background: ${props => props.theme.inner.gray};
+  height: 36px;
+
+`
+
 const Components = ({ handleChangeRoute }) => {
   const { db } = useContext(contextDB);
   return(
-    <Table style={{ width: '100%' }}>
+    <TableWrapper>
+      <Table style={{ width: '100%' }}>
       <thead>
-        <TableRow>
-          <TableTh>Components</TableTh>
-          <TableTh>Status</TableTh>
-        </TableRow>
+        <Tr>
+          <Th>Name</Th>
+          <Th>Status</Th>
+        </Tr>
       </thead>
       <tbody>
         {Object.values(db.plain)
@@ -50,6 +77,7 @@ const Components = ({ handleChangeRoute }) => {
         }
       </tbody>
     </Table>
+    </TableWrapper>
   )
 };
 

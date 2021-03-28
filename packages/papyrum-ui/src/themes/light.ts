@@ -12,7 +12,7 @@ export default {
   },
   content: {
     background: '#FFFFFF',
-    color: '#3e454d'
+    color: '#5C6975'
   },
   inner: {
     grayLight: '#F5F7F9',

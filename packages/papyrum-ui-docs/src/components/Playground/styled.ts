@@ -11,10 +11,23 @@ export const Wrapper = styled.div`
 `;
 
 export const LivePreviewWrapper = styled.div`
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   border: 1px solid ${props => props.theme.inner.gray};
   padding: 20px;
+
+  background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(
+45deg
+, rgb(249, 249, 250) 25%, transparent 25%), linear-gradient(
+135deg
+, rgb(249, 249, 250) 25%, transparent 25%), linear-gradient(
+45deg
+, transparent 75%, rgb(249, 249, 250) 75%), linear-gradient(
+135deg
+, transparent 75%, rgb(249, 249, 250) 75%);
+  background-size: 20px 20px;
+  background-position: 0px 0px, 10px 0px, 10px -10px, 0px 10px;
 `;
 
 export const EditorWrapper = styled.div`

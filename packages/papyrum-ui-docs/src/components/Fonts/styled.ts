@@ -12,7 +12,7 @@ export const FontSizeWrapper = styled.div`
   border: 1px solid ${props => props.theme.inner.gray};
   margin: 0 0 24px;
   border-radius: 2px;
-  background-color: ${props => props.theme.inner.grayLight};
+  background-color: ${props => props.theme.content.background};
 `;
 
 export const LabelFont = styled.div`

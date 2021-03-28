@@ -2,6 +2,16 @@ import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { Route, Switch } from 'react-router-dom';
 import { Components, Playground, Fonts, Palette, Props, Link } from '@papyrum/ui-docs';
+import styled from 'styled-components'
+
+const TableWrapper = styled.div`
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid ${props => props.theme.inner.gray};
+  table {
+    margin: 0;
+  }
+`
 
 import {
   components,
@@ -38,7 +48,7 @@ let providerComponents = {
   ol: components.Ol,
   a: components.A,
   blockquote: components.Blockquote,
-  table: props => <div style={{overflow: 'auto'}}><components.Table {...props} /></div>,
+  table: props => <TableWrapper><components.Table {...props} /></TableWrapper>,
   tr: components.TableRow,
   td: components.TableTd,
   th: components.TableTh,

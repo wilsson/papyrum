@@ -2,21 +2,13 @@ import * as React from 'react';
 import { useContext } from 'react';
 import { contextDB, Table, TableRow, TableTd, TableTh, InlineCode } from '@papyrum/ui';
 import * as p from 'prop-types';
+import styled from 'styled-components'
 
 import {
-  Wrapper,
-  LabelName,
-  LabelType,
-  Prop,
-  Description,
-  Header,
-  LabelNameWrapper,
-  LabelRequiredOrDefaultWrapper,
-  LabelEnum,
-  UnionWrapper,
-  LabelUnion,
-  Text
-} from './styled';
+  TableWrapper,
+  Tr,
+  Th
+} from './styled'
 
 const wordUpperCase = (word: string) => word[0].toUpperCase() + word.slice(1);
 
@@ -31,15 +23,15 @@ export const Props = ({ of: component }) => {
   }
 
   return(
-    <div style={{overflow: 'auto'}}>
+    <TableWrapper>
       <Table>
         <thead>
-          <TableRow>
-            <TableTh>Name</TableTh>
-            <TableTh>Type</TableTh>
-            <TableTh>Description</TableTh>
-            <TableTh>Default</TableTh>
-          </TableRow>
+          <Tr>
+            <Th>Name</Th>
+            <Th>Type</Th>
+            <Th>Description</Th>
+            <Th>Default</Th>
+          </Tr>
         </thead>
         <tbody>
           {propsName.map((name, key) => {
@@ -59,7 +51,7 @@ export const Props = ({ of: component }) => {
                   </InlineCode>
                 </TableTd>
                 {type.name !== 'enum' && <TableTd><InlineCode>{wordUpperCase(type.name)}</InlineCode></TableTd>}
-                {type.name === 'enum' && <TableTd> <InlineCode>{type.value.map((type, i) => type.value.replace(/\'/g, '')).join('|')}</InlineCode></TableTd>}
+                {type.name === 'enum' && <TableTd><InlineCode>{type.value.map((type, i) => type.value.replace(/\'/g, '')).join('|')}</InlineCode></TableTd>}
                 <TableTd>{description ? description : '-'}</TableTd>
                 <TableTd>{defaultValue ? defaultValue.value : '-'}</TableTd>
               </TableRow>
@@ -67,7 +59,7 @@ export const Props = ({ of: component }) => {
           })}
         </tbody>
       </Table>
-    </div>
+    </TableWrapper>
   )
 };
 

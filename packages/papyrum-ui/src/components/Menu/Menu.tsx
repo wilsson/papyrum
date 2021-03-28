@@ -24,9 +24,6 @@ export interface Entry {
 }
 
 const equal = (x, y) => {
-  console.log('1>>', x, JSON.stringify(x))
-  console.log('2>>', y, JSON.stringify(y))
-  console.log('3>>', JSON.stringify(x) === JSON.stringify(y))
   return JSON.stringify(x) === JSON.stringify(y)
 };
 
@@ -234,11 +231,7 @@ const Menu = ({
           </HeadingOther>
           <Ul>
             {entry.children.map((child, key) => {
-              console.log('child.route', child.route)
-              console.log('routeActive', routeActive)
-              console.log('routeHeadingActive>>>', routeHeadingActive)
               const active = equal(child.route, routeActive);
-              console.log('active', active)
               return(
                 <Li key={key} active={active}>
                   <NavLink

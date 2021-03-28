@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const HintWrapper = styled.div`
   color: ${props => props.theme.content.color};
-  background-color: ${props => props.theme.inner.grayLight};
+  background-color: ${props => props.theme.inner.gray};
   border-radius: 3px;
   padding: 15px 15px;
   margin: 40px 0;

@@ -10,7 +10,11 @@ export const Table = styled.table`
 
 export const TableRow = styled.tr`
   box-sizing: border-box;
-  border-bottom: 1px solid ${props => props.theme.inner.gray};
+  border-top: 1px solid ${props => props.theme.inner.gray};
+  > th {
+    background: ${props => props.theme.inner.gray};
+    height: 36px;
+  }
 `;
 
 export const TableTd = styled.td`
@@ -18,8 +22,10 @@ export const TableTd = styled.td`
 `;
 
 export const TableTh = styled.th`
-  text-align:left;
-  padding: 12px;
-  color: ${props => props.theme.inner.darkGray};
-  font-weight: 700;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: ${props => props.theme.content.color};
+  text-align: left;
+  padding: 0 12px;
 `;

@@ -14,11 +14,9 @@ export const Status = styled.div`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
-  padding: 4px;
-  border-radius: 2px;
+  padding: 0 12px;
+  border-radius: 9px;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
   ${props => props.status === 'ready' && css`
     background-color: #c6f6d5;
     color: #22543d;
