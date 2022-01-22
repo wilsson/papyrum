@@ -8,7 +8,7 @@
     "bs": "run-p lerna:*",
     "build:tsc": "lerna run tsc",
     "build:assets": "lerna run assets",
-    "build":"run-p build:*",
+    "build": "run-p build:*",
     "dev:tsc": "lerna run --parallel tsc:watch --stream",
     "dev:assets": "lerna run assets",
     "dev:example": "lerna run example --stream",
@@ -23,7 +23,7 @@
     "lerna": "^3.11.1",
     "npm-run-all": "^4.1.5",
     "ts-jest": "24.0.0",
-    "typescript": "3.3.3"
+    "typescript": "4.5.5"
   },
   "workspaces": [
     "packages/*",
