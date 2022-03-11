@@ -9,7 +9,7 @@
   "license": "ISC",
   "scripts": {
     "example": "papyrum dev -p 4000",
-    "build": "papyrum build"
+    "build:example": "papyrum build"
   },
   "dependencies": {
     "@papyrum/cli": "^1.0.6",

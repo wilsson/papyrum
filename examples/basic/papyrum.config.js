@@ -6,13 +6,12 @@ export default {
   fonts: [
     {
       name: 'Fira',
-      path: 'fonts/FiraCode-Regular.woff2'
+      path: 'static_fonts/FiraCode-Regular.woff2'
     }
   ],
   menu: [
     'Guetting Starter',
     'Guides',
     'Components'
-  ],
-  template: './static/index.html'
+  ]
 };

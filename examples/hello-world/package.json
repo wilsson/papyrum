@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "papyrum dev --title \"Papyrum\"",
-    "build": "papyrum build"
+    "dev": "papyrum dev --title \"Papyrum\""
   },
   "keywords": [],
   "author": "",

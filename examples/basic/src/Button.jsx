@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import p from 'prop-types';
 import styled, { css } from 'styled-components';
 
@@ -20,11 +20,13 @@ const ButtonStyled = styled.button`
   outline: none;
 `;
 
-const Button = ({ children, outline, variant, loading }) => (
-  <ButtonStyled variant={variant} outline={outline}>
-    {loading ? 'loading...' : children}
-  </ButtonStyled>
-);
+const Button = ({ children, outline, variant, loading }) => {
+  return(
+    <ButtonStyled variant={variant} outline={outline}>
+      {loading ? 'loading...' : children}
+    </ButtonStyled>
+  );
+}
 
 Button.propTypes = {
   outline: p.bool,
