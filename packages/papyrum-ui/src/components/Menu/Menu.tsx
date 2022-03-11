@@ -201,6 +201,8 @@ const HeadingOther  = styled.div`
   &:first-child {
     margin-top: 0
   }
+
+  font-weight: bold;
 `;
 
 
