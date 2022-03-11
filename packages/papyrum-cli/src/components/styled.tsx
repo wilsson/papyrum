@@ -10,10 +10,11 @@ const createFontFace = ({ name, path }) => {
     console.warn('Only the following extensions are allowed: .woff or .woff2');
   }
   const [ format ] = path.match(/woff2?$/);
+  const newPath = process.env.NODE_ENV === 'production' ? 'static/assets/' + path : path
   return css`
     @font-face {
       font-family: ${name};
-      src: url(${path}) format("${format}");
+      src: url("${location.origin}/${newPath}") format("${format}");
       font-weight: normal;
       font-style: normal;
     }
@@ -36,7 +37,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     overflow: hidden;
   }
-  ${props => props.fonts && props.fonts.map((font) => createFontFace(font))}
+  ${({ fonts }) => fonts && fonts.map((font: { name: string, path: string}) => createFontFace(font))}
 `;
 
 export const BoxProvider = styled.div`
