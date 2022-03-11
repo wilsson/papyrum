@@ -1,6 +1,6 @@
 {
   "name": "papyrum-basic",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "",
   "main": "index.js",
   "homepage": "https://github.com/wilsson/papyrum#readme",
@@ -12,8 +12,8 @@
     "build:example": "papyrum build"
   },
   "dependencies": {
-    "@papyrum/cli": "^1.0.8",
-    "@papyrum/ui-docs": "^1.0.8",
+    "@papyrum/cli": "^1.0.9",
+    "@papyrum/ui-docs": "^1.0.9",
     "styled-components": "4.3.2"
   }
 }
