@@ -14,8 +14,8 @@ export const Status = styled.div`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
-  padding: 0 12px;
-  border-radius: 9px;
+  padding: 0 7px;
+  border-radius: 5px;
   box-sizing: border-box;
   ${props => props.status === 'ready' && css`
     background-color: #c6f6d5;
