@@ -39,8 +39,7 @@ export const getConfig = config => {
         template: setPathHtmlTemplate(config),
         title: config.title,
         meta: {
-          viewport: 'width=device-width, initial-scale=1',
-          charset: 'UTF-8'
+          viewport: 'width=device-width, initial-scale=1'
         }
       }),
       new WebpackBar({

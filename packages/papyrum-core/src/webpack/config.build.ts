@@ -39,8 +39,7 @@ export const getConfig = config => {
         title: config.title,
         favicon: config.favicon && path.resolve(process.cwd(), config.static, config.favicon),
         meta: {
-          viewport: 'width=device-width, initial-scale=1',
-          charset: 'UTF-8'
+          viewport: 'width=device-width, initial-scale=1'
         }
       }),
       new WebpackBar({
