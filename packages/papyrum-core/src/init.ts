@@ -115,7 +115,7 @@ const orderChildrenEntries = (entries: any) => {
 export const init = (argv: any) => {
   return new Promise(async resolve => {
     try {
-      await fs.mkdirSync(pathClient);
+      fs.mkdirSync(pathClient);
     } catch (e) { }
 
     const { pathsMdx, pathsDocgen } = await getPaths(argv.typescript, argv.ignore);

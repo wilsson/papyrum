@@ -5,7 +5,7 @@ export const dev = async (argv) => {
   await init(argv);
   server(argv);
   const watch = chokidar.watch(['**/*.{md,mdx}', '**/*.{ts,tsx,js,jsx,}'], {
-    ignored: 'node_modules'
+    ignored: ['node_modules', '.papyrum/imports.js']
   });
 
   watch.on('change', async (path) => {
