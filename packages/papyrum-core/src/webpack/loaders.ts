@@ -27,13 +27,9 @@ export const babel = argv => ({
   exclude: /node_modules/,
   use: [
     {
-      loader: require.resolve('cache-loader'),
-    },
-    {
       loader: require.resolve('babel-loader'),
       options: {
-        ...getConfigBabel(argv),
-        cacheDirectory: true,
+        ...getConfigBabel(argv)
       }
     }
   ]

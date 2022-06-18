@@ -1,7 +1,8 @@
+/* @refresh reset */
+
 import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider as ProviderRedux } from 'react-redux';
-import { hot } from 'react-hot-loader';
 import { Provider, store } from '@papyrum/ui';
 import { Helmet} from "react-helmet";
 import { Main } from './Main';
@@ -21,4 +22,4 @@ const Root = ({ db, imports, components }) => {
   );
 };
 
-export default hot(module)(Root);
+export default Root;

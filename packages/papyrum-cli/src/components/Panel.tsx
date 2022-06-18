@@ -1,3 +1,5 @@
+/* @refresh reset */
+
 import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { Route, Switch } from 'react-router-dom';
@@ -56,9 +58,15 @@ let providerComponents = {
   img: components.Img
 };
 
-const NoMatch = () => <CenterWrapper>Not Found</CenterWrapper>
+const NoMatch = () => {
+  return(
+    <>
+      <CenterWrapper>Not Found</CenterWrapper>
+    </>
+  )
+}
 
-const Panel = ({ componentsAsync }) => {
+export const Panel = ({ componentsAsync }) => {
   const { db } = (React.useContext as any)(contextDB);
 
   let map = {
@@ -98,5 +106,3 @@ const Panel = ({ componentsAsync }) => {
     </div>
   )
 };
-
-export { Panel };

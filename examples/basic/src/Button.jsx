@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import p from 'prop-types';
 import styled, { css } from 'styled-components';
 
@@ -20,11 +20,14 @@ const ButtonStyled = styled.button`
   outline: none;
 `;
 
-const Button = ({ children, outline, variant, loading }) => {
+export const Button = ({ children, outline, variant, loading }) => {
+  const [counter, setCounter] = useState(0)
   return(
-    <ButtonStyled variant={variant} outline={outline}>
-      {loading ? 'loading...' : children}
-    </ButtonStyled>
+    <>
+      <ButtonStyled variant={variant} outline={outline} onClick={() => setCounter(counter + 1)}>
+        {loading ? 'loading...' : children}
+      </ButtonStyled>
+    </>
   );
 }
 
@@ -38,6 +41,4 @@ Button.propTypes = {
 
 Button.defaultProps = {
   disabled: true
-}
-
-export default Button;
+};

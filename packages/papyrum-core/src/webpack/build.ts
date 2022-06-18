@@ -13,7 +13,7 @@ export const build = async argv => {
   compiler.run((err, stats) => {
     if(err) return;
     
-    const messages = formatWebpackMessages(stats.toJson({}, true))
+    const messages = formatWebpackMessages(stats.toJson({}))
     if(messages.errors.length) {
       console.log(messages.errors.join('\n\n'));
       process.exit();

@@ -6,19 +6,19 @@ import { getConfig } from './config.dev';
 export const server = argv => {
   const port = argv.port;
   const config = getConfig(argv);
-  const compiler = webpack(config);
-  const server = new WebpackDevServer(compiler, {
-    compress: true,
-    clientLogLevel: 'none',
-    hot: true,
-    hotOnly: true,
-    quiet: true,
-    overlay: false,
+  const compiler = webpack(config as webpack.Configuration);
+  const devServerOptions: WebpackDevServer.Configuration = {
+    port,
+    host: '0.0.0.0',
+    // hot: true,
     historyApiFallback: true,
-    contentBase: path.resolve(process.cwd(), argv.static)
-  });
+    static: {
+      directory: path.resolve(process.cwd(), argv.static)
+    }
+  }
+  const server = new WebpackDevServer(devServerOptions, compiler);
 
-  server.listen(port, '0.0.0.0', () => {
-    console.log('Starting server on http://localhost:' + port);
-  });
+  server.startCallback(() => {
+    console.log(`Starting server on http://localhost:${port}`);
+  })
 };

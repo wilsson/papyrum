@@ -12,8 +12,6 @@
     "build:example": "papyrum build"
   },
   "dependencies": {
-    "@papyrum/cli": "^1.0.10",
-    "@papyrum/ui-docs": "^1.0.10",
-    "styled-components": "4.3.2"
+    "@papyrum/cli": "^1.0.10"
   }
 }
