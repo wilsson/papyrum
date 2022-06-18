@@ -42,7 +42,7 @@ export const getConfig = config => {
     ],
     optimization: {
       splitChunks: {
-        chunks: "all"
+        chunks: 'all'
       }
     }
   }
