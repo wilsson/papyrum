@@ -42,8 +42,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">= 16.8.6",
-    "react-dom": ">= 16.8.6",
+    "react": ">= 16.13.0",
+    "react-dom": ">= 16.13.0",
     "styled-components": ">=4.3.2"
   }
 }

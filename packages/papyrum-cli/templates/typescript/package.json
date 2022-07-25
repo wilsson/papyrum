@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "dev": "papyrum dev",
+    "build": "papyrum build"
+  },
+  "dependencies": {
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
+    "styled-components": "4.3.2"
+  },
+  "devDependencies": {
+    "@papyrum/cli": "latest"
+  }
+}

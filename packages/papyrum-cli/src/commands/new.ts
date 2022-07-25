@@ -8,10 +8,10 @@ import chalk from 'chalk';
 
 const targets = {
   basic: {
-    templateDir: join(__dirname, '../templates/basic')
+    templateDir: join(__dirname, '../../templates/basic')
   },
   typescript: {
-    templateDir: join(__dirname, '../templates/typescript')
+    templateDir: join(__dirname, '../../templates/typescript')
   }
 };
 
